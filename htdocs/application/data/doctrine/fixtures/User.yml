@@ -1,0 +1,5 @@
+User:
+  admin:
+    login: admin
+    password: 68c828855a056612c2d8ed9f2fe981e3726dafd9
+    salt : 25697

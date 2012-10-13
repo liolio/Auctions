@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes>
+
+    <index>
+        <route></route>
+        <defaults>
+            <module>auctions</module>
+            <controller>index</controller>
+            <action>index</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </index>
+
+    <w22>
+        <route>as</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>index</controller>
+            <action>next</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </w22>
+
+</routes>
