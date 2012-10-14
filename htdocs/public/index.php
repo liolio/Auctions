@@ -15,7 +15,7 @@ set_include_path(implode(PATH_SEPARATOR, array(
     get_include_path(),
 )));
 
-if ('development' == APPLICATION_ENV)
+if (APPLICATION_ENV !== 'production')
     error_reporting(E_ALL | E_STRICT);
 
 /** Zend_Application */
