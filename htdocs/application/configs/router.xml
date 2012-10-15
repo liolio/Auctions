@@ -13,16 +13,40 @@
         <reverse></reverse>
     </index>
 
-    <w22>
-        <route>as</route>
+    <login>
+        <route>login</route>
         <defaults>
             <module>auctions</module>
-            <controller>index</controller>
-            <action>next</action>
+            <controller>auth</controller>
+            <action>index</action>
         </defaults>
         <map>
         </map>
         <reverse></reverse>
-    </w22>
-
+    </login>
+    
+    <processLogin>
+        <route>login/process</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>auth</controller>
+            <action>process</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </processLogin>
+    
+    <logout>
+        <route>logout</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>auth</controller>
+            <action>logout</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </logout>
+    
 </routes>
