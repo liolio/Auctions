@@ -6,32 +6,25 @@ class Auctions_Form_Login extends Zend_Form
 {
     public function init()
     {
-        $username = $this->addElement('text', FieldIdEnum::USER_LOGIN, array(
-            'filters'    => array('StringTrim', 'StringToLower'),
-            'validators' => array(
-                'Alpha',
-                array('StringLength', false, array(1, 20)),
-            ),
-            'required'   => true,
-            'label'      => 'Your username:',
-        ));
+        $userLogin = new Form_Element_Text(FieldIdEnum::USER_LOGIN);
+        $userLogin->setRequired()
+                ->setLabel('Login:')
+                ->addValidator(new Zend_Validate_Alpha(), true)
+                ->addValidator(new Zend_Validate_StringLength(array(1, 20)));
 
-        $password = $this->addElement('password', FieldIdEnum::USER_PASSWORD, array(
-            'filters'    => array('StringTrim'),
-            'validators' => array(
-                'Alnum',
-                array('StringLength', false, array(1, 20)),
-            ),
-            'required'   => true,
-            'label'      => 'Password:',
-        ));
-
-        $login = $this->addElement('submit', 'login', array(
-            'required' => false,
-            'ignore'   => true,
-            'label'    => 'Login',
-        ));
-
+        $userPassword = new Zend_Form_Element_Password(FieldIdEnum::USER_PASSWORD);
+        $userPassword->setRequired()
+                ->setLabel('Password:')
+                ->addFilter(new Zend_Filter_StringTrim())
+                ->addFilter(new Zend_Filter_StripTags())
+                ->addValidator(new Zend_Validate_StringLength(array(1, 20)));
+        
+        $loginButton = new Zend_Form_Element_Submit('submitButton');
+        $loginButton->setIgnore(true)
+                ->setLabel('Login');
+        
+        $this->addElements(array($userLogin, $userPassword, $loginButton));
+        
         // We want to display a 'failed authentication' message if necessary;
         // we'll do that with the form 'description', so we need to add that
         // decorator.
