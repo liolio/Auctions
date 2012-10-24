@@ -43,12 +43,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $manager;
     }
 
-    protected function _initLogger()
-    {
-        $this->bootstrap('log');
-        $this->getResource('log')->setTimestampFormat('Y-m-d H:i:s');
-        Zend_Registry::set('logger', $this->getResource('log'));
-    }
+//    protected function _initLogger()
+//    {
+//        $this->bootstrap('log');
+//        $this->getResource('log')->setTimestampFormat('Y-m-d H:i:s');
+//        Zend_Registry::set('logger', $this->getResource('log'));
+//    }
     
     /**
      * Indicate the default autoloader should be used as a fallback or catch-all autoloader for all namespaces.
@@ -57,11 +57,19 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     protected function _initExtendAutoloader()
     {
         $this->getApplication()->getAutoloader()->setFallbackAutoloader(true);
+//        $moduleLoader = new Zend_Application_Module_Autoloader(array(
+//            'namespace' => '',
+//            'basePath' => APPLICATION_PATH . 'modules/auctions',
+//            'resourceTypes' => array(
+//                    'form' => array(
+//                            'path' => 'forms',
+//                            'namespace' => 'Form'))));
+//        $this->getApplication()->getAutoloader()->pushAutoloader($moduleLoader);
 //        $resourceLoader = new Zend_Loader_Autoloader_Resource(array(
 //            'basePath'  => APPLICATION_PATH,
 //            'namespace' => 'Auctions'
 //            ));
-//        $resourceLoader->addResourceType('form', '/modules/auctions/forms/', 'Auctions');
+//        $resourceLoader->addResourceType('form', 'forms/', 'Form');
 //        $resourceLoader->addResourceType('controller', 'controllers/', 'Zapisy');
         
     }

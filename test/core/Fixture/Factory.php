@@ -12,6 +12,6 @@ class Fixture_Factory
         
         $path = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $path);
         
-//        Doctrine_Manager::getInstance()->getConnection(Zend_r)
+        Doctrine_Manager::getInstance()->getCurrentConnection()->exec(file_get_contents(FIXTURE_PATH . DIRECTORY_SEPARATOR . $path . '.sql'));
     }
 }

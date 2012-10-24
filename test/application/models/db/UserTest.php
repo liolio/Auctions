@@ -2,14 +2,24 @@
 /**
  * @class UserTest
  */
-class UserTest extends PHPUnit_Framework_TestCase
+class UserTest extends TestCase_Database
 {
     
     /**
      * @test 
+     * @dataProvider checkPasswordDataProvider
      */
-    public function foo()
+    public function checkPassword($password, $result)
     {
-        $this->assertEquals('qqq', UserTable::getInstance()->find(1)->foo());
+        $user = UserTable::getInstance()->findOneBy('login', 'admin');
+        $this->assertEquals($result, $user->checkPassword($password));
+    }
+    
+    public static function checkPasswordDataProvider() 
+    {
+        return array(
+            array('admin', true),
+            array('invalid', false)
+        );
     }
 }

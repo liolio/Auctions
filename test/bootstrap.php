@@ -6,9 +6,16 @@ defined('APPLICATION_PATH')
 // Define application environment
 define('APPLICATION_ENV', 'test');
 
+// Define path to core directory
+define('CORE_PATH', realpath(dirname(__FILE__).'/core'));
+
+// Define path to fixture directory
+define('FIXTURE_PATH', realpath(dirname(__FILE__).'/fixture'));
+
 define('DATESTAMP', date('Y-m-d'));
 
 set_include_path(implode(PATH_SEPARATOR, array(
+    realpath(CORE_PATH),
     realpath(APPLICATION_PATH . '/../library'),
     realpath(APPLICATION_PATH . '/models'),
     get_include_path(),
