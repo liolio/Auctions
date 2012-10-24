@@ -5,7 +5,12 @@
         <link rel="stylesheet" href="css/auctions.css" type="text/css" />
     </head>
     <body>
-        <?php echo $this->asd; ?>
+        <?php if ($this->identity) : ?>
+            Identity: <?php echo $this->identity; ?><br />
+            <a href="auth/logout">Log out</a>
+        <?php else : ?>
+            <a href="login">Log in</a>
+        <?php endif; ?>
     </body>
 </html>
             

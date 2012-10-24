@@ -13,8 +13,13 @@
 class User extends BaseUser
 {
     
-    public function foo()
+    /**
+     * 
+     * @param string $password
+     * @return boolean
+     */
+    public function checkPassword($password)
     {
-        return 'qqq';
+        return $this->password === sha1($this->salt . $password);
     }
 }
