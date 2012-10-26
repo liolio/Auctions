@@ -4,6 +4,27 @@
  */
 class Auctions_Form_Login extends Zend_Form
 {
+    
+    /**
+     * Constructor
+     *
+     * Registers form view helper as decorator
+     *
+     * @param mixed $options
+     * @return void
+     */
+    public function __construct($options = array())
+    {
+        $formOptions = array_merge($options,
+            array(
+                'action' => '/login/process',
+                'method' => 'post',
+            )
+        );
+        
+        parent::__construct($formOptions);
+    }
+    
     public function init()
     {
         $userLogin = new Form_Element_Text(FieldIdEnum::USER_LOGIN);

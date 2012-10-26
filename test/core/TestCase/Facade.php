@@ -4,6 +4,11 @@
  */
 class TestCase_Facade
 {
+ 
+    /**
+     * @var Zend_Translate
+     */
+    private $_translator;
     
     /**
      * @var boolean
@@ -29,5 +34,18 @@ class TestCase_Facade
         
         if ($this->_loadProductionFixtures)
             Database_Reloader::getInstance()->loadFixtures();
+    }
+    
+    /**
+     * Returns default translator.
+     * 
+     * @return Zend_Translate
+     */
+    public function getTranslator()
+    {
+        if (is_null($this->_translator))
+            $this->_translator = Zend_Registry::get('Zend_Translate');
+        
+        return $this->_translator;
     }
 }

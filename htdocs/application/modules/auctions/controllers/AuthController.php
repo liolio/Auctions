@@ -2,17 +2,17 @@
 /**
  * @class Auctions_AuthController
  */
-class Auctions_AuthController extends Zend_Controller_Action
+class Auctions_AuthController extends Controller_Abstract
 {
 
     public function init()
     {
-        
+        Zend_Layout::startMvc();
     }
 
     public function indexAction()
     {
-        $this->view->form = $this->_getLoginForm();
+        $this->view->form = new Auctions_Form_Login();
     }
     
     public function processAction()
@@ -23,7 +23,7 @@ class Auctions_AuthController extends Zend_Controller_Action
             return $this->_helper->redirector('index');
         }
 
-        $form = $this->_getLoginForm();
+        $form = new Auctions_Form_Login();
         if (!$form->isValid($request->getPost()))
         {
             $this->view->form = $form;
@@ -36,10 +36,9 @@ class Auctions_AuthController extends Zend_Controller_Action
             switch ($logInResult->getCode())
             {
                 case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND :
-                    $form->setDescription('No such user');
-                    break;
+                case Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID :
                 default :
-                    $form->setDescription('Invalid credentials provided');
+                    $form->setDescription($this->_getTranslator()->translate('validation_message-invalid_credentials'));
                     break;
             }
             
@@ -54,16 +53,5 @@ class Auctions_AuthController extends Zend_Controller_Action
     {
         Zend_Auth::getInstance()->clearIdentity();
         $this->_helper->redirector('index', 'index');
-    }
-
-    /**
-     * @return Auctions_Form_Login
-     */
-    private function _getLoginForm()
-    {
-        return new Auctions_Form_Login(array(
-            'action' => '/login/process',
-            'method' => 'post',
-        ));
     }
 }

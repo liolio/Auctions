@@ -1,16 +1,6 @@
-<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\">
-    <head>
-        <title>~AUCTIONS~</title>
-        <link rel="stylesheet" href="css/auctions.css" type="text/css" />
-    </head>
-    <body>
-        <?php if ($this->identity) : ?>
-            Identity: <?php echo $this->identity; ?><br />
-            <a href="auth/logout">Log out</a>
-        <?php else : ?>
-            <a href="login">Log in</a>
-        <?php endif; ?>
-    </body>
-</html>
-            
+<?php if ($this->identity) : ?>
+    Identity: <?php echo $this->identity; ?><br />
+    <a href="auth/logout">Log out</a>
+<?php else : ?>
+    <a href="login">Log in</a>
+<?php endif; ?>
