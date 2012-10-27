@@ -3,6 +3,11 @@
 class Auctions_ErrorController extends Zend_Controller_Action
 {
 
+    public function init()
+    {
+        Zend_Layout::startMvc();
+    }
+    
     public function errorAction()
     {
         $errors = $this->_getParam('error_handler');
@@ -35,7 +40,6 @@ class Auctions_ErrorController extends Zend_Controller_Action
         // Log exception, if logger available
         if ($log = $this->getLog()) {
             $log->log($this->view->message, $priority, $errors->exception);
-            $log->log('Request Parameters', $priority, $errors->request->getParams());
         }
         
         // conditionally display exceptions
@@ -49,11 +53,11 @@ class Auctions_ErrorController extends Zend_Controller_Action
     public function getLog()
     {
         $bootstrap = $this->getInvokeArg('bootstrap');
-        if (!$bootstrap->hasResource('Log')) {
-            return false;
+        if (is_null($bootstrap) || !$bootstrap->hasResource('Log')) {
+            return Zend_Registry::get('logFactory');
         }
-        $log = $bootstrap->getResource('Log');
-        return $log;
+        
+        return $bootstrap->getResource('Log');
     }
 
 
