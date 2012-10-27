@@ -40,12 +40,36 @@ class TestCase_Controller extends Zend_Test_PHPUnit_ControllerTestCase
      */
     protected function setUp()
     {
+        $application = new Zend_Application(APPLICATION_ENV, APPLICATION_PATH . '/configs/application.ini');
+        $this->bootstrap = array($application->getBootstrap(), 'bootstrap');
+        
         $this->_getFacade()->reloadDatabase();
         parent::setUp();
         
         $this->_logInAdminUser();
 
         $this->assertEquals(0, Doctrine_Manager::connection()->getTransactionLevel());
+    }
+    
+    /**
+     * Sets request data.
+     * 
+     * @param array $data
+     * @param string $requestMethod [optional] Default set to POST
+     */
+    protected function _setRequest(array $data, $requestMethod = 'POST')
+    {
+        $this->_request
+            ->clearParams()
+            ->setPost($data)
+            ->setMethod($requestMethod);
+    }
+    
+    protected function _assertDispatch($controller, $action, $module = 'auctions')
+    {
+        $this->assertModule($module);
+        $this->assertController($controller);
+        $this->assertAction($action);
     }
     
     /**
