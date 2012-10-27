@@ -36,16 +36,17 @@ class TestCase_Facade
             Database_Reloader::getInstance()->loadFixtures();
     }
     
-    /**
-     * Returns default translator.
-     * 
-     * @return Zend_Translate
-     */
-    public function getTranslator()
+    public function getTimeDiff($first, $second)
     {
-        if (is_null($this->_translator))
-            $this->_translator = Zend_Registry::get('Zend_Translate');
+        if (!is_string($first) && !$first instanceof Zend_Date)
+            throw new InvalidArgumentException("First parameter must be string or Zend_Date object, " . get_class($first) . " given.");
         
-        return $this->_translator;
+        if (!is_string($second) && !$second instanceof Zend_Date)
+            throw new InvalidArgumentException("Second parameter must be string or Zend_Date object, " . get_class($first) . " given.");
+
+        $firstTime = new Zend_Date($first);
+        $secondTime = new Zend_Date($second);
+        
+        return abs($firstTime->sub($secondTime)->get(Zend_Date::TIMESTAMP));
     }
 }

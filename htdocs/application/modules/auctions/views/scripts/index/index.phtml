@@ -1,6 +1,6 @@
 <?php if ($this->identity) : ?>
     Identity: <?php echo $this->identity; ?><br />
-    <a href="auth/logout">Log out</a>
+    <a href="auth/logout"><?php echo Helper::getTranslator()->translate('caption-log_out'); ?></a>
 <?php else : ?>
-    <a href="login">Log in</a>
+    <a href="login"><?php echo Helper::getTranslator()->translate('caption-log_in'); ?></a>
 <?php endif; ?>

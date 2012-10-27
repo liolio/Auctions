@@ -1,8 +1,8 @@
 <?php
 /**
- * @class Controller_Abstract
+ * @class Auctions_Form_Abstract
  */
-abstract class Controller_Abstract extends Zend_Controller_Action
+abstract class Auctions_Form_Abstract extends Zend_Form
 {
     
     /**

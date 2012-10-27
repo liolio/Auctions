@@ -46,7 +46,8 @@ class TestCase_Controller extends Zend_Test_PHPUnit_ControllerTestCase
         $this->_getFacade()->reloadDatabase();
         parent::setUp();
         
-        $this->_logInAdminUser();
+        if ($this->_logInAdminUser)
+            $this->_logInAdminUser();
 
         $this->assertEquals(0, Doctrine_Manager::connection()->getTransactionLevel());
     }
@@ -72,13 +73,19 @@ class TestCase_Controller extends Zend_Test_PHPUnit_ControllerTestCase
         $this->assertAction($action);
     }
     
+    protected function _assertTime($first, $second, $allowedTimeDiff = 2)
+    {
+        $timeDiff = $this->_getFacade()->getTimeDiff($first, $second);
+        $this->assertTrue($timeDiff <= $allowedTimeDiff);
+    }
+    
     /**
      * 
      * @return Zend_Translate
      */
     protected function _getTranslator()
     {
-        return $this->_getFacade()->getTranslator();
+        return Helper::getTranslator();
     }
     
     /**
@@ -94,12 +101,19 @@ class TestCase_Controller extends Zend_Test_PHPUnit_ControllerTestCase
      */
     protected function _logInAdminUser()
     {
-        if ($this->_logInAdminUser)
-        {
-            $authAdapter = new Auth_Adapter('admin', 'admin');
-            Zend_Auth::getInstance()->authenticate($authAdapter);
-            $this->assertTrue(Zend_Auth::getInstance()->hasIdentity());
-        }
+        $authAdapter = new Auth_Adapter('admin', 'admin');
+        Zend_Auth::getInstance()->authenticate($authAdapter);
+        $this->assertTrue(Zend_Auth::getInstance()->hasIdentity());
+    }
+    
+    /**
+     * Returns logged user. If no user is logged returns false.
+     * 
+     * @return User|false
+     */
+    protected function _getLoggedUser()
+    {
+        return Zend_Auth::getInstance()->hasIdentity() ? UserTable::getInstance()->findOneBy('login', 'admin') : false;
     }
     
     /**

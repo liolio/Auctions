@@ -43,12 +43,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $manager;
     }
 
-//    protected function _initLogger()
-//    {
-//        $this->bootstrap('log');
-//        $this->getResource('log')->setTimestampFormat('Y-m-d H:i:s');
-//        Zend_Registry::set('logger', $this->getResource('log'));
-//    }
+    protected function _initLogger()
+    {
+        $this->bootstrap('log');
+        $this->getResource('log')->setTimestampFormat('Y-m-d H:i:s');
+        Zend_Registry::set('logFactory', $this->getResource('log'));
+    }
     
     /**
      * Indicate the default autoloader should be used as a fallback or catch-all autoloader for all namespaces.
