@@ -1,8 +1,8 @@
 <?php
 /**
- * @class Auctions_Form_Login
+ * @class Auctions_Form_LogIn
  */
-class Auctions_Form_Login extends Auctions_Form_Abstract
+class Auctions_Form_LogIn extends Auctions_Form_Abstract
 {
     
     /**
@@ -30,17 +30,17 @@ class Auctions_Form_Login extends Auctions_Form_Abstract
         $userLogin = new Form_Element_Text(FieldIdEnum::USER_LOGIN);
         $userLogin->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-login'))
-                ->addValidator(new Zend_Validate_Alpha(), true)
-                ->addValidator(new Zend_Validate_StringLength(array(1, 20)));
+                ->addValidator(new Zend_Validate_Alnum(), true)
+                ->addValidator(new Zend_Validate_StringLength(array('min' => 1, 'max' => 20)));
 
         $userPassword = new Zend_Form_Element_Password(FieldIdEnum::USER_PASSWORD);
         $userPassword->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-password'))
                 ->addFilter(new Zend_Filter_StringTrim())
                 ->addFilter(new Zend_Filter_StripTags())
-                ->addValidator(new Zend_Validate_StringLength(array(1, 20)));
+                ->addValidator(new Zend_Validate_StringLength(array('min' => 1, 'max' => 20)));
         
-        $loginButton = new Zend_Form_Element_Submit('submitButton');
+        $loginButton = new Zend_Form_Element_Submit(ParamIdEnum::SUBMIT_BUTTON);
         $loginButton->setIgnore(true)
                 ->setLabel($this->_getTranslator()->translate('button-log_in'));
         

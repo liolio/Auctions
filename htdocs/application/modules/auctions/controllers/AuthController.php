@@ -12,7 +12,7 @@ class Auctions_AuthController extends Controller_Abstract
 
     public function indexAction()
     {
-        $this->view->form = new Auctions_Form_Login();
+        $this->view->form = new Auctions_Form_LogIn();
     }
     
     public function processAction()
@@ -23,7 +23,7 @@ class Auctions_AuthController extends Controller_Abstract
             return $this->_helper->redirector('index');
         }
 
-        $form = new Auctions_Form_Login();
+        $form = new Auctions_Form_LogIn();
         if (!$form->isValid($request->getPost()))
         {
             $this->view->form = $form;
