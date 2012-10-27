@@ -2,15 +2,15 @@
 return array(
     'application_name'  =>  'Aukcyjki',
 
-    'caption-log_in'    =>  'Log In',
-    'caption-log_out'   =>  'Log Out',
+    'caption-log_in'    =>  'Zaloguj',
+    'caption-log_out'   =>  'Wyloguj',
     
     'label-login'       =>  'Login:',
-    'label-password'    =>  'Password:',
+    'label-password'    =>  'Hasło:',
     
-    'button-log_in'     =>  'Log In',
+    'button-log_in'     =>  'Zaloguj',
     
-    'validation_message-invalid_credentials'   =>  'Podano zły login lub password',
+    'validation_message-invalid_credentials'   =>  'Podano zły login lub hasło',
     
     'configuration-undefined'    =>  'undefined',
     
