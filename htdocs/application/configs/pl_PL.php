@@ -10,7 +10,8 @@ return array(
     
     'button-log_in'     =>  'Zaloguj',
     
-    'validation_message-invalid_credentials'   =>  'Podano zły login lub hasło',
+    'validation_message-invalid_credentials'    =>  'Podano zły login lub hasło',
+    'validation_message-user_inactive'          =>  'Konto nieaktywne',
     
     'configuration-undefined'    =>  'undefined',
     
