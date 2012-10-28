@@ -26,13 +26,18 @@ class Auth_Adapter implements Zend_Auth_Adapter_Interface
     public function authenticate()
     {
         $user = is_null($this->_login) ? false : UserTable::getInstance()->findOneBy('login', $this->_login);
-
         if (! $user)
-            return new Zend_Auth_Result(Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND, $this->_login);
+            return new Auth_Result(Auth_Result::FAILURE_IDENTITY_NOT_FOUND, $this->_login);
 
         if (! $user->checkPassword($this->_password))
-            return new Zend_Auth_Result(Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID, $this->_login);
+            return new Auth_Result(Auth_Result::FAILURE_CREDENTIAL_INVALID, $this->_login);
+        
+        if (! $user->active)
+            return new Auth_Result(Auth_Result::FAILURE_NOT_ACTIVE, $this->_login);
 
-        return new Zend_Auth_Result(Zend_Auth_Result::SUCCESS, $user->id);
+        Zend_Debug::dump(! $user->active);
+        $user->updateLastLogin();
+        
+        return new Auth_Result(Auth_Result::SUCCESS, $user->id);
     }
 }

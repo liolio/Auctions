@@ -35,8 +35,8 @@ class Auctions_AuthController extends Controller_Abstract
         {
             switch ($logInResult->getCode())
             {
-                case Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND :
-                case Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID :
+                case Auth_Result::FAILURE_IDENTITY_NOT_FOUND :
+                case Auth_Result::FAILURE_CREDENTIAL_INVALID :
                 default :
                     $form->setDescription($this->_getTranslator()->translate('validation_message-invalid_credentials'));
                     break;

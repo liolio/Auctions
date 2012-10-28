@@ -35,6 +35,30 @@ class Adduser extends Doctrine_Migration_Base
               'notnull' => true,
               'length' => 2,
              ),
+             'secret_code' => 
+             array(
+              'type' => 'string',
+              'fixed' => 1,
+              'length' => 40,
+             ),
+             'email' => 
+             array(
+              'type' => 'string',
+              'notnull' => true,
+              'length' => 100,
+             ),
+             'active' => 
+             array(
+              'type' => 'boolean',
+              'notnull' => true,
+              'default' => 0,
+              'length' => 25,
+             ),
+             'last_login' => 
+             array(
+              'type' => 'timestamp',
+              'length' => 25,
+             ),
              'created_at' => 
              array(
               'notnull' => true,

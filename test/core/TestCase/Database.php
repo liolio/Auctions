@@ -49,6 +49,12 @@ class TestCase_Database extends PHPUnit_Framework_TestCase
         $this->_getFacade()->setLoadFixtures(false);
     }
     
+    protected function _assertTime($first, $second, $allowedTimeDiff = 2)
+    {
+        $timeDiff = $this->_getFacade()->getTimeDiff($first, $second);
+        $this->assertTrue($timeDiff <= $allowedTimeDiff);
+    }
+    
     /**
      * 
      * @return TestCase_Facade

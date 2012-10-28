@@ -5,12 +5,6 @@
 class Fixture_FactoryTest extends TestCase_Database
 {
     
-//    protected function setUp()
-//    {
-//        $this->_disableFixturesLoading();
-//        parent::setUp();
-//    }
-
     /**
      * @test
      */
@@ -21,6 +15,7 @@ class Fixture_FactoryTest extends TestCase_Database
         
         $user = UserTable::getInstance()->findOneBy('login', 'user');
         $this->assertTrue($user->exists());
+        die;
     }
     
     /**
