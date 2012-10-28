@@ -22,4 +22,16 @@ class User extends BaseUser
     {
         return $this->password === sha1($this->salt . $password);
     }
+    
+    /**
+     * 
+     * @return User
+     */
+    public function updateLastLogin()
+    {
+        $this->last_login = Zend_Date::now()->toString();
+        $this->save();
+        
+        return $this;
+    }
 }

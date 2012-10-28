@@ -9,6 +9,10 @@
  * @property string $login
  * @property string $password
  * @property integer $salt
+ * @property string $secret_code
+ * @property string $email
+ * @property boolean $active
+ * @property timestamp $last_login
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -43,6 +47,24 @@ abstract class BaseUser extends Doctrine_Record
              'unsigned' => true,
              'notnull' => true,
              'length' => '2',
+             ));
+        $this->hasColumn('secret_code', 'string', 40, array(
+             'type' => 'string',
+             'fixed' => 1,
+             'length' => '40',
+             ));
+        $this->hasColumn('email', 'string', 100, array(
+             'type' => 'string',
+             'notnull' => true,
+             'length' => '100',
+             ));
+        $this->hasColumn('active', 'boolean', null, array(
+             'type' => 'boolean',
+             'notnull' => true,
+             'default' => false,
+             ));
+        $this->hasColumn('last_login', 'timestamp', null, array(
+             'type' => 'timestamp',
              ));
     }
 
