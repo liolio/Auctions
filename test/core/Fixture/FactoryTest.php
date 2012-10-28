@@ -15,7 +15,6 @@ class Fixture_FactoryTest extends TestCase_Database
         
         $user = UserTable::getInstance()->findOneBy('login', 'user');
         $this->assertTrue($user->exists());
-        die;
     }
     
     /**
