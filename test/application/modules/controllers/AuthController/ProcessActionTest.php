@@ -5,15 +5,18 @@
 class ProcessActionTest extends TestCase_Controller
 {
     
+    /**
+     *
+     * @var Zend_Auth
+     */
     private $_auth;
     
     /**
-     * Set up MVC app
      *
-     * Calls {@link bootstrap()} by default
-     *
-     * @return void
+     * @var User
      */
+    private $_user;
+    
     protected function setUp()
     {
         $this->_disableLoggingInAdminUser();
@@ -21,6 +24,7 @@ class ProcessActionTest extends TestCase_Controller
         parent::setUp();
         
         $this->_auth = Zend_Auth::getInstance();
+        $this->_user = UserTable::getInstance()->findOneBy('login', 'admin');
     }
     
     /**
@@ -39,6 +43,8 @@ class ProcessActionTest extends TestCase_Controller
         
         $this->assertContains($this->_getTranslator()->translate('validation_message-invalid_credentials'), $this->_response->getBody());
         $this->assertFalse($this->_auth->hasIdentity());
+        
+        $this->assertEmpty($this->_user->last_login);
     }
     
     /**
@@ -61,6 +67,8 @@ class ProcessActionTest extends TestCase_Controller
                 UserTable::getInstance()->findOneBy('login', 'admin')->id,
                 $auth->getIdentity()
         );
+        
+        $this->_assertTime(Zend_Date::now(), $this->_user->last_login);
         
         $this->assertEmpty($this->_response->getBody());
         

@@ -35,8 +35,6 @@ class Auth_Adapter implements Zend_Auth_Adapter_Interface
         if (! $user->active)
             return new Auth_Result(Auth_Result::FAILURE_NOT_ACTIVE, $this->_login);
 
-        $user->updateLastLogin();
-        
         return new Auth_Result(Auth_Result::SUCCESS, $user->id);
     }
 }

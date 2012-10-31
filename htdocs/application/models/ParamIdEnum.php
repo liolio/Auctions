@@ -6,4 +6,6 @@ class ParamIdEnum
 {
     
     const SUBMIT_BUTTON = 'submit_button';
+    
+    const LINK = 'link';
 }

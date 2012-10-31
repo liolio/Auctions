@@ -28,12 +28,12 @@ $application = new Zend_Application(
     array(
         'config' => array(
             APPLICATION_PATH . '/configs/application.ini'
-//            APPLICATION_PATH . '/configs/cli.ini'
         )
     )
 );
 
 $application->getBootstrap()->bootstrap('doctrine');
+$application->getBootstrap()->bootstrap('extendAutoloader');
 $options = $application->getOption('doctrine');
 
 $cli = new Doctrine_Cli($options);

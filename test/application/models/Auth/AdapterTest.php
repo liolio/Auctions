@@ -18,8 +18,6 @@ class Auth_AdapterTest extends TestCase_Database
         $this->assertEquals(Auth_Result::SUCCESS, $authernticationResult->getCode());
         $this->assertEquals($user->id, $authernticationResult->getIdentity());
         $this->assertEmpty($authernticationResult->getMessages());
-        
-        $this->_assertTime(Zend_Date::now(), $user->last_login);
     }
     
     /**

@@ -5,14 +5,6 @@
 class Auctions_Form_LogIn extends Auctions_Form_Abstract
 {
     
-    /**
-     * Constructor
-     *
-     * Registers form view helper as decorator
-     *
-     * @param mixed $options
-     * @return void
-     */
     public function __construct($options = array())
     {
         $formOptions = array_merge($options,

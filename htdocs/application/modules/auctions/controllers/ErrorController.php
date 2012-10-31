@@ -37,10 +37,8 @@ class Auctions_ErrorController extends Zend_Controller_Action
                 break;
         }
         
-        // Log exception, if logger available
-        if ($log = $this->getLog()) {
-            $log->log($this->view->message, $priority, $errors->exception);
-        }
+        // Log exception
+        Log_Factory::create($errors->exception, $priority);
         
         // conditionally display exceptions
         if ($this->getInvokeArg('displayExceptions') == true) {
@@ -49,17 +47,4 @@ class Auctions_ErrorController extends Zend_Controller_Action
         
         $this->view->request   = $errors->request;
     }
-
-    public function getLog()
-    {
-        $bootstrap = $this->getInvokeArg('bootstrap');
-        if (is_null($bootstrap) || !$bootstrap->hasResource('Log')) {
-            return Zend_Registry::get('logFactory');
-        }
-        
-        return $bootstrap->getResource('Log');
-    }
-
-
 }
-
