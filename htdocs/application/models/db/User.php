@@ -19,7 +19,7 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
     
     public function getId()
     {
-        return $this->id;
+//        return $this->id;
     }
     
     public function getNotificationData($notificationType)

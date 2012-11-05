@@ -49,6 +49,7 @@ class Auctions_AuthController extends Controller_Abstract
             return $this->render('index');
         }
 
+        
         $user = UserTable::getInstance()->findOneBy('login', $form->getValue(FieldIdEnum::USER_LOGIN));
         $user->updateLastLogin();
         

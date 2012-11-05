@@ -62,11 +62,11 @@
     </registrationForm>
     
     <processRegistration>
-        <route>user/processregistration</route>
+        <route>user/asd</route>
         <defaults>
             <module>auctions</module>
             <controller>user</controller>
-            <action>processRegistration</action>
+            <action>asd</action>
         </defaults>
         <map>
         </map>
@@ -74,11 +74,11 @@
     </processRegistration>
     
     <registerUser>
-        <route>register/(\a{40})</route>
+        <route>register/(.{40})</route>
         <defaults>
             <module>auctions</module>
             <controller>user</controller>
-            <action>processRegistration</action>
+            <action>asd</action>
         </defaults>
         <map>
             <secretCode>1</secretCode>

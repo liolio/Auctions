@@ -78,22 +78,33 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
      */
     protected function _initRouter()
     {
-        $router = new Zend_Controller_Router_Rewrite();
-        $router->removeDefaultRoutes();
-
-        $routerConfig = new Zend_Config_Xml(APPLICATION_PATH . '/configs/router.xml');
-        foreach ($routerConfig->toArray() as $routeName => $routeData)
-        {
-            Zend_Debug::dump($routeData);
-            $router->addRoute($routeName, Zend_Controller_Router_Route_Regex::getInstance(new Zend_Config($routeData)));
-        }
-
-        
-//        $router->addDefaultRoutes();
-        
+//        $router = new Zend_Controller_Router_Rewrite();
+//        $router->removeDefaultRoutes();
+//
+//        $routerConfig = new Zend_Config_Xml(APPLICATION_PATH . '/configs/router.xml');
+//        foreach ($routerConfig->toArray() as $routeName => $routeData)
+//            $router->addRoute($routeName, Zend_Controller_Router_Route_Regex::getInstance(new Zend_Config($routeData)));
+//
+//        
+////        $router->addDefaultRoutes();
+//        
+//        $this->bootstrap('FrontController');
+//        $this->getResource('FrontController')->setRouter($router);
         $this->bootstrap('FrontController');
-        $this->getResource('FrontController')->setRouter($router);
-        Zend_Controller_Front::getInstance()->getRouter()->;
+//        $front  = $this->getResource('FrontController');
+//        $router = $front->getRouter();
+//        $config = new Zend_Config_Xml(APPLICATION_PATH . '/configs/router.xml');
+////        Zend_Debug::dump($config);
+////        $router->addConfig($config->routes);
+//        foreach ($config->toArray() as $routeName => $routeData)
+//                $router->addRoute();
+        $routefile = new Zend_Config_Xml(APPLICATION_PATH.'/configs/router.xml');
+        $router = $this->getResource('FrontController')->getRouter();
+//        $router->removeDefaultRoutes();
+//        $router = Zend_Controller_Front::getInstance()->getRouter();
+        $router->addConfig($routefile);
+//        return $router;
+        
     }
 
     /**

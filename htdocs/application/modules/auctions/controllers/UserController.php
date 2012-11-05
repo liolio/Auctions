@@ -15,7 +15,7 @@ class Auctions_UserController extends Zend_Controller_Action
         $this->view->registrationForm = new Auctions_Form_User_Registration();
     }
     
-    public function processRegistrationAction()
+    public function asdAction()
     {
         $request = $this->getRequest();
 

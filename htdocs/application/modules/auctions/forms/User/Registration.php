@@ -9,7 +9,7 @@ class Auctions_Form_User_Registration extends Auctions_Form_Abstract
     {
         $formOptions = array_merge($options,
             array(
-                'action' => '/user/processregistration',
+                'action' => '/user/asd',
                 'method' => 'post',
             )
         );
