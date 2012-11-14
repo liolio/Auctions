@@ -5,3 +5,4 @@ User:
     salt : 25697
     email: lio_lio@wp.pl
     active: true
+    secret_code: 123qwe

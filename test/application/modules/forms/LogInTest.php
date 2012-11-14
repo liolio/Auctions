@@ -56,15 +56,15 @@ class Auctions_Form_LogInTest extends TestCase_NoDatabase
             ),
             //too long
             array(
-                str_repeat('a', 21),
-                str_repeat('a', 21),
+                str_repeat('a', 41),
+                str_repeat('a', 41),
                 array(
                     FieldIdEnum::USER_LOGIN     =>  array(Zend_Validate_StringLength::TOO_LONG),
                     FieldIdEnum::USER_PASSWORD  =>  array(Zend_Validate_StringLength::TOO_LONG),
                     ParamIdEnum::SUBMIT_BUTTON  =>  array()
                 )
             ),
-            //too long
+            //invalid characters
             array(
                 'inv!@$%^&*(alid',
                 'password',

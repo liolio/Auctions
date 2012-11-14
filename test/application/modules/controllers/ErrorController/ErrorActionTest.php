@@ -1,6 +1,6 @@
 <?php
 /**
- * @class ErrorController_ErrorActionTest
+ * @class Auctions_ErrorController_ErrorActionTest
  */
 class ErrorController_ErrorActionTest extends TestCase_Controller
 {
@@ -34,11 +34,11 @@ class ErrorController_ErrorActionTest extends TestCase_Controller
         $this->_assertTime(Zend_Date::now(), $log->timestamp);
         $this->assertEquals("NOTICE", $log->priority_name);
         $this->assertEquals(Zend_Log::NOTICE, $log->priority);
-        $this->assertEquals("Page not found", $log->message);
+        $this->assertEquals("Zend_Controller_Dispatcher_Exception: Invalid controller specified (not_existing)", $log->message);
         $this->assertEquals($identity, $log->identity);
         $this->assertEquals($this->_getTranslator()->translate('configuration-undefined'), $log->ip_address);
         $this->assertEmpty($log->url);
-        $this->assertEmpty($log->stack_trace);
+        $this->assertNotEmpty($log->stack_trace);
         $this->assertEmpty($log->post);
     }
     

@@ -84,7 +84,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $routerConfig = new Zend_Config_Xml(APPLICATION_PATH . '/configs/router.xml');
         foreach ($routerConfig->toArray() as $routeName => $routeData)
             $router->addRoute($routeName, Zend_Controller_Router_Route_Regex::getInstance(new Zend_Config($routeData)));
-
+        
         $router->addDefaultRoutes();
         
         $this->bootstrap('FrontController');

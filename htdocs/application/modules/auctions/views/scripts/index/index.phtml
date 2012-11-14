@@ -2,5 +2,6 @@
     Identity: <?php echo $this->identity; ?><br />
     <a href="auth/logout"><?php echo Helper::getTranslator()->translate('caption-log_out'); ?></a>
 <?php else : ?>
+    <a href="registration"><?php echo Helper::getTranslator()->translate('caption-registration'); ?></a><br/>
     <a href="login"><?php echo Helper::getTranslator()->translate('caption-log_in'); ?></a>
 <?php endif; ?>

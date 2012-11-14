@@ -1,0 +1,15 @@
+Notification:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+      unsigned: true
+    related_object_id:
+      type: integer(5)
+      notnull: true
+    type:
+      type: enum
+      values: ['user_registration']
+  actAs:
+    Timestampable:

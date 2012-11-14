@@ -46,6 +46,7 @@ class TestCase_Controller extends Zend_Test_PHPUnit_ControllerTestCase
         $this->_getFacade()->reloadDatabase();
         parent::setUp();
         
+        Zend_Auth::getInstance()->clearIdentity();
         if ($this->_logInAdminUser)
             $this->_logInAdminUser();
 

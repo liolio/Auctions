@@ -1,8 +1,8 @@
 <?php
 /**
- * @class AuthController_LogoutActionTest
+ * @class Auctions_AuthController_LogoutActionTest
  */
-class AuthController_LogoutActionTest extends TestCase_Controller
+class Auctions_AuthController_LogoutActionTest extends TestCase_Controller
 {
     
     /**

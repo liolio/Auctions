@@ -49,4 +49,53 @@
         <reverse></reverse>
     </logout>
     
+    <registrationForm>
+        <route>registration</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>registration</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </registrationForm>
+    
+    <processRegistration>
+        <route>user/process-registration-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>process-registration-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </processRegistration>
+    
+    <registerUser>
+        <route>register/(.{40})</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>set-password-and-register-account</action>
+        </defaults>
+        <map>
+            <user_secret_code>1</user_secret_code>
+        </map>
+        <reverse>registration</reverse>
+    </registerUser>
+    
+    <processChangePasswordAndActivateAccount>
+        <route>user/process-change-password-and-activate-account-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>process-change-password-and-activate-account-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </processChangePasswordAndActivateAccount>
+    
 </routes>
