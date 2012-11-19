@@ -28,5 +28,10 @@ User:
       default: false
     last_login:
       type: timestamp
+    role:
+      type: enum
+      values: ['user', 'moderator', 'administrator']
+      notnull: true
+      default: 'user'
   actAs:
     Timestampable:

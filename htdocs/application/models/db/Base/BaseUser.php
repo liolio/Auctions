@@ -13,6 +13,7 @@
  * @property string $email
  * @property boolean $active
  * @property timestamp $last_login
+ * @property enum $role
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -65,6 +66,17 @@ abstract class BaseUser extends Doctrine_Record
              ));
         $this->hasColumn('last_login', 'timestamp', null, array(
              'type' => 'timestamp',
+             ));
+        $this->hasColumn('role', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 'user',
+              1 => 'moderator',
+              2 => 'administrator',
+             ),
+             'notnull' => true,
+             'default' => 'user',
              ));
     }
 

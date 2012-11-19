@@ -6,3 +6,4 @@ User:
     email: lio_lio@wp.pl
     active: true
     secret_code: 123qwe
+    role: administrator

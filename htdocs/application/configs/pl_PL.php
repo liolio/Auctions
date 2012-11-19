@@ -6,12 +6,14 @@ return array(
     'caption-log_out'       =>  'Wyloguj',
     'caption-registration'  =>  'Rejestracja',
     
-    'label-login'       =>  'Login:',
-    'label-password'    =>  'Hasło:',
-    'label-email'       =>  'Adres e-mail:',
+    'label-login'           =>  'Login:',
+    'label-password'        =>  'Hasło:',
+    'label-password_repeat' =>  'Powtórz hasło:',
+    'label-email'           =>  'Adres e-mail:',
     
-    'button-log_in'     =>  'Zaloguj',
-    'button-register'   =>  'Rejestruj',
+    'button-log_in'             =>  'Zaloguj',
+    'button-register'           =>  'Rejestruj',
+    'button-change_password'    =>  'Ustaw hasło',
     
     'validation_message-invalid_credentials'        =>  'Podano zły login lub hasło',
     'validation_message-user_inactive'              =>  'Konto nieaktywne',
