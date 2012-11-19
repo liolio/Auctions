@@ -11,5 +11,6 @@ Notification:
     type:
       type: enum
       values: ['user_registration']
+      notnull: true
   actAs:
     Timestampable:

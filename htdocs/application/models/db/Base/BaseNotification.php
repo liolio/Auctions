@@ -37,6 +37,7 @@ abstract class BaseNotification extends Doctrine_Record
              array(
               0 => 'user_registration',
              ),
+             'notnull' => true,
              ));
     }
 
