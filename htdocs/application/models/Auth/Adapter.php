@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * @class Auth_Adapter
+ */
 class Auth_Adapter implements Zend_Auth_Adapter_Interface
 {
     

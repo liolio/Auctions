@@ -33,5 +33,12 @@ User:
       values: ['user', 'moderator', 'administrator']
       notnull: true
       default: 'user'
+  indexes:
+    login_unique:
+      fields: [login]
+      type: unique
+    secret_code_unique:
+      fields: [secret_code]
+      type: unique
   actAs:
     Timestampable:

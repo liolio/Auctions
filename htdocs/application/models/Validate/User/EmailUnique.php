@@ -4,7 +4,7 @@
  */
 class Validate_User_EmailUnique extends Zend_Validate_Abstract
 {
-    const EMAIL_EXISTS = 'loginExists';
+    const EMAIL_EXISTS = 'emailExists';
 
     protected $_messageTemplates = array(
         self::EMAIL_EXISTS      =>  'validation_message-user_email_exists',

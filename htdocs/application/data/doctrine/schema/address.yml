@@ -1,0 +1,39 @@
+Address:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+      unsigned: true
+    name:
+      type: string(100)
+      notnull: true
+    surname:
+      type: string(100)
+      notnull: false
+    street:
+      type: string(100)
+      notnull: true
+    postal_code:
+      type: string(10)
+      notnull: true
+    city:
+      type: string(100)
+      notnull: true
+    province:
+      type: string(100)
+      notnull: true
+    country:
+      type: string(100)
+      notnull: true
+    phone_number:
+      type: string(15)
+      notnull: true
+    user_id:
+      type: integer(5)
+      unsigned: true
+      notnull: true
+  relations:
+    User:
+      foreignAlias: Addresses
+      onDelete: CASCADE

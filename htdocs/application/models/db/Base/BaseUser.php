@@ -14,6 +14,7 @@
  * @property boolean $active
  * @property timestamp $last_login
  * @property enum $role
+ * @property Doctrine_Collection $Addresses
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -78,11 +79,31 @@ abstract class BaseUser extends Doctrine_Record
              'notnull' => true,
              'default' => 'user',
              ));
+
+
+        $this->index('login_unique', array(
+             'fields' => 
+             array(
+              0 => 'login',
+             ),
+             'type' => 'unique',
+             ));
+        $this->index('secret_code_unique', array(
+             'fields' => 
+             array(
+              0 => 'secret_code',
+             ),
+             'type' => 'unique',
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('Address as Addresses', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
+
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);
     }

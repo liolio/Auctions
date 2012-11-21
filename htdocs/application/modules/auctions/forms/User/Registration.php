@@ -23,6 +23,7 @@ class Auctions_Form_User_Registration extends Auctions_Form_Abstract
         $login->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-login'))
                 ->addValidator(new Zend_Validate_StringLength(array('min' => 1, 'max' => 40)), true)
+                ->addValidator(new Zend_Validate_Alnum(), true)
                 ->addValidator(new Validate_User_LoginUnique());
         
         $email = new Form_Element_Text(FieldIdEnum::USER_EMAIL);
@@ -32,11 +33,16 @@ class Auctions_Form_User_Registration extends Auctions_Form_Abstract
                 ->addValidator(new Zend_Validate_EmailAddress(), true)
                 ->addValidator(new Validate_User_EmailUnique());
         
+        $this->addElements(array($login, $email));
+        
+        $addressFormElements = new Form_Elements_Address();
+        $this->addElements($addressFormElements->getElements());
+        
         $registerButton = new Zend_Form_Element_Submit(ParamIdEnum::SUBMIT_BUTTON);
         $registerButton->setIgnore(true)
                 ->setLabel($this->_getTranslator()->translate('button-register'));
         
-        $this->addElements(array($login, $email, $registerButton));
+        $this->addElement($registerButton);
         
         $this->setDecorators(array(
             'FormElements',
