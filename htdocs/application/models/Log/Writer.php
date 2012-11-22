@@ -10,15 +10,9 @@ class Log_Writer extends Zend_Log_Writer_Db
     private $_undefinedCaption;
     
     /**
-     * Create a new instance of Zend_Log_Writer_Db
-     * NOTICE:  Its overwritten because of using keyword 'self' instead of 'static'
-     *          in parent class.
-     *          And if any config array is used to create Zend_Log instance, it's
-     *          executed factory method of each writer.
-     *
+     * 
      * @param  array|Zend_Config $config
      * @return Log_Writer_Db
-     * @throws Zend_Log_Exception
      */
     static public function factory($config)
     {
@@ -64,8 +58,8 @@ class Log_Writer extends Zend_Log_Writer_Db
         
         if (array_key_exists('exception', $event))
         {
-            $event['stack_trace'] = $event['exception']->getTraceAsString();
-            $event['message'] = get_class($event['exception']) . ': ' . $event['exception']->getMessage();
+            $event['stack_trace'] = $event[self::EXCEPTION]->getTraceAsString();
+            $event['message'] = get_class($event[self::EXCEPTION]) . ': ' . $event[self::EXCEPTION]->getMessage();
         }
 
         parent::_write($event);
@@ -74,7 +68,7 @@ class Log_Writer extends Zend_Log_Writer_Db
     private function _getUndefinedCaption()
     {
         if (is_null($this->_undefinedCaption))
-            $this->_undefinedCaption = Zend_Registry::get('Zend_Translate')->translate('configuration-undefined');
+            $this->_undefinedCaption = Helper::getTranslator()->translate('configuration-undefined');
         
         return $this->_undefinedCaption;
     }
