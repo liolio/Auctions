@@ -10,4 +10,6 @@ class ParamIdEnum
     const LINK = 'link';
     
     const PASSWORD_REPEAT = 'password_repeat';
+    
+    const RECAPTCHA = 'recaptcha';
 }

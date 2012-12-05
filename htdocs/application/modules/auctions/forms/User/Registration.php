@@ -5,6 +5,11 @@
 class Auctions_Form_User_Registration extends Auctions_Form_Abstract
 {
     
+    /**
+     * @var boolean
+     */
+    public static $_enableReCaptcha = true;
+    
     public function __construct($options = array())
     {
         $formOptions = array_merge($options,
@@ -38,6 +43,25 @@ class Auctions_Form_User_Registration extends Auctions_Form_Abstract
         $addressFormElements = new Form_Elements_Address();
         $this->addElements($addressFormElements->getElements());
         
+        if(self::$_enableReCaptcha)
+        {
+            $reCaptchaConfig = Zend_Controller_Front::getInstance()->getParam('reCaptcha');
+
+            $captcha = new Zend_Form_Element_Captcha(ParamIdEnum::RECAPTCHA,
+                  array('captcha'        => 'ReCaptcha',
+                        'captchaOptions' => array(
+                            'captcha' => 'ReCaptcha', 
+                            'service' => new Zend_Service_ReCaptcha(
+                                    $reCaptchaConfig['key']['public'], 
+                                    $reCaptchaConfig['key']['private']
+                            )
+                        )
+                  )
+            );
+            
+            $this->addElement($captcha);
+        }
+        
         $registerButton = new Zend_Form_Element_Submit(ParamIdEnum::SUBMIT_BUTTON);
         $registerButton->setIgnore(true)
                 ->setLabel($this->_getTranslator()->translate('button-register'));
@@ -50,5 +74,15 @@ class Auctions_Form_User_Registration extends Auctions_Form_Abstract
             array('Description', array('placement' => 'prepend')),
             'Form'
         ));
+    }
+    
+    /**
+     * For testing purpose only. Parameter decides whether add captcha or not.
+     * 
+     * @param boolean $add
+     */
+    public static function addReCaptcha($add = true)
+    {
+        self::$_enableReCaptcha = $add;
     }
 }

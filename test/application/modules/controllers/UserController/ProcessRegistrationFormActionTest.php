@@ -16,6 +16,7 @@ class Auctions_UserController_ProcessRegistrationFormActionTest extends TestCase
      */
     public function process()
     {
+        Auctions_Form_User_Registration::addReCaptcha(false);
         $userEmail = 'new_user@email.com';
         
         $this->_setRequest(array(
@@ -72,6 +73,7 @@ class Auctions_UserController_ProcessRegistrationFormActionTest extends TestCase
         $this->assertEquals(DbEnum_Notification_Type::USER_REGISTRATION, $notification->type);
         $this->_assertTime($now, $notification->created_at);
         $this->_assertTime($now, $notification->updated_at);
+        Auctions_Form_User_Registration::addReCaptcha(true);
     }
     
     /**

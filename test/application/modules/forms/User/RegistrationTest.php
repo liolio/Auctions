@@ -9,8 +9,15 @@ class Auctions_Form_User_RegistrationTest extends TestCase_Database
      */
     private $_form;
     
+    protected function tearDown()
+    {
+        parent::tearDown();
+        Auctions_Form_User_Registration::addReCaptcha();
+    }
+    
     protected function setUp()
     {
+        Auctions_Form_User_Registration::addReCaptcha(false);
         parent::setUp();
         $this->_form = new Auctions_Form_User_Registration();
     }
