@@ -38,10 +38,7 @@ class Auctions_UserController_SetPasswordAndRegisterAccountActionTest extends Te
         ));
         
         $this->dispatch('user/set-password-and-register-account');
-        $this->_assertDispatch('user', 'set-password-and-register-account');
-        
-        $headers = $this->getResponse()->getHeaders();
-        $this->assertEquals(Zend_Controller_Front::getInstance()->getBaseUrl() . '/', $headers[0]['value']);
+        $this->_assertAclDeny();
     }
     
     /**
@@ -50,9 +47,6 @@ class Auctions_UserController_SetPasswordAndRegisterAccountActionTest extends Te
     public function setWithoutSecretCode()
     {
         $this->dispatch('user/set-password-and-register-account');
-        $this->_assertDispatch('user', 'set-password-and-register-account');
-        
-        $headers = $this->getResponse()->getHeaders();
-        $this->assertEquals(Zend_Controller_Front::getInstance()->getBaseUrl() . '/', $headers[0]['value']);
+        $this->_assertAclDeny();
     }
 }

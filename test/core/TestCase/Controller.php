@@ -74,6 +74,13 @@ class TestCase_Controller extends Zend_Test_PHPUnit_ControllerTestCase
         $this->assertAction($action);
     }
     
+    protected function _assertAclDeny()
+    {
+        $this->assertModule('auctions');
+        $this->assertController('index');
+        $this->assertAction('index');
+    }
+    
     protected function _assertTime($first, $second, $allowedTimeDiff = 2)
     {
         $timeDiff = $this->_getFacade()->getTimeDiff($first, $second);

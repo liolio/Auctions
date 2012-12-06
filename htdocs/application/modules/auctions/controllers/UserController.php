@@ -70,23 +70,16 @@ class Auctions_UserController extends Zend_Controller_Action
     
     public function setPasswordAndRegisterAccountAction()
     {
-        $secretCode = $this->getRequest()->getParam(FieldIdEnum::USER_SECRET_CODE);
-        
-        if (!is_null($secretCode))
-        {
-            $user = UserTable::getInstance()->findOneBy('secret_code', $secretCode);
-            if ($user !== false) //change to proper ACL
-            {
-                $form = new Auctions_Form_User_ChangePassword(array('action' => '/user/process-change-password-and-activate-account-form'));
-                $form->getElement(FieldIdEnum::USER_LOGIN)->setValue($user->login);
+        $form = new Auctions_Form_User_ChangePassword(array('action' => '/user/process-change-password-and-activate-account-form'));
+        $form->getElement(FieldIdEnum::USER_LOGIN)->setValue(
+                UserTable::getInstance()->findOneBy(
+                        'secret_code', 
+                        $this->getRequest()->getParam(FieldIdEnum::USER_SECRET_CODE)
+                )->login
+                
+        );
 
-                $this->view->changePasswordForm = $form;
-            }
-            else
-                $this->_helper->redirector('index', 'index');
-        }
-        else
-            $this->_helper->redirector('index', 'index');
+        $this->view->changePasswordForm = $form;
     }
     
     public function processChangePasswordAndActivateAccountFormAction()

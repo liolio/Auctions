@@ -65,11 +65,8 @@ class Auctions_UserController_ProcessChangePasswordAndActivateAccountFormActionT
     public function processWithoutData()
     {
         $this->dispatch('user/process-change-password-and-activate-account-form');
-        $this->_assertDispatch('user', 'process-change-password-and-activate-account-form');
+        $this->_assertAclDeny();
         
-        $headers = $this->getResponse()->getHeaders();
-        $this->assertEquals(Zend_Controller_Front::getInstance()->getBaseUrl() . '/user/registration', $headers[0]['value']);
-                
         $user = UserTable::getInstance()->findOneBy('login', 'user_inactive_with_secret_code');
         $this->assertFalse(Zend_Auth::getInstance()->hasIdentity());
         $this->assertEquals(str_repeat('0', 40), $user->password);
