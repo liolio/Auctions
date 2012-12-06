@@ -1,8 +1,8 @@
 <?php
 /**
- * @class FrontController_Link_Generator
+ * @class Controller_Front_UrlGenerator
  */
-class FrontController_Link_Generator
+class Controller_Front_UrlGenerator
 {
     
     /**

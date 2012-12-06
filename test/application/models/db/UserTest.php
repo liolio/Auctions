@@ -60,7 +60,7 @@ class UserTest extends TestCase_Database
         $this->assertEquals(
             array(
                 FieldIdEnum::USER_LOGIN =>  'admin',
-                ParamIdEnum::LINK       =>  FrontController_Link_Generator::generate(Enum_Db_Notification_Type::USER_REGISTRATION, '123qwe')
+                ParamIdEnum::LINK       => Controller_Front_UrlGenerator::generate(Enum_Db_Notification_Type::USER_REGISTRATION, '123qwe')
             ),
             $this->_user->getNotificationData(Enum_Db_Notification_Type::USER_REGISTRATION)
         );

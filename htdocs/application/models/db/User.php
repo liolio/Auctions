@@ -18,7 +18,7 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
     {
         return array(
             FieldIdEnum::USER_LOGIN =>  $this->login,
-            ParamIdEnum::LINK       =>  FrontController_Link_Generator::generate($notificationType, $this->secret_code)
+            ParamIdEnum::LINK       =>  Controller_Front_UrlGenerator::generate($notificationType, $this->secret_code)
         );
     }
 

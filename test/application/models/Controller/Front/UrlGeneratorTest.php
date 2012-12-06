@@ -1,8 +1,8 @@
 <?php
 /**
- * @class FrontController_Link_Generator
+ * @class Controller_Front_UrlGeneratorTest
  */
-class FrontController_Link_GeneratorTest extends TestCase_NoDatabase
+class Controller_Front_UrlGeneratorTest extends TestCase_NoDatabase
 {
     
     /**
@@ -12,7 +12,7 @@ class FrontController_Link_GeneratorTest extends TestCase_NoDatabase
     {
         $this->assertEquals(
             Zend_Controller_Front::getInstance()->getBaseUrl() . "/register",
-            FrontController_Link_Generator::generate(Enum_Db_Notification_Type::USER_REGISTRATION)
+            Controller_Front_UrlGenerator::generate(Enum_Db_Notification_Type::USER_REGISTRATION)
         );
     }
     
@@ -23,7 +23,7 @@ class FrontController_Link_GeneratorTest extends TestCase_NoDatabase
     {
         $this->assertEquals(
             Zend_Controller_Front::getInstance()->getBaseUrl() . "/register/additionalValue",
-            FrontController_Link_Generator::generate(Enum_Db_Notification_Type::USER_REGISTRATION, "additionalValue")
+            Controller_Front_UrlGenerator::generate(Enum_Db_Notification_Type::USER_REGISTRATION, "additionalValue")
         );
     }
     
@@ -34,7 +34,7 @@ class FrontController_Link_GeneratorTest extends TestCase_NoDatabase
     {
         try
         {
-            FrontController_Link_Generator::generate("invalid");
+            Controller_Front_UrlGenerator::generate("invalid");
             $this->fail("Invalid argument expected");
         }
         catch (InvalidArgumentException $ex)
