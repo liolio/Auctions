@@ -23,13 +23,13 @@ class Notification_Message_Builder
     /**
      * 
      * @param Notification_RelatedObject_Interface $relatedObject
-     * @param string $notificationType must be one of DbEnum_Notification_Type enums
+     * @param string $notificationType must be one of Enum_Db_Notification_Type enums
      * @throws InvalidArgumentException
      */
     public function __construct(Notification_RelatedObject_Interface $relatedObject, $notificationType)
     {
-        if (!DbEnum_Notification_Type::hasEnum($notificationType))
-            throw new InvalidArgumentException('Notification type must be one of DbEnum_Notification_Type enums.');
+        if (!Enum_Db_Notification_Type::hasEnum($notificationType))
+            throw new InvalidArgumentException('Notification type must be one of Enum_Db_Notification_Type enums.');
         
         $this->_translator = Zend_Registry::get('Zend_Translate');
         

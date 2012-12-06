@@ -9,7 +9,7 @@ class Controller_Front_Request
     {
         $user = Auth_User::getInstance()->getUser();
         if (is_null($user))
-            return Acl_RoleEnum::GUEST;
+            return Enum_Acl_Role::GUEST;
         
         return $user->role;
     }

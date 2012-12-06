@@ -1,9 +1,10 @@
 <?php
 /**
- * @class DbEnum_User_Role
+ * @class Enum_Acl_Role
  */
-class DbEnum_User_Role extends DbEnum_Abstract
+class Enum_Acl_Role
 {
+    const GUEST = 'guest';
     
     const USER = 'user';
     

@@ -21,7 +21,7 @@ class Auth_UserTest extends TestCase_Controller
         $user = Auth_User::getInstance()->getUser();
         
         $this->assertEquals('admin', $user->login);
-        $this->assertEquals(DbEnum_User_Role::ADMINISTRATOR, $user->role);
+        $this->assertEquals(Enum_Db_User_Role::ADMINISTRATOR, $user->role);
     }
     
     /**

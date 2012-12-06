@@ -53,7 +53,7 @@ class Auctions_UserController extends Zend_Controller_Action
             $address->save();
 
             $notificationSender = new Notification_Sender();
-            $notificationSender->send($user, DbEnum_Notification_Type::USER_REGISTRATION);
+            $notificationSender->send($user, Enum_Db_Notification_Type::USER_REGISTRATION);
             Doctrine_Manager::connection()->commit();
         }
         catch (Exception $ex)

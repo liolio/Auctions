@@ -12,7 +12,7 @@ class FrontController_Link_GeneratorTest extends TestCase_NoDatabase
     {
         $this->assertEquals(
             Zend_Controller_Front::getInstance()->getBaseUrl() . "/register",
-            FrontController_Link_Generator::generate(DbEnum_Notification_Type::USER_REGISTRATION)
+            FrontController_Link_Generator::generate(Enum_Db_Notification_Type::USER_REGISTRATION)
         );
     }
     
@@ -23,7 +23,7 @@ class FrontController_Link_GeneratorTest extends TestCase_NoDatabase
     {
         $this->assertEquals(
             Zend_Controller_Front::getInstance()->getBaseUrl() . "/register/additionalValue",
-            FrontController_Link_Generator::generate(DbEnum_Notification_Type::USER_REGISTRATION, "additionalValue")
+            FrontController_Link_Generator::generate(Enum_Db_Notification_Type::USER_REGISTRATION, "additionalValue")
         );
     }
     
@@ -39,7 +39,7 @@ class FrontController_Link_GeneratorTest extends TestCase_NoDatabase
         }
         catch (InvalidArgumentException $ex)
         {
-            $this->assertEquals('Notification type must be one of DbEnum_Notification_Type', $ex->getMessage());
+            $this->assertEquals('Notification type must be one of Enum_Db_Notification_Type', $ex->getMessage());
         }
     }
 }

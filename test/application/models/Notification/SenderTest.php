@@ -26,8 +26,8 @@ class Notification_SenderTest extends TestCase_Mail
         
         $user = UserTable::getInstance()->findOneBy('login', 'user_inactive_with_secret_code');
         
-        $this->_sender->send($user, DbEnum_Notification_Type::USER_REGISTRATION);
-        $messageBuilder = new Notification_Message_Builder($user, DbEnum_Notification_Type::USER_REGISTRATION);
+        $this->_sender->send($user, Enum_Db_Notification_Type::USER_REGISTRATION);
+        $messageBuilder = new Notification_Message_Builder($user, Enum_Db_Notification_Type::USER_REGISTRATION);
         
         $this->_assertEmailFile(
             array('user_inactive_with_secret_code@email.com'),
@@ -50,7 +50,7 @@ class Notification_SenderTest extends TestCase_Mail
         catch (InvalidArgumentException $ex)
         {
             $this->assertEquals(
-                    'Notification type must be one of DbEnum_Notification_Type enums.',
+                    'Notification type must be one of Enum_Db_Notification_Type enums.',
                     $ex->getMessage()
             );
         }

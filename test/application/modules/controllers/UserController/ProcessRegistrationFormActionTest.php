@@ -57,7 +57,7 @@ class Auctions_UserController_ProcessRegistrationFormActionTest extends TestCase
         $this->assertEquals('123456890', $address->phone_number);
         $this->assertEquals('province', $address->province);
         
-        $messageBuilder = new Notification_Message_Builder($user, DbEnum_Notification_Type::USER_REGISTRATION);
+        $messageBuilder = new Notification_Message_Builder($user, Enum_Db_Notification_Type::USER_REGISTRATION);
         $this->_assertEmailFile(
                 array($userEmail), 
                 'lio_lio@wp.pl', 
@@ -70,7 +70,7 @@ class Auctions_UserController_ProcessRegistrationFormActionTest extends TestCase
         
         $notification = $notifications->get(0);
         $this->assertEquals($user->id, $notification->related_object_id);
-        $this->assertEquals(DbEnum_Notification_Type::USER_REGISTRATION, $notification->type);
+        $this->assertEquals(Enum_Db_Notification_Type::USER_REGISTRATION, $notification->type);
         $this->_assertTime($now, $notification->created_at);
         $this->_assertTime($now, $notification->updated_at);
         Auctions_Form_User_Registration::addReCaptcha(true);

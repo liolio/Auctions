@@ -17,7 +17,7 @@ class Notification_Message_BuilderTest extends TestCase_NoDatabase
         }
         catch (InvalidArgumentException $ex)
         {
-            $this->assertEquals('Notification type must be one of DbEnum_Notification_Type enums.', $ex->getMessage());
+            $this->assertEquals('Notification type must be one of Enum_Db_Notification_Type enums.', $ex->getMessage());
         }
     }
     
@@ -30,7 +30,7 @@ class Notification_Message_BuilderTest extends TestCase_NoDatabase
         $user->login = "User Login";
         $user->secret_code = "S3CR3TC0D3";
         
-        $builder = new Notification_Message_Builder($user, DbEnum_Notification_Type::USER_REGISTRATION);
+        $builder = new Notification_Message_Builder($user, Enum_Db_Notification_Type::USER_REGISTRATION);
         $body = $builder->buildBodyForNotificationType();
         
         $this->assertContains("Witaj", $body);
@@ -47,7 +47,7 @@ class Notification_Message_BuilderTest extends TestCase_NoDatabase
         $user->login = "User Login";
         $user->secret_code = "S3CR3TC0D3";
         
-        $builder = new Notification_Message_Builder($user, DbEnum_Notification_Type::USER_REGISTRATION);
+        $builder = new Notification_Message_Builder($user, Enum_Db_Notification_Type::USER_REGISTRATION);
         
         $this->assertContains("Rejestracja", $builder->buildSubjectForNotificationType());
     }

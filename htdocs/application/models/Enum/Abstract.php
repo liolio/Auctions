@@ -1,8 +1,8 @@
 <?php
 /**
- * @class DbEnum_Abstract
+ * @class Enum_Abstract
  */
-abstract class DbEnum_Abstract
+abstract class Enum_Abstract
 {
     
     public static function hasEnum($enumName)

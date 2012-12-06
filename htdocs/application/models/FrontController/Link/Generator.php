@@ -7,7 +7,7 @@ class FrontController_Link_Generator
     
     /**
      * 
-     * @param DbEnum_Notification_Type $notificationType One of DbEnum_Notification_Type
+     * @param Enum_Db_Notification_Type $notificationType One of Enum_Db_Notification_Type
      * @param string $additionalValue [optional] Default set to null
      * @return string
      * @throws InvalidArgumentException
@@ -18,11 +18,11 @@ class FrontController_Link_Generator
         
         switch ($notificationType)
         {
-            case DbEnum_Notification_Type::USER_REGISTRATION :
+            case Enum_Db_Notification_Type::USER_REGISTRATION :
                 $actionName = 'register';
                 break;
             default :
-                throw new InvalidArgumentException('Notification type must be one of DbEnum_Notification_Type');
+                throw new InvalidArgumentException('Notification type must be one of Enum_Db_Notification_Type');
         }
         
         $link = $baseUrl . '/' . $actionName;

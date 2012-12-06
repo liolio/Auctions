@@ -22,7 +22,7 @@ class Controller_Plugin_Acl extends Zend_Controller_Plugin_Abstract
     {
         $user = Auth_User::getInstance()->getUser();
         if (is_null($user))
-            return Acl_RoleEnum::GUEST;
+            return Enum_Acl_Role::GUEST;
         
         return $user->role;
     }

@@ -10,7 +10,7 @@ class Controller_Front_RequestTest extends TestCase_Controller
      */
     public function getRole()
     {
-        $this->assertEquals(Acl_RoleEnum::ADMINISTRATOR, Controller_Front_Request::getRole());
+        $this->assertEquals(Enum_Acl_Role::ADMINISTRATOR, Controller_Front_Request::getRole());
     }
     
     /**

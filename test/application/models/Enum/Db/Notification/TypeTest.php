@@ -1,8 +1,8 @@
 <?php
 /**
- * @class DbEnum_Notification_TypeTest
+ * @class Enum_Db_Notification_TypeTest
  */
-class DbEnum_Notification_TypeTest extends TestCase_NoDatabase
+class Enum_Db_Notification_TypeTest extends TestCase_NoDatabase
 {
 
     /**
@@ -11,13 +11,13 @@ class DbEnum_Notification_TypeTest extends TestCase_NoDatabase
      */
     public function hasEnum($enum, $result)
     {
-        $this->assertEquals($result, DbEnum_Notification_Type::hasEnum($enum));
+        $this->assertEquals($result, Enum_Db_Notification_Type::hasEnum($enum));
     }
     
     public function dataProvider()
     {
         return array(
-            array(DbEnum_Notification_Type::USER_REGISTRATION, true),
+            array(Enum_Db_Notification_Type::USER_REGISTRATION, true),
             array('non_existing', false),
             array(null, false),
             array(false, false),

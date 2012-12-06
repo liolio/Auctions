@@ -7,8 +7,8 @@ class Notification_Sender
 
     public function send(Notification_RelatedObject_Interface $relatedObject, $notificationType)
     {
-        if (!DbEnum_Notification_Type::hasEnum($notificationType))
-            throw new InvalidArgumentException('Notification type must be one of DbEnum_Notification_Type enums.');
+        if (!Enum_Db_Notification_Type::hasEnum($notificationType))
+            throw new InvalidArgumentException('Notification type must be one of Enum_Db_Notification_Type enums.');
         
         $notification = Notification_Factory::create($relatedObject->getRelatedObjectId(), $notificationType);
         $notification->save();

@@ -12,7 +12,7 @@ interface Notification_RelatedObject_Interface
     
     /**
      * 
-     * @param DbEnum_Notification_Type $notificationType
+     * @param Enum_Db_Notification_Type $notificationType
      * @return array
      */
     public function getNotificationData($notificationType);
