@@ -22,7 +22,7 @@ class Acl_Assertion_Container_OrTest extends TestCase_Database
      */
     public function assert(array $params, $result)
     {
-        Fixture_Factory::create('User/4_inactive_with_secret_code');
+        Fixture_Loader::create('User/4_inactive_with_secret_code');
         
         $assertionContainer = new Acl_Assertion_Container_Or();
         $assertionContainer->addAssertion(new Acl_Assertion_User_LoginExists($params));

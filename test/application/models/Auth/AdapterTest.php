@@ -51,7 +51,7 @@ class Auth_AdapterTest extends TestCase_Database
      */
     public function authenticateWithNotActiveUser()
     {
-        Fixture_Factory::create('User/3_inactive');
+        Fixture_Loader::create('User/3_inactive');
         $adapter = new Auth_Adapter('user_inactive', 'admin');
         $authernticationResult = $adapter->authenticate();
 

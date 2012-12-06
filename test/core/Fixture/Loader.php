@@ -1,8 +1,8 @@
 <?php
 /**
- * @class Fixture_Factory
+ * @class Fixture_Loader
  */
-class Fixture_Factory
+class Fixture_Loader
 {
     
     public static function create($path)

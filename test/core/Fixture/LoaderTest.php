@@ -1,8 +1,8 @@
 <?php
 /**
- * @class Fixture_FactoryTest
+ * @class Fixture_LoaderTest
  */
-class Fixture_FactoryTest extends TestCase_Database
+class Fixture_LoaderTest extends TestCase_Database
 {
     
     /**
@@ -10,7 +10,7 @@ class Fixture_FactoryTest extends TestCase_Database
      */
     public function createWithValidPathname()
     {
-        Fixture_Factory::create("User/2");
+        Fixture_Loader::create("User/2");
         $this->assertTrue(UserTable::getInstance()->findAll()->count() > 1);
         
         $user = UserTable::getInstance()->findOneBy('login', 'user');
@@ -23,7 +23,7 @@ class Fixture_FactoryTest extends TestCase_Database
     public function createWithInvalidPathname()
     {
         try {
-            Fixture_Factory::create("User/21");
+            Fixture_Loader::create("User/21");
             $this->fail('No such file or directory expected');
         } catch (Exception $ex)
         {

@@ -22,7 +22,7 @@ class Notification_SenderTest extends TestCase_Mail
      */
     public function send()
     {
-        Fixture_Factory::create("User/4_inactive_with_secret_code");
+        Fixture_Loader::create("User/4_inactive_with_secret_code");
         
         $user = UserTable::getInstance()->findOneBy('login', 'user_inactive_with_secret_code');
         

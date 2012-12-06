@@ -9,7 +9,7 @@ class Auctions_UserController_ProcessChangePasswordAndActivateAccountFormActionT
     {
         $this->_disableLoggingInAdminUser();
         parent::setUp();
-        Fixture_Factory::create('user/4_inactive_with_secret_code');
+        Fixture_Loader::create('user/4_inactive_with_secret_code');
     }
     
     /**
