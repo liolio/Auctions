@@ -12,7 +12,6 @@ class Controller_Plugin_Acl extends Zend_Controller_Plugin_Abstract
         
         if (!$acl->isAllowed($this->_getRole(), $this->_getResource($request), $this->_getPrivilege($request)))
         {
-//            Zend_Debug::dump($this->_getRole() . ' ' . $this->_getResource($request) . ' ' . $this->_getPrivilege($request));
             $request->setModuleName('auctions')
                     ->setControllerName('index')
                     ->setActionName('index');
