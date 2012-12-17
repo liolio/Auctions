@@ -18,12 +18,21 @@ class Controller_Front_UrlGeneratorTest extends TestCase_NoDatabase
     
     /**
      * @test
+     * @dataProvider notificationTypeProvider
      */
-    public function generateWithAdditionalValue()
+    public function generateWithAdditionalValue($notificationType, $actionName)
     {
         $this->assertEquals(
-            Zend_Controller_Front::getInstance()->getBaseUrl() . "/register/additionalValue",
-            Controller_Front_UrlGenerator::generate(Enum_Db_Notification_Type::USER_REGISTRATION, "additionalValue")
+            Zend_Controller_Front::getInstance()->getBaseUrl() . "/" . $actionName . "/additionalValue",
+            Controller_Front_UrlGenerator::generate($notificationType, "additionalValue")
+        );
+    }
+    
+    public static function notificationTypeProvider()
+    {
+        return array(
+            array(Enum_Db_Notification_Type::USER_REGISTRATION, 'register'),
+            array(Enum_Db_Notification_Type::USER_PASSWORD_RESET, 'user/password-reset')
         );
     }
     
@@ -39,7 +48,7 @@ class Controller_Front_UrlGeneratorTest extends TestCase_NoDatabase
         }
         catch (InvalidArgumentException $ex)
         {
-            $this->assertEquals('Notification type must be one of Enum_Db_Notification_Type', $ex->getMessage());
+            $this->assertEquals('Notification type must be one of supported Enum_Db_Notification_Type. invalid is invalid.', $ex->getMessage());
         }
     }
 }

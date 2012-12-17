@@ -2,9 +2,10 @@
 return array(
     'application_name'  =>  'Aukcyjki',
 
-    'caption-log_in'        =>  'Zaloguj',
-    'caption-log_out'       =>  'Wyloguj',
-    'caption-registration'  =>  'Rejestracja',
+    'caption-log_in'            =>  'Zaloguj',
+    'caption-log_out'           =>  'Wyloguj',
+    'caption-registration'      =>  'Rejestracja',
+    'caption-password_reset'    =>  'Zapomniałeś hasła?',
     
     'label-login'                   =>  'Login:',
     'label-password'                =>  'Hasło:',
@@ -22,11 +23,13 @@ return array(
     'button-log_in'             =>  'Zaloguj',
     'button-register'           =>  'Rejestruj',
     'button-change_password'    =>  'Ustaw hasło',
+    'button-send'               =>  'Wyślij',
     
     'validation_message-invalid_credentials'                        =>  'Podano zły login lub hasło',
     'validation_message-user_inactive'                              =>  'Konto nieaktywne',
     'validation_message-user_login_exists'                          =>  'Podany login jest już zajęty',
     'validation_message-user_email_exists'                          =>  'Podany adres e-mail jest już zajęty',
+    'validation_message-user_email_not_exists'                      =>  'Podany adres e-mail nie istnieje w bazie',
     'validation_message-user_passwords_not_match'                   =>  'Hasła niezgodne',
     'validation_message-address_surname_regex_not_match'            =>  "'%value%' może zawierać tylko litery, spacje i pauzy",
     'validation_message-address_street_regex_not_match'             =>  "'%value%' może zawierać tylko litery, cyfry, ukośniki, kropki, spacje i pauzy",
@@ -40,5 +43,11 @@ return array(
     'notification_message-user_registration'    =>  'Witaj %%' . FieldIdEnum::USER_LOGIN . '%%<BR>' .
                                                     '<BR>'.
                                                     'Kliknij w ten link, aby aktywować konto: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . ParamIdEnum::LINK . '%%</a>',
+    
+    'notification_subject-user_password_reset'  =>  'Resetowanie hasła w serwisie Aukcyjki',
+    
+    'notification_message-user_password_reset' =>  'Witaj %%' . FieldIdEnum::USER_LOGIN . '%%<BR>' .
+                                                    '<BR>'.
+                                                    'Kliknij w ten link, aby zresetować hasło: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . ParamIdEnum::LINK . '%%</a>',
     
 );

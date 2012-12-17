@@ -28,6 +28,7 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
     }
     
     /**
+     * Veryfies if given value quals user's password.
      * 
      * @param string $password
      * @return boolean
@@ -37,6 +38,12 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
         return $this->password === sha1($this->salt . $password);
     }
     
+    /**
+     * Sets given value as password.
+     * 
+     * @param type $password
+     * @return User
+     */
     public function setNewPassword($password)
     {
         $this->password = sha1($this->salt . $password);
@@ -44,6 +51,11 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
         return $this;
     }
     
+    /**
+     * Sets active to true.
+     * 
+     * @return User
+     */
     public function activateAccount()
     {
         $this->active = true;
@@ -51,9 +63,28 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
         return $this;
     }
     
+    /**
+     * Resets secret code.
+     * 
+     * @return User
+     */
     public function resetSecretCode()
     {
         $this->secret_code = null;
+        
+        return $this;
+    }
+    
+    /**
+     * Sets and saves new secret code.
+     * 
+     * @return User
+     */
+    public function setNewSecretCode()
+    {
+        $this->secret_code = User_SecurityCode_Generator::generate();
+        $this->save();
+        $this->refresh();
         
         return $this;
     }

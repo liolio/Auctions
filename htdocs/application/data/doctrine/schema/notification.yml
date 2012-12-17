@@ -10,7 +10,7 @@ Notification:
       notnull: true
     type:
       type: enum
-      values: ['user_registration']
+      values: ['user_registration', 'user_password_reset']
       notnull: true
   actAs:
     Timestampable:

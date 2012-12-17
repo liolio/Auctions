@@ -120,4 +120,43 @@ class Auctions_UserController extends Zend_Controller_Action
         
         $this->_helper->redirector('index', 'index');
     }
+    
+    public function passwordResetRequestAction()
+    {
+        $this->view->passwordResetForm = new Auctions_Form_User_PasswordReset();
+    }
+    
+    public function processPasswordResetFormAction()
+    {
+        $request = $this->getRequest();
+
+        if (!$request->isPost())
+            return $this->_helper->redirector('user', 'password-reset-request');
+        
+        $form = new Auctions_Form_User_PasswordReset(array('action' => '/user/process-password-reset-form'));
+        if (!$form->isValid($request->getPost()))
+        {
+            $this->view->passwordResetForm = $form;
+            return $this->render('password-reset-request');
+        }
+        
+        try {
+            Doctrine_Manager::connection()->beginTransaction();
+            $user = UserTable::getInstance()->findOneBy('email', $form->getValue(FieldIdEnum::USER_EMAIL));
+            $user->setNewSecretCode();
+            
+            $notificationSender = new Notification_Sender();
+            $notificationSender->send($user, Enum_Db_Notification_Type::USER_PASSWORD_RESET);
+            Doctrine_Manager::connection()->commit();
+        }
+        catch (Exception $ex)
+        {
+            Doctrine_Manager::connection()->rollback();
+            Log_Factory::create($ex, Zend_Log::CRIT);
+            $this->view->changePasswordForm = $form;
+            $form->setDescription('Failure!');
+            return $this->render('set-password-and-register-account');
+        }
+        $this->_helper->redirector('index', 'index');
+    }
 }

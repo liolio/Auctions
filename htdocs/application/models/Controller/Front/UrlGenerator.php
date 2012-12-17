@@ -21,8 +21,11 @@ class Controller_Front_UrlGenerator
             case Enum_Db_Notification_Type::USER_REGISTRATION :
                 $actionName = 'register';
                 break;
+            case Enum_Db_Notification_Type::USER_PASSWORD_RESET :
+                $actionName = 'user/password-reset';
+                break;
             default :
-                throw new InvalidArgumentException('Notification type must be one of Enum_Db_Notification_Type');
+                throw new InvalidArgumentException('Notification type must be one of supported Enum_Db_Notification_Type. ' . $notificationType . ' is invalid.');
         }
         
         $link = $baseUrl . '/' . $actionName;

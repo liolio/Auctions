@@ -5,12 +5,14 @@
 interface Notification_RelatedObject_Interface
 {
     /**
+     * Returns id of object related to notigication.
      * 
      * @return Integer
      */
     public function getRelatedObjectId();
     
     /**
+     * Returns all data, which will be required for notifiaction.
      * 
      * @param Enum_Db_Notification_Type $notificationType
      * @return array
@@ -18,6 +20,7 @@ interface Notification_RelatedObject_Interface
     public function getNotificationData($notificationType);
     
     /**
+     * Returns all recipients for notification.
      * 
      * @return array
      */

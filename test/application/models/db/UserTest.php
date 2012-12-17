@@ -69,6 +69,17 @@ class UserTest extends TestCase_Database
     /**
      * @test
      */
+    public function setNewSecretCode()
+    {
+        $this->_user->resetSecretCode()->save();
+        $this->assertNull($this->_user->secret_code);
+        $this->_user->setNewSecretCode();
+        $this->assertEquals(40, strlen($this->_user->secret_code));
+    }
+    
+    /**
+     * @test
+     */
     public function getRecipients()
     {
         $this->assertEquals(

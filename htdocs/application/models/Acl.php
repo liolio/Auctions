@@ -46,7 +46,7 @@ class Acl extends Zend_Acl
         $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:Auth', array('index', 'process'));
         $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:Error', array('error'));
         $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:Index', array('index'));
-        $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:User', array('registration', 'process-registration-form'));
+        $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:User', array('registration', 'process-registration-form', 'password-reset-request', 'process-password-reset-form'));
         $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:User', array('process-change-password-and-activate-account-form'), Acl_Assertion_User_LoginExists::getClassName());
         $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:User', array('set-password-and-register-account'), Acl_Assertion_User_SecretCodeExists::getClassName());
         

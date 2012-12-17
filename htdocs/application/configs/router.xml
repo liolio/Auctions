@@ -98,4 +98,41 @@
         <reverse></reverse>
     </processChangePasswordAndActivateAccount>
     
+    <resetPassword>
+        <route>user/password-reset/(.{40})</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>set-password-and-register-account</action>
+        </defaults>
+        <map>
+            <user_secret_code>1</user_secret_code>
+        </map>
+        <reverse></reverse>
+    </resetPassword>
+    
+    <resetPasswordForm>
+        <route>user/password-reset-request</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>password-reset-request</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </resetPasswordForm>
+    
+    <processPassworResetForm>
+        <route>user/process-password-reset-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>process-password-reset-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </processPassworResetForm>
+    
 </routes>

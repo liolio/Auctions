@@ -36,6 +36,7 @@ abstract class BaseNotification extends Doctrine_Record
              'values' => 
              array(
               0 => 'user_registration',
+              1 => 'user_password_reset',
              ),
              'notnull' => true,
              ));
