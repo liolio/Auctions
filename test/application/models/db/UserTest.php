@@ -59,8 +59,9 @@ class UserTest extends TestCase_Database
     {
         $this->assertEquals(
             array(
-                FieldIdEnum::USER_LOGIN =>  'admin',
-                ParamIdEnum::LINK       => Controller_Front_UrlGenerator::generate(Enum_Db_Notification_Type::USER_REGISTRATION, '123qwe')
+                FieldIdEnum::USER_LOGIN     =>  'admin',
+                ParamIdEnum::USER_FULLNAME  =>  'Admin Adminowy',
+                ParamIdEnum::LINK           =>  Controller_Front_UrlGenerator::generate(Enum_Db_Notification_Type::USER_REGISTRATION, '123qwe')
             ),
             $this->_user->getNotificationData(Enum_Db_Notification_Type::USER_REGISTRATION)
         );
@@ -86,5 +87,13 @@ class UserTest extends TestCase_Database
                 array('lio_lio@wp.pl'),
                 $this->_user->getRecipients()
         );
+    }
+    
+    /**
+     * @test
+     */
+    public function getFullName()
+    {
+        $this->assertEquals("Admin Adminowy", $this->_user->getFullName());
     }
 }

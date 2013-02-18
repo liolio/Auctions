@@ -12,4 +12,6 @@ class ParamIdEnum
     const PASSWORD_REPEAT = 'password_repeat';
     
     const RECAPTCHA = 'recaptcha';
+    
+    const USER_FULLNAME = 'user_fullname';
 }

@@ -26,9 +26,14 @@ class Notification_Message_BuilderTest extends TestCase_NoDatabase
      */
     public function buildBodyForNotificationType()
     {
+        $address = new Address();
+        $address->name = "User";
+        $address->surname = "Userkowy";
+        
         $user = new User();
         $user->login = "User Login";
         $user->secret_code = "S3CR3TC0D3";
+        $user->Addresses->add($address);
         
         $builder = new Notification_Message_Builder($user, Enum_Db_Notification_Type::USER_REGISTRATION);
         $body = $builder->buildBodyForNotificationType();
@@ -43,9 +48,14 @@ class Notification_Message_BuilderTest extends TestCase_NoDatabase
      */
     public function buildSubjectForNotificationType()
     {
+        $address = new Address();
+        $address->name = "User";
+        $address->surname = "Userkowy";
+        
         $user = new User();
         $user->login = "User Login";
         $user->secret_code = "S3CR3TC0D3";
+        $user->Addresses->add($address);
         
         $builder = new Notification_Message_Builder($user, Enum_Db_Notification_Type::USER_REGISTRATION);
         

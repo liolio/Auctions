@@ -38,16 +38,58 @@ return array(
     
     'configuration-undefined'    =>  'undefined',
     
+    'notification-header'   =>  '<!DOCTYPE html>
+                                    <html>
+                                        <head>
+                                            <title>aukcyjki</title>
+                                            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                                        </head>
+                                        <body>
+                                            <div style="background:#f9f900;width:100%;text-align: center;padding:10px">
+                                                <img src="http://pluton.kt.agh.edu.pl/~dlew/auctions/logo.png" alt="aukcyjki"/>
+                                            </div>
+                                            <div style="background: #ffffcc;padding:20px;font:0.8em tahoma">',
+    'notification-footer'   =>             '</div>
+                                            <div style="background: #ffffcc;padding:20px;font:0.6em tahoma">
+                                                Nie odpowiadaj na tą wiadomosć. Została ona wysłana automatycznie przez portal aukcyjki.<br/>
+                                                Jeżeli masz jakieś pytania skontaktuj się z nami: <a style="color:black;text-decoration:none;" href="mailto:pomoc@aukcyjki.pl">pomoc@aukcyjki.pl</a><br/>
+                                            </div>
+                                            <div style="background:#f9f900;width:100%;text-align: center;width:100%;margin:0;padding:10px 0;">&nbsp;
+                                                <div style="margin:0;padding:0;padding-left:20px;text-align:left;float:left;font:0.8em tahoma">
+                                                    aukcyjki
+                                                </div>
+                                                <div style="margin:0;padding-right:20px;text-align:right;float:right;font:0.8em tahoma">
+                                                    2013
+                                                </div>
+                                            </div>
+                                    </body>
+                                    </html>',
+    
     'notification_subject-user_registration'    =>  'Rejestracja użytkownika w serwisie Aukcyjki',
     
-    'notification_message-user_registration'    =>  'Witaj %%' . FieldIdEnum::USER_LOGIN . '%%<BR>' .
-                                                    '<BR>'.
-                                                    'Kliknij w ten link, aby aktywować konto: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . ParamIdEnum::LINK . '%%</a>',
+    'notification_message-user_registration'    =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
+                                                    '<br/>' .
+                                                    'Na serwisie aukcyjki zostało stworzone nowe konto dla Ciebie:<br/>' .
+                                                    '<br/>' .
+                                                    '&nbsp;&nbsp;&nbsp;&nbsp;Nazwa użytkownika: %%' . FieldIdEnum::USER_LOGIN . '%%<br/>' .
+                                                    '<br/>' .
+                                                    'Kliknij w poniższy link aby ustawić hasło i aktywować konto:<br/>' .
+                                                    '<br/>' .
+                                                    '<a href="%%' . ParamIdEnum::LINK . '%%">%%' . ParamIdEnum::LINK . '%%</a><br/>' .
+                                                    '<br/>' .
+                                                    'Po aktywacji zostaniesz automatycznie zalogowany do portalu aukcyjki.',
     
     'notification_subject-user_password_reset'  =>  'Resetowanie hasła w serwisie Aukcyjki',
     
-    'notification_message-user_password_reset' =>  'Witaj %%' . FieldIdEnum::USER_LOGIN . '%%<BR>' .
-                                                    '<BR>'.
-                                                    'Kliknij w ten link, aby zresetować hasło: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . ParamIdEnum::LINK . '%%</a>',
-    
+    'notification_message-user_password_reset' =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
+                                                    '<br/>'.
+                                                    'Wysłana została prośba o zresetowanie hasła dla konta:<br/>' .
+                                                    '<br/>' .
+                                                    '&nbsp;&nbsp;&nbsp;&nbsp;Nazwa użytkownika: %%' . FieldIdEnum::USER_LOGIN . '%%<br/>' .
+                                                    '<br/>' . 
+                                                    'Aby zresetować hasło kliknij w poniższy link i wprowadź nowe hasło dla swojego konta:<br/>' .
+                                                    '<br/>' .
+                                                    '<a href="%%' . ParamIdEnum::LINK . '%%">%%' . ParamIdEnum::LINK . '%%</a><br/>',
+                                                    '<br/>' .
+                                                    'Po zresetowaniu hasła zostaniesz automatycznie zalogowany do portalu aukcyjki.'
 );

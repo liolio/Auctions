@@ -17,9 +17,16 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
     public function getNotificationData($notificationType)
     {
         return array(
-            FieldIdEnum::USER_LOGIN =>  $this->login,
-            ParamIdEnum::LINK       =>  Controller_Front_UrlGenerator::generate($notificationType, $this->secret_code)
+            FieldIdEnum::USER_LOGIN     =>  $this->login,
+            ParamIdEnum::USER_FULLNAME  =>  $this->getFullName(),
+            ParamIdEnum::LINK           =>  Controller_Front_UrlGenerator::generate($notificationType, $this->secret_code)
         );
+    }
+    
+    public function getFullName()
+    {
+        $address = $this->Addresses->getFirst();
+        return $address->name . " " . $address->surname;
     }
 
     public function getRecipients()

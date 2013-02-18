@@ -47,7 +47,9 @@ class Notification_Message_Builder
     {
         $messageTemplate = $this->_translator->translate('notification_message-' . $this->_notificationType);
         
-        return str_replace(array_keys($this->_notificationData), array_values($this->_notificationData), $messageTemplate);
+        return $this->_translator->translate('notification-header') . 
+            str_replace(array_keys($this->_notificationData), array_values($this->_notificationData), $messageTemplate) . 
+            $this->_translator->translate('notification-footer');
     }
     
     /**
