@@ -22,7 +22,7 @@ class Auctions_Form_User_PasswordReset extends Auctions_Form_Abstract
         $email = new Form_Element_Text(FieldIdEnum::USER_EMAIL);
         $email->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-email'))
-                ->addValidator(new Zend_Validate_StringLength(array('min' => 1, 'max' => 100)), true)
+                ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 100)), true)
                 ->addValidator(new Zend_Validate_EmailAddress(), true)
                 ->addValidator(new Validate_User_EmailExists());
         

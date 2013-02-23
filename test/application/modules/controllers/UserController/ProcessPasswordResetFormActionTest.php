@@ -61,6 +61,6 @@ class Auctions_UserController_ProcessPasswordResetFormActionTest extends TestCas
         $this->dispatch('/user/process-password-reset-form');
         $this->_assertDispatch('user', 'process-password-reset-form');
         
-        $this->assertContains("Value is required and can't be empty", $this->getResponse()->getBody());
+        $this->assertContains($this->_getTranslator()->translate('validation_message-field_empty'), $this->getResponse()->getBody());
     }
 }

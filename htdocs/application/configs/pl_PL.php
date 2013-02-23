@@ -25,6 +25,10 @@ return array(
     'button-change_password'    =>  'Ustaw hasło',
     'button-send'               =>  'Wyślij',
     
+    'validation_message-field_empty'                                =>  'Pole obowiązkowe, nie może zostać puste',
+    'validation_message-invalid_type'                               =>  'Podano zły typ. Oczekiwano: %%types%%.',
+    'validation_message-too_short'                                  =>  "'%value%' jest krótszy niż %min% znaków",
+    'validation_message-too_long'                                   =>  "'%value%' jest dłuższy niż %max% znaków",
     'validation_message-invalid_credentials'                        =>  'Podano zły login lub hasło',
     'validation_message-user_inactive'                              =>  'Konto nieaktywne',
     'validation_message-user_login_exists'                          =>  'Podany login jest już zajęty',

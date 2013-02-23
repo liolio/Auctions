@@ -86,6 +86,6 @@ class Auctions_UserController_ProcessRegistrationFormActionTest extends TestCase
         $this->dispatch('/user/process-registration-form');
         $this->_assertDispatch('user', 'process-registration-form');
         
-        $this->assertContains("Value is required and can't be empty", $this->getResponse()->getBody());
+        $this->assertContains($this->_getTranslator()->translate('validation_message-field_empty'), $this->getResponse()->getBody());
     }
 }

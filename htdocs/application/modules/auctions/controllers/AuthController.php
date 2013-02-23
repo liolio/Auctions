@@ -36,11 +36,13 @@ class Auctions_AuthController extends Controller_Abstract
             switch ($logInResult->getCode())
             {
                 case Auth_Result::FAILURE_NOT_ACTIVE:
+                    $form->getElement(FieldIdEnum::USER_LOGIN)->setDescription($this->_getTranslator()->translate('validation_message-user_inactive'));
                     $form->setDescription($this->_getTranslator()->translate('validation_message-user_inactive'));
                     break;
                 case Auth_Result::FAILURE_IDENTITY_NOT_FOUND :
                 case Auth_Result::FAILURE_CREDENTIAL_INVALID :
                 default :
+                    $form->getElement(FieldIdEnum::USER_LOGIN)->setDescription($this->_getTranslator()->translate('validation_message-invalid_credentials'));
                     $form->setDescription($this->_getTranslator()->translate('validation_message-invalid_credentials'));
                     break;
             }

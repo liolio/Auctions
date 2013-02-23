@@ -1,29 +1,18 @@
 <?php
 /**
- * @class Form_Element_TextTest
+ * @class Form_Element_PasswordTest
  */
-class Form_Element_TextTest extends TestCase_NoDatabase
+class Form_Element_PasswordTest extends TestCase_NoDatabase
 {
     
     /**
-     * @var Form_Element_Text
+     * @var Form_Element_Password
      */
     private $_element;
     
     protected function setUp()
     {
-        $this->_element = new Form_Element_Text('FieldName');
-    }
-    
-    /**
-     * @test
-     */
-    public function constructTest()
-    {
-        $this->assertEquals(
-                array('Zend_Filter_StringTrim', 'Zend_Filter_StripTags'), 
-                array_keys($this->_element->getFilters())
-        );
+        $this->_element = new Form_Element_Password('FieldName');
     }
     
     /**

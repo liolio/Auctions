@@ -23,14 +23,14 @@ class Auctions_Form_LogIn extends Auctions_Form_Abstract
         $userLogin->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-login'))
                 ->addValidator(new Zend_Validate_Alnum(), true)
-                ->addValidator(new Zend_Validate_StringLength(array('min' => 1, 'max' => 40)));
+                ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 40)));
 
         $userPassword = new Zend_Form_Element_Password(FieldIdEnum::USER_PASSWORD);
         $userPassword->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-password'))
                 ->addFilter(new Zend_Filter_StringTrim())
                 ->addFilter(new Zend_Filter_StripTags())
-                ->addValidator(new Zend_Validate_StringLength(array('min' => 1, 'max' => 40)));
+                ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 40)));
         
         $loginButton = new Zend_Form_Element_Submit(ParamIdEnum::SUBMIT_BUTTON);
         $loginButton->setIgnore(true)

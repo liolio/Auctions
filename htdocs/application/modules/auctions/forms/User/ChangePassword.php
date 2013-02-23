@@ -24,19 +24,19 @@ class Auctions_Form_User_ChangePassword extends Auctions_Form_Abstract
                 ->setRequired()
                 ->setAttrib('readonly', true);
         
-        $password = new Zend_Form_Element_Password(FieldIdEnum::USER_PASSWORD);
+        $password = new Form_Element_Password(FieldIdEnum::USER_PASSWORD);
         $password->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-password'))
                 ->addFilter(new Zend_Filter_StringTrim())
                 ->addFilter(new Zend_Filter_StripTags())
-                ->addValidator(new Zend_Validate_StringLength(array('min' => 1, 'max' => 40)));
+                ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 40)));
         
-        $passwordRepeat = new Zend_Form_Element_Password(ParamIdEnum::PASSWORD_REPEAT);
+        $passwordRepeat = new Form_Element_Password(ParamIdEnum::PASSWORD_REPEAT);
         $passwordRepeat->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-password_repeat'))
                 ->addFilter(new Zend_Filter_StringTrim())
                 ->addFilter(new Zend_Filter_StripTags())
-                ->addValidator(new Zend_Validate_StringLength(array('min' => 1, 'max' => 40)), true)
+                ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 40)), true)
                 ->addValidator(new Validate_User_PasswordRepeatMatch());
         
         $changeButton = new Zend_Form_Element_Submit(ParamIdEnum::SUBMIT_BUTTON);

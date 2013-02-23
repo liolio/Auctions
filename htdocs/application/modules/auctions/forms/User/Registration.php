@@ -27,14 +27,14 @@ class Auctions_Form_User_Registration extends Auctions_Form_Abstract
         $login = new Form_Element_Text(FieldIdEnum::USER_LOGIN);
         $login->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-login'))
-                ->addValidator(new Zend_Validate_StringLength(array('min' => 1, 'max' => 40)), true)
+                ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 40)), true)
                 ->addValidator(new Zend_Validate_Alnum(), true)
                 ->addValidator(new Validate_User_LoginUnique());
         
         $email = new Form_Element_Text(FieldIdEnum::USER_EMAIL);
         $email->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-email'))
-                ->addValidator(new Zend_Validate_StringLength(array('min' => 1, 'max' => 100)), true)
+                ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 100)), true)
                 ->addValidator(new Zend_Validate_EmailAddress(), true)
                 ->addValidator(new Validate_User_EmailUnique());
         

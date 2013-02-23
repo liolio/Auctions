@@ -19,35 +19,43 @@ class Form_Elements_AddressTest extends TestCase_NoDatabase
         
         $expectedFields = array(
             FieldIdEnum::ADDRESS_NAME           =>  array(
-                'Zend_Validate_StringLength',
+                'Validate_NotEmpty',
+                'Validate_StringLength',
                 'Zend_Validate_Alpha'
             ),
             FieldIdEnum::ADDRESS_SURNAME        =>  array(
-                'Zend_Validate_StringLength',
+                'Validate_NotEmpty',
+                'Validate_StringLength',
                 'Validate_Address_SurnameRegex'
             ),
             FieldIdEnum::ADDRESS_STREET         =>  array(
-                'Zend_Validate_StringLength',
+                'Validate_NotEmpty',
+                'Validate_StringLength',
                 'Validate_Address_StreetRegex'
             ),
             FieldIdEnum::ADDRESS_POSTAL_CODE    =>  array(
-                'Zend_Validate_StringLength',
+                'Validate_NotEmpty',
+                'Validate_StringLength',
                 'Validate_Address_PostalCodeRegex'
             ),
             FieldIdEnum::ADDRESS_CITY           =>  array(
-                'Zend_Validate_StringLength',
+                'Validate_NotEmpty',
+                'Validate_StringLength',
                 'Zend_Validate_Alpha'
             ),
             FieldIdEnum::ADDRESS_COUNTRY        =>  array(
-                'Zend_Validate_StringLength',
+                'Validate_NotEmpty',
+                'Validate_StringLength',
                 'Zend_Validate_Alpha'
             ),
             FieldIdEnum::ADDRESS_PROVINCE       =>  array(
-                'Zend_Validate_StringLength',
+                'Validate_NotEmpty',
+                'Validate_StringLength',
                 'Zend_Validate_Alpha'
             ),
             FieldIdEnum::ADDRESS_PHONE_NUMBER   =>  array(
-                'Zend_Validate_StringLength',
+                'Validate_NotEmpty',
+                'Validate_StringLength',
                 'Validate_Address_PhoneNumberRegex'
             ),
         );
