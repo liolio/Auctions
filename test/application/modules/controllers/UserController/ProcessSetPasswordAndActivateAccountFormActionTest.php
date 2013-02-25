@@ -1,8 +1,8 @@
 <?php
 /**
- * @class Auctions_UserController_ProcessChangePasswordAndActivateAccountFormActionTest
+ * @class Auctions_UserController_ProcessSetPasswordAndActivateAccountFormActionTest
  */
-class Auctions_UserController_ProcessChangePasswordAndActivateAccountFormActionTest extends TestCase_Controller
+class Auctions_UserController_ProcessSetPasswordAndActivateAccountFormActionTest extends TestCase_Controller
 {
     
     protected function setUp()
@@ -23,8 +23,8 @@ class Auctions_UserController_ProcessChangePasswordAndActivateAccountFormActionT
             ParamIdEnum::PASSWORD_REPEAT    =>  'qwe'
         ));
         
-        $this->dispatch('user/process-change-password-and-activate-account-form');
-        $this->_assertDispatch('user', 'process-change-password-and-activate-account-form');
+        $this->dispatch('user/process-set-password-and-activate-account-form');
+        $this->_assertDispatch('user', 'process-set-password-and-activate-account-form');
         $headers = $this->getResponse()->getHeaders();
         $this->assertEquals(Zend_Controller_Front::getInstance()->getBaseUrl() . '/', $headers[0]['value']);
         
@@ -47,8 +47,8 @@ class Auctions_UserController_ProcessChangePasswordAndActivateAccountFormActionT
             ParamIdEnum::PASSWORD_REPEAT    =>  'qwe_not_matching'
         ));
         
-        $this->dispatch('user/process-change-password-and-activate-account-form');
-        $this->_assertDispatch('user', 'process-change-password-and-activate-account-form');
+        $this->dispatch('user/process-set-password-and-activate-account-form');
+        $this->_assertDispatch('user', 'process-set-password-and-activate-account-form');
         
         $this->assertContains($this->_getTranslator()->translate('validation_message-user_passwords_not_match'), $this->getResponse()->getBody());
                 
@@ -64,7 +64,7 @@ class Auctions_UserController_ProcessChangePasswordAndActivateAccountFormActionT
      */
     public function processWithoutData()
     {
-        $this->dispatch('user/process-change-password-and-activate-account-form');
+        $this->dispatch('user/process-set-password-and-activate-account-form');
         $this->_assertAclDeny();
         
         $user = UserTable::getInstance()->findOneBy('login', 'user_inactive_with_secret_code');

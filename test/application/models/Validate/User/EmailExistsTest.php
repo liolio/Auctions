@@ -5,6 +5,9 @@
 class Validate_User_EmailExistsTest extends TestCase_Database
 {
     
+    /**
+     * @var Validate_User_EmailExists
+     */
     private $_validator;
     
     protected function setUp()

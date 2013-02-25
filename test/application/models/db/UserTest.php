@@ -2,7 +2,7 @@
 /**
  * @class UserTest
  */
-class UserTest extends TestCase_Database
+class UserTest extends TestCase_Controller
 {
     
     /**
@@ -54,16 +54,39 @@ class UserTest extends TestCase_Database
     
     /**
      * @test
+     * @dataProvider notificationDataProvider
      */
-    public function getNotificationData()
+    public function getNotificationData($notificationType, $expectedData)
     {
-        $this->assertEquals(
+        $this->assertEquals($expectedData, $this->_user->getNotificationData($notificationType));
+    }
+    
+    public function notificationDataProvider()
+    {
+        return array(
             array(
-                FieldIdEnum::USER_LOGIN     =>  'admin',
-                ParamIdEnum::USER_FULLNAME  =>  'Admin Adminowy',
-                ParamIdEnum::LINK           =>  Controller_Front_UrlGenerator::generate(Enum_Db_Notification_Type::USER_REGISTRATION, '123qwe')
+                Enum_Db_Notification_Type::USER_REGISTRATION, 
+                array(
+                    FieldIdEnum::USER_LOGIN     =>  'admin',
+                    ParamIdEnum::USER_FULLNAME  =>  'Admin Adminowy',
+                    ParamIdEnum::LINK           =>  '/register/123qwe'
+                )
             ),
-            $this->_user->getNotificationData(Enum_Db_Notification_Type::USER_REGISTRATION)
+            array(
+                Enum_Db_Notification_Type::USER_PASSWORD_RESET, 
+                array(
+                    FieldIdEnum::USER_LOGIN     =>  'admin',
+                    ParamIdEnum::USER_FULLNAME  =>  'Admin Adminowy',
+                    ParamIdEnum::LINK           =>  '/user/password-reset/123qwe'
+                )
+            ),
+            array(
+                Enum_Db_Notification_Type::USER_NEW_PASSWORD_SET,
+                array(
+                    FieldIdEnum::USER_LOGIN     =>  'admin',
+                    ParamIdEnum::USER_FULLNAME  =>  'Admin Adminowy'
+                )
+            )
         );
     }
     

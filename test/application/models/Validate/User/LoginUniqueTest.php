@@ -5,6 +5,9 @@
 class Validate_User_LoginUniqueTest extends TestCase_Database
 {
     
+    /**
+     * @var Validate_User_LoginUnique
+     */
     private $_validator;
     
     protected function setUp()

@@ -16,11 +16,25 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
     
     public function getNotificationData($notificationType)
     {
-        return array(
-            FieldIdEnum::USER_LOGIN     =>  $this->login,
-            ParamIdEnum::USER_FULLNAME  =>  $this->getFullName(),
-            ParamIdEnum::LINK           =>  Controller_Front_UrlGenerator::generate($notificationType, $this->secret_code)
-        );
+        switch ($notificationType)
+        {
+            case Enum_Db_Notification_Type::USER_NEW_PASSWORD_SET :
+                return array(
+                    FieldIdEnum::USER_LOGIN     =>  $this->login,
+                    ParamIdEnum::USER_FULLNAME  =>  $this->getFullName()
+                );
+                
+            case Enum_Db_Notification_Type::USER_PASSWORD_RESET :
+            case Enum_Db_Notification_Type::USER_REGISTRATION :
+                return array(
+                    FieldIdEnum::USER_LOGIN     =>  $this->login,
+                    ParamIdEnum::USER_FULLNAME  =>  $this->getFullName(),
+                    ParamIdEnum::LINK           =>  Controller_Front_UrlGenerator::generate($notificationType, $this->secret_code)
+                );
+                
+            default :
+                throw new InvalidArgumentException('Notification type ' . $notificationType . ' is not supported.');
+        }
     }
     
     public function getFullName()

@@ -1,18 +1,18 @@
 <?php
 /**
- * @class Auctions_Form_User_ChangePasswordTest
+ * @class Auctions_Form_User_SetPasswordTest
  */
-class Auctions_Form_User_ChangePasswordTest extends TestCase_Database
+class Auctions_Form_User_SetPasswordTest extends TestCase_NoDatabase
 {
     /**
-     * @var Auctions_Form_User_ChangePassword
+     * @var Auctions_Form_User_SetPassword
      */
     private $_form;
     
     protected function setUp()
     {
         parent::setUp();
-        $this->_form = new Auctions_Form_User_ChangePassword();
+        $this->_form = new Auctions_Form_User_SetPassword();
     }
     
     /**
@@ -21,10 +21,9 @@ class Auctions_Form_User_ChangePasswordTest extends TestCase_Database
     public function isValidWithValidValues()
     {
         $this->assertTrue($this->_form->isValid(array(
-            FieldIdEnum::USER_LOGIN         =>  'admin',
-            ParamIdEnum::OLD_PASSWORD       =>  'admin',
-            FieldIdEnum::USER_PASSWORD      =>  'new_admin',
-            ParamIdEnum::PASSWORD_REPEAT    =>  'new_admin'
+            FieldIdEnum::USER_LOGIN         =>  'login',
+            FieldIdEnum::USER_PASSWORD      =>  'password',
+            ParamIdEnum::PASSWORD_REPEAT    =>  'password'
         )));
     }
     
@@ -32,11 +31,10 @@ class Auctions_Form_User_ChangePasswordTest extends TestCase_Database
      * @test
      * @dataProvider invalidValuesProvider
      */
-    public function isValidWithInvalidValues($login, $oldPassword, $password, $passwordRepeat, array $errors)
+    public function isValidWithInvalidValues($login, $password, $passwordRepeat, array $errors)
     {
         $this->assertFalse($this->_form->isValid(array(
             FieldIdEnum::USER_LOGIN         =>  $login,
-            ParamIdEnum::OLD_PASSWORD       =>  $oldPassword,
             FieldIdEnum::USER_PASSWORD      =>  $password,
             ParamIdEnum::PASSWORD_REPEAT    =>  $passwordRepeat
         )));
@@ -52,10 +50,8 @@ class Auctions_Form_User_ChangePasswordTest extends TestCase_Database
                 '',
                 '',
                 '',
-                '',
                 array(
                     FieldIdEnum::USER_LOGIN         =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
-                    ParamIdEnum::OLD_PASSWORD       =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     FieldIdEnum::USER_PASSWORD      =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     ParamIdEnum::PASSWORD_REPEAT    =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     ParamIdEnum::SUBMIT_BUTTON      =>  array()
@@ -63,43 +59,25 @@ class Auctions_Form_User_ChangePasswordTest extends TestCase_Database
             ),
             //too long
             array(
-                'admin',
-                str_repeat('a', 41),
+                'not_long',
                 str_repeat('a', 41),
                 str_repeat('a', 41),
                 array(
                     FieldIdEnum::USER_LOGIN         =>  array(),
-                    ParamIdEnum::OLD_PASSWORD       =>  array(Zend_Validate_StringLength::TOO_LONG),
                     FieldIdEnum::USER_PASSWORD      =>  array(Zend_Validate_StringLength::TOO_LONG),
                     ParamIdEnum::PASSWORD_REPEAT    =>  array(Zend_Validate_StringLength::TOO_LONG),
                     ParamIdEnum::SUBMIT_BUTTON      =>  array()
                 )
             ),
-            //password repeat not match
+            //password not match
             array(
-                'admin',
-                'admin',
+                'not_long',
                 'password',
                 'password_not_matching',
                 array(
                     FieldIdEnum::USER_LOGIN         =>  array(),
-                    ParamIdEnum::OLD_PASSWORD       =>  array(),
                     FieldIdEnum::USER_PASSWORD      =>  array(),
                     ParamIdEnum::PASSWORD_REPEAT    =>  array(Validate_User_PasswordRepeatMatch::PASSWORD_NOT_MATCH),
-                    ParamIdEnum::SUBMIT_BUTTON      =>  array()
-                )
-            ),
-            //old password not match
-            array(
-                'admin',
-                'admin2',
-                'password',
-                'password',
-                array(
-                    FieldIdEnum::USER_LOGIN         =>  array(),
-                    ParamIdEnum::OLD_PASSWORD       =>  array(Validate_User_PasswordMatch::PASSWORD_NOT_MATCH),
-                    FieldIdEnum::USER_PASSWORD      =>  array(),
-                    ParamIdEnum::PASSWORD_REPEAT    =>  array(),
                     ParamIdEnum::SUBMIT_BUTTON      =>  array()
                 )
             ),

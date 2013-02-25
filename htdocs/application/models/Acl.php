@@ -47,11 +47,13 @@ class Acl extends Zend_Acl
         $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:Error', array('error'));
         $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:Index', array('index'));
         $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:User', array('registration', 'process-registration-form', 'password-reset-request', 'process-password-reset-form'));
-        $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:User', array('process-change-password-and-activate-account-form'), Acl_Assertion_User_LoginExists::getClassName());
+        $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:User', array('process-set-password-and-activate-account-form'), Acl_Assertion_User_LoginExists::getClassName());
         $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:User', array('set-password-and-register-account'), Acl_Assertion_User_SecretCodeExists::getClassName());
         
         //USER
         $this->_allow(Enum_Acl_Role::USER, 'Auctions:Auth', array('logout'));
+        $this->_allow(Enum_Acl_Role::USER, 'Auctions:User', array('panel', 'change-password'));
+        $this->_allow(Enum_Acl_Role::USER, 'Auctions:User', array('process-change-password'), Acl_Assertion_User_LoginExists::getClassName());
     }
     
     private function _allow($roles = null, $resources = null, $privileges = null, $assertionClassName = null)

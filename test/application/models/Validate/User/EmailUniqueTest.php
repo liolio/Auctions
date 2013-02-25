@@ -5,6 +5,9 @@
 class Validate_User_EmailUniqueTest extends TestCase_Database
 {
     
+    /**
+     * @var Validate_User_EmailUnique
+     */
     private $_validator;
     
     protected function setUp()

@@ -9,6 +9,8 @@ class ParamIdEnum
     
     const LINK = 'link';
     
+    const OLD_PASSWORD = 'old_password';
+    
     const PASSWORD_REPEAT = 'password_repeat';
     
     const RECAPTCHA = 'recaptcha';

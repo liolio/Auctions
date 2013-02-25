@@ -70,7 +70,7 @@ class Auctions_UserController extends Zend_Controller_Action
     
     public function setPasswordAndRegisterAccountAction()
     {
-        $form = new Auctions_Form_User_ChangePassword(array('action' => '/user/process-change-password-and-activate-account-form'));
+        $form = new Auctions_Form_User_SetPassword(array('action' => '/user/process-set-password-and-activate-account-form'));
         $form->getElement(FieldIdEnum::USER_LOGIN)->setValue(
                 UserTable::getInstance()->findOneBy(
                         'secret_code', 
@@ -79,20 +79,20 @@ class Auctions_UserController extends Zend_Controller_Action
                 
         );
 
-        $this->view->changePasswordForm = $form;
+        $this->view->setPasswordForm = $form;
     }
     
-    public function processChangePasswordAndActivateAccountFormAction()
+    public function processSetPasswordAndActivateAccountFormAction()
     {
         $request = $this->getRequest();
 
         if (!$request->isPost())
             return $this->_helper->redirector('registration');
 
-        $form = new Auctions_Form_User_ChangePassword(array('action' => '/user/process-change-password-and-activate-account-form'));
+        $form = new Auctions_Form_User_SetPassword(array('action' => '/user/process-set-password-and-activate-account-form'));
         if (!$form->isValid($request->getPost()))
         {
-            $this->view->changePasswordForm = $form;
+            $this->view->setPasswordForm = $form;
             return $this->render('set-password-and-register-account');
         }
         
@@ -113,12 +113,50 @@ class Auctions_UserController extends Zend_Controller_Action
         {
             Doctrine_Manager::connection()->rollback();
             Log_Factory::create($ex, Zend_Log::CRIT);
-            $this->view->changePasswordForm = $form;
+            $this->view->setPasswordForm = $form;
             $form->setDescription('Failure!');
             return $this->render('set-password-and-register-account');
         }
         
         $this->_helper->redirector('index', 'index');
+    }
+    
+    public function processChangePasswordAction()
+    {
+        $request = $this->getRequest();
+        
+        if (!$request->isPost())
+            return $this->_helper->redirector('registration');
+
+        $form = new Auctions_Form_User_ChangePassword();
+        if (!$form->isValid($request->getPost()))
+        {
+            $this->view->changePasswordForm = $form;
+            return $this->render('change-password');
+        }
+        
+        try {
+            Doctrine_Manager::connection()->beginTransaction();
+            $user = UserTable::getInstance()->findOneBy('login', $form->getValue(FieldIdEnum::USER_LOGIN))
+                ->setNewPassword($form->getValue(FieldIdEnum::USER_PASSWORD));
+
+            $user->save();
+            
+            $notificationSender = new Notification_Sender();
+            $notificationSender->send($user, Enum_Db_Notification_Type::USER_NEW_PASSWORD_SET);
+            
+            Doctrine_Manager::connection()->commit();
+        }
+        catch (Exception $ex)
+        {
+            Doctrine_Manager::connection()->rollback();
+            Log_Factory::create($ex, Zend_Log::CRIT);
+            $this->view->changePasswordForm = $form;
+            $form->setDescription('Failure!');
+            return $this->render('change-password');
+        }
+        
+        $this->_helper->redirector('panel', 'user');
     }
     
     public function passwordResetRequestAction()
@@ -158,5 +196,20 @@ class Auctions_UserController extends Zend_Controller_Action
             return $this->render('set-password-and-register-account');
         }
         $this->_helper->redirector('index', 'index');
+    }
+    
+    public function panelAction()
+    {
+        
+    }
+    
+    public function changePasswordAction()
+    {
+        $form = new Auctions_Form_User_ChangePassword();
+        $form->getElement(FieldIdEnum::USER_LOGIN)->setValue(
+            Auth_User::getInstance()->getUser()->login
+        );
+
+        $this->view->changePasswordForm = $form;
     }
 }

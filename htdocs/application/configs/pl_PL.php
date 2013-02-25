@@ -10,9 +10,11 @@ return array(
     'menu-spearator'            =>  ' | ',
     'menu-log_in'               =>  'Logowanie',
     'menu-registration'         =>  'Rejestracja',
+    'menu-user_panel'           =>  'Panel użytkownika',
     'menu-log_out'              =>  'Wyloguj',
     
     'label-login'                   =>  'Login:',
+    'label-old_password'            =>  'Stare hasło:',
     'label-password'                =>  'Hasło:',
     'label-password_repeat'         =>  'Powtórz hasło:',
     'label-email'                   =>  'Adres e-mail:',
@@ -39,6 +41,7 @@ return array(
     'validation_message-user_login_exists'                          =>  'Podany login jest już zajęty',
     'validation_message-user_email_exists'                          =>  'Podany adres e-mail jest już zajęty',
     'validation_message-user_email_not_exists'                      =>  'Podany adres e-mail nie istnieje w bazie',
+    'validation_message-user_password_not_match'                    =>  'Hasło niepoprawne',
     'validation_message-user_passwords_not_match'                   =>  'Hasła niezgodne',
     'validation_message-address_surname_regex_not_match'            =>  "'%value%' może zawierać tylko litery, spacje i pauzy",
     'validation_message-address_street_regex_not_match'             =>  "'%value%' może zawierać tylko litery, cyfry, ukośniki, kropki, spacje i pauzy",
@@ -74,31 +77,39 @@ return array(
                                     </body>
                                     </html>',
     
-    'notification_subject-user_registration'    =>  'Rejestracja użytkownika w serwisie Aukcyjki',
+    'notification_subject-user_registration'        =>  'Rejestracja użytkownika w serwisie Aukcyjki',
     
-    'notification_message-user_registration'    =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
-                                                    '<br/>' .
-                                                    'Na serwisie aukcyjki zostało stworzone nowe konto dla Ciebie:<br/>' .
-                                                    '<br/>' .
-                                                    '&nbsp;&nbsp;&nbsp;&nbsp;Nazwa użytkownika: %%' . FieldIdEnum::USER_LOGIN . '%%<br/>' .
-                                                    '<br/>' .
-                                                    'Kliknij w poniższy link aby ustawić hasło i aktywować konto:<br/>' .
-                                                    '<br/>' .
-                                                    '<a href="%%' . ParamIdEnum::LINK . '%%">%%' . ParamIdEnum::LINK . '%%</a><br/>' .
-                                                    '<br/>' .
-                                                    'Po aktywacji zostaniesz automatycznie zalogowany do portalu aukcyjki.',
+    'notification_message-user_registration'        =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
+                                                        '<br/>' .
+                                                        'Na serwisie aukcyjki zostało stworzone nowe konto dla Ciebie:<br/>' .
+                                                        '<br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Nazwa użytkownika: %%' . FieldIdEnum::USER_LOGIN . '%%<br/>' .
+                                                        '<br/>' .
+                                                        'Kliknij w poniższy link aby ustawić hasło i aktywować konto:<br/>' .
+                                                        '<br/>' .
+                                                        '<a href="%%' . ParamIdEnum::LINK . '%%">%%' . ParamIdEnum::LINK . '%%</a><br/>' .
+                                                        '<br/>' .
+                                                        'Po aktywacji zostaniesz automatycznie zalogowany do portalu aukcyjki.',
     
-    'notification_subject-user_password_reset'  =>  'Resetowanie hasła w serwisie Aukcyjki',
+    'notification_subject-user_password_reset'      =>  'Resetowanie hasła w serwisie Aukcyjki',
     
-    'notification_message-user_password_reset' =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
-                                                    '<br/>'.
-                                                    'Wysłana została prośba o zresetowanie hasła dla konta:<br/>' .
-                                                    '<br/>' .
-                                                    '&nbsp;&nbsp;&nbsp;&nbsp;Nazwa użytkownika: %%' . FieldIdEnum::USER_LOGIN . '%%<br/>' .
-                                                    '<br/>' . 
-                                                    'Aby zresetować hasło kliknij w poniższy link i wprowadź nowe hasło dla swojego konta:<br/>' .
-                                                    '<br/>' .
-                                                    '<a href="%%' . ParamIdEnum::LINK . '%%">%%' . ParamIdEnum::LINK . '%%</a><br/>',
-                                                    '<br/>' .
-                                                    'Po zresetowaniu hasła zostaniesz automatycznie zalogowany do portalu aukcyjki.'
+    'notification_message-user_password_reset'      =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
+                                                        '<br/>'.
+                                                        'Wysłana została prośba o zresetowanie hasła dla konta:<br/>' .
+                                                        '<br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Nazwa użytkownika: %%' . FieldIdEnum::USER_LOGIN . '%%<br/>' .
+                                                        '<br/>' . 
+                                                        'Aby zresetować hasło kliknij w poniższy link i wprowadź nowe hasło dla swojego konta:<br/>' .
+                                                        '<br/>' .
+                                                        '<a href="%%' . ParamIdEnum::LINK . '%%">%%' . ParamIdEnum::LINK . '%%</a><br/>',
+                                                        '<br/>' .
+                                                        'Po zresetowaniu hasła zostaniesz automatycznie zalogowany do portalu aukcyjki.',
+    
+    'notification_subject-user_new_password_set'    =>  'Zmiana hasła w serwisie Aukcyjki',
+    
+    'notification_message-user_new_password_set'    =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
+                                                        '<br/>'.
+                                                        'Nastąpiła zmiana hasła dla konta:<br/>' .
+                                                        '<br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Nazwa użytkownika: %%' . FieldIdEnum::USER_LOGIN . '%%<br/>'
 );

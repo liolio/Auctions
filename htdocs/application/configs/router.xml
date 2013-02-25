@@ -86,17 +86,29 @@
         <reverse>registration</reverse>
     </registerUser>
     
-    <processChangePasswordAndActivateAccount>
-        <route>user/process-change-password-and-activate-account-form</route>
+    <processSetPasswordAndActivateAccount>
+        <route>user/process-set-password-and-activate-account-form</route>
         <defaults>
             <module>auctions</module>
             <controller>user</controller>
-            <action>process-change-password-and-activate-account-form</action>
+            <action>process-set-password-and-activate-account-form</action>
         </defaults>
         <map>
         </map>
         <reverse></reverse>
-    </processChangePasswordAndActivateAccount>
+    </processSetPasswordAndActivateAccount>
+    
+    <processChangePassword>
+        <route>user/process-change-password</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>process-change-password</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </processChangePassword>
     
     <resetPassword>
         <route>user/password-reset/(.{40})</route>
@@ -134,5 +146,29 @@
         </map>
         <reverse></reverse>
     </processPassworResetForm>
+    
+    <userPanel>
+        <route>user/panel</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>panel</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </userPanel>
+    
+    <userPanelChangePassword>
+        <route>user/panel/change-password</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>change-password</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </userPanelChangePassword>
     
 </routes>

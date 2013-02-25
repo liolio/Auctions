@@ -2,14 +2,14 @@
 /**
  * @class Auctions_Form_User_ChangePassword
  */
-class Auctions_Form_User_ChangePassword extends Auctions_Form_Abstract
+class Auctions_Form_User_SetPassword extends Auctions_Form_Abstract
 {
     
     public function __construct($options = array())
     {
         $formOptions = array_merge(
             array(
-                'action' => '/user/process-change-password',
+                'action' => '/user/process-change-password-form',
                 'method' => 'post',
             ), $options
         );
@@ -23,14 +23,6 @@ class Auctions_Form_User_ChangePassword extends Auctions_Form_Abstract
         $login->setLabel($this->_getTranslator()->translate('label-login'))
                 ->setRequired()
                 ->setAttrib('readonly', true);
-        
-        $oldPassword = new Form_Element_Password(ParamIdEnum::OLD_PASSWORD);
-        $oldPassword->setRequired()
-                ->setLabel($this->_getTranslator()->translate('label-old_password'))
-                ->addFilter(new Zend_Filter_StringTrim())
-                ->addFilter(new Zend_Filter_StripTags())
-                ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 40)), true)
-                ->addValidator(new Validate_User_PasswordMatch(), true);
         
         $password = new Form_Element_Password(FieldIdEnum::USER_PASSWORD);
         $password->setRequired()
@@ -51,7 +43,7 @@ class Auctions_Form_User_ChangePassword extends Auctions_Form_Abstract
         $changeButton->setIgnore(true)
                 ->setLabel($this->_getTranslator()->translate('button-change_password'));
         
-        $this->addElements(array($login, $oldPassword, $password, $passwordRepeat, $changeButton));
+        $this->addElements(array($login, $password, $passwordRepeat, $changeButton));
         
         $this->setDecorators(array(
             'FormElements',
