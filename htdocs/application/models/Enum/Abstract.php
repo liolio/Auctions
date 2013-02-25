@@ -11,4 +11,11 @@ abstract class Enum_Abstract
                 
         return array_search($enumName, $reflection->getConstants()) !== false;
     }
+    
+    public static function getEnums()
+    {
+        $reflection = new ReflectionClass(get_called_class());
+                
+        return $reflection->getConstants();
+    }
 }

@@ -2,7 +2,7 @@
 /**
  * @class Enum_Acl_Role
  */
-class Enum_Acl_Role
+class Enum_Acl_Role extends Enum_Abstract
 {
     const GUEST = 'guest';
     

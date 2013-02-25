@@ -7,6 +7,11 @@ return array(
     'caption-registration'      =>  'Rejestracja',
     'caption-password_reset'    =>  'Zapomniałeś hasła?',
     
+    'menu-spearator'            =>  ' | ',
+    'menu-log_in'               =>  'Logowanie',
+    'menu-registration'         =>  'Rejestracja',
+    'menu-log_out'              =>  'Wyloguj',
+    
     'label-login'                   =>  'Login:',
     'label-password'                =>  'Hasło:',
     'label-password_repeat'         =>  'Powtórz hasło:',

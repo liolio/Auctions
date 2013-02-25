@@ -25,7 +25,7 @@ class Auctions_Form_LogIn extends Auctions_Form_Abstract
                 ->addValidator(new Zend_Validate_Alnum(), true)
                 ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 40)));
 
-        $userPassword = new Zend_Form_Element_Password(FieldIdEnum::USER_PASSWORD);
+        $userPassword = new Form_Element_Password(FieldIdEnum::USER_PASSWORD);
         $userPassword->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-password'))
                 ->addFilter(new Zend_Filter_StringTrim())
@@ -41,11 +41,11 @@ class Auctions_Form_LogIn extends Auctions_Form_Abstract
         // We want to display a 'failed authentication' message if necessary;
         // we'll do that with the form 'description', so we need to add that
         // decorator.
-        $this->setDecorators(array(
-            'FormElements',
-            array('HtmlTag', array('tag' => 'dl', 'class' => 'zend_form')),
-            array('Description', array('placement' => 'prepend')),
-            'Form'
-        ));
+//        $this->setDecorators(array(
+//            'FormElements',
+//            array('HtmlTag', array('tag' => 'dl', 'class' => 'zend_form')),
+//            array('Description', array('placement' => 'prepend')),
+//            'Form'
+//        ));
     }
 }

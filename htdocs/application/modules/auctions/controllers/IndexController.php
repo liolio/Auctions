@@ -12,6 +12,6 @@ class Auctions_IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $this->view->identity = Zend_Auth::getInstance()->getIdentity();
+        
     }
 }

@@ -25,6 +25,19 @@ class Enum_AbstractTest extends TestCase_NoDatabase
             array(array(), false),
         );
     }
+    
+    /**
+     * @test
+     */
+    public function getEnums() {
+        $this->assertEquals(
+            array(
+                'TEST'  =>  'test',
+                'SUPER' =>  'super'
+            ), 
+            Enum_AbstractMock::getEnums()
+        );
+    }
 }
 
 class Enum_AbstractMock extends Enum_Abstract
