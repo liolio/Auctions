@@ -38,6 +38,7 @@ class Acl extends Zend_Acl
         $this->addResource('Auctions:Error');
         $this->addResource('Auctions:Index');
         $this->addResource('Auctions:User');
+        $this->addResource('Auctions:Address');
     }
     
     private function _addAllows()
@@ -53,6 +54,7 @@ class Acl extends Zend_Acl
         //USER
         $this->_allow(Enum_Acl_Role::USER, 'Auctions:Auth', array('logout'));
         $this->_allow(Enum_Acl_Role::USER, 'Auctions:User', array('panel', 'change-password'));
+        $this->_allow(Enum_Acl_Role::USER, 'Auctions:Address', array('show-list'));
         $this->_allow(Enum_Acl_Role::USER, 'Auctions:User', array('process-change-password'), Acl_Assertion_User_LoginExists::getClassName());
     }
     

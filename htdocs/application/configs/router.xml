@@ -171,4 +171,16 @@
         <reverse></reverse>
     </userPanelChangePassword>
     
+    <addressShowList>
+        <route>address/show-list</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>address</controller>
+            <action>show-list</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </addressShowList>
+    
 </routes>

@@ -6,6 +6,8 @@ return array(
     'caption-log_out'           =>  'Wyloguj',
     'caption-registration'      =>  'Rejestracja',
     'caption-password_reset'    =>  'Zapomniałeś hasła?',
+    'caption-edit'              =>  'Edycja',
+    'caption-delete'            =>  'Usunięcie',
     
     'menu-spearator'            =>  ' | ',
     'menu-log_in'               =>  'Logowanie',
