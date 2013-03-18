@@ -1,3 +1,5 @@
+<a href="<?=$this->baseUrl();?>/address/add"><?=Helper::getTranslator()->translate('caption-add')?></a><br/>
+<?php echo $this->message; ?><br/>
 <table>
     <tr>
         <th>
@@ -61,7 +63,7 @@
             <a href="<?=$this->baseUrl();?>/address/edit/<?=$address->id?>">e</a>
         </td>
         <td>
-            <a href="<?=$this->baseUrl();?>/address/delete/<?=$address->id?>">D</a>
+            <a href="<?=$this->baseUrl();?>/address/delete/<?=$address->id?>">x</a>
         </td>
     </tr>
     <?php    endforeach; ?>

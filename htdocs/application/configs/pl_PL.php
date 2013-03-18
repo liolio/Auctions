@@ -6,6 +6,7 @@ return array(
     'caption-log_out'           =>  'Wyloguj',
     'caption-registration'      =>  'Rejestracja',
     'caption-password_reset'    =>  'Zapomniałeś hasła?',
+    'caption-add'               =>  'Dodaj',
     'caption-edit'              =>  'Edycja',
     'caption-delete'            =>  'Usunięcie',
     
@@ -45,6 +46,7 @@ return array(
     'validation_message-user_email_not_exists'                      =>  'Podany adres e-mail nie istnieje w bazie',
     'validation_message-user_password_not_match'                    =>  'Hasło niepoprawne',
     'validation_message-user_passwords_not_match'                   =>  'Hasła niezgodne',
+    'validation_message-address_cannot_remove_last_address'         =>  "Nie można usunąć ostaniego adresu",
     'validation_message-address_surname_regex_not_match'            =>  "'%value%' może zawierać tylko litery, spacje i pauzy",
     'validation_message-address_street_regex_not_match'             =>  "'%value%' może zawierać tylko litery, cyfry, ukośniki, kropki, spacje i pauzy",
     'validation_message-address_postal_code_regex_not_match'        =>  "'%value%' może zawierać tylko litery, cyfry, spacje i pauzy",

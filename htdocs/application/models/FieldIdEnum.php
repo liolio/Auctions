@@ -10,6 +10,7 @@ class FieldIdEnum
     const USER_EMAIL = 'user_email';
     const USER_SECRET_CODE = 'user_secret_code';
     
+    const ADDRESS_ID = 'address_id';
     const ADDRESS_NAME = 'address_name';
     const ADDRESS_SURNAME = 'address_surname';
     const ADDRESS_STREET = 'address_street';
