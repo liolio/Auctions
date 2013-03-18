@@ -10,6 +10,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $this->_config = new Zend_Config($this->getOptions());
         Zend_Registry::set('config', $this->_config);
     }
+    
+    protected function _initSecure()
+    {
+        Zend_Registry::set('secure', new Zend_Config_Ini(APPLICATION_PATH . Zend_Registry::getInstance()->get("config")->security->secureIniFilePath));
+    }
 
     protected function _initTimezone()
     {
