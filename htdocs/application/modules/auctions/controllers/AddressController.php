@@ -63,7 +63,7 @@ class Auctions_AddressController extends Zend_Controller_Action
     
     public function deleteAction()
     {
-        if (Auth_User::getInstance()->getUser()->Addresses->count() === 1) 
+        if (AddressTable::getInstance()->findBy("user_id", Auth_User::getInstance()->getUser()->id)->count() === 1) 
         {
             $this->view->addressList = Auth_User::getInstance()->getUser()->Addresses;
             $this->view->message = Helper::getTranslator()->translate("validation_message-address_cannot_remove_last_address");
