@@ -183,4 +183,41 @@
         <reverse></reverse>
     </addressShowList>
     
+    <addressAdd>
+        <route>address/add</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>address</controller>
+            <action>add</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </addressAdd>
+    
+    <addressAddProcessForm>
+        <route>/address/process-add-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>address</controller>
+            <action>process-add-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </addressAddProcessForm>
+    
+    <addressDelete>
+        <route>address/delete/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>address</controller>
+            <action>delete</action>
+        </defaults>
+        <map>
+            <address_id>1</address_id>
+        </map>
+        <reverse></reverse>
+    </addressDelete>
+    
 </routes>
