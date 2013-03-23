@@ -29,15 +29,3 @@ $application = new Zend_Application(
 
 $application->bootstrap()
             ->run();
-//try
-//{
-//    $application->bootstrap()
-//            ->run();
-//} 
-//catch (Exception $exception)
-//{
-//    Zend_debug::dump($exception->getMessage());
-//    Zend_debug::dump($exception->getTraceAsString());
-//    Zend_debug::dump($exception->getTrace());
-//}
-//

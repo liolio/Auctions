@@ -54,7 +54,8 @@ class Acl extends Zend_Acl
         //USER
         $this->_allow(Enum_Acl_Role::USER, 'Auctions:Auth', array('logout'));
         $this->_allow(Enum_Acl_Role::USER, 'Auctions:User', array('panel', 'change-password'));
-        $this->_allow(Enum_Acl_Role::USER, 'Auctions:Address', array('show-list', 'add', 'process-add-form', 'delete'));
+        $this->_allow(Enum_Acl_Role::USER, 'Auctions:Address', array('show-list', 'add', 'process-add-form'));
+        $this->_allow(Enum_Acl_Role::USER, 'Auctions:Address', array('delete', 'edit', 'process-edit-form'), Acl_Assertion_Address_BelongsToUser::getClassName());
         $this->_allow(Enum_Acl_Role::USER, 'Auctions:User', array('process-change-password'), Acl_Assertion_User_LoginExists::getClassName());
     }
     

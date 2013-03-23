@@ -220,4 +220,17 @@
         <reverse></reverse>
     </addressDelete>
     
+    <addressEdit>
+        <route>address/edit/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>address</controller>
+            <action>edit</action>
+        </defaults>
+        <map>
+            <address_id>1</address_id>
+        </map>
+        <reverse></reverse>
+    </addressEdit>
+    
 </routes>

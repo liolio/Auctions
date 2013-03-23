@@ -1,28 +1,29 @@
 <?php
 /**
- * @class Auctions_Form_Address_AddTest
+ * @class Auctions_Form_Address_EditTest
  */
-class Auctions_Form_Address_AddTest extends TestCase_NoDatabase
+class Auctions_Form_Address_EditTest extends TestCase_NoDatabase
 {
     
     /**
      *
-     * @var Auctions_Form_Address_Add
+     * @var Auctions_Form_Address_Edit
      */
     private $_form;
     
     protected function setUp()
     {
         parent::setUp();
-        $this->_form = new Auctions_Form_Address_Add();
+        $this->_form = new Auctions_Form_Address_Edit();
     }
     
-    /**
+     /**
      * @test
      */
     public function isValidWithValidValues()
     {
         $this->assertTrue($this->_form->isValid(array(
+            FieldIdEnum::ADDRESS_ID             =>  '1',
             FieldIdEnum::ADDRESS_NAME           =>  'name',
             FieldIdEnum::ADDRESS_SURNAME        =>  'sur-name',
             FieldIdEnum::ADDRESS_STREET         =>  'street 1/1',
@@ -51,6 +52,7 @@ class Auctions_Form_Address_AddTest extends TestCase_NoDatabase
             //empty
             array(
                 array(
+                    FieldIdEnum::ADDRESS_ID             =>  '',
                     FieldIdEnum::ADDRESS_NAME           =>  '',
                     FieldIdEnum::ADDRESS_SURNAME        =>  '',
                     FieldIdEnum::ADDRESS_STREET         =>  '',
@@ -61,6 +63,7 @@ class Auctions_Form_Address_AddTest extends TestCase_NoDatabase
                     FieldIdEnum::ADDRESS_PHONE_NUMBER   =>  '',
                 ),
                 array(
+                    FieldIdEnum::ADDRESS_ID             =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     FieldIdEnum::ADDRESS_NAME           =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     FieldIdEnum::ADDRESS_SURNAME        =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     FieldIdEnum::ADDRESS_STREET         =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
@@ -75,6 +78,7 @@ class Auctions_Form_Address_AddTest extends TestCase_NoDatabase
             //too long
             array(
                 array(
+                    FieldIdEnum::ADDRESS_ID             =>  1,
                     FieldIdEnum::ADDRESS_NAME           =>  str_repeat('a', 101),
                     FieldIdEnum::ADDRESS_SURNAME        =>  str_repeat('a', 101),
                     FieldIdEnum::ADDRESS_STREET         =>  str_repeat('a', 101),
@@ -85,6 +89,7 @@ class Auctions_Form_Address_AddTest extends TestCase_NoDatabase
                     FieldIdEnum::ADDRESS_PHONE_NUMBER   =>  str_repeat('a', 101),
                 ),
                 array(
+                    FieldIdEnum::ADDRESS_ID             =>  array(),
                     FieldIdEnum::ADDRESS_NAME           =>  array(Zend_Validate_StringLength::TOO_LONG),
                     FieldIdEnum::ADDRESS_SURNAME        =>  array(Zend_Validate_StringLength::TOO_LONG),
                     FieldIdEnum::ADDRESS_STREET         =>  array(Zend_Validate_StringLength::TOO_LONG),
@@ -99,6 +104,7 @@ class Auctions_Form_Address_AddTest extends TestCase_NoDatabase
             //invalid regex or alnum or alpha
             array(
                 array(
+                    FieldIdEnum::ADDRESS_ID             =>  'one',
                     FieldIdEnum::ADDRESS_NAME           =>  'name132',
                     FieldIdEnum::ADDRESS_SURNAME        =>  'sur-name123',
                     FieldIdEnum::ADDRESS_STREET         =>  'street 1!',
@@ -109,6 +115,7 @@ class Auctions_Form_Address_AddTest extends TestCase_NoDatabase
                     FieldIdEnum::ADDRESS_PHONE_NUMBER   =>  '123456890p',
                 ),
                 array(
+                    FieldIdEnum::ADDRESS_ID             =>  array(Zend_Validate_Int::NOT_INT),
                     FieldIdEnum::ADDRESS_NAME           =>  array(Zend_Validate_Alpha::NOT_ALPHA),
                     FieldIdEnum::ADDRESS_SURNAME        =>  array(Validate_Address_SurnameRegex::NOT_MATCH),
                     FieldIdEnum::ADDRESS_STREET         =>  array(Validate_Address_StreetRegex::NOT_MATCH),
