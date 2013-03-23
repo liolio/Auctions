@@ -34,29 +34,29 @@ class Acl extends Zend_Acl
     
     private function _addResources()
     {
-        $this->addResource('Auctions:Auth');
-        $this->addResource('Auctions:Error');
-        $this->addResource('Auctions:Index');
-        $this->addResource('Auctions:User');
-        $this->addResource('Auctions:Address');
+        $this->addResource(Enum_Acl_Resource::AUTH);
+        $this->addResource(Enum_Acl_Resource::ERROR);
+        $this->addResource(Enum_Acl_Resource::INDEX);
+        $this->addResource(Enum_Acl_Resource::USER);
+        $this->addResource(Enum_Acl_Resource::ADDRESS);
     }
     
     private function _addAllows()
     {
         //GUEST
-        $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:Auth', array('index', 'process'));
-        $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:Error', array('error'));
-        $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:Index', array('index'));
-        $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:User', array('registration', 'process-registration-form', 'password-reset-request', 'process-password-reset-form'));
-        $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:User', array('process-set-password-and-activate-account-form'), Acl_Assertion_User_LoginExists::getClassName());
-        $this->_allow(Enum_Acl_Role::GUEST, 'Auctions:User', array('set-password-and-register-account'), Acl_Assertion_User_SecretCodeExists::getClassName());
+        $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::AUTH, array('index', 'process'));
+        $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::ERROR, array('error'));
+        $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::INDEX, array('index'));
+        $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::USER, array('registration', 'process-registration-form', 'password-reset-request', 'process-password-reset-form'));
+        $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::USER, array('process-set-password-and-activate-account-form'), Acl_Assertion_User_LoginExists::getClassName());
+        $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::USER, array('set-password-and-register-account'), Acl_Assertion_User_SecretCodeExists::getClassName());
         
         //USER
-        $this->_allow(Enum_Acl_Role::USER, 'Auctions:Auth', array('logout'));
-        $this->_allow(Enum_Acl_Role::USER, 'Auctions:User', array('panel', 'change-password'));
-        $this->_allow(Enum_Acl_Role::USER, 'Auctions:Address', array('show-list', 'add', 'process-add-form'));
-        $this->_allow(Enum_Acl_Role::USER, 'Auctions:Address', array('delete', 'edit', 'process-edit-form'), Acl_Assertion_Address_BelongsToUser::getClassName());
-        $this->_allow(Enum_Acl_Role::USER, 'Auctions:User', array('process-change-password'), Acl_Assertion_User_LoginExists::getClassName());
+        $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::AUTH, array('logout'));
+        $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::USER, array('panel', 'change-password'));
+        $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::USER, array('process-change-password'), Acl_Assertion_User_LoginBelongsToUser::getClassName());
+        $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::ADDRESS, array('show-list', 'add', 'process-add-form'));
+        $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::ADDRESS, array('delete', 'edit', 'process-edit-form'), Acl_Assertion_Address_BelongsToUser::getClassName());
     }
     
     private function _allow($roles = null, $resources = null, $privileges = null, $assertionClassName = null)

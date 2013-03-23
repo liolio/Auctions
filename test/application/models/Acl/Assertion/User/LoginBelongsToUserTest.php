@@ -1,10 +1,10 @@
 <?php
 /**
- * @class Acl_Assertion_User_LoginExistsTest
+ * @class Acl_Assertion_User_LoginBelongsToUserTest
  */
-class Acl_Assertion_User_LoginExistsTest extends TestCase_Database
+class Acl_Assertion_User_LoginBelongsToUserTest extends TestCase_Controller
 {
-
+    
     /**
      * @var Zend_Acl
      */
@@ -23,7 +23,7 @@ class Acl_Assertion_User_LoginExistsTest extends TestCase_Database
     public function assertWithValidData($login, $result)
     {
         Fixture_Loader::create('user/2');
-        $assertion = new Acl_Assertion_User_LoginExists(array(FieldIdEnum::USER_LOGIN => $login));
+        $assertion = new Acl_Assertion_User_LoginBelongsToUser(array(FieldIdEnum::USER_LOGIN => $login));
         $this->assertEquals($result, $assertion->assert($this->_acl));
     }
     
@@ -31,10 +31,10 @@ class Acl_Assertion_User_LoginExistsTest extends TestCase_Database
     {
         return array(
             array('admin', true),
-            array('user', true),
+            array('user', false),
             array('non_existing', false),
             array('', false),
             array(null, false),
         );
-    }            
+    }     
 }

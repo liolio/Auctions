@@ -116,6 +116,7 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
      */
     public function updateLastLogin()
     {
+        $this->refresh(true);
         $this->last_login = Zend_Date::now()->toString(Time_Format::getFullDateTimeFormat());
         $this->save();
         

@@ -28,7 +28,7 @@ class Controller_Plugin_Acl extends Zend_Controller_Plugin_Abstract
         return $user->role;
     }
     
-    private function _getResource(Zend_Controller_Request_Abstract $request)
+    protected function _getResource(Zend_Controller_Request_Abstract $request)
     {
         return ucfirst($request->getModuleName()) . ':' . ucfirst($request->getControllerName());
     }

@@ -4,6 +4,7 @@
  */
 class Enum_Acl_Role extends Enum_Abstract
 {
+    
     const GUEST = 'guest';
     
     const USER = 'user';
@@ -11,4 +12,5 @@ class Enum_Acl_Role extends Enum_Abstract
     const MODERATOR = 'moderator';
     
     const ADMINISTRATOR = 'administrator';
+    
 }

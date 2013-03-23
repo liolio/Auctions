@@ -21,7 +21,6 @@ class Validate_User_PasswordMatchTest extends TestCase_Database
      */
     public function isValidWithValidValues()
     {
-        die;
         $this->assertTrue($this->_validator->isValid(
             'admin', 
             array(
@@ -39,7 +38,7 @@ class Validate_User_PasswordMatchTest extends TestCase_Database
         $this->assertFalse($this->_validator->isValid(
             $value, 
             array(
-                FieldIdEnum::USER_LOGIN =>  'admin'
+                FieldIdEnum::USER_LOGIN =>  $userName
             )
         ));
     }
