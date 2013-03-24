@@ -53,6 +53,18 @@ a:hover {
     background: #e2dede;
 }
 
+.subMenu {
+    width: 10%;
+    float: left;
+    background: #ccffff;
+}
+
+.contentWithSubMenu {
+    width: 90%;
+    float: right;
+    background: #ffffcc;
+}
+
 #footer, #push {
     background: aqua;
     height: 2em;

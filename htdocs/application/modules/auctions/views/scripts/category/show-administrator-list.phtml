@@ -1,35 +1,38 @@
-<a href="<?=$this->baseUrl();?>/category/add"><?=Helper::getTranslator()->translate('caption-add')?></a><br/>
-<?= View_Helper::getErrorMessage($this->message); ?><br/>
-<table>
-    <tr>
-        <th>
-            <?=Helper::getTranslator()->translate('label-category_name')?>
-        </th>
-        <th>
-            <?=Helper::getTranslator()->translate('label-category_description')?>
-        </th>
-        <th>
-            <?=Helper::getTranslator()->translate('caption-edit')?>
-        </th>
-        <th>
-            <?=Helper::getTranslator()->translate('caption-delete')?>
-        </th>
-    </tr>
-    <?php foreach ($this->mainCategories as $category) : ?>
-    <tr>
-        <td>
-            <?=$category->name?>
-        </th>
-        <td>
-            <?=$category->description?>
-        </td>
-        <td>
-            <a href="<?=$this->baseUrl();?>/category/edit/<?=$category->id?>">e</a>
-        </td>
-        <td>
-            <a href="<?=$this->baseUrl();?>/category/delete/<?=$category->id?>">x</a>
-        </td>
-    </tr>
-    <?php    endforeach; ?>
-    
-</table>
+<?php echo $this->render('administrator/index.phtml') ?>
+<div class="contentWithSubMenu">
+    <a href="<?=$this->baseUrl();?>/category/add"><?=Helper::getTranslator()->translate('caption-add')?></a><br/>
+    <?= View_Helper::getErrorMessage($this->message); ?><br/>
+    <table>
+        <tr>
+            <th>
+                <?=Helper::getTranslator()->translate('label-category_name')?>
+            </th>
+            <th>
+                <?=Helper::getTranslator()->translate('label-category_description')?>
+            </th>
+            <th>
+                <?=Helper::getTranslator()->translate('caption-edit')?>
+            </th>
+            <th>
+                <?=Helper::getTranslator()->translate('caption-delete')?>
+            </th>
+        </tr>
+        <?php foreach ($this->mainCategories as $category) : ?>
+        <tr>
+            <td>
+                <?=$category->name?>
+            </th>
+            <td>
+                <?=$category->description?>
+            </td>
+            <td>
+                <a href="<?=$this->baseUrl();?>/category/edit/<?=$category->id?>">e</a>
+            </td>
+            <td>
+                <a href="<?=$this->baseUrl();?>/category/delete/<?=$category->id?>">x</a>
+            </td>
+        </tr>
+        <?php    endforeach; ?>
+
+    </table>
+</div>

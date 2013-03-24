@@ -1,71 +1,74 @@
-<a href="<?=$this->baseUrl();?>/address/add"><?=Helper::getTranslator()->translate('caption-add')?></a><br/>
-<?= View_Helper::getErrorMessage($this->message); ?><br/>
-<table>
-    <tr>
-        <th>
-            <?=Helper::getTranslator()->translate('label-address_name')?>
-        </th>
-        <th>
-            <?=Helper::getTranslator()->translate('label-address_surname')?>
-        </th>
-        <th>
-            <?=Helper::getTranslator()->translate('label-address_street')?>
-        </th>
-        <th>
-            <?=Helper::getTranslator()->translate('label-address_postal_code')?>
-        </th>
-        <th>
-            <?=Helper::getTranslator()->translate('label-address_city')?>
-        </th>
-        <th>
-            <?=Helper::getTranslator()->translate('label-address_province')?>
-        </th>
-        <th>
-            <?=Helper::getTranslator()->translate('label-address_country')?>
-        </th>
-        <th>
-            <?=Helper::getTranslator()->translate('label-address_phone_number')?>
-        </th>
-        <th>
-            <?=Helper::getTranslator()->translate('caption-edit')?>
-        </th>
-        <th>
-            <?=Helper::getTranslator()->translate('caption-delete')?>
-        </th>
-    </tr>
-    <?php foreach ($this->addressList as $address) : ?>
-    <tr>
-        <td>
-            <?=$address->name?>
-        </th>
-        <td>
-            <?=$address->surname?>
-        </td>
-        <td>
-            <?=$address->street?>
-        </td>
-        <td>
-            <?=$address->postal_code?>
-        </td>
-        <td>
-            <?=$address->city?>
-        </td>
-        <td>
-            <?=$address->province?>
-        </td>
-        <td>
-            <?=$address->country?>
-        </td>
-        <td>
-            <?=$address->phone_number?>
-        </td>
-        <td>
-            <a href="<?=$this->baseUrl();?>/address/edit/<?=$address->id?>">e</a>
-        </td>
-        <td>
-            <a href="<?=$this->baseUrl();?>/address/delete/<?=$address->id?>">x</a>
-        </td>
-    </tr>
-    <?php    endforeach; ?>
-    
-</table>
+<?php echo $this->render('user/panel.phtml') ?>
+<div class="contentWithSubMenu">
+    <a href="<?=$this->baseUrl();?>/address/add"><?=Helper::getTranslator()->translate('caption-add')?></a><br/>
+    <?= View_Helper::getErrorMessage($this->message); ?><br/>
+    <table>
+        <tr>
+            <th>
+                <?=Helper::getTranslator()->translate('label-address_name')?>
+            </th>
+            <th>
+                <?=Helper::getTranslator()->translate('label-address_surname')?>
+            </th>
+            <th>
+                <?=Helper::getTranslator()->translate('label-address_street')?>
+            </th>
+            <th>
+                <?=Helper::getTranslator()->translate('label-address_postal_code')?>
+            </th>
+            <th>
+                <?=Helper::getTranslator()->translate('label-address_city')?>
+            </th>
+            <th>
+                <?=Helper::getTranslator()->translate('label-address_province')?>
+            </th>
+            <th>
+                <?=Helper::getTranslator()->translate('label-address_country')?>
+            </th>
+            <th>
+                <?=Helper::getTranslator()->translate('label-address_phone_number')?>
+            </th>
+            <th>
+                <?=Helper::getTranslator()->translate('caption-edit')?>
+            </th>
+            <th>
+                <?=Helper::getTranslator()->translate('caption-delete')?>
+            </th>
+        </tr>
+        <?php foreach ($this->addressList as $address) : ?>
+        <tr>
+            <td>
+                <?=$address->name?>
+            </th>
+            <td>
+                <?=$address->surname?>
+            </td>
+            <td>
+                <?=$address->street?>
+            </td>
+            <td>
+                <?=$address->postal_code?>
+            </td>
+            <td>
+                <?=$address->city?>
+            </td>
+            <td>
+                <?=$address->province?>
+            </td>
+            <td>
+                <?=$address->country?>
+            </td>
+            <td>
+                <?=$address->phone_number?>
+            </td>
+            <td>
+                <a href="<?=$this->baseUrl();?>/address/edit/<?=$address->id?>">e</a>
+            </td>
+            <td>
+                <a href="<?=$this->baseUrl();?>/address/delete/<?=$address->id?>">x</a>
+            </td>
+        </tr>
+        <?php    endforeach; ?>
+
+    </table>
+</div>

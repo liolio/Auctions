@@ -1,22 +1,27 @@
+<div class="subMenu">
 <?php
     $menu = new Menu();
     $menu
         ->addElement(
                 'changePassword',
-                Menu_Element::create('/user/panel/change-password', 'userPanelChangePassword', 'submenu-user_change_password')
+                Menu_Element::create('user/panel/change-password', 'userPanelChangePassword', 'submenu-user_change_password')
                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
                     ->enableFor(Enum_Acl_Role::MODERATOR)
                     ->enableFor(Enum_Acl_Role::USER)
         )
         ->addElement(
                 'addressList',
-                Menu_Element::create('/address/show-list', 'addressShowList', 'submenu-address_list')
+                Menu_Element::create('address/show-list', 'addressShowList', 'submenu-address_list')
                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
                     ->enableFor(Enum_Acl_Role::MODERATOR)
                     ->enableFor(Enum_Acl_Role::USER)
         );
 
     foreach ($menu as $menuElement)
-        echo "<a href='" . $this->baseUrl() . '/' . $menuElement->getRoute() . "'>" . $menuElement->getDescription() . "</a> <BR/>";
+    {
+        $class = $menuElement->isActive() ? "class='menuActive'" : "";
 
+        echo "<a href='" . $this->baseUrl() . '/' . $menuElement->getRoute() . "' " . $class . ">" . $menuElement->getDescription() . "</a> <BR/>";
+    }
 ?>
+</div>
