@@ -71,7 +71,7 @@ class Auctions_AddressController extends Zend_Controller_Action
         $request = $this->getRequest();
 
         if (!$request->isPost())
-            return $this->_helper->redirector('edit');
+            return $this->_helper->redirector('show-list');
         
         $form = new Auctions_Form_Address_Edit();
         if (!$form->isValid($request->getPost()))
@@ -87,14 +87,14 @@ class Auctions_AddressController extends Zend_Controller_Action
             
             if ($address !== false)
             {
-                $address->name = $request->getParam(FieldIdEnum::ADDRESS_NAME);
-                $address->surname = $request->getParam(FieldIdEnum::ADDRESS_SURNAME);
-                $address->street = $request->getParam(FieldIdEnum::ADDRESS_STREET);
-                $address->postal_code = $request->getParam(FieldIdEnum::ADDRESS_POSTAL_CODE);
-                $address->city = $request->getParam(FieldIdEnum::ADDRESS_CITY);
-                $address->country = $request->getParam(FieldIdEnum::ADDRESS_COUNTRY);
-                $address->phone_number = $request->getParam(FieldIdEnum::ADDRESS_PHONE_NUMBER);
-                $address->province = $request->getParam(FieldIdEnum::ADDRESS_PROVINCE);
+                $address->name = $form->getValue(FieldIdEnum::ADDRESS_NAME);
+                $address->surname = $form->getValue(FieldIdEnum::ADDRESS_SURNAME);
+                $address->street = $form->getValue(FieldIdEnum::ADDRESS_STREET);
+                $address->postal_code = $form->getValue(FieldIdEnum::ADDRESS_POSTAL_CODE);
+                $address->city = $form->getValue(FieldIdEnum::ADDRESS_CITY);
+                $address->country = $form->getValue(FieldIdEnum::ADDRESS_COUNTRY);
+                $address->phone_number = $form->getValue(FieldIdEnum::ADDRESS_PHONE_NUMBER);
+                $address->province = $form->getValue(FieldIdEnum::ADDRESS_PROVINCE);
                 
                 $address->save();
             }
@@ -117,9 +117,9 @@ class Auctions_AddressController extends Zend_Controller_Action
     {
         if (AddressTable::getInstance()->findBy("user_id", Auth_User::getInstance()->getUser()->id)->count() === 1) 
         {
-            $this->view->addressList = Auth_User::getInstance()->getUser()->Addresses;
+            $this->showListAction();
             $this->view->message = Helper::getTranslator()->translate("validation_message-address_cannot_remove_last_address");
-            return $this->render("showList");
+            return $this->render("show-list");
         }
         
         try {

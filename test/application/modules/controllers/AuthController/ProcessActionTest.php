@@ -72,15 +72,6 @@ class Auctions_AuthController_ProcessActionTest extends TestCase_Controller
         
         $this->assertEmpty($this->_response->getBody());
         
-        $headers = $this->_response->getHeaders();
-        $this->assertEquals(1, count($headers));
-        $this->assertEquals(
-                array(
-                    "name"      =>  "Location",
-                    "value"     =>  $this->getFrontController()->getBaseUrl() . '/',
-                    "replace"   =>  true
-                ),
-                $headers[0]
-        );
+        $this->_assertRedirection("");
     }
 }

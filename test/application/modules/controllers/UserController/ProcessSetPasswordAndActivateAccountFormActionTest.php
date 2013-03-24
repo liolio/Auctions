@@ -25,8 +25,8 @@ class Auctions_UserController_ProcessSetPasswordAndActivateAccountFormActionTest
         
         $this->dispatch('user/process-set-password-and-activate-account-form');
         $this->_assertDispatch('user', 'process-set-password-and-activate-account-form');
-        $headers = $this->getResponse()->getHeaders();
-        $this->assertEquals(Zend_Controller_Front::getInstance()->getBaseUrl() . '/', $headers[0]['value']);
+        
+        $this->_assertRedirection("");
         
         $user = UserTable::getInstance()->findOneBy('login', 'user_inactive_with_secret_code');
         $this->assertTrue(Zend_Auth::getInstance()->hasIdentity());

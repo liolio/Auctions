@@ -13,6 +13,8 @@ class Auctions_AuthController_LogoutActionTest extends TestCase_Controller
         $this->dispatch('/logout');
         $this->_assertDispatch('auth', 'logout');
         
+        $this->_assertRedirection("");
+        
         $this->assertFalse(Zend_Auth::getInstance()->hasIdentity());
     }
 }

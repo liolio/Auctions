@@ -124,6 +124,22 @@ class TestCase_Controller extends Zend_Test_PHPUnit_ControllerTestCase
         return Zend_Auth::getInstance()->hasIdentity() ? UserTable::getInstance()->findOneBy('login', 'admin') : false;
     }
     
+    protected function _assertRedirection($url)
+    {
+        $this->assertRedirect();
+        $headers = $this->getResponse()->getHeaders();
+        $this->assertEquals(
+                array(
+                    array(
+                        "name"      =>  "Location",
+                        "value"     =>  $this->getFrontController()->getBaseUrl() . '/' . $url,
+                        "replace"   =>  true
+                    )
+                ),
+                $headers
+        );
+    }
+    
     /**
      * 
      * @return TestCase_Facade

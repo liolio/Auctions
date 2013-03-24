@@ -61,6 +61,7 @@ return array(
     'validation_message-address_street_regex_not_match'             =>  "'%value%' może zawierać tylko litery, cyfry, ukośniki, kropki, spacje i pauzy",
     'validation_message-address_postal_code_regex_not_match'        =>  "'%value%' może zawierać tylko litery, cyfry, spacje i pauzy",
     'validation_message-address_phone_number_code_regex_not_match'  =>  "'%value%' może zawierać tylko cyfry, spacje, plusy i pauzy",
+    'validation_message-cannot_delete_category_has_subcategories'   =>  "Nie można usunąć kategorii, która posiada podkategorie",
     
     'configuration-undefined'    =>  'undefined',
     

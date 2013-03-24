@@ -21,4 +21,10 @@ class Auctions_Form_Category_Add extends Auctions_Form_Category_Abstract
     {
         return CategoryTable::getInstance()->getCategoriesListToList();
     }
+    
+    protected function _getSubmitButtonLabelKey()
+    {
+        return 'caption-add';
+    }
+    
 }

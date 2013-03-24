@@ -1,6 +1,7 @@
 * {
     margin: 0;
     margin-top: 0;
+    font-family: calibri;
 }    
 
 html, body { 
@@ -118,6 +119,19 @@ tr.alt td {
 .errors {  
     color: red;
 }  
+
+.errorMessage {
+    padding: 10px;
+    background: #ff3333;
+    color: white;
+    width: 500px;
+    text-align: center;
+    margin: 0px auto;
+    border: white;
+    border-style: solid;
+    border-width: 3px;
+    /*border*/
+}
   
 .zend_form p {  
     padding: 0;  

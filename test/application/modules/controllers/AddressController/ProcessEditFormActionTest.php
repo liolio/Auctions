@@ -1,8 +1,8 @@
 <?php
 /**
- * @class ProcessEditFormActionTest
+ * @class Auctions_AddressController_ProcessEditFormActionTest
  */
-class ProcessEditFormActionTest extends TestCase_Controller
+class Auctions_AddressController_ProcessEditFormActionTest extends TestCase_Controller
 {
     
     /**
@@ -26,6 +26,8 @@ class ProcessEditFormActionTest extends TestCase_Controller
         
         $this->dispatch("address/process-edit-form");
         $this->_assertDispatch('address', 'process-edit-form');
+        
+        $this->_assertRedirection("address/show-list");
         
         $addresses = AddressTable::getInstance()->findAll();
         $this->assertEquals(1, count($addresses));

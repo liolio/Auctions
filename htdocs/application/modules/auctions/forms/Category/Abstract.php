@@ -10,14 +10,12 @@ abstract class Auctions_Form_Category_Abstract extends Auctions_Form_Abstract
         $name = new Form_Element_Text(FieldIdEnum::CATEGORY_NAME);
         $name->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-category_name'))
-                ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 100)), true)
-                ->addValidator(new Zend_Validate_Alpha());
+                ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 100)));
         
         $description = new Form_Element_Textarea(FieldIdEnum::CATEGORY_DESCRIPTION);
         $description->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-category_description'))
-                ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 255)), true)
-                ->addValidator(new Zend_Validate_Alpha());
+                ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 255)));
         
         $parentCategory = new Zend_Form_Element_Select(FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID);
         $parentCategory->setRequired()
@@ -26,7 +24,7 @@ abstract class Auctions_Form_Category_Abstract extends Auctions_Form_Abstract
         
         $addButton = new Zend_Form_Element_Submit(ParamIdEnum::SUBMIT_BUTTON);
         $addButton->setIgnore(true)
-                ->setLabel($this->_getTranslator()->translate('caption-add'));
+                ->setLabel($this->_getTranslator()->translate($this->_getSubmitButtonLabelKey()));
         
         $this->addElements(array($name, $description, $parentCategory, $addButton));
         
@@ -39,5 +37,7 @@ abstract class Auctions_Form_Category_Abstract extends Auctions_Form_Abstract
     }
     
     abstract protected function _getMultiOptionsForParentCategory();
+    
+    abstract protected function _getSubmitButtonLabelKey();
     
 }

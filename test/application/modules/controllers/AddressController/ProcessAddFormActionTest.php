@@ -26,6 +26,8 @@ class Auctions_AddressController_ProcessAddFormActionTest extends TestCase_Contr
         $this->dispatch("address/process-add-form");
         $this->_assertDispatch('address', 'process-add-form');
         
+        $this->_assertRedirection("address/show-list");
+        
         $addresses = AddressTable::getInstance()->findAll();
         $this->assertEquals(2, count($addresses));
         

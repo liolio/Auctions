@@ -281,4 +281,42 @@
         <reverse></reverse>
     </categoryProcessAddForm>
     
+    <categoryEdit>
+        <route>category/edit/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>category</controller>
+            <action>edit</action>
+        </defaults>
+        <map>
+            <category_id>1</category_id>
+        </map>
+        <reverse></reverse>
+    </categoryEdit>
+    
+    <categoryProcessEditForm>
+        <route>category/process-edit-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>category</controller>
+            <action>process-edit-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </categoryProcessEditForm>
+    
+    <categoryDelete>
+        <route>category/delete/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>category</controller>
+            <action>delete</action>
+        </defaults>
+        <map>
+            <category_id>1</category_id>
+        </map>
+        <reverse></reverse>
+    </categoryDelete>
+    
 </routes>

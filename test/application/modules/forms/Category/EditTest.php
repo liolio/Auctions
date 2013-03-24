@@ -1,12 +1,12 @@
 <?php
 /**
- * @class Auctions_Form_Category_AddTest
+ * @class Auctions_Form_Category_EditTest
  */
-class Auctions_Form_Category_AddTest extends TestCase_Database
+class Auctions_Form_Category_EditTest extends TestCase_Database
 {
     
     /**
-     * @var Auctions_Form_Category_Add
+     * @var Auctions_Form_Category_Edit
      */
     private $_form;
     
@@ -14,7 +14,8 @@ class Auctions_Form_Category_AddTest extends TestCase_Database
     {
         parent::setUp();
         Fixture_Loader::create("Category/1");
-        $this->_form = new Auctions_Form_Category_Add();
+        Fixture_Loader::create("Category/2");
+        $this->_form = new Auctions_Form_Category_Edit(array(ParamIdEnum::CATEGORY_WITHOUT_CATEGORY_ID  =>  '2'));
     }
     
     /**
@@ -23,9 +24,10 @@ class Auctions_Form_Category_AddTest extends TestCase_Database
     public function isValidWithValidValues()
     {
         $this->assertTrue($this->_form->isValid(array(
+            FieldIdEnum::CATEGORY_ID                    =>  '1',
             FieldIdEnum::CATEGORY_NAME                  =>  'name',
             FieldIdEnum::CATEGORY_DESCRIPTION           =>  'description',
-            FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  '1',
+            FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  ParamIdEnum::CATEGORY_MAIN_CATEGORY_PARENT_ID,
         )));
     }
     
@@ -46,11 +48,13 @@ class Auctions_Form_Category_AddTest extends TestCase_Database
             //empty
             array(
                 array(
+                    FieldIdEnum::CATEGORY_ID                    =>  '',
                     FieldIdEnum::CATEGORY_NAME                  =>  '',
                     FieldIdEnum::CATEGORY_DESCRIPTION           =>  '',
                     FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  '',
                 ),
                 array(
+                    FieldIdEnum::CATEGORY_ID                    =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     FieldIdEnum::CATEGORY_NAME                  =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     FieldIdEnum::CATEGORY_DESCRIPTION           =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
@@ -60,11 +64,13 @@ class Auctions_Form_Category_AddTest extends TestCase_Database
             //too long
             array(
                 array(
+                    FieldIdEnum::CATEGORY_ID                    =>  '1',
                     FieldIdEnum::CATEGORY_NAME                  =>  str_repeat('a', 101),
                     FieldIdEnum::CATEGORY_DESCRIPTION           =>  str_repeat('a', 256),
                     FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  '1',
                 ),
                 array(
+                    FieldIdEnum::CATEGORY_ID                    =>  array(),
                     FieldIdEnum::CATEGORY_NAME                  =>  array(Zend_Validate_StringLength::TOO_LONG),
                     FieldIdEnum::CATEGORY_DESCRIPTION           =>  array(Zend_Validate_StringLength::TOO_LONG),
                     FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  array(),
@@ -74,11 +80,13 @@ class Auctions_Form_Category_AddTest extends TestCase_Database
             //invalid
             array(
                 array(
+                    FieldIdEnum::CATEGORY_ID                    =>  'one',
                     FieldIdEnum::CATEGORY_NAME                  =>  'qwe',
                     FieldIdEnum::CATEGORY_DESCRIPTION           =>  'qwe',
                     FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  '-1',
                 ),
                 array(
+                    FieldIdEnum::CATEGORY_ID                    =>  array(Zend_Validate_Int::NOT_INT),
                     FieldIdEnum::CATEGORY_NAME                  =>  array(),
                     FieldIdEnum::CATEGORY_DESCRIPTION           =>  array(),
                     FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  array(Zend_Validate_InArray::NOT_IN_ARRAY),

@@ -11,9 +11,6 @@ class HelperTest extends TestCase_NoDatabase
      */
     public function getTranslator()
     {
-        $this->assertEquals(
-            Helper::getTranslator()->translate('application_name'),
-            Zend_Registry::get("Zend_Translate")->translate('application_name')
-        );
+        $this->assertTrue(Helper::getTranslator() instanceof Zend_Translate);
     }
 }

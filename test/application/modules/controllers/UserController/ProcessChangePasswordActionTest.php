@@ -20,8 +20,7 @@ class Auctions_UserController_ProcessChangePasswordActionTest extends TestCase_M
         $this->dispatch('user/process-change-password');
         $this->_assertDispatch('user', 'process-change-password');
         
-        $headers = $this->getResponse()->getHeaders();
-        $this->assertEquals(Zend_Controller_Front::getInstance()->getBaseUrl() . '/user/panel', $headers[0]['value']);
+        $this->_assertRedirection("user/panel");
         
         $user = UserTable::getInstance()->findOneBy('login', 'admin');
         $this->assertTrue($user->checkPassword('new_admin'));

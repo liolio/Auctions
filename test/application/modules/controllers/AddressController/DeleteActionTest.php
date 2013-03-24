@@ -28,6 +28,8 @@ class Auctions_AddressController_DeleteActionTest extends TestCase_Controller
         $this->dispatch('/address/delete/1');
         $this->_assertDispatch('address', 'delete');
         
+        $this->_assertRedirection("address/show-list");
+        
         $this->assertEquals(1, AddressTable::getInstance()->count());
     }
 }

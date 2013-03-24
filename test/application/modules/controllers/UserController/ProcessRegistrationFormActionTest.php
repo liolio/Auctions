@@ -34,8 +34,8 @@ class Auctions_UserController_ProcessRegistrationFormActionTest extends TestCase
         
         $this->dispatch('/user/process-registration-form');
         $this->_assertDispatch('user', 'process-registration-form');
-        $headers = $this->getResponse()->getHeaders();
-        $this->assertEquals(Zend_Controller_Front::getInstance()->getBaseUrl() . '/', $headers[0]['value']);
+        
+        $this->_assertRedirection("");
         
         $now = Zend_Date::now()->toString(Time_Format::getFullDateTimeFormat());
         $user = UserTable::getInstance()->findOneBy('login', 'newuser');

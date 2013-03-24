@@ -1,5 +1,5 @@
 <a href="<?=$this->baseUrl();?>/address/add"><?=Helper::getTranslator()->translate('caption-add')?></a><br/>
-<?php echo $this->message; ?><br/>
+<?= View_Helper::getErrorMessage($this->message); ?><br/>
 <table>
     <tr>
         <th>

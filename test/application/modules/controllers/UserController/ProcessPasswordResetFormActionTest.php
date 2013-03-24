@@ -25,9 +25,7 @@ class Auctions_UserController_ProcessPasswordResetFormActionTest extends TestCas
         $this->dispatch('/user/process-password-reset-form');
         $this->_assertDispatch('user', 'process-password-reset-form');
         
-        $this->assertRedirect();
-        $headers = $this->getResponse()->getHeaders();
-        $this->assertEquals(Zend_Controller_Front::getInstance()->getBaseUrl() . '/', $headers[0]['value']);
+        $this->_assertRedirection("");
         
         $user = UserTable::getInstance()->findOneBy('email', $userEmail);
         $this->assertEquals(40, strlen($user->secret_code));

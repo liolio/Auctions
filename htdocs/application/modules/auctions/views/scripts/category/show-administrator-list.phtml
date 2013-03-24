@@ -1,5 +1,5 @@
 <a href="<?=$this->baseUrl();?>/category/add"><?=Helper::getTranslator()->translate('caption-add')?></a><br/>
-<br/>
+<?= View_Helper::getErrorMessage($this->message); ?><br/>
 <table>
     <tr>
         <th>
