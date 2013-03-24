@@ -1,2 +1,22 @@
-<a href="<?=$this->baseUrl();?>/user/panel/change-password">change password</a><br/>
-<a href="<?=$this->baseUrl();?>/address/show-list">address</a><br/>
+<?php
+    $menu = new Menu();
+    $menu
+        ->addElement(
+                'changePassword',
+                Menu_Element::create('/user/panel/change-password', 'userPanelChangePassword', 'submenu-user_change_password')
+                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+                    ->enableFor(Enum_Acl_Role::MODERATOR)
+                    ->enableFor(Enum_Acl_Role::USER)
+        )
+        ->addElement(
+                'addressList',
+                Menu_Element::create('/address/show-list', 'addressShowList', 'submenu-address_list')
+                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+                    ->enableFor(Enum_Acl_Role::MODERATOR)
+                    ->enableFor(Enum_Acl_Role::USER)
+        );
+
+    foreach ($menu as $menuElement)
+        echo "<a href='" . $this->baseUrl() . '/' . $menuElement->getRoute() . "'>" . $menuElement->getDescription() . "</a> <BR/>";
+
+?>

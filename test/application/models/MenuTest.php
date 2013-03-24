@@ -11,7 +11,8 @@ class MenuTest extends TestCase_Controller
      */
     public function validate($role, $expectedElements)
     {
-        $menu = new Menu($role);
+        Auth_User::getInstance()->getUser()->role = $role;
+        $menu = new Menu();
         $menu
             ->addElement(
                 'element1',
@@ -41,18 +42,5 @@ class MenuTest extends TestCase_Controller
             array(Enum_Acl_Role::MODERATOR, array('login', 'index')),
             array(Enum_Acl_Role::USER, array())
         );
-    }
-    
-    /**
-     * @test
-     */
-    public function createForNonExistingRole()
-    {
-        try {
-            new Menu("NON_EXISTING");
-            $this->fail("InvalidArgumentException expected, nothing has been thrown");
-        } catch (InvalidArgumentException $ex) {
-            $this->assertEquals('Role "NON_EXISTING" doesn\'t exist.', $ex->getMessage());
-        }
     }
 }

@@ -4,6 +4,7 @@
  */
 class Auctions_Form_User_SetPasswordTest extends TestCase_NoDatabase
 {
+    
     /**
      * @var Auctions_Form_User_SetPassword
      */

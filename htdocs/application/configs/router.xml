@@ -233,4 +233,52 @@
         <reverse></reverse>
     </addressEdit>
     
+    <administrator>
+        <route>administrator</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>administrator</controller>
+            <action>index</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </administrator>
+    
+    <categoryShowAdministratorList>
+        <route>category/show-administrator-list</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>category</controller>
+            <action>show-administrator-list</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </categoryShowAdministratorList>
+    
+    <categoryAdd>
+        <route>category/add</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>category</controller>
+            <action>add</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </categoryAdd>
+    
+    <categoryProcessAddForm>
+        <route>category/process-add-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>category</controller>
+            <action>process-add-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </categoryProcessAddForm>
+    
 </routes>

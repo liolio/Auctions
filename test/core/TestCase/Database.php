@@ -57,6 +57,15 @@ class TestCase_Database extends PHPUnit_Framework_TestCase
     
     /**
      * 
+     * @return Zend_Translate
+     */
+    protected function _getTranslator()
+    {
+        return Helper::getTranslator();
+    }
+    
+    /**
+     * 
      * @return TestCase_Facade
      */
     private function _getFacade()

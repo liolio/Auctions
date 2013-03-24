@@ -37,7 +37,7 @@ class Menu_Element
     public function __construct($route, $routeName, $description) {
         $this->_route = $route;
         $this->_routeName = $routeName;
-        $this->_description = $description;
+        $this->_description = Helper::getTranslator()->translate($description);
         
         $reflection = new ReflectionClass('Enum_Acl_Role');
         

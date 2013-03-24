@@ -4,6 +4,7 @@
  */
 class Auctions_Form_User_RegistrationTest extends TestCase_Database
 {
+    
     /**
      * @var Auctions_Form_User_Registration
      */

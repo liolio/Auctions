@@ -19,5 +19,11 @@ class FieldIdEnum
     const ADDRESS_PROVINCE = 'address_province';
     const ADDRESS_COUNTRY = 'address_country';
     const ADDRESS_PHONE_NUMBER = 'address_phone_number';
+    
+    const CATEGORY_ID = 'category_id';
+    const CATEGORY_NAME = 'category_name';
+    const CATEGORY_DESCRIPTION = 'category_description';
+    const CATEGORY_PARENT_CATEGORY_ID = 'category_parent_category_id';
+    
 }
 

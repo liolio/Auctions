@@ -1,0 +1,20 @@
+Category:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+      unsigned: true
+    name:
+      type: string(100)
+      notnull: true
+    description:
+      type: string(255)
+    parent_category_id:
+      type: integer(5)
+      unsigned: true
+  relations:
+    Category:
+      local: parent_category_id
+      foreignAlias: Categories
+      onDelete: RESTRICT

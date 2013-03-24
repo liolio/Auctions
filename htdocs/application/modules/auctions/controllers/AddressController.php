@@ -53,7 +53,7 @@ class Auctions_AddressController extends Zend_Controller_Action
         {
             Doctrine_Manager::connection()->rollback();
             Log_Factory::create($ex, Zend_Log::CRIT);
-            $this->view->editForm = $form;
+            $this->view->addForm = $form;
             $form->setDescription('Failure!');
             return $this->render('add');
         }

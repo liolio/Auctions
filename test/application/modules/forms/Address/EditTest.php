@@ -6,7 +6,6 @@ class Auctions_Form_Address_EditTest extends TestCase_NoDatabase
 {
     
     /**
-     *
      * @var Auctions_Form_Address_Edit
      */
     private $_form;

@@ -23,24 +23,29 @@
                     $menu
                         ->addElement(
                                 'login',
-                                Menu_Element::create('login', 'login', Helper::getTranslator()->translate('menu-log_in'))
+                                Menu_Element::create('login', 'login', 'menu-log_in')
                                     ->enableFor(Enum_Acl_Role::GUEST)
                         )
                         ->addElement(
                                 'registration',
-                                Menu_Element::create('registration', 'registrationForm', Helper::getTranslator()->translate('menu-registration'))
+                                Menu_Element::create('registration', 'registrationForm', 'menu-registration')
                                     ->enableFor(Enum_Acl_Role::GUEST)
                         )
                         ->addElement(
                                 'userPanel',
-                                Menu_Element::create('user/panel', 'userPanel', Helper::getTranslator()->translate('menu-user_panel'))
+                                Menu_Element::create('user/panel', 'userPanel', 'menu-user_panel')
                                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
                                     ->enableFor(Enum_Acl_Role::MODERATOR)
                                     ->enableFor(Enum_Acl_Role::USER)
                         )
                         ->addElement(
+                                'administrator',
+                                Menu_Element::create('administrator', 'administrator', 'menu-administrator')
+                                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+                        )
+                        ->addElement(
                                 'logout',
-                                Menu_Element::create('auth/logout', 'logout', Helper::getTranslator()->translate('menu-log_out'))
+                                Menu_Element::create('auth/logout', 'logout', 'menu-log_out')
                                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
                                     ->enableFor(Enum_Acl_Role::MODERATOR)
                                     ->enableFor(Enum_Acl_Role::USER)

@@ -17,12 +17,11 @@ class Menu implements Iterator
      */
     private $_role;
     
-    public function __construct($role)
+    public function __construct()
     {
-        if (!Enum_Acl_Role::hasEnum($role))
-            throw new InvalidArgumentException('Role "' . $role . '" doesn\'t exist.');
-        
-        $this->_role = $role;
+        $this->_role = is_null(Auth_User::getInstance()->getUser()) ? 
+                Enum_Acl_Role::GUEST :
+                Auth_User::getInstance()->getUser()->role;
     }
     
     /**

@@ -61,6 +61,12 @@ class AclTest extends TestCase_Controller
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::ADDRESS, 'delete', array(FieldIdEnum::ADDRESS_ID => '1')),
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::ADDRESS, 'edit', array(FieldIdEnum::ADDRESS_ID => '1')),
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::ADDRESS, 'process-edit-form', array(FieldIdEnum::ADDRESS_ID => '1')),
+            
+            // ADMINISTRATOR
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::ADMINISTRATOR, 'index', array()),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CATEGORY, 'show-administrator-list', array()),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CATEGORY, 'add', array()),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CATEGORY, 'process-add-form', array()),
         );
     }
     

@@ -16,4 +16,7 @@ class ParamIdEnum
     const RECAPTCHA = 'recaptcha';
     
     const USER_FULLNAME = 'user_fullname';
+    
+    const CATEGORY_MAIN_CATEGORY_PARENT_ID = '0';
+    
 }
