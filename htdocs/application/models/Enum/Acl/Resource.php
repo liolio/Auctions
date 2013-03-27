@@ -15,6 +15,8 @@ class Enum_Acl_Resource extends Enum_Abstract
     
     const CATEGORY = "Auctions:Category";
     
+    const CURRENCY = "Auctions:Currency";
+    
     const ERROR = "Auctions:Error";
     
     const INDEX = "Auctions:Index";

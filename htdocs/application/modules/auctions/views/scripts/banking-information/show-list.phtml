@@ -25,22 +25,22 @@
                 <?=$bankingInformation->account_number?>
             </td>
             <td>
-                <?=$bankingInformation->currency?>
+                <?=$bankingInformation->Currency->name?>
             </td>
             <td class="textCenter">
-                <a href="<?=$this->baseUrl();?>/banking-information/edit/<?=$address->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
-                <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/address/delete/<?=$address->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+                <a href="<?=$this->baseUrl();?>/banking-information/edit/<?=$bankingInformation->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/address/delete/<?=$bankingInformation->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
             </td>
         </tr>
         <?php    endforeach; ?>
     </table>
     <br/>
-    <a class="addButton" href="<?=$this->baseUrl();?>/address/add"></a><br/>
+    <a class="addButton" href="<?=$this->baseUrl();?>/banking-information/add"></a><br/>
 </div>
 
-<div id="dialog-box" title="<?= $this->translate('title-delete_address');?>">
+<div id="dialog-box" title="<?= $this->translate('title-delete_banking_information');?>">
   <p>
       <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
-      <?= $this->translate('message-delete_address_confirmation'); ?>
+      <?= $this->translate('message-delete_banking_information_confirmation'); ?>
   </p>
 </div>

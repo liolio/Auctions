@@ -1,0 +1,33 @@
+<?php echo $this->render('administrator/index.phtml') ?>
+<div class="contentWithSubMenu">
+    <?= View_Helper::getErrorMessage($this->message); ?>
+    <table>
+        <tr>
+            <th>
+                <?=$this->translate('label-currency_name')?>
+            </th>
+            <th>
+            </th>
+        </tr>
+        <?php foreach ($this->list as $currency) : ?>
+        <tr>
+            <td>
+                <?=$currency->name?>
+            </th>
+            <td class="textCenter">
+                <a href="<?=$this->baseUrl();?>/currency/edit/<?=$currency->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/currency/delete/<?=$currency->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+            </td>
+        </tr>
+        <?php    endforeach; ?>
+    </table>
+    <br/>
+    <a class="addButton" href="<?=$this->baseUrl();?>/currency/add"></a><br/>
+</div>
+
+<div id="dialog-box" title="<?= $this->translate('title-delete_currency');?>">
+  <p>
+      <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+      <?= $this->translate('message-delete_currency_confirmation'); ?>
+  </p>
+</div>

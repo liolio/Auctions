@@ -8,9 +8,10 @@
  * @property integer $id
  * @property string $bank_name
  * @property string $account_number
- * @property string $currency
+ * @property integer $currency_id
  * @property integer $user_id
  * @property User $User
+ * @property Currency $Currency
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -39,10 +40,11 @@ abstract class BaseBankingInformation extends Doctrine_Record
              'notnull' => true,
              'length' => '100',
              ));
-        $this->hasColumn('currency', 'string', 100, array(
-             'type' => 'string',
+        $this->hasColumn('currency_id', 'integer', 5, array(
+             'type' => 'integer',
+             'unsigned' => true,
              'notnull' => true,
-             'length' => '100',
+             'length' => '5',
              ));
         $this->hasColumn('user_id', 'integer', 5, array(
              'type' => 'integer',
@@ -59,5 +61,10 @@ abstract class BaseBankingInformation extends Doctrine_Record
              'local' => 'user_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasOne('Currency', array(
+             'local' => 'currency_id',
+             'foreign' => 'id',
+             'onDelete' => 'RESTRICT'));
     }
 }

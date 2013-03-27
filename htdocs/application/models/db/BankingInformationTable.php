@@ -16,4 +16,28 @@ class BankingInformationTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('BankingInformation');
     }
+
+    /**
+     * 
+     * @param String $accountNumber
+     * @param String $bankName
+     * @param String $currencyId
+     * @param User $user
+     * @param String $bankingInformationId [optional] Default set to null.
+     * @return Boolean
+     */
+    public function isBankingInformationUnique($accountNumber, $bankName, $currencyId, User $user, $bankingInformationId = null)
+    {
+        $query = BankingInformationTable::getInstance()
+                ->createQuery()
+                ->where('account_number = ?', $accountNumber)
+                ->addWhere('bank_name = ?', $bankName)
+                ->addWhere('user_id = ?', $user->id)
+                ->addWhere('currency_id = ?', $currencyId);
+        
+        if (!is_null($bankingInformationId))
+            $query->addWhere ('id != ?', $bankingInformationId);
+        
+        return $query->count() === 0;
+    }
 }

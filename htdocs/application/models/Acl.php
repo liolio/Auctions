@@ -39,6 +39,7 @@ class Acl extends Zend_Acl
         $this->addResource(Enum_Acl_Resource::AUTH);
         $this->addResource(Enum_Acl_Resource::BANKING_INFORMATION);
         $this->addResource(Enum_Acl_Resource::CATEGORY);
+        $this->addResource(Enum_Acl_Resource::CURRENCY);
         $this->addResource(Enum_Acl_Resource::ERROR);
         $this->addResource(Enum_Acl_Resource::INDEX);
         $this->addResource(Enum_Acl_Resource::USER);
@@ -60,11 +61,12 @@ class Acl extends Zend_Acl
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::USER, array('process-change-password'), Acl_Assertion_User_LoginBelongsToUser::getClassName());
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::ADDRESS, array('show-list', 'add', 'process-add-form'));
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::ADDRESS, array('delete', 'edit', 'process-edit-form'), Acl_Assertion_Address_BelongsToUser::getClassName());
-        $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::BANKING_INFORMATION, array('show-list'));
+        $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::BANKING_INFORMATION, array('show-list', 'add', 'process-add-form'));
         
         //ADMINISTRATOR
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::ADMINISTRATOR, array('index'));
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::CATEGORY, array('show-administrator-list', 'add', 'process-add-form', 'edit', 'process-edit-form', 'delete'));
+        $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::CURRENCY, array('show-administrator-list', 'add', 'process-add-form', 'edit', 'process-edit-form', 'delete'));
     }
     
     private function _allow($roles = null, $resources = null, $privileges = null, $assertionClassName = null)

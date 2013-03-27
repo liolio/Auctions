@@ -25,5 +25,13 @@ class FieldIdEnum extends Enum_Abstract
     const CATEGORY_DESCRIPTION = 'category_description';
     const CATEGORY_PARENT_CATEGORY_ID = 'category_parent_category_id';
     
+    const CURRENCY_ID = 'currency_id';
+    const CURRENCY_NAME = 'currency_name';
+    
+    const BANKING_INFORMATION_ID = 'banking_information_id';
+    const BANKING_INFORMATION_BANK_NAME = 'banking_information_bank_name';
+    const BANKING_INFORMATION_ACCOUNT_NUMBER = 'banking_information_account_number';
+    const BANKING_INFORMATION_CURRENCY_ID = 'banking_information_currency_id';
+    
 }
 

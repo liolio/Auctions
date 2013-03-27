@@ -18,15 +18,6 @@ class AclTest extends TestCase_Controller
     
     /**
      * @test
-     */
-    public function allResourcesTested()
-    {
-        $acl = new Acl();
-        $this->assertEquals(7, count($acl->getResources()));
-    }
-    
-    /**
-     * @test
      * @dataProvider dataProvider
      */
     public function isAllowedTest(array $roles, $resource, $action, array $requestParams)
@@ -70,6 +61,9 @@ class AclTest extends TestCase_Controller
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::ADDRESS, 'delete', array(FieldIdEnum::ADDRESS_ID => '1')),
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::ADDRESS, 'edit', array(FieldIdEnum::ADDRESS_ID => '1')),
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::ADDRESS, 'process-edit-form', array(FieldIdEnum::ADDRESS_ID => '1')),
+            array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::BANKING_INFORMATION, 'show-list', array()),
+            array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::BANKING_INFORMATION, 'add', array()),
+            array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::BANKING_INFORMATION, 'process-add-form', array()),
             
             // ADMINISTRATOR
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::ADMINISTRATOR, 'index', array()),
@@ -79,6 +73,12 @@ class AclTest extends TestCase_Controller
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CATEGORY, 'edit', array()),
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CATEGORY, 'process-edit-form', array()),
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CATEGORY, 'delete', array()),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CURRENCY, 'show-administrator-list', array()),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CURRENCY, 'add', array()),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CURRENCY, 'process-add-form', array()),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CURRENCY, 'edit', array()),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CURRENCY, 'process-edit-form', array()),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CURRENCY, 'delete', array()),
         );
     }
     

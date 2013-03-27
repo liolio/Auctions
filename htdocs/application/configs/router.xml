@@ -319,6 +319,80 @@
         <reverse></reverse>
     </categoryDelete>
     
+    <currencyShowAdministratorList>
+        <route>currency/show-administrator-list</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>currency</controller>
+            <action>show-administrator-list</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </currencyShowAdministratorList>
+    
+    <currencyAdd>
+        <route>currency/add</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>currency</controller>
+            <action>add</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </currencyAdd>
+    
+    <currencyProcessAddForm>
+        <route>currency/process-add-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>currency</controller>
+            <action>process-add-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </currencyProcessAddForm>
+    
+    <currencyEdit>
+        <route>currency/edit/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>currency</controller>
+            <action>edit</action>
+        </defaults>
+        <map>
+            <currency_id>1</currency_id>
+        </map>
+        <reverse></reverse>
+    </currencyEdit>
+    
+    <currencyProcessEditForm>
+        <route>currency/process-edit-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>currency</controller>
+            <action>process-edit-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </currencyProcessEditForm>
+    
+    <currencyDelete>
+        <route>currency/delete/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>currency</controller>
+            <action>delete</action>
+        </defaults>
+        <map>
+            <currency_id>1</currency_id>
+        </map>
+        <reverse></reverse>
+    </currencyDelete>
+    
     <bankingInformationShowList>
         <route>banking-information/show-list</route>
         <defaults>
@@ -330,5 +404,29 @@
         </map>
         <reverse></reverse>
     </bankingInformationShowList>
+    
+    <bankingInformationAdd>
+        <route>banking-information/add</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>banking-information</controller>
+            <action>add</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </bankingInformationAdd>
+    
+    <bankingInformationProcessAddForm>
+        <route>banking-information/process-add-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>banking-information</controller>
+            <action>process-add-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </bankingInformationProcessAddForm>
     
 </routes>
