@@ -62,6 +62,7 @@ class Acl extends Zend_Acl
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::ADDRESS, array('show-list', 'add', 'process-add-form'));
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::ADDRESS, array('delete', 'edit', 'process-edit-form'), Acl_Assertion_Address_BelongsToUser::getClassName());
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::BANKING_INFORMATION, array('show-list', 'add', 'process-add-form'));
+        $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::BANKING_INFORMATION, array('delete', 'edit', 'process-edit-form'), Acl_Assertion_BankingInformation_BelongsToUser::getClassName());
         
         //ADMINISTRATOR
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::ADMINISTRATOR, array('index'));

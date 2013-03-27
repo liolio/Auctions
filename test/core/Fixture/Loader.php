@@ -14,4 +14,10 @@ class Fixture_Loader
         
         Doctrine_Manager::getInstance()->getCurrentConnection()->exec(file_get_contents(FIXTURE_PATH . DIRECTORY_SEPARATOR . $path . '.sql'));
     }
+    
+    public static function createAll(array $paths)
+    {
+        foreach ($paths as $path)
+            self::create($path);
+    }
 }

@@ -29,7 +29,7 @@
             </td>
             <td class="textCenter">
                 <a href="<?=$this->baseUrl();?>/banking-information/edit/<?=$bankingInformation->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
-                <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/address/delete/<?=$bankingInformation->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+                <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/banking-information/delete/<?=$bankingInformation->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
             </td>
         </tr>
         <?php    endforeach; ?>

@@ -58,4 +58,30 @@ class Auctions_BankingInformationController extends Controller_Abstract
         $this->_helper->redirector('show-list', 'banking-information');
     }
     
+    public function editAction()
+    {
+        
+    }
+    
+    public function processEditFormAction()
+    {
+        
+    }
+    
+    public function deleteAction()
+    {
+        try {
+            Doctrine_Manager::connection()->beginTransaction();
+            BankingInformationTable::getInstance()->findOneBy('id', $this->getRequest()->getParam(FieldIdEnum::BANKING_INFORMATION_ID))->delete();
+            Doctrine_Manager::connection()->commit();
+        }
+        catch (Exception $ex)
+        {
+            Doctrine_Manager::connection()->rollback();
+            Log_Factory::create($ex, Zend_Log::CRIT);
+        }
+        
+        $this->_helper->redirector('show-list', 'banking-information');
+    }
+    
 }

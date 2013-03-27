@@ -21,13 +21,15 @@ return array(
     'menu-administrator'        =>  'Panel administratora',
     'menu-log_out'              =>  'Wyloguj',
     
-    'title-delete_category'     =>  'Usuń kategorię',
-    'title-delete_currency'     =>  'Usuń walutę',
-    'title-delete_address'      =>  'Usuń adres',
+    'title-delete_category'             =>  'Usuń kategorię',
+    'title-delete_currency'             =>  'Usuń walutę',
+    'title-delete_address'              =>  'Usuń adres',
+    'title-delete_banking_information'  =>  'Usuń informacje o koncie bankowym',
     
-    'message-delete_category_confirmation'  =>  'Czy na pewno chcesz usunąć tę kategorię?',
-    'message-delete_currency_confirmation'  =>  'Czy na pewno chcesz usunąć tę walutę?',
-    'message-delete_address_confirmation'   =>  'Czy na pewno chcesz usunąć ten adres?',
+    'message-delete_category_confirmation'              =>  'Czy na pewno chcesz usunąć tę kategorię?',
+    'message-delete_currency_confirmation'              =>  'Czy na pewno chcesz usunąć tę walutę?',
+    'message-delete_address_confirmation'               =>  'Czy na pewno chcesz usunąć ten adres?',
+    'message-delete_banking_information_confirmation'   =>  'Czy na pewno chcesz usunąć informację o tym koncie bankowym?',
     
     'submenu-categories_list'           =>  'List kategorii',
     'submenu-currencies_list'           =>  'List walut',

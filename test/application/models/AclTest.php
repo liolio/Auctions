@@ -20,8 +20,10 @@ class AclTest extends TestCase_Controller
      * @test
      * @dataProvider dataProvider
      */
-    public function isAllowedTest(array $roles, $resource, $action, array $requestParams = array())
+    public function isAllowedTest(array $roles, $resource, $action, array $requestParams = array(), array $fixtures = array())
     {
+        Fixture_Loader::createAll($fixtures);
+        
         foreach ($roles as $role => $expectedResult)
             $this->assertEquals(
                 $expectedResult, 
@@ -34,8 +36,10 @@ class AclTest extends TestCase_Controller
      * @test
      * @dataProvider dataProvider
      */
-    public function isAllowedWithoutParams(array $roles, $resource, $action, array $requestParams = array())
+    public function isAllowedWithoutParams(array $roles, $resource, $action, array $requestParams = array(), array $fixtures = array())
     {
+        Fixture_Loader::createAll($fixtures);
+        
         if (count($requestParams) > 0)
         {
             foreach (array_keys($roles) as $role)
@@ -89,6 +93,7 @@ class AclTest extends TestCase_Controller
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::BANKING_INFORMATION, 'show-list'),
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::BANKING_INFORMATION, 'add'),
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::BANKING_INFORMATION, 'process-add-form'),
+            array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::BANKING_INFORMATION, 'delete', array(FieldIdEnum::BANKING_INFORMATION_ID => '1'), array('Currency/1', 'BankingInformation/1_currency_1_user_1')),
             
             // ADMINISTRATOR
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::ADMINISTRATOR, 'index'),

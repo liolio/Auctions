@@ -20,6 +20,21 @@ class Fixture_LoaderTest extends TestCase_Database
     /**
      * @test
      */
+    public function createAll()
+    {
+        Fixture_Loader::createAll(array("User/2", "User/3_inactive"));
+        $this->assertTrue(UserTable::getInstance()->findAll()->count() > 1);
+        
+        $user = UserTable::getInstance()->findOneBy('login', 'user');
+        $this->assertTrue($user->exists());
+        
+        $user = UserTable::getInstance()->findOneBy('login', 'user_inactive');
+        $this->assertTrue($user->exists());
+    }
+    
+    /**
+     * @test
+     */
     public function createWithInvalidPathname()
     {
         try {
