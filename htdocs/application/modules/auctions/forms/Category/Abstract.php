@@ -22,11 +22,7 @@ abstract class Auctions_Form_Category_Abstract extends Auctions_Form_Abstract
                 ->setLabel($this->_getTranslator()->translate('label-category_parent_category_id'))
                 ->setMultiOptions($this->_getMultiOptionsForParentCategory());
         
-        $addButton = new Zend_Form_Element_Submit(ParamIdEnum::SUBMIT_BUTTON);
-        $addButton->setIgnore(true)
-                ->setLabel($this->_getTranslator()->translate($this->_getSubmitButtonLabelKey()));
-        
-        $this->addElements(array($name, $description, $parentCategory, $addButton));
+        $this->addElements(array($name, $description, $parentCategory, $this->_getSubmitButton()));
         
         $this->setDecorators(array(
             'FormElements',
@@ -38,6 +34,6 @@ abstract class Auctions_Form_Category_Abstract extends Auctions_Form_Abstract
     
     abstract protected function _getMultiOptionsForParentCategory();
     
-    abstract protected function _getSubmitButtonLabelKey();
+    abstract protected function _getSubmitButton();
     
 }

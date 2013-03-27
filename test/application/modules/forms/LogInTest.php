@@ -49,9 +49,9 @@ class Auctions_Form_LogInTest extends TestCase_NoDatabase
                 '',
                 '',
                 array(
-                    FieldIdEnum::USER_LOGIN     =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
-                    FieldIdEnum::USER_PASSWORD  =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
-                    ParamIdEnum::SUBMIT_BUTTON  =>  array()
+                    FieldIdEnum::USER_LOGIN         =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
+                    FieldIdEnum::USER_PASSWORD      =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
+                    ParamIdEnum::FORM_LOG_IN_BUTTON =>  array()
                 )
             ),
             //too long
@@ -59,9 +59,9 @@ class Auctions_Form_LogInTest extends TestCase_NoDatabase
                 str_repeat('a', 41),
                 str_repeat('a', 41),
                 array(
-                    FieldIdEnum::USER_LOGIN     =>  array(Zend_Validate_StringLength::TOO_LONG),
-                    FieldIdEnum::USER_PASSWORD  =>  array(Zend_Validate_StringLength::TOO_LONG),
-                    ParamIdEnum::SUBMIT_BUTTON  =>  array()
+                    FieldIdEnum::USER_LOGIN         =>  array(Zend_Validate_StringLength::TOO_LONG),
+                    FieldIdEnum::USER_PASSWORD      =>  array(Zend_Validate_StringLength::TOO_LONG),
+                    ParamIdEnum::FORM_LOG_IN_BUTTON =>  array()
                 )
             ),
             //invalid characters
@@ -69,9 +69,9 @@ class Auctions_Form_LogInTest extends TestCase_NoDatabase
                 'inv!@$%^&*(alid',
                 'password',
                 array(
-                    FieldIdEnum::USER_LOGIN     =>  array(Zend_Validate_Alnum::NOT_ALNUM),
-                    FieldIdEnum::USER_PASSWORD  =>  array(),
-                    ParamIdEnum::SUBMIT_BUTTON  =>  array()
+                    FieldIdEnum::USER_LOGIN         =>  array(Zend_Validate_Alnum::NOT_ALNUM),
+                    FieldIdEnum::USER_PASSWORD      =>  array(),
+                    ParamIdEnum::FORM_LOG_IN_BUTTON =>  array()
                 )
             ),
         );

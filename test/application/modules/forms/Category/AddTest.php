@@ -54,7 +54,7 @@ class Auctions_Form_Category_AddTest extends TestCase_Database
                     FieldIdEnum::CATEGORY_NAME                  =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     FieldIdEnum::CATEGORY_DESCRIPTION           =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
-                    ParamIdEnum::SUBMIT_BUTTON                  =>  array()
+                    ParamIdEnum::FORM_ADD_BUTTON                =>  array()
                 )
             ),
             //too long
@@ -68,7 +68,7 @@ class Auctions_Form_Category_AddTest extends TestCase_Database
                     FieldIdEnum::CATEGORY_NAME                  =>  array(Zend_Validate_StringLength::TOO_LONG),
                     FieldIdEnum::CATEGORY_DESCRIPTION           =>  array(Zend_Validate_StringLength::TOO_LONG),
                     FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  array(),
-                    ParamIdEnum::SUBMIT_BUTTON                  =>  array()
+                    ParamIdEnum::FORM_ADD_BUTTON                =>  array()
                 )
             ),
             //invalid
@@ -82,7 +82,7 @@ class Auctions_Form_Category_AddTest extends TestCase_Database
                     FieldIdEnum::CATEGORY_NAME                  =>  array(),
                     FieldIdEnum::CATEGORY_DESCRIPTION           =>  array(),
                     FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  array(Zend_Validate_InArray::NOT_IN_ARRAY),
-                    ParamIdEnum::SUBMIT_BUTTON                  =>  array()
+                    ParamIdEnum::FORM_ADD_BUTTON                =>  array()
                 )
             )
         );

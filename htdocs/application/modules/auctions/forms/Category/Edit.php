@@ -39,8 +39,12 @@ class Auctions_Form_Category_Edit extends Auctions_Form_Category_Abstract
         return CategoryTable::getInstance()->getCategoriesListToList($this->_withoutCategoryId);
     }
 
-    protected function _getSubmitButtonLabelKey()
+    protected function _getSubmitButton()
     {
-        return 'caption-edit';
+        $addButton = new Zend_Form_Element_Submit(ParamIdEnum::FORM_EDIT_BUTTON);
+        $addButton->setIgnore(true);
+        
+        return $addButton;
     }
+    
 }

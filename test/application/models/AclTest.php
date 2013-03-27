@@ -18,6 +18,15 @@ class AclTest extends TestCase_Controller
     
     /**
      * @test
+     */
+    public function allResourcesTested()
+    {
+        $acl = new Acl();
+        $this->assertEquals(7, count($acl->getResources()));
+    }
+    
+    /**
+     * @test
      * @dataProvider dataProvider
      */
     public function isAllowedTest(array $roles, $resource, $action, array $requestParams)

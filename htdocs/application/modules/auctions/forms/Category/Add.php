@@ -22,9 +22,12 @@ class Auctions_Form_Category_Add extends Auctions_Form_Category_Abstract
         return CategoryTable::getInstance()->getCategoriesListToList();
     }
     
-    protected function _getSubmitButtonLabelKey()
+    protected function _getSubmitButton()
     {
-        return 'caption-add';
+        $addButton = new Zend_Form_Element_Submit(ParamIdEnum::FORM_ADD_BUTTON);
+        $addButton->setIgnore(true);
+        
+        return $addButton;
     }
     
 }

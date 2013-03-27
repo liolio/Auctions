@@ -22,9 +22,8 @@ class Auctions_Form_Address_Add extends Auctions_Form_Abstract
         $formElements = new Form_Elements_Address();
         $this->addElements($formElements->getElements());
         
-        $addButton = new Zend_Form_Element_Submit(ParamIdEnum::SUBMIT_BUTTON);
-        $addButton->setIgnore(true)
-                ->setLabel($this->_getTranslator()->translate('caption-add'));
+        $addButton = new Zend_Form_Element_Submit(ParamIdEnum::FORM_ADD_BUTTON);
+        $addButton->setIgnore(true);
         
         $this->addElement($addButton);
         

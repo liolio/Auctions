@@ -27,9 +27,8 @@ class Auctions_Form_User_PasswordReset extends Auctions_Form_Abstract
                 ->addValidator(new Validate_User_EmailExists());
         
         
-        $sendRequestButton = new Zend_Form_Element_Submit(ParamIdEnum::SUBMIT_BUTTON);
-        $sendRequestButton->setIgnore(true)
-                ->setLabel($this->_getTranslator()->translate('button-send'));
+        $sendRequestButton = new Zend_Form_Element_Submit(ParamIdEnum::FORM_NEXT_BUTTON);
+        $sendRequestButton->setIgnore(true);
         
         $this->addElements(array($email, $sendRequestButton));
         

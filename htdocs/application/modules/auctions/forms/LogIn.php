@@ -32,9 +32,8 @@ class Auctions_Form_LogIn extends Auctions_Form_Abstract
                 ->addFilter(new Zend_Filter_StripTags())
                 ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 40)));
         
-        $loginButton = new Zend_Form_Element_Submit(ParamIdEnum::SUBMIT_BUTTON);
-        $loginButton->setIgnore(true)
-                ->setLabel($this->_getTranslator()->translate('button-log_in'));
+        $loginButton = new Zend_Form_Element_Submit(ParamIdEnum::FORM_LOG_IN_BUTTON);
+        $loginButton->setIgnore(true);
         
         $this->addElements(array($userLogin, $userPassword, $loginButton));
         

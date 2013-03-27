@@ -1,38 +1,33 @@
 <?php echo $this->render('user/panel.phtml') ?>
 <div class="contentWithSubMenu">
-    <a href="<?=$this->baseUrl();?>/address/add"><?=Helper::getTranslator()->translate('caption-add')?></a><br/>
-    <?= View_Helper::getErrorMessage($this->message); ?><br/>
+    <?= View_Helper::getErrorMessage($this->message); ?>
     <table>
         <tr>
             <th>
-                <?=Helper::getTranslator()->translate('label-address_name')?>
+                <?=$this->translate('label-address_name')?>
             </th>
             <th>
-                <?=Helper::getTranslator()->translate('label-address_surname')?>
+                <?=$this->translate('label-address_surname')?>
             </th>
             <th>
-                <?=Helper::getTranslator()->translate('label-address_street')?>
+                <?=$this->translate('label-address_street')?>
             </th>
             <th>
-                <?=Helper::getTranslator()->translate('label-address_postal_code')?>
+                <?=$this->translate('label-address_postal_code')?>
             </th>
             <th>
-                <?=Helper::getTranslator()->translate('label-address_city')?>
+                <?=$this->translate('label-address_city')?>
             </th>
             <th>
-                <?=Helper::getTranslator()->translate('label-address_province')?>
+                <?=$this->translate('label-address_province')?>
             </th>
             <th>
-                <?=Helper::getTranslator()->translate('label-address_country')?>
+                <?=$this->translate('label-address_country')?>
             </th>
             <th>
-                <?=Helper::getTranslator()->translate('label-address_phone_number')?>
+                <?=$this->translate('label-address_phone_number')?>
             </th>
             <th>
-                <?=Helper::getTranslator()->translate('caption-edit')?>
-            </th>
-            <th>
-                <?=Helper::getTranslator()->translate('caption-delete')?>
             </th>
         </tr>
         <?php foreach ($this->addressList as $address) : ?>
@@ -61,14 +56,20 @@
             <td>
                 <?=$address->phone_number?>
             </td>
-            <td>
-                <a href="<?=$this->baseUrl();?>/address/edit/<?=$address->id?>">e</a>
-            </td>
-            <td>
-                <a href="<?=$this->baseUrl();?>/address/delete/<?=$address->id?>">x</a>
+            <td class="textCenter">
+                <a href="<?=$this->baseUrl();?>/address/edit/<?=$address->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/address/delete/<?=$address->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
             </td>
         </tr>
         <?php    endforeach; ?>
-
     </table>
+    <br/>
+    <a class="addButton" href="<?=$this->baseUrl();?>/address/add"></a><br/>
+</div>
+
+<div id="dialog-box" title="<?= $this->translate('title-delete_address');?>">
+  <p>
+      <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+      <?= $this->translate('message-delete_address_confirmation'); ?>
+  </p>
 </div>

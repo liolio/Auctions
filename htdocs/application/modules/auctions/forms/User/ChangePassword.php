@@ -47,9 +47,8 @@ class Auctions_Form_User_ChangePassword extends Auctions_Form_Abstract
                 ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 40)), true)
                 ->addValidator(new Validate_User_PasswordRepeatMatch());
         
-        $changeButton = new Zend_Form_Element_Submit(ParamIdEnum::SUBMIT_BUTTON);
-        $changeButton->setIgnore(true)
-                ->setLabel($this->_getTranslator()->translate('button-change_password'));
+        $changeButton = new Zend_Form_Element_Submit(ParamIdEnum::FORM_SAVE_BUTTON);
+        $changeButton->setIgnore(true);
         
         $this->addElements(array($login, $oldPassword, $password, $passwordRepeat, $changeButton));
         
