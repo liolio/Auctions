@@ -2,10 +2,22 @@
 /**
  * @class ParamIdEnum
  */
-class ParamIdEnum
+class ParamIdEnum extends Enum_Abstract
 {
     
     const SUBMIT_BUTTON = 'submit_button';
+    
+    const FORM_ADD_BUTTON = 'form_add_button';
+    
+    const FORM_EDIT_BUTTON = 'form_edit_button';
+    
+    const FORM_NEXT_BUTTON = 'form_next_button';
+    
+    const FORM_SAVE_BUTTON = 'form_save_button';
+    
+    const FORM_LOG_IN_BUTTON = 'form_log_in_button';
+    
+    const FORM_PASSWORD_FORGOTTEN_BUTTON = 'form_password_forgotten_button';
     
     const LINK = 'link';
     

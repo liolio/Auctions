@@ -59,7 +59,7 @@ class Auctions_Form_User_ChangePasswordTest extends TestCase_Database
                     ParamIdEnum::OLD_PASSWORD       =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     FieldIdEnum::USER_PASSWORD      =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     ParamIdEnum::PASSWORD_REPEAT    =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
-                    ParamIdEnum::SUBMIT_BUTTON      =>  array()
+                    ParamIdEnum::FORM_SAVE_BUTTON   =>  array()
                 )
             ),
             //too long
@@ -73,7 +73,7 @@ class Auctions_Form_User_ChangePasswordTest extends TestCase_Database
                     ParamIdEnum::OLD_PASSWORD       =>  array(Zend_Validate_StringLength::TOO_LONG),
                     FieldIdEnum::USER_PASSWORD      =>  array(Zend_Validate_StringLength::TOO_LONG),
                     ParamIdEnum::PASSWORD_REPEAT    =>  array(Zend_Validate_StringLength::TOO_LONG),
-                    ParamIdEnum::SUBMIT_BUTTON      =>  array()
+                    ParamIdEnum::FORM_SAVE_BUTTON   =>  array()
                 )
             ),
             //password repeat not match
@@ -87,7 +87,7 @@ class Auctions_Form_User_ChangePasswordTest extends TestCase_Database
                     ParamIdEnum::OLD_PASSWORD       =>  array(),
                     FieldIdEnum::USER_PASSWORD      =>  array(),
                     ParamIdEnum::PASSWORD_REPEAT    =>  array(Validate_User_PasswordRepeatMatch::PASSWORD_NOT_MATCH),
-                    ParamIdEnum::SUBMIT_BUTTON      =>  array()
+                    ParamIdEnum::FORM_SAVE_BUTTON   =>  array()
                 )
             ),
             //old password not match
@@ -101,7 +101,7 @@ class Auctions_Form_User_ChangePasswordTest extends TestCase_Database
                     ParamIdEnum::OLD_PASSWORD       =>  array(Validate_User_PasswordMatch::PASSWORD_NOT_MATCH),
                     FieldIdEnum::USER_PASSWORD      =>  array(),
                     ParamIdEnum::PASSWORD_REPEAT    =>  array(),
-                    ParamIdEnum::SUBMIT_BUTTON      =>  array()
+                    ParamIdEnum::FORM_SAVE_BUTTON   =>  array()
                 )
             ),
         );

@@ -17,8 +17,12 @@ a:hover {
     text-decoration: underline;
 }
 
+div {
+    /*border: 1px solid black;*/
+}
+
 #page {
-    background: #cfc7fd;
+    /*background: #cfc7fd;*/
     width: 1280px;
     margin: 0 auto;
     min-height: 100%;
@@ -28,45 +32,53 @@ a:hover {
 }
 
 #banner {
-    background: #fdd8c7;
+    /*background: #fdd8c7;*/
     text-align: center;
+    height: 70px;
+    padding-top: 20px;
 }
 
 #menuBar {
-    background: #dcfdc7;
+    /*background: #dcfdc7;*/
 }
 
 #menuBarLeft {
+    background-color:#ff7777;
     width: 90%;
-    background: #dcfdc7;
+    /*background: #dcfdc7;*/
     float: left;
 }
 
 #menuBarRight {
+    background-color:#ff7777;
     width: 10%;
-    background: #11fdc7;
+    /*background: #11fdc7;*/
     float: right;
     text-align: right;
 }
 
 #content {
-    background: #e2dede;
+    /*background: #e2dede;*/
 }
 
 .subMenu {
+    background-color:#ff7777;
+    padding-top: 10px;
     width: 10%;
     float: left;
-    background: #ccffff;
+/*    height: auto !important;
+    height: 100%;*/
+    /*background: #ccffff;*/
 }
 
 .contentWithSubMenu {
-    width: 90%;
+    width: 88%;
     float: right;
-    background: #ffffcc;
+    margin-top: 10px;
+    /*background: #ffffcc;*/
 }
 
 #footer, #push {
-    background: aqua;
     height: 2em;
     width: 1280px;
     margin: 0 auto;
@@ -75,15 +87,27 @@ a:hover {
     text-align: center;
 }
 
+#footer {
+    background-color:#ff7777;
+}
+
 table {
-    width:100%;
+    width:98%;
     border-collapse:collapse;
 }
 
 td, th {
     font-size:1em;
-    border:1px solid #98bf21;
     padding:3px 7px 2px 7px;
+}
+
+tr:hover {
+    background-color: #ffeeee;
+    font-weight: bold;
+}
+
+td {
+    border:1px solid #cc0000;
 }
 
 th {
@@ -91,13 +115,37 @@ th {
     text-align:left;
     padding-top:5px;
     padding-bottom:4px;
-    background-color:#A7C942;
+    background-color:#cc0000;
     color:#ffffff;
+}
+
+th:first-child {
+    -moz-border-radius: 16px 0 0 0;
+    -webkit-border-radius: 16px 0 0 0;
+    border-radius: 16px 0 0 0;
+}
+
+th:last-child {
+    -moz-border-radius: 0 16px 0 0;
+    -webkit-border-radius: 0 16px 0 0;
+    border-radius: 0 16px 0 0;
+}
+
+th:only-child{
+    -moz-border-radius: 16px 16px 0 0;
+    -webkit-border-radius: 16px 16px 0 0;
+    border-radius: 16px 16px 0 0;
 }
 
 tr.alt td {
     color:#000000;
     background-color:#EAF2D3;
+}
+
+.textCenter {
+    text-align: center;
+    
+    /*background: black;*/
 }
 
 .menuActive {
@@ -134,15 +182,11 @@ tr.alt td {
 
 .errorMessage {
     padding: 10px;
-    background: #ff3333;
-    color: white;
     width: 500px;
     text-align: center;
     margin: 0px auto;
-    border: white;
-    border-style: solid;
-    border-width: 3px;
-    /*border*/
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
   
 .zend_form p {  
@@ -163,3 +207,14 @@ tr.alt td {
   
 .optional:before{content:'+ '}  
 
+.deleteButton .ui-button-icon-primary {
+    left: 0px !important;
+}
+
+.editButton .ui-button-icon-primary {
+    left: 0px !important;
+}
+
+.ui-widget {
+    font-size: 14px !important;
+}

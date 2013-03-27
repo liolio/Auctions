@@ -1,20 +1,15 @@
 <?php echo $this->render('administrator/index.phtml') ?>
 <div class="contentWithSubMenu">
-    <a href="<?=$this->baseUrl();?>/category/add"><?=Helper::getTranslator()->translate('caption-add')?></a><br/>
-    <?= View_Helper::getErrorMessage($this->message); ?><br/>
+    <?= View_Helper::getErrorMessage($this->message); ?>
     <table>
         <tr>
             <th>
-                <?=Helper::getTranslator()->translate('label-category_name')?>
+                <?=$this->translate('label-category_name')?>
             </th>
             <th>
-                <?=Helper::getTranslator()->translate('label-category_description')?>
+                <?=$this->translate('label-category_description')?>
             </th>
             <th>
-                <?=Helper::getTranslator()->translate('caption-edit')?>
-            </th>
-            <th>
-                <?=Helper::getTranslator()->translate('caption-delete')?>
             </th>
         </tr>
         <?php foreach ($this->mainCategories as $category) : ?>
@@ -25,14 +20,20 @@
             <td>
                 <?=$category->description?>
             </td>
-            <td>
-                <a href="<?=$this->baseUrl();?>/category/edit/<?=$category->id?>">e</a>
-            </td>
-            <td>
-                <a href="<?=$this->baseUrl();?>/category/delete/<?=$category->id?>">x</a>
+            <td class="textCenter">
+                <a href="<?=$this->baseUrl();?>/category/edit/<?=$category->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/category/delete/<?=$category->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
             </td>
         </tr>
         <?php    endforeach; ?>
-
     </table>
+    <br/>
+    <a class="addButton" href="<?=$this->baseUrl();?>/category/add"></a><br/>
+</div>
+
+<div id="dialog-box" title="<?= $this->translate('title-delete_category');?>">
+  <p>
+      <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+      <?= $this->translate('message-delete_category_confirmation'); ?>
+  </p>
 </div>

@@ -7,8 +7,10 @@ return array(
     'caption-registration'          =>  'Rejestracja',
     'caption-password_reset'        =>  'Zapomniałeś hasła?',
     'caption-add'                   =>  'Dodaj',
-    'caption-edit'                  =>  'Edycja',
-    'caption-delete'                =>  'Usunięcie',
+    'caption-edit'                  =>  'Edytuj',
+    'caption-delete'                =>  'Usuń',
+    'caption-next'                  =>  'Dalej',
+    'caption-save'                  =>  'Zapisz',
     'caption-category_main'         =>  'Kategoria główna',
     'caption-category_list_prefix'  =>  '- ',
     
@@ -18,6 +20,12 @@ return array(
     'menu-user_panel'           =>  'Panel użytkownika',
     'menu-administrator'        =>  'Panel administratora',
     'menu-log_out'              =>  'Wyloguj',
+    
+    'title-delete_category'     =>  'Usuń kategorię',
+    'title-delete_address'      =>  'Usuń adres',
+    
+    'message-delete_category_confirmation'  =>  'Czy na pewno chcesz usunąć tę kategorię?',
+    'message-delete_address_confirmation'   =>  'Czy na pewno chcesz usunąć ten adres?',
     
     'submenu-categories_list'       =>  'List kategorii',
     'submenu-user_change_password'  =>  'Zmień hasło',

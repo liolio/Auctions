@@ -18,7 +18,7 @@ class View_HelperTest extends TestCase_NoDatabase
     {
         return array(
             array(null, null),
-            array("asd", '<div class="errorMessage">asd</div>'),
+            array("asd", '<div class="ui-state-error ui-corner-all errorMessage">asd</div>'),
         );
     }
     

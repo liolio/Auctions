@@ -38,8 +38,8 @@ class Auctions_Form_User_PasswordResetTest extends TestCase_Database
         
         $this->assertEquals(
             array(
-                FieldIdEnum::USER_EMAIL     =>  array($error),
-                ParamIdEnum::SUBMIT_BUTTON  =>  array()
+                FieldIdEnum::USER_EMAIL         =>  array($error),
+                ParamIdEnum::FORM_NEXT_BUTTON   =>  array()
             ), 
             $this->_form->getErrors()
         );

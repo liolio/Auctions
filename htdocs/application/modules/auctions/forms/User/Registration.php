@@ -62,9 +62,8 @@ class Auctions_Form_User_Registration extends Auctions_Form_Abstract
             $this->addElement($captcha);
         }
         
-        $registerButton = new Zend_Form_Element_Submit(ParamIdEnum::SUBMIT_BUTTON);
-        $registerButton->setIgnore(true)
-                ->setLabel($this->_getTranslator()->translate('button-register'));
+        $registerButton = new Zend_Form_Element_Submit(ParamIdEnum::FORM_NEXT_BUTTON);
+        $registerButton->setIgnore(true);
         
         $this->addElement($registerButton);
         

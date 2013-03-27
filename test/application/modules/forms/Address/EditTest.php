@@ -71,7 +71,7 @@ class Auctions_Form_Address_EditTest extends TestCase_NoDatabase
                     FieldIdEnum::ADDRESS_PROVINCE       =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     FieldIdEnum::ADDRESS_COUNTRY        =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
                     FieldIdEnum::ADDRESS_PHONE_NUMBER   =>  array(Zend_Validate_NotEmpty::IS_EMPTY),
-                    ParamIdEnum::SUBMIT_BUTTON          =>  array()
+                    ParamIdEnum::FORM_EDIT_BUTTON       =>  array()
                 )
             ),
             //too long
@@ -97,7 +97,7 @@ class Auctions_Form_Address_EditTest extends TestCase_NoDatabase
                     FieldIdEnum::ADDRESS_PROVINCE       =>  array(Zend_Validate_StringLength::TOO_LONG),
                     FieldIdEnum::ADDRESS_COUNTRY        =>  array(Zend_Validate_StringLength::TOO_LONG),
                     FieldIdEnum::ADDRESS_PHONE_NUMBER   =>  array(Zend_Validate_StringLength::TOO_LONG),
-                    ParamIdEnum::SUBMIT_BUTTON          =>  array()
+                    ParamIdEnum::FORM_EDIT_BUTTON       =>  array()
                 )
             ),
             //invalid regex or alnum or alpha
@@ -123,7 +123,7 @@ class Auctions_Form_Address_EditTest extends TestCase_NoDatabase
                     FieldIdEnum::ADDRESS_PROVINCE       =>  array(Zend_Validate_Alpha::NOT_ALPHA),
                     FieldIdEnum::ADDRESS_COUNTRY        =>  array(Zend_Validate_Alpha::NOT_ALPHA),
                     FieldIdEnum::ADDRESS_PHONE_NUMBER   =>  array(Validate_Address_PhoneNumberRegex::NOT_MATCH),
-                    ParamIdEnum::SUBMIT_BUTTON          =>  array()
+                    ParamIdEnum::FORM_EDIT_BUTTON       =>  array()
                 )
             )
         );

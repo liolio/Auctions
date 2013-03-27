@@ -2,7 +2,7 @@
 /**
  * @class FieldIdEnum
  */
-class FieldIdEnum
+class FieldIdEnum extends Enum_Abstract
 {
     
     const USER_LOGIN = 'user_login';
