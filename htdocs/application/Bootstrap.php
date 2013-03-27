@@ -94,6 +94,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         
         $this->bootstrap('FrontController');
         $this->getResource('FrontController')->setRouter($router);
+        
+//        Zend_Debug::dump(Zend_Controller_Front::getInstance()->getDispatcher()->);
     }
 
     /**

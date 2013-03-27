@@ -319,4 +319,16 @@
         <reverse></reverse>
     </categoryDelete>
     
+    <bankingInformationShowList>
+        <route>banking-information/show-list</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>banking-information</controller>
+            <action>show-list</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </bankingInformationShowList>
+    
 </routes>

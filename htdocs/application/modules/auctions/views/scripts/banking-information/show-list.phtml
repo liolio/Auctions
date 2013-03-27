@@ -1,0 +1,46 @@
+<?php echo $this->render('user/panel.phtml') ?>
+<div class="contentWithSubMenu">
+    <?= View_Helper::getErrorMessage($this->message); ?>
+    <table>
+        <tr>
+            <th>
+                <?=$this->translate('label-banking_information_bank_name')?>
+            </th>
+            <th>
+                <?=$this->translate('label-banking_information_account_number')?>
+            </th>
+            <th>
+                <?=$this->translate('label-banking_information_currency')?>
+            </th>
+            <th>
+            </th>
+        </tr>
+        <?php foreach ($this->list as $bankingInformation) : ?>
+        
+        <tr>
+            <td>
+                <?=$bankingInformation->bank_name?>
+            </th>
+            <td>
+                <?=$bankingInformation->account_number?>
+            </td>
+            <td>
+                <?=$bankingInformation->currency?>
+            </td>
+            <td class="textCenter">
+                <a href="<?=$this->baseUrl();?>/banking-information/edit/<?=$address->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/address/delete/<?=$address->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+            </td>
+        </tr>
+        <?php    endforeach; ?>
+    </table>
+    <br/>
+    <a class="addButton" href="<?=$this->baseUrl();?>/address/add"></a><br/>
+</div>
+
+<div id="dialog-box" title="<?= $this->translate('title-delete_address');?>">
+  <p>
+      <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+      <?= $this->translate('message-delete_address_confirmation'); ?>
+  </p>
+</div>

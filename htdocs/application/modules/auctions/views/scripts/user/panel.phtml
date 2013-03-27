@@ -15,6 +15,13 @@
                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
                     ->enableFor(Enum_Acl_Role::MODERATOR)
                     ->enableFor(Enum_Acl_Role::USER)
+        )
+        ->addElement(
+                'bankingInformationList',
+                Menu_Element::create('banking-information/show-list', 'bankingInformationShowList', 'submenu-banking-information_list')
+                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+                    ->enableFor(Enum_Acl_Role::MODERATOR)
+                    ->enableFor(Enum_Acl_Role::USER)
         );
 
     foreach ($menu as $menuElement)

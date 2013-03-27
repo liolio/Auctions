@@ -11,6 +11,8 @@ class Enum_Acl_Resource extends Enum_Abstract
     
     const AUTH = "Auctions:Auth";
     
+    const BANKING_INFORMATION = "Auctions:Banking-information";
+    
     const CATEGORY = "Auctions:Category";
     
     const ERROR = "Auctions:Error";

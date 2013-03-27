@@ -37,6 +37,7 @@ class Acl extends Zend_Acl
         $this->addResource(Enum_Acl_Resource::ADDRESS);
         $this->addResource(Enum_Acl_Resource::ADMINISTRATOR);
         $this->addResource(Enum_Acl_Resource::AUTH);
+        $this->addResource(Enum_Acl_Resource::BANKING_INFORMATION);
         $this->addResource(Enum_Acl_Resource::CATEGORY);
         $this->addResource(Enum_Acl_Resource::ERROR);
         $this->addResource(Enum_Acl_Resource::INDEX);
@@ -59,6 +60,7 @@ class Acl extends Zend_Acl
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::USER, array('process-change-password'), Acl_Assertion_User_LoginBelongsToUser::getClassName());
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::ADDRESS, array('show-list', 'add', 'process-add-form'));
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::ADDRESS, array('delete', 'edit', 'process-edit-form'), Acl_Assertion_Address_BelongsToUser::getClassName());
+        $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::BANKING_INFORMATION, array('show-list'));
         
         //ADMINISTRATOR
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::ADMINISTRATOR, array('index'));
