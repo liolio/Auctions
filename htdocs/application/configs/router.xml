@@ -429,7 +429,32 @@
         <reverse></reverse>
     </bankingInformationProcessAddForm>
     
-     <bankingInformationDelete>
+     <bankingInformationEdit>
+        <route>banking-information/edit/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>banking-information</controller>
+            <action>edit</action>
+        </defaults>
+        <map>
+            <banking_information_id>1</banking_information_id>
+        </map>
+        <reverse></reverse>
+    </bankingInformationEdit>
+    
+    <bankingInformationProcessEditForm>
+        <route>banking-information/process-edit-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>banking-information</controller>
+            <action>process-edit-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </bankingInformationProcessEditForm>
+    
+    <bankingInformationDelete>
         <route>banking-information/delete/(.*)</route>
         <defaults>
             <module>auctions</module>

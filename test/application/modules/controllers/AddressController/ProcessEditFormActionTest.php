@@ -48,10 +48,12 @@ class Auctions_AddressController_ProcessEditFormActionTest extends TestCase_Cont
      */
     public function processWithInvalidData()
     {
-        $this->_setRequest(array());
+        $this->_setRequest(array(
+            FieldIdEnum::ADDRESS_ID => '1'
+        ));
         
-        $this->dispatch("address/process-add-form");
-        $this->_assertDispatch('address', 'process-add-form');
+        $this->dispatch("address/process-edit-form");
+        $this->_assertDispatch('address', 'process-edit-form');
         $this->assertContains(Helper::getTranslator()->translate("validation_message-field_empty"), $this->getResponse()->getBody());
         
         $this->assertEquals(1, AddressTable::getInstance()->findAll()->count());

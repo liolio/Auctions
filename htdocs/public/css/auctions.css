@@ -23,7 +23,7 @@ div {
 
 #page {
     /*background: #cfc7fd;*/
-    width: 1280px;
+    width: 1260px;
     margin: 0 auto;
     min-height: 100%;
     height: auto !important;
@@ -43,31 +43,36 @@ div {
 }
 
 #menuBarLeft {
-    background-color:#ff7777;
+    background-image: url(../img/menu_bg.png);	
+	/*background-color:#ff7777;*/
     width: 90%;
     /*background: #dcfdc7;*/
     float: left;
 }
 
 #menuBarRight {
-    background-color:#ff7777;
+    background-image: url(../img/menu_bg.png);	
+	/*background-color:#ff7777;*/
     width: 10%;
     /*background: #11fdc7;*/
-    float: right;
+	float: right;
     text-align: right;
 }
 
 #content {
-    /*background: #e2dede;*/
+    background: #e2dede;
+    /*width: 10px;*/
 }
 
 .subMenu {
-    background-color:#ff7777;
+    background-image: url(../img/menu_bg.png);	
+	/*background-color:#ff7777;*/
     padding-top: 10px;
     width: 15%;
     float: left;
-/*    height: auto !important;
-    height: 100%;*/
+    /*height: auto !important;*/
+    height: 100%;
+    bottom: 0;
     /*background: #ccffff;*/
 }
 
@@ -75,12 +80,12 @@ div {
     width: 83%;
     float: right;
     margin-top: 10px;
-    /*background: #ffffcc;*/
+    background: #ffffcc;
 }
 
 #footer, #push {
     height: 2em;
-    width: 1280px;
+    width: 1260px;
     margin: 0 auto;
     vertical-align: middle;
     line-height: 2em;
@@ -88,7 +93,8 @@ div {
 }
 
 #footer {
-    background-color:#ff7777;
+    background-image: url(../img/menu_bg.png);	
+	/*background-color:#ff7777;*/
 }
 
 table {
@@ -174,6 +180,10 @@ tr.alt td {
     width: 68%;  
     margin: 5px 2px 5px 0;  
 }  
+
+.loginPageCustoms {
+    margin-left: 510px;
+}
 
 .errors {  
     color: red;

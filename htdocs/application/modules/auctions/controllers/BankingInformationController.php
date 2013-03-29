@@ -60,12 +60,45 @@ class Auctions_BankingInformationController extends Controller_Abstract
     
     public function editAction()
     {
-        
+        $this->view->editForm = $this->_getFilledEditForm();
     }
     
     public function processEditFormAction()
     {
+        $request = $this->getRequest();
+
+        if (!$request->isPost())
+            return $this->_helper->redirector('show-list');
         
+        $form = $this->_getFilledEditForm();
+        if (!$form->isValid($request->getPost()))
+        {
+            $this->view->editForm = $form;
+            return $this->render('edit');
+        }
+        
+        try {
+            Doctrine_Manager::connection()->beginTransaction();
+
+            $bankingInformation = BankingInformationTable::getInstance()->find($request->getParam(FieldIdEnum::BANKING_INFORMATION_ID));
+            $bankingInformation->bank_name = $form->getValue(FieldIdEnum::BANKING_INFORMATION_BANK_NAME);
+            $bankingInformation->account_number = $form->getValue(FieldIdEnum::BANKING_INFORMATION_ACCOUNT_NUMBER);
+            $bankingInformation->currency_id = $form->getValue(FieldIdEnum::BANKING_INFORMATION_CURRENCY_ID);
+            
+            $bankingInformation->save();
+            
+            Doctrine_Manager::connection()->commit();
+        }
+        catch (Exception $ex)
+        {
+            Doctrine_Manager::connection()->rollback();
+            Log_Factory::create($ex, Zend_Log::CRIT);
+            $this->view->editForm = $form;
+            $form->setDescription('Failure!');
+            return $this->render('edit');
+        }
+        
+        $this->_helper->redirector('show-list', 'banking-information');
     }
     
     public function deleteAction()
@@ -82,6 +115,28 @@ class Auctions_BankingInformationController extends Controller_Abstract
         }
         
         $this->_helper->redirector('show-list', 'banking-information');
+    }
+    
+    private function _getFilledEditForm()
+    {
+        $bankingInformationId = $this->getRequest()->getParam(FieldIdEnum::BANKING_INFORMATION_ID);
+        
+        $form = new Auctions_Form_BankingInformation_Edit();
+        
+        if (!is_null($bankingInformationId))
+        {
+            $bankingInformation = BankingInformationTable::getInstance()->find($bankingInformationId);
+            
+            if ($bankingInformation !== false)
+            {
+                $form->getElement(FieldIdEnum::BANKING_INFORMATION_ID)->setValue($bankingInformationId);
+                $form->getElement(FieldIdEnum::BANKING_INFORMATION_BANK_NAME)->setValue($bankingInformation->bank_name);
+                $form->getElement(FieldIdEnum::BANKING_INFORMATION_ACCOUNT_NUMBER)->setValue($bankingInformation->account_number);
+                $form->getElement(FieldIdEnum::BANKING_INFORMATION_CURRENCY_ID)->setValue($bankingInformation->currency_id);
+            }
+        }
+        
+        return $form;
     }
     
 }
