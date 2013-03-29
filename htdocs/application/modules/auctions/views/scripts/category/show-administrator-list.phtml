@@ -1,35 +1,37 @@
-<?php echo $this->render('administrator/index.phtml') ?>
-<div class="contentWithSubMenu">
-    <?= View_Helper::getErrorMessage($this->message); ?>
-    <table>
-        <tr>
-            <th>
-                <?=$this->translate('label-category_name')?>
-            </th>
-            <th>
-                <?=$this->translate('label-category_description')?>
-            </th>
-            <th>
-            </th>
-        </tr>
-        <?php foreach ($this->mainCategories as $category) : ?>
-        <tr>
-            <td>
-                <?=$category->name?>
-            </th>
-            <td>
-                <?=$category->description?>
-            </td>
-            <td class="textCenter">
-                <a href="<?=$this->baseUrl();?>/category/edit/<?=$category->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
-                <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/category/delete/<?=$category->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
-            </td>
-        </tr>
-        <?php    endforeach; ?>
-    </table>
-    <br/>
-    <a class="addButton" href="<?=$this->baseUrl();?>/category/add"></a><br/>
+<div id="container">
+    <div id="content">
+        <?= View_Helper::getErrorMessage($this->message); ?>
+        <table>
+            <tr>
+                <th>
+                    <?=$this->translate('label-category_name')?>
+                </th>
+                <th>
+                    <?=$this->translate('label-category_description')?>
+                </th>
+                <th>
+                </th>
+            </tr>
+            <?php foreach ($this->mainCategories as $category) : ?>
+            <tr>
+                <td>
+                    <?=$category->name?>
+                </th>
+                <td>
+                    <?=$category->description?>
+                </td>
+                <td class="textCenter">
+                    <a href="<?=$this->baseUrl();?>/category/edit/<?=$category->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                    <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/category/delete/<?=$category->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+                </td>
+            </tr>
+            <?php    endforeach; ?>
+        </table>
+        <br/>
+        <a class="addButton" href="<?=$this->baseUrl();?>/category/add"></a><br/>
+    </div>
 </div>
+<?php echo $this->render('administrator/sub-menu.phtml') ?>
 
 <div id="dialog-box" title="<?= $this->translate('title-delete_category');?>">
   <p>

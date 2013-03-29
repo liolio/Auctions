@@ -1,34 +1,6 @@
-<div class="subMenu">
-<?php
-    $menu = new Menu();
-    $menu
-        ->addElement(
-                'changePassword',
-                Menu_Element::create('user/panel/change-password', 'userPanelChangePassword', 'submenu-user_change_password')
-                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
-                    ->enableFor(Enum_Acl_Role::MODERATOR)
-                    ->enableFor(Enum_Acl_Role::USER)
-        )
-        ->addElement(
-                'addressList',
-                Menu_Element::create('address/show-list', 'addressShowList', 'submenu-address_list')
-                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
-                    ->enableFor(Enum_Acl_Role::MODERATOR)
-                    ->enableFor(Enum_Acl_Role::USER)
-        )
-        ->addElement(
-                'bankingInformationList',
-                Menu_Element::create('banking-information/show-list', 'bankingInformationShowList', 'submenu-banking-information_list')
-                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
-                    ->enableFor(Enum_Acl_Role::MODERATOR)
-                    ->enableFor(Enum_Acl_Role::USER)
-        );
-
-    foreach ($menu as $menuElement)
-    {
-        $class = $menuElement->isActive() ? "class='menuActive'" : "";
-
-        echo "<a href='" . $this->baseUrl() . '/' . $menuElement->getRoute() . "' " . $class . ">" . $menuElement->getDescription() . "</a> <BR/>";
-    }
-?>
+<div id="container">
+    <div id="content">
+        
+    </div>
 </div>
+<?php echo $this->render('user/panel-sub-menu.phtml') ?>

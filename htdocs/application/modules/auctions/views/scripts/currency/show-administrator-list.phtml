@@ -1,29 +1,31 @@
-<?php echo $this->render('administrator/index.phtml') ?>
-<div class="contentWithSubMenu">
-    <?= View_Helper::getErrorMessage($this->message); ?>
-    <table>
-        <tr>
-            <th>
-                <?=$this->translate('label-currency_name')?>
-            </th>
-            <th>
-            </th>
-        </tr>
-        <?php foreach ($this->list as $currency) : ?>
-        <tr>
-            <td>
-                <?=$currency->name?>
-            </th>
-            <td class="textCenter">
-                <a href="<?=$this->baseUrl();?>/currency/edit/<?=$currency->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
-                <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/currency/delete/<?=$currency->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
-            </td>
-        </tr>
-        <?php    endforeach; ?>
-    </table>
-    <br/>
-    <a class="addButton" href="<?=$this->baseUrl();?>/currency/add"></a><br/>
+<div id="container">
+    <div id="content">
+        <?= View_Helper::getErrorMessage($this->message); ?>
+        <table>
+            <tr>
+                <th>
+                    <?=$this->translate('label-currency_name')?>
+                </th>
+                <th>
+                </th>
+            </tr>
+            <?php foreach ($this->list as $currency) : ?>
+            <tr>
+                <td>
+                    <?=$currency->name?>
+                </th>
+                <td class="textCenter">
+                    <a href="<?=$this->baseUrl();?>/currency/edit/<?=$currency->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                    <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/currency/delete/<?=$currency->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+                </td>
+            </tr>
+            <?php    endforeach; ?>
+        </table>
+        <br/>
+        <a class="addButton" href="<?=$this->baseUrl();?>/currency/add"></a><br/>
+    </div>
 </div>
+<?php echo $this->render('administrator/sub-menu.phtml') ?>
 
 <div id="dialog-box" title="<?= $this->translate('title-delete_currency');?>">
   <p>

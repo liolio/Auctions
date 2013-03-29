@@ -1,10 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
    <title><?php echo $this->translate('application_name'); ?></title>
-   <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl;?>/css/auctions.css" />
+   <link rel="stylesheet" type="text/css" media="screen, projection" href="<?php echo $this->baseUrl;?>/css/auctions.css" />
    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $this->baseUrl;?>/css/jquery-ui-1.10.2.custom.css" />
    <script>
        var translate = function(key) {
@@ -27,80 +26,75 @@
    <script src="<?php echo $this->baseUrl;?>/js/auctions.js" type="text/javascript"></script>
 </head>
 <body>
-    <?php
-        $role = is_null(Auth_User::getInstance()->getUser()) ? 
-                Enum_Acl_Role::GUEST :
-                Auth_User::getInstance()->getUser()->role;
-    ?>
     <div id="page">
-        <div id="banner">
-            <a href="<?= $this->baseUrl()?>"><img src="<?= $this->baseUrl() ?>/img/logo.png" /></a>
-        </div>
-        <div id="menuBar">
-            <div id="menuBarLeft">
-                <?php
-                    $menu = new Menu($role);
-                    $menu
-                        ->addElement(
-                                'login',
-                                Menu_Element::create('login', 'login', 'menu-log_in')
-                                    ->enableFor(Enum_Acl_Role::GUEST)
-                        )
-                        ->addElement(
-                                'registration',
-                                Menu_Element::create('registration', 'registrationForm', 'menu-registration')
-                                    ->enableFor(Enum_Acl_Role::GUEST)
-                        )
-                        ->addElement(
-                                'userPanel',
-                                Menu_Element::create('user/panel', 'userPanel', 'menu-user_panel')
-                                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
-                                    ->enableFor(Enum_Acl_Role::MODERATOR)
-                                    ->enableFor(Enum_Acl_Role::USER)
-                        )
-                        ->addElement(
-                                'administrator',
-                                Menu_Element::create('administrator', 'administrator', 'menu-administrator')
-                                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
-                        )
-                        ->addElement(
-                                'logout',
-                                Menu_Element::create('auth/logout', 'logout', 'menu-log_out')
-                                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
-                                    ->enableFor(Enum_Acl_Role::MODERATOR)
-                                    ->enableFor(Enum_Acl_Role::USER)
-                        );
-
-                    $firstElement = true;
-                    foreach ($menu as $menuElement)
-                    {
-                        if ($firstElement)
-                            $firstElement = false;
-                        else
-                            echo $this->translate('menu-spearator');
-
-                        $class = $menuElement->isActive() ? "class='menuActive'" : "";
-
-                        echo "<a href='" . $this->baseUrl() . '/' . $menuElement->getRoute() . "' " . $class . ">" . $menuElement->getDescription() . "</a> ";
-                    }
-                ?>
+	<div id="header">
+            <div id="banner">
+                <a href="<?= $this->baseUrl()?>"><img src="<?= $this->baseUrl() ?>/img/logo.png" /></a>
             </div>
-            <div id="menuBarRight">
-                <?php if ($role !== Enum_Acl_Role::GUEST) : ?>
-                    <a href="<?=$this->baseUrl();?>/user/panel"><?= Auth_User::getInstance()->getUser()->login; ?></a>
-                <?php else : ?>
-                    &nbsp;
-                <?php endif; ?>
+            <div id="menuBar">
+                <div id="menuBarLeft">
+                    <?php
+                        $menu = new Menu();
+                        $menu
+                            ->addElement(
+                                    'login',
+                                    Menu_Element::create('login', 'login', 'menu-log_in')
+                                        ->enableFor(Enum_Acl_Role::GUEST)
+                            )
+                            ->addElement(
+                                    'registration',
+                                    Menu_Element::create('registration', 'registrationForm', 'menu-registration')
+                                        ->enableFor(Enum_Acl_Role::GUEST)
+                            )
+                            ->addElement(
+                                    'userPanel',
+                                    Menu_Element::create('user/panel', 'userPanel', 'menu-user_panel')
+                                        ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+                                        ->enableFor(Enum_Acl_Role::MODERATOR)
+                                        ->enableFor(Enum_Acl_Role::USER)
+                            )
+                            ->addElement(
+                                    'administrator',
+                                    Menu_Element::create('administrator', 'administrator', 'menu-administrator')
+                                        ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+                            )
+                            ->addElement(
+                                    'logout',
+                                    Menu_Element::create('auth/logout', 'logout', 'menu-log_out')
+                                        ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+                                        ->enableFor(Enum_Acl_Role::MODERATOR)
+                                        ->enableFor(Enum_Acl_Role::USER)
+                            );
+
+                        $firstElement = true;
+                        foreach ($menu as $menuElement)
+                        {
+                            if ($firstElement)
+                                $firstElement = false;
+                            else
+                                echo $this->translate('menu-spearator');
+
+                            $class = $menuElement->isActive() ? "class='menuActive'" : "";
+
+                            echo "<a href='" . $this->baseUrl() . '/' . $menuElement->getRoute() . "' " . $class . ">" . $menuElement->getDescription() . "</a> ";
+                        }
+                    ?>
+                </div>
+                <div id="menuBarRight">
+                    <?php if (Zend_Auth::getInstance()->hasIdentity()) : ?>
+                        <a href="<?=$this->baseUrl();?>/user/panel"><?= Auth_User::getInstance()->getUser()->login; ?></a>
+                    <?php else : ?>
+                        &nbsp;
+                    <?php endif; ?>
+                </div>
             </div>
-        </div>
-        <div id="content">
-            <?php echo $this->layout()->content; ?>
-        </div>
-    <div id="push"></div>
+	</div>
+	<div id="middle">
+                <?php echo $this->layout()->content; ?>
+	</div>
     </div>
     <div id="footer">
         <p>Copyright &copy; 2013</p>
     </div>
 </body>
-
 </html>

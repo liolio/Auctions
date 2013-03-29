@@ -1,42 +1,44 @@
-<?php echo $this->render('user/panel.phtml') ?>
-<div class="contentWithSubMenu">
-    <?= View_Helper::getErrorMessage($this->message); ?>
-    <table>
-        <tr>
-            <th>
-                <?=$this->translate('label-banking_information_bank_name')?>
-            </th>
-            <th>
-                <?=$this->translate('label-banking_information_account_number')?>
-            </th>
-            <th>
-                <?=$this->translate('label-banking_information_currency')?>
-            </th>
-            <th>
-            </th>
-        </tr>
-        <?php foreach ($this->list as $bankingInformation) : ?>
-        
-        <tr>
-            <td>
-                <?=$bankingInformation->bank_name?>
-            </th>
-            <td>
-                <?=$bankingInformation->account_number?>
-            </td>
-            <td>
-                <?=$bankingInformation->Currency->name?>
-            </td>
-            <td class="textCenter">
-                <a href="<?=$this->baseUrl();?>/banking-information/edit/<?=$bankingInformation->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
-                <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/banking-information/delete/<?=$bankingInformation->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
-            </td>
-        </tr>
-        <?php    endforeach; ?>
-    </table>
-    <br/>
-    <a class="addButton" href="<?=$this->baseUrl();?>/banking-information/add"></a><br/>
+<div id="container">
+    <div id="content">
+        <?= View_Helper::getErrorMessage($this->message); ?>
+        <table>
+            <tr>
+                <th>
+                    <?=$this->translate('label-banking_information_bank_name')?>
+                </th>
+                <th>
+                    <?=$this->translate('label-banking_information_account_number')?>
+                </th>
+                <th>
+                    <?=$this->translate('label-banking_information_currency')?>
+                </th>
+                <th>
+                </th>
+            </tr>
+            <?php foreach ($this->list as $bankingInformation) : ?>
+
+            <tr>
+                <td>
+                    <?=$bankingInformation->bank_name?>
+                </th>
+                <td>
+                    <?=$bankingInformation->account_number?>
+                </td>
+                <td>
+                    <?=$bankingInformation->Currency->name?>
+                </td>
+                <td class="textCenter">
+                    <a href="<?=$this->baseUrl();?>/banking-information/edit/<?=$bankingInformation->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                    <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/banking-information/delete/<?=$bankingInformation->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+                </td>
+            </tr>
+            <?php    endforeach; ?>
+        </table>
+        <br/>
+        <a class="addButton" href="<?=$this->baseUrl();?>/banking-information/add"></a><br/>
+    </div>
 </div>
+<?php echo $this->render('user/panel-sub-menu.phtml') ?>
 
 <div id="dialog-box" title="<?= $this->translate('title-delete_banking_information');?>">
   <p>

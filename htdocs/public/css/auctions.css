@@ -1,10 +1,15 @@
 * {
     margin: 0;
-    margin-top: 0;
+    padding: 0;
     font-family: calibri;
-}    
+}
 
-html, body { 
+html {
+    height: 100%;
+}
+
+body {
+    width: 100%;
     height: 100%;
 }
 
@@ -17,86 +22,95 @@ a:hover {
     text-decoration: underline;
 }
 
-div {
-    /*border: 1px solid black;*/
-}
-
 #page {
-    /*background: #cfc7fd;*/
     width: 1260px;
     margin: 0 auto;
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -2em;
+}
+
+/* Header
+-----------------------------------------------------------------------------*/
+#header {
+    height: 109px;
 }
 
 #banner {
-    /*background: #fdd8c7;*/
     text-align: center;
     height: 70px;
     padding-top: 20px;
 }
 
 #menuBar {
-    /*background: #dcfdc7;*/
+    
 }
 
 #menuBarLeft {
     background-image: url(../img/menu_bg.png);	
-	/*background-color:#ff7777;*/
     width: 90%;
-    /*background: #dcfdc7;*/
     float: left;
 }
 
 #menuBarRight {
     background-image: url(../img/menu_bg.png);	
-	/*background-color:#ff7777;*/
     width: 10%;
-    /*background: #11fdc7;*/
-	float: right;
+    float: right;
     text-align: right;
 }
 
-#content {
-    background: #e2dede;
-    /*width: 10px;*/
+/* Middle
+-----------------------------------------------------------------------------*/
+#middle {
+    width: 100%;
+    padding: 0 0 100px;
+    height: 1%;
+    position: relative;
 }
 
-.subMenu {
-    background-image: url(../img/menu_bg.png);	
-	/*background-color:#ff7777;*/
-    padding-top: 10px;
-    width: 15%;
+#middle:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+#container {
+    width: 100%;
     float: left;
-    /*height: auto !important;*/
-    height: 100%;
-    bottom: 0;
-    /*background: #ccffff;*/
+    overflow: hidden;
 }
 
-.contentWithSubMenu {
-    width: 83%;
-    float: right;
-    margin-top: 10px;
-    background: #ffffcc;
+#content {
+    padding: 10px 0 0 210px;
 }
 
-#footer, #push {
-    height: 2em;
+#contentWithoutSubMenu {
+    padding: 10px 0 0 20px;
+}
+
+/* Sidebar Left
+-----------------------------------------------------------------------------*/
+#subMenu {
+    float: left;
+    width: 190px;
+    margin-left: -100%;
+    position: relative;
+    background-image: url(../img/menu_bg.png);
+}
+
+/* Footer
+-----------------------------------------------------------------------------*/
+#footer {
     width: 1260px;
-    margin: 0 auto;
-    vertical-align: middle;
-    line-height: 2em;
+    margin: -20px auto 0;
+    height: 20px;
+    background-image: url(../img/menu_bg.png);
+    position: relative;
     text-align: center;
 }
 
-#footer {
-    background-image: url(../img/menu_bg.png);	
-	/*background-color:#ff7777;*/
-}
-
+/* Tables
+-----------------------------------------------------------------------------*/
 table {
     width:98%;
     border-collapse:collapse;
@@ -147,16 +161,8 @@ tr.alt td {
     background-color:#EAF2D3;
 }
 
-.textCenter {
-    text-align: center;
-    
-    /*background: black;*/
-}
-
-.menuActive {
-    font-weight: bold;
-}
-
+/* Forms
+-----------------------------------------------------------------------------*/
 .zend_form {  
     background: #fff;  
     width: 640px;  
@@ -182,22 +188,13 @@ tr.alt td {
 }  
 
 .loginPageCustoms {
-    margin-left: 510px;
+    margin-left: 500px;
 }
 
 .errors {  
     color: red;
 }  
 
-.errorMessage {
-    padding: 10px;
-    width: 500px;
-    text-align: center;
-    margin: 0px auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-  
 .zend_form p {  
     padding: 0;  
     margin: 0;  
@@ -216,6 +213,8 @@ tr.alt td {
   
 .optional:before{content:'+ '}  
 
+/* jQuery
+-----------------------------------------------------------------------------*/
 .deleteButton .ui-button-icon-primary {
     left: 0px !important;
 }
@@ -226,4 +225,23 @@ tr.alt td {
 
 .ui-widget {
     font-size: 14px !important;
+}
+
+/* Other
+-----------------------------------------------------------------------------*/
+.errorMessage {
+    padding: 10px;
+    width: 500px;
+    text-align: center;
+    margin: 0px auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.menuActive {
+    font-weight: bold;
 }

@@ -1,0 +1,23 @@
+<div id="subMenu">
+    <?php
+    $menu = new Menu();
+    $menu
+        ->addElement(
+                'categoryAdministratorList',
+                Menu_Element::create('category/show-administrator-list', 'categoryShowAdministratorList', 'submenu-categories_list')
+                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+        )
+        ->addElement(
+                'currencyAdministratorList',
+                Menu_Element::create('currency/show-administrator-list', 'currencyShowAdministratorList', 'submenu-currencies_list')
+                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+        );
+
+    foreach ($menu as $menuElement)
+    {
+        $class = $menuElement->isActive() ? "class='menuActive'" : "";
+        
+        echo "<a href='" . $this->baseUrl() . '/' . $menuElement->getRoute() . "' " . $class . ">" . $menuElement->getDescription() . "</a> <BR/>";
+    }
+    ?>
+</div>
