@@ -9,6 +9,8 @@ class Enum_Acl_Resource extends Enum_Abstract
     
     const ADMINISTRATOR = "Auctions:Administrator";
     
+    const AUCTION = "Auctions:Auction";
+    
     const AUTH = "Auctions:Auth";
     
     const BANKING_INFORMATION = "Auctions:Banking-information";

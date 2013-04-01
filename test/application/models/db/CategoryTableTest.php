@@ -108,6 +108,33 @@ class CategoryTableTest extends TestCase_Database
         );
     }
     
+    /**
+     * @test
+     * @dataProvider categoryIdsToExpandProvider
+     */
+    public function getCategoriesToExpand($categoryId, array $categoryIds)
+    {
+        Fixture_Loader::create("Category/1");
+        Fixture_Loader::create("Category/2");
+        Fixture_Loader::create("Category/3_parent_1");
+        Fixture_Loader::create("Category/4_parent_1");
+        Fixture_Loader::create("Category/5_parent_3");
+        Fixture_Loader::create("Category/6_parent_3");
+        
+        $category = CategoryTable::getInstance()->find($categoryId);
+        
+        $this->assertEquals($categoryIds, CategoryTable::getInstance()->getCategoriesToExpand($category));
+    }
+    
+    public function categoryIdsToExpandProvider()
+    {
+        return array(
+            array(1, array(3, 4, 2, 1)),
+            array(3, array(5, 6, 3, 4)),
+            array(5, array(5, 6))
+        );
+    }
+    
     private function _assertCategory(Category $category, $id, $name, $description)
     {
         $this->assertEquals($id, $category->id);

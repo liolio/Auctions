@@ -530,4 +530,17 @@
         <reverse></reverse>
     </bankingInformationDelete>
     
+    <auctionShowListForCategory>
+        <route>auction/show-list-for-category/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>auction</controller>
+            <action>show-list-for-category</action>
+        </defaults>
+        <map>
+            <category_id>1</category_id>
+        </map>
+        <reverse></reverse>
+    </auctionShowListForCategory>
+    
 </routes>

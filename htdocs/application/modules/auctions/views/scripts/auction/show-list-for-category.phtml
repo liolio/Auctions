@@ -1,0 +1,15 @@
+<div id="container">
+    <div id="content">
+        auction list
+    </div>
+</div>
+<div id="subMenu">
+    <?php
+    foreach ($this->categories as $category)
+    {
+        $class = in_array($category->id, $this->activeCategoriesIds) ? " class = 'menuActive'" : "";
+        if (in_array($category->id, $this->categoriesIdsToShow) || in_array($category->id, $this->activeCategoriesIds))
+            echo "<a href=" . $this->baseUrl() . "/auction/show-list-for-category/" . $category->id . $class . ">" . " " . $category->name . "</a><br/>";
+    }
+    ?>
+</div>

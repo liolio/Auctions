@@ -63,6 +63,43 @@ class CategoryTable extends Doctrine_Table
     }
     
     /**
+     * Returns all child categories from parent category of given category and
+     * child categories from given category.
+     * 
+     * @param Category $category
+     * @return array With category Ids
+     */
+    public function getCategoriesToExpand(Category $category)
+    {
+        return array_merge(
+            $this->_getAllChildCategoryIdsFromCategory($category),
+            $this->_getAllChildCategoryIdsFromParentCategory($category)
+        );
+    }
+    
+    private function _getAllChildCategoryIdsFromParentCategory(Category $category)
+    {
+        $childCategoryIds = array();
+        $childCategories = is_null($category->Category->id) ?
+                $this->getMainCategories() :
+                $this->findBy('parent_category_id', $category->parent_category_id);
+        
+        foreach ($childCategories as $childCategory)
+            $childCategoryIds[] = $childCategory->id;
+        
+        return $childCategoryIds;
+    }
+    
+    private function _getAllChildCategoryIdsFromCategory(Category $category)
+    {
+        $childCategoryIds = array();
+        foreach ($category->Categories as $childCategory)
+            $childCategoryIds[] = $childCategory->id;
+        
+        return $childCategoryIds;
+    }
+    
+    /**
      * Used to add categories to categories array.
      * 
      * @param Doctrine_Collection $categories

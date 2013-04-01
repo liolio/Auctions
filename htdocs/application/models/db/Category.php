@@ -13,4 +13,19 @@
 class Category extends BaseCategory
 {
 
+    public function getCategoryAllParentIds()
+    {
+        $parent = $this->Category;
+        $parentIds = array();
+        
+        do {
+            if (!is_null($parent->id))
+                $parentIds[] = $parent->id;
+            
+            $parent = $parent->Category;
+        } while (!is_null($parent->id));
+        
+        return $parentIds;
+    }
+    
 }
