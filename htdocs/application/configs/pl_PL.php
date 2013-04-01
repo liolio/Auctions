@@ -2,10 +2,13 @@
 return array(
     'application_name'  =>  'Aukcyjki',
 
+    'caption-yes'                           =>  'Tak',
+    'caption-no'                            =>  'Nie',
     'caption-log_in'                        =>  'Zaloguj',
     'caption-log_out'                       =>  'Wyloguj',
     'caption-registration'                  =>  'Rejestracja',
     'caption-password_reset'                =>  'Zapomniałeś hasła?',
+    'caption-administartor_password_reset'  =>  'Resetowanie hasła',
     'caption-login_page_registration_link'  =>  'Nie masz jeszcze konta?',
     'caption-add'                           =>  'Dodaj',
     'caption-edit'                          =>  'Edytuj',
@@ -23,17 +26,22 @@ return array(
     'menu-log_out'              =>  'Wyloguj',
     
     'title-delete_category'             =>  'Usuń kategorię',
+    'title-delete_user'                 =>  'Usuń użytkownika',
     'title-delete_currency'             =>  'Usuń walutę',
     'title-delete_address'              =>  'Usuń adres',
     'title-delete_banking_information'  =>  'Usuń informacje o koncie bankowym',
+    'title-user_password_reset'         =>  'Zresetuj hasło użytkownikowi',
     
     'message-delete_category_confirmation'              =>  'Czy na pewno chcesz usunąć tę kategorię?',
+    'message-delete_user_confirmation'                  =>  'Czy na pewno chcesz usunąć tego użytkownika?',
     'message-delete_currency_confirmation'              =>  'Czy na pewno chcesz usunąć tę walutę?',
     'message-delete_address_confirmation'               =>  'Czy na pewno chcesz usunąć ten adres?',
     'message-delete_banking_information_confirmation'   =>  'Czy na pewno chcesz usunąć informację o tym koncie bankowym?',
+    'message-user_password_reset_confirmation'          =>  'Czy na pewno chcesz zresetować hasło użytkownikowi?',
     
-    'submenu-categories_list'           =>  'List kategorii',
-    'submenu-currencies_list'           =>  'List walut',
+    'submenu-categories_list'           =>  'Lista kategorii',
+    'submenu-currencies_list'           =>  'Lista walut',
+    'submenu-user_list'                 =>  'Lista kont użytkowników',
     'submenu-user_change_password'      =>  'Zmień hasło',
     'submenu-address_list'              =>  'Lista adresów',
     'submenu-banking-information_list'  =>  'Lista kont bankowych',
@@ -58,6 +66,13 @@ return array(
     'label-banking_information_account_number'  =>  'Numer konta:',
     'label-banking_information_currency'        =>  'Waluta:',
     'label-currency_name'                       =>  'Nazwa:',
+    'label-user_login'                          =>  'Login:',
+    'label-user_email'                          =>  'Adres e-mail:',
+    'label-user_active'                         =>  'Aktywny:',
+    'label-user_role'                           =>  'Rola:',
+    'label-user_last_login'                     =>  'Data ostatniego logowania:',
+    'label-created_at'                          =>  'Data stworzenia:',
+    'label-updated_at'                          =>  'Data ostatniej modyfikacji:',
     
     'validation_message-field_empty'                                        =>  'Pole obowiązkowe, nie może zostać puste',
     'validation_message-invalid_type'                                       =>  'Podano zły typ. Oczekiwano: %%types%%.',
@@ -79,6 +94,7 @@ return array(
     'validation_message-banking_information_already_exists'                 =>  'Numer konta w podanej walucie w podanym banku został już zdefiniowany',
     'validation_message-cannot_delete_category_has_subcategories'           =>  "Nie można usunąć kategorii, która posiada podkategorie",
     'validation_message-cannot_delete_currency_has_banking_informations'    =>  "Nie można usunąć waluty, która posiada zdefiniowane konta bankowe",
+    'validation_message-cannot_delete_your_own_account'                     =>  "Nie można usunąć własnego konta",
     
     'configuration-undefined'    =>  'undefined',
     

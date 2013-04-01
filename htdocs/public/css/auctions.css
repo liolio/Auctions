@@ -219,6 +219,10 @@ tr.alt td {
     left: 0px !important;
 }
 
+.resetButton .ui-button-icon-primary {
+    left: 0px !important;
+}
+
 .editButton .ui-button-icon-primary {
     left: 0px !important;
 }
@@ -244,4 +248,12 @@ tr.alt td {
 
 .menuActive {
     font-weight: bold;
+}
+
+.yes {
+    color: green;
+}
+
+.no {
+    color: red;
 }

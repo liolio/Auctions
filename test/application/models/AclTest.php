@@ -109,6 +109,11 @@ class AclTest extends TestCase_Controller
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CURRENCY, 'edit'),
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CURRENCY, 'process-edit-form'),
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::CURRENCY, 'delete'),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::USER, 'show-list'),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::USER, 'reset-password-by-administrator'),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::USER, 'delete'),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::USER, 'edit'),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::USER, 'process-edit-form'),
         );
     }
     

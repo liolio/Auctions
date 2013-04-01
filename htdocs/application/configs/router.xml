@@ -171,6 +171,69 @@
         <reverse></reverse>
     </userPanelChangePassword>
     
+    <userShowList>
+        <route>user/show-list</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>show-list</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </userShowList>
+    
+    <userResetPasswordByAdministrator>
+        <route>user/reset-password-by-administrator/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>reset-password-by-administrator</action>
+        </defaults>
+        <map>
+            <user_id>1</user_id>
+        </map>
+        <reverse></reverse>
+    </userResetPasswordByAdministrator>
+    
+    <userEdit>
+        <route>user/edit/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>edit</action>
+        </defaults>
+        <map>
+            <user_id>1</user_id>
+        </map>
+        <reverse></reverse>
+    </userEdit>
+    
+    <userProcessEditForm>
+        <route>user/process-edit-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>process-edit-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </userProcessEditForm>
+    
+    <userDelete>
+        <route>user/delete/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>delete</action>
+        </defaults>
+        <map>
+            <user_id>1</user_id>
+        </map>
+        <reverse></reverse>
+    </userDelete>
+    
     <addressShowList>
         <route>address/show-list</route>
         <defaults>

@@ -11,6 +11,11 @@
                 'currencyAdministratorList',
                 Menu_Element::create('currency/show-administrator-list', 'currencyShowAdministratorList', 'submenu-currencies_list')
                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+        )
+        ->addElement(
+                'userShowList',
+                Menu_Element::create('user/show-list', 'userShowList', 'submenu-user_list')
+                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
         );
 
     foreach ($menu as $menuElement)

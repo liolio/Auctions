@@ -1,0 +1,78 @@
+<div id="container">
+    <div id="content">
+        <?= View_Helper::getErrorMessage($this->message); ?>
+        <table>
+            <tr>
+                <th>
+                    <?=$this->translate('label-user_login')?>
+                </th>
+                <th>
+                    <?=$this->translate('label-user_email')?>
+                </th>
+                <th>
+                    <?=$this->translate('label-user_active')?>
+                </th>
+                <th>
+                    <?=$this->translate('label-user_role')?>
+                </th>
+                <th>
+                    <?=$this->translate('label-user_last_login')?>
+                </th>
+                <th>
+                    <?=$this->translate('label-created_at')?>
+                </th>
+                <th>
+                    <?=$this->translate('label-updated_at')?>
+                </th>
+                <th>
+                </th>
+            </tr>
+            <?php foreach ($this->users as $user) : ?>
+            <tr>
+                <td>
+                    <?=$user->login?>
+                </th>
+                <td>
+                    <?=$user->email?>
+                </th>
+                <td>
+                    <?=Formatter_YesNo::format($user->active)?>
+                </th>
+                <td>
+                    <?=$user->role?>
+                </th>
+                <td>
+                    <?=$user->last_login?>
+                </th>
+                <td style="min-width: 135px">
+                    <?=$user->created_at?>
+                </th>
+                <td>
+                    <?=$user->updated_at?>
+                </th>
+                <td class="textCenter" style="min-width: 70px">
+                    <a href="<?=$this->baseUrl();?>/user/edit/<?=$user->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                    <a href="#" class="resetButton" onclick="confirmationBox('<?=$this->baseUrl();?>/user/reset-password-by-administrator/<?=$user->id?>', 'dialog-box-password_reset');" title="<?=$this->translate('caption-administartor_password_reset')?>"></a>
+                    <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/user/delete/<?=$user->id?>', 'dialog-box-delete');" title="<?=$this->translate('caption-delete')?>"></a>
+                </td>
+            </tr>
+            <?php    endforeach; ?>
+        </table>
+        <br/>
+    </div>
+</div>
+<?php echo $this->render('administrator/sub-menu.phtml') ?>
+
+<div id="dialog-box-delete" class="dialog-box" title="<?= $this->translate('title-delete_user');?>">
+  <p>
+      <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+      <?= $this->translate('message-delete_user_confirmation'); ?>
+  </p>
+</div>
+
+<div id="dialog-box-password_reset" class="dialog-box" title="<?= $this->translate('title-user_password_reset');?>">
+  <p>
+      <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+      <?= $this->translate('message-user_password_reset_confirmation'); ?>
+  </p>
+</div>

@@ -68,6 +68,7 @@ class Acl extends Zend_Acl
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::ADMINISTRATOR, array('index'));
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::CATEGORY, array('show-administrator-list', 'add', 'process-add-form', 'edit', 'process-edit-form', 'delete'));
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::CURRENCY, array('show-administrator-list', 'add', 'process-add-form', 'edit', 'process-edit-form', 'delete'));
+        $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::USER, array('show-list', 'reset-password-by-administrator', 'delete', 'edit', 'process-edit-form'));
     }
     
     private function _allow($roles = null, $resources = null, $privileges = null, $assertionClassName = null)

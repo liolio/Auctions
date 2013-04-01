@@ -20,24 +20,35 @@ class Validate_User_EmailUniqueTest extends TestCase_Database
      * @test
      * @dataProvider validValuesProvider
      */
-    public function isValidWithValidValues($value)
+    public function isValidWithValidValues($value, array $context)
     {
-        $this->assertTrue($this->_validator->isValid($value));
+        $this->assertTrue($this->_validator->isValid($value, $context));
     }
     
     public static function validValuesProvider()
     {
         return array(
-            array('non_existing@email.com'),
-            array('')
+            array('non_existing@email.com', array()),
+            array('lio_lio@wp.pl', array(FieldIdEnum::USER_ID => '1')),
+            array('', array())
         );
     }
     
     /**
      * @test
+     * @dataProvider invalidValuesProvider
      */
-    public function isValidWithInvalidValues()
+    public function isValidWithInvalidValues($value, array $context)
     {
-        $this->assertFalse($this->_validator->isValid('lio_lio@wp.pl'));
+        Fixture_Loader::create('User/2');
+        $this->assertFalse($this->_validator->isValid($value, $context));
+    }
+    
+    public function invalidValuesProvider()
+    {
+        return array(
+            array('lio_lio@wp.pl', array()),
+            array('user@email.com', array(FieldIdEnum::USER_ID => '1')),
+        );
     }
 }

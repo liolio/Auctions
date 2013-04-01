@@ -10,11 +10,10 @@ class Validate_User_EmailUnique extends Zend_Validate_Abstract
         self::EMAIL_EXISTS      =>  'validation_message-user_email_exists',
     );
     
-    public function isValid($value)
+    public function isValid($value, $context = null)
     {
-        $usersCount = UserTable::getInstance()->findBy('email', $value)->count();
-        
-        if ($usersCount > 0)
+        $userId = array_key_exists(FieldIdEnum::USER_ID, $context) ? $context[FieldIdEnum::USER_ID] : null;
+        if (!UserTable::getInstance()->isEmailUnique($value, $userId))
         {
             $this->_error(self::EMAIL_EXISTS);
             return false;

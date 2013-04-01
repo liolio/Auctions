@@ -5,10 +5,13 @@
 class FieldIdEnum extends Enum_Abstract
 {
     
+    const USER_ID = 'user_id';
     const USER_LOGIN = 'user_login';
     const USER_PASSWORD = 'user_password';
     const USER_EMAIL = 'user_email';
     const USER_SECRET_CODE = 'user_secret_code';
+    const USER_ACTIVE = 'user_active';
+    const USER_ROLE = 'user_role';
     
     const ADDRESS_ID = 'address_id';
     const ADDRESS_NAME = 'address_name';

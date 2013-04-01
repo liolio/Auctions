@@ -6,9 +6,22 @@ $(function() {
         modal: true
     });
     
+    $(".dialog-box").dialog({
+        autoOpen: false,
+        modal: true
+    });
+    
     $(".deleteButton")
         .button({
-            icons: { primary: "ui-icon-minus" }
+            icons: { primary: "ui-icon-trash" }
+        })
+        .width(16)
+        .height(14)
+        .css("margin-bottom", "3px");
+
+    $(".resetButton")
+        .button({
+            icons: { primary: "ui-icon-refresh" }
         })
         .width(16)
         .height(14)
@@ -60,8 +73,9 @@ $(function() {
         
 });
 
-var confirmationBox = function(url) {
-    $("#dialog-box").dialog({
+var confirmationBox = function(url, dialogBoxId) {
+    var id = dialogBoxId === null ? "dialog-box" : dialogBoxId;
+    $("#" + id).dialog({
     resizable: false,
     height:180,
     width:360,
@@ -77,5 +91,5 @@ var confirmationBox = function(url) {
         }
     });
 
-    $("#dialog-box").dialog("open");
+    $("#" + id).dialog("open");
 };

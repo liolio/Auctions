@@ -10,11 +10,10 @@ class Validate_User_LoginUnique extends Zend_Validate_Abstract
         self::LOGIN_EXISTS      =>  'validation_message-user_login_exists',
     );
     
-    public function isValid($value)
+    public function isValid($value, $context = null)
     {
-        $usersCount = UserTable::getInstance()->findBy('login', $value)->count();
-        
-        if ($usersCount > 0)
+        $userId = array_key_exists(FieldIdEnum::USER_ID, $context) ? $context[FieldIdEnum::USER_ID] : null;
+        if (!UserTable::getInstance()->isLoginUnique($value, $userId))
         {
             $this->_error(self::LOGIN_EXISTS);
             return false;
