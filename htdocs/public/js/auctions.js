@@ -74,7 +74,7 @@ $(function() {
 });
 
 var confirmationBox = function(url, dialogBoxId) {
-    var id = dialogBoxId === null ? "dialog-box" : dialogBoxId;
+    var id = dialogBoxId === undefined ? "dialog-box" : dialogBoxId;
     $("#" + id).dialog({
     resizable: false,
     height:180,
