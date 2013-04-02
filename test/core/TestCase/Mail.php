@@ -2,7 +2,7 @@
 /**
  * @class TestCase_Mail
  */
-class TestCase_Mail extends TestCase_Controller
+abstract class TestCase_Mail extends TestCase_Controller
 {
 
     /**

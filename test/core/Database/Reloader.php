@@ -47,6 +47,18 @@ class Database_Reloader
 
         return $this;
     }
+    
+    public function dropTables()
+    {
+        $this->_setForeignKeyChecking(false);
+        
+        foreach ($this->_getTables() as $table)
+            $this->_executeQuery('DROP TABLE ' . $table['TABLE_NAME']);
+        
+        $this->_setForeignKeyChecking();
+        
+        return $this;
+    }
 
     /**
      *

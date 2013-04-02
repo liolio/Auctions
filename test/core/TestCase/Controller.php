@@ -2,7 +2,7 @@
 /**
  * @class TestCase_Controller
  */
-class TestCase_Controller extends Zend_Test_PHPUnit_ControllerTestCase
+abstract class TestCase_Controller extends Zend_Test_PHPUnit_ControllerTestCase
 {
     
     protected $backupGlobals = false;

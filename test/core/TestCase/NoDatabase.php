@@ -2,7 +2,7 @@
 /**
  * @class TestCase_NoDatabase
  */
-class TestCase_NoDatabase extends PHPUnit_Framework_TestCase
+abstract class TestCase_NoDatabase extends PHPUnit_Framework_TestCase
 {
     
     protected $backupGlobals = false;
