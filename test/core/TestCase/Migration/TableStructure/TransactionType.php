@@ -1,26 +1,24 @@
 <?php
 /**
- * @class TestCase_Migration_TableStructure_Currency
+ * @class TestCase_Migration_TableStructure_TransactionType
  */
-class TestCase_Migration_TableStructure_Currency implements TestCase_Migration_TableStructure
+class TestCase_Migration_TableStructure_TransactionType implements TestCase_Migration_TableStructure
 {
     
     public static function getStructure($versionNumber)
     {
         switch ($versionNumber)
         {
-            case 13 :
-            case 14 :
             case 15 :
             case 16 :
             case 17 :
-                return self::_getStructureFromVersion13();
+                return self::_getStructureFromVersion15();
             default :
                 throw new InvalidArgumentException($versionNumber . " not supported.");
         }
     }
     
-    private static function _getStructureFromVersion13()
+    private static function _getStructureFromVersion15()
     {
         return array(
             array(
@@ -35,7 +33,7 @@ class TestCase_Migration_TableStructure_Currency implements TestCase_Migration_T
                 TestCase_Migration::COLUMN_FIELD     =>  'name',
                 TestCase_Migration::COLUMN_TYPE      =>  'varchar(100)',
                 TestCase_Migration::COLUMN_NULL      =>  'NO',
-                TestCase_Migration::COLUMN_KEY       =>  '',
+                TestCase_Migration::COLUMN_KEY       =>  'UNI',
                 TestCase_Migration::COLUMN_DEFAULT   =>  null,
                 TestCase_Migration::COLUMN_EXTRA     =>  '',
             ),

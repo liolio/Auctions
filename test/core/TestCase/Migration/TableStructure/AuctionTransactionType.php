@@ -1,31 +1,25 @@
 <?php
 /**
- * @class TestCase_Migration_TableStructure_Category
+ * @class TestCase_Migration_TableStructure_AuctionTransactionType
  */
-class TestCase_Migration_TableStructure_Category implements TestCase_Migration_TableStructure
+class TestCase_Migration_TableStructure_AuctionTransactionType implements TestCase_Migration_TableStructure
 {
     
     public static function getStructure($versionNumber)
     {
         switch ($versionNumber)
         {
-            case 9 :
-                return self::_getStructureFromVersion9();
-            case 10 :
-            case 11 :
-            case 12 :
-            case 13 :
-            case 14 :
             case 15 :
+                return self::_getStructureFromVersion15();
             case 16 :
             case 17 :
-                return self::_getStructureFromVersion10();
+                return self::_getStructureFromVersion16();
             default :
                 throw new InvalidArgumentException($versionNumber . " not supported.");
         }
     }
     
-    private static function _getStructureFromVersion9()
+    private static function _getStructureFromVersion15()
     {
         return array(
             array(
@@ -37,25 +31,25 @@ class TestCase_Migration_TableStructure_Category implements TestCase_Migration_T
                 TestCase_Migration::COLUMN_EXTRA     =>  'auto_increment',
             ),
             array(
-                TestCase_Migration::COLUMN_FIELD     =>  'name',
-                TestCase_Migration::COLUMN_TYPE      =>  'varchar(100)',
+                TestCase_Migration::COLUMN_FIELD     =>  'auction_id',
+                TestCase_Migration::COLUMN_TYPE      =>  'bigint(20) unsigned',
                 TestCase_Migration::COLUMN_NULL      =>  'NO',
                 TestCase_Migration::COLUMN_KEY       =>  '',
                 TestCase_Migration::COLUMN_DEFAULT   =>  null,
                 TestCase_Migration::COLUMN_EXTRA     =>  '',
             ),
             array(
-                TestCase_Migration::COLUMN_FIELD     =>  'description',
-                TestCase_Migration::COLUMN_TYPE      =>  'varchar(255)',
-                TestCase_Migration::COLUMN_NULL      =>  'YES',
+                TestCase_Migration::COLUMN_FIELD     =>  'transaction_type_id',
+                TestCase_Migration::COLUMN_TYPE      =>  'bigint(20) unsigned',
+                TestCase_Migration::COLUMN_NULL      =>  'NO',
                 TestCase_Migration::COLUMN_KEY       =>  '',
                 TestCase_Migration::COLUMN_DEFAULT   =>  null,
                 TestCase_Migration::COLUMN_EXTRA     =>  '',
             ),
             array(
-                TestCase_Migration::COLUMN_FIELD     =>  'parent_category_id',
-                TestCase_Migration::COLUMN_TYPE      =>  'bigint(20) unsigned',
-                TestCase_Migration::COLUMN_NULL      =>  'YES',
+                TestCase_Migration::COLUMN_FIELD     =>  'price',
+                TestCase_Migration::COLUMN_TYPE      =>  'decimal(15,2)',
+                TestCase_Migration::COLUMN_NULL      =>  'NO',
                 TestCase_Migration::COLUMN_KEY       =>  '',
                 TestCase_Migration::COLUMN_DEFAULT   =>  null,
                 TestCase_Migration::COLUMN_EXTRA     =>  '',
@@ -63,7 +57,7 @@ class TestCase_Migration_TableStructure_Category implements TestCase_Migration_T
         );
     }
     
-    private static function _getStructureFromVersion10()
+    private static function _getStructureFromVersion16()
     {
         return array(
             array(
@@ -75,26 +69,26 @@ class TestCase_Migration_TableStructure_Category implements TestCase_Migration_T
                 TestCase_Migration::COLUMN_EXTRA     =>  'auto_increment',
             ),
             array(
-                TestCase_Migration::COLUMN_FIELD     =>  'name',
-                TestCase_Migration::COLUMN_TYPE      =>  'varchar(100)',
+                TestCase_Migration::COLUMN_FIELD     =>  'auction_id',
+                TestCase_Migration::COLUMN_TYPE      =>  'bigint(20) unsigned',
+                TestCase_Migration::COLUMN_NULL      =>  'NO',
+                TestCase_Migration::COLUMN_KEY       =>  'MUL',
+                TestCase_Migration::COLUMN_DEFAULT   =>  null,
+                TestCase_Migration::COLUMN_EXTRA     =>  '',
+            ),
+            array(
+                TestCase_Migration::COLUMN_FIELD     =>  'transaction_type_id',
+                TestCase_Migration::COLUMN_TYPE      =>  'bigint(20) unsigned',
+                TestCase_Migration::COLUMN_NULL      =>  'NO',
+                TestCase_Migration::COLUMN_KEY       =>  'MUL',
+                TestCase_Migration::COLUMN_DEFAULT   =>  null,
+                TestCase_Migration::COLUMN_EXTRA     =>  '',
+            ),
+            array(
+                TestCase_Migration::COLUMN_FIELD     =>  'price',
+                TestCase_Migration::COLUMN_TYPE      =>  'decimal(15,2)',
                 TestCase_Migration::COLUMN_NULL      =>  'NO',
                 TestCase_Migration::COLUMN_KEY       =>  '',
-                TestCase_Migration::COLUMN_DEFAULT   =>  null,
-                TestCase_Migration::COLUMN_EXTRA     =>  '',
-            ),
-            array(
-                TestCase_Migration::COLUMN_FIELD     =>  'description',
-                TestCase_Migration::COLUMN_TYPE      =>  'varchar(255)',
-                TestCase_Migration::COLUMN_NULL      =>  'YES',
-                TestCase_Migration::COLUMN_KEY       =>  '',
-                TestCase_Migration::COLUMN_DEFAULT   =>  null,
-                TestCase_Migration::COLUMN_EXTRA     =>  '',
-            ),
-            array(
-                TestCase_Migration::COLUMN_FIELD     =>  'parent_category_id',
-                TestCase_Migration::COLUMN_TYPE      =>  'bigint(20) unsigned',
-                TestCase_Migration::COLUMN_NULL      =>  'YES',
-                TestCase_Migration::COLUMN_KEY       =>  'MUL',
                 TestCase_Migration::COLUMN_DEFAULT   =>  null,
                 TestCase_Migration::COLUMN_EXTRA     =>  '',
             ),

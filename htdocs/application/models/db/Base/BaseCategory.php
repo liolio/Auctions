@@ -10,6 +10,7 @@
  * @property string $description
  * @property integer $parent_category_id
  * @property Category $Category
+ * @property Doctrine_Collection $Auctions
  * @property Doctrine_Collection $Categories
  * 
  * @package    ##PACKAGE##
@@ -52,6 +53,10 @@ abstract class BaseCategory extends Doctrine_Record
              'local' => 'parent_category_id',
              'foreign' => 'id',
              'onDelete' => 'RESTRICT'));
+
+        $this->hasMany('Auction as Auctions', array(
+             'local' => 'id',
+             'foreign' => 'category_id'));
 
         $this->hasMany('Category as Categories', array(
              'local' => 'id',

@@ -15,6 +15,7 @@
  * @property timestamp $last_login
  * @property enum $role
  * @property Doctrine_Collection $Addresses
+ * @property Doctrine_Collection $Auctions
  * @property Doctrine_Collection $BankingInformations
  * 
  * @package    ##PACKAGE##
@@ -102,6 +103,10 @@ abstract class BaseUser extends Doctrine_Record
     {
         parent::setUp();
         $this->hasMany('Address as Addresses', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
+
+        $this->hasMany('Auction as Auctions', array(
              'local' => 'id',
              'foreign' => 'user_id'));
 

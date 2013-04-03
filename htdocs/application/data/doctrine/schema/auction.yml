@@ -1,0 +1,42 @@
+Auction:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+      unsigned: true
+    title:
+      type: string(100)
+      notnull: true
+    description:
+      type: string(1000)
+      notnull: true
+    number_of_items:
+      type: integer(5)
+      notnull: true
+      unsigned: true
+    start_time:
+      type: timestamp
+      notnull: true
+    duration:
+      type: enum
+      values: [1, 3, 7, 14, 21, 30]
+      notnull: true
+      default: 7
+    user_id:
+      type: integer(5)
+      unsigned: true
+      notnull: true
+    category_id:
+      type: integer(5)
+      unsigned: true
+      notnull: true
+  relations:
+    User:
+      foreignAlias: Auctions
+      onDelete: CASCADE
+    Category:
+      foreignAlias: Auctions
+      onDelete: RESTRICT
+  actAs:
+    Timestampable:

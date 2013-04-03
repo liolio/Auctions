@@ -1,0 +1,5 @@
+TransactionType:
+  bidding:
+    name: BIDDING
+  buyOut:
+    name: BUY_OUT

@@ -1,0 +1,11 @@
+TransactionType:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+      unsigned: true
+    name:
+      type: string(100)
+      notnull: true
+      unique: true
