@@ -13,6 +13,11 @@
 class Category extends BaseCategory
 {
 
+    /**
+     * Returns array with ids of all parents.
+     * 
+     * @return array
+     */
     public function getCategoryAllParentIds()
     {
         $parent = $this->Category;
@@ -26,6 +31,42 @@ class Category extends BaseCategory
         } while (!is_null($parent->id));
         
         return $parentIds;
+    }
+    
+    /**
+     * Returns array with all children ids of category.
+     * 
+     * @return array
+     */
+    public function getCategoryAllChildrenIds()
+    {
+        $childrenIds = array();
+        
+        $this->_getChildrenIds($this, $childrenIds);
+        
+        return $childrenIds;
+    }
+    
+    /**
+     * Recurrently add children ids to childrenIds array parameter.
+     * 
+     * @param Category $category
+     * @param array $childrenIds
+     * @return array
+     */
+    private function _getChildrenIds(Category $category, array &$childrenIds)
+    {
+        $category->refresh(true);
+        if (count($category->Categories) > 0)
+        {
+            foreach ($category->Categories as $childrenCategory)
+            {
+                $childrenIds[] = $childrenCategory->id;
+                $this->_getChildrenIds($childrenCategory, $childrenIds);
+            }
+        }
+        
+        return $childrenIds;
     }
     
 }

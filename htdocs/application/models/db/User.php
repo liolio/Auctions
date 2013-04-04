@@ -14,6 +14,11 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
         return $this->id;
     }
     
+    public function getRecipients()
+    {
+        return array($this->email);
+    }
+    
     public function getNotificationData($notificationType)
     {
         switch ($notificationType)
@@ -37,17 +42,17 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
         }
     }
     
+    /**
+     * Returns name and surname.
+     * 
+     * @return String
+     */
     public function getFullName()
     {
         $address = $this->Addresses->getFirst();
         return $address->name . " " . $address->surname;
     }
 
-    public function getRecipients()
-    {
-        return array($this->email);
-    }
-    
     /**
      * Veryfies if given value quals user's password.
      * 

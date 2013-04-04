@@ -12,16 +12,17 @@ class Auctions_AuctionController extends Controller_Abstract
 
     public function showListForCategoryAction()
     {
-        $this->_setCategoriesList();
-        $this->view->auctions = null;
-    }
-    
-    private function _setCategoriesList()
-    {
         $categoryId = $this->getRequest()->getParam(FieldIdEnum::CATEGORY_ID);
         $category = CategoryTable::getInstance()->find($categoryId);
+        
+        $this->_setCategoriesList($category);
+        $this->view->auctionsArray = AuctionTable::getInstance()->getAuctionsAllChildrenAuctions($category, Zend_Date::now());
+    }
+    
+    private function _setCategoriesList(Category $category)
+    {
         $activeCategories = $category->getCategoryAllParentIds();
-        $activeCategories[] = $categoryId;
+        $activeCategories[] = $category->id;
         $this->view->activeCategoriesIds = $activeCategories;
         
         $this->view->categoriesIdsToShow = CategoryTable::getInstance()->getCategoriesToExpand($category);

@@ -36,5 +36,14 @@ class FieldIdEnum extends Enum_Abstract
     const BANKING_INFORMATION_ACCOUNT_NUMBER = 'banking_information_account_number';
     const BANKING_INFORMATION_CURRENCY_ID = 'banking_information_currency_id';
     
+    const AUCTION_ID = 'auction_id';
+    const AUCTION_TITLE = 'auction_title';
+    const AUCTION_DURATION = 'auction_duration';
+    const AUCTION_START_TIME = 'auction_start_time';
+    
+    const AUCTION_TRANSACTION_TYPE_PRICE = 'auction_transaction_type_price';
+    
+    const TRANSACTION_TYPE_NAME = 'transaction_type_name';
+    
 }
 

@@ -32,5 +32,11 @@ class ParamIdEnum extends Enum_Abstract
     const CATEGORY_MAIN_CATEGORY_PARENT_ID = '0';
     
     const CATEGORY_WITHOUT_CATEGORY_ID = 'category_without_category_id';
+
+    const AUCTION_END_TIME = 'auction_end_time';
+    
+    const AUCTION_PRICES = 'auction_prices';
+    
+    const AUCTION_EVEN = 'auction_even';
     
 }

@@ -127,6 +127,6 @@
     $categories = CategoryTable::getInstance()->getMainCategories();
     
     foreach ($categories as $category)
-        echo "<a href=" . $this->baseUrl . "auction/show-list-for-category/" . $category->id . ">" . $category->name . "</a><br/>";
+        echo "<a href=" . $this->baseUrl() . "/auction/show-list-for-category/" . $category->id . ">" . $category->name . "</a><br/>";
     ?>
 </div>

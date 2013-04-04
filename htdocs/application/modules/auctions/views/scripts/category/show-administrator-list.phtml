@@ -15,14 +15,14 @@
             <?php foreach ($this->mainCategories as $category) : ?>
             <tr>
                 <td>
-                    <?=$category->name?>
+                    <?=$category[FieldIdEnum::CATEGORY_NAME]?>
                 </th>
                 <td>
-                    <?=$category->description?>
+                    <?=$category[FieldIdEnum::CATEGORY_DESCRIPTION]?>
                 </td>
                 <td class="textCenter">
-                    <a href="<?=$this->baseUrl();?>/category/edit/<?=$category->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
-                    <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/category/delete/<?=$category->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+                    <a href="<?=$this->baseUrl();?>/category/edit/<?=$category[FieldIdEnum::CATEGORY_ID]?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                    <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/category/delete/<?=$category[FieldIdEnum::CATEGORY_ID]?>');" title="<?=$this->translate('caption-delete')?>"></a>
                 </td>
             </tr>
             <?php    endforeach; ?>

@@ -115,8 +115,9 @@ class CategoryTable extends Doctrine_Table
         {
             if ($category->id !== $withoutCategoryId)
             {
+                $category->refresh(true);
                 $category->name = $categoryPrefix . $category->name;
-                $categoriesArray[$category->id] = $addNameOnly ? $category->name : $category;
+                $categoriesArray[$category->id] = $addNameOnly ? $category->name : $this->_getCategoryAsArray($category);
                 $this->_addSubCategories(
                     $categoriesArray, 
                     $category, 
@@ -128,6 +129,16 @@ class CategoryTable extends Doctrine_Table
         }
         
         return $categoriesArray;
+    }
+    
+    private function _getCategoryAsArray(Category $category)
+    {
+        return array (
+            FieldIdEnum::CATEGORY_ID                    =>  $category->id,
+            FieldIdEnum::CATEGORY_DESCRIPTION           =>  $category->description,
+            FieldIdEnum::CATEGORY_NAME                  =>  $category->name,
+            FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  $category->parent_category_id
+        );
     }
     
     /**
@@ -148,8 +159,9 @@ class CategoryTable extends Doctrine_Table
             {
                 if ($subCategory->id !== $withoutCategoryId)
                 {
+                    $subCategory->refresh(true);
                     $subCategory->name = $subCategoryPrefix . $subCategory->name;
-                    $categoriesArray[$subCategory->id] = $addNameOnly ? $subCategory->name : $subCategory;
+                    $categoriesArray[$subCategory->id] = $addNameOnly ? $subCategory->name : $this->_getCategoryAsArray($subCategory);
                     $this->_addSubCategories(
                         $categoriesArray, 
                         $subCategory, 

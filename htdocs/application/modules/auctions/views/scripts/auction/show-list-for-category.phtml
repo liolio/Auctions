@@ -1,15 +1,55 @@
 <div id="container">
     <div id="content">
-        auction list
+        <?php echo str_replace('%%value%%', count($this->auctionsArray), $this->translate('message-number_of_auctions_found')); ?><br/>
+        <br/>
+        <?php 
+            $i = 0;
+            foreach ($this->auctionsArray as $auctionId => $auction) : 
+            
+            $class = $i++ % 2 == 0 ? 'even' : 'odd';?>
+             
+            <div class="auctionListItem <?= $class ?>">
+                <a href='<?php echo$this->baseUrl() . "/auction/" . $auctionId; ?>'>
+                    <div class="thumbnailContainer">
+                        <img src="<?php echo $this->baseUrl() . "/img/a.jpg";?>" class="thumbnail"/>
+                    </div>
+                    <div class="titleContainer">
+                        <?=$auction[FieldIdEnum::AUCTION_TITLE]?>
+                    </div>
+                </a>
+                <div class="price">
+                    <?php if (count($auction[ParamIdEnum::AUCTION_PRICES]) === 1) : ?>
+                        <div class="one">
+                            <?php echo $this->translate("transaction_type-" . $auction[ParamIdEnum::AUCTION_PRICES][0][FieldIdEnum::TRANSACTION_TYPE_NAME]) . " " . 
+                                    '<strong>' . $auction[ParamIdEnum::AUCTION_PRICES][0][FieldIdEnum::AUCTION_TRANSACTION_TYPE_PRICE] . '</strong>';?>
+                        </div>
+                    <?php else : ?>
+                        <div class="two">
+                            <div class="up">
+                                <?php echo $this->translate("transaction_type-" . $auction[ParamIdEnum::AUCTION_PRICES][0][FieldIdEnum::TRANSACTION_TYPE_NAME]) . " " . 
+                                    '<strong>' . $auction[ParamIdEnum::AUCTION_PRICES][0][FieldIdEnum::AUCTION_TRANSACTION_TYPE_PRICE] . '</strong>';?>
+                            </div>
+                            <div class="down">
+                                <?php echo $this->translate("transaction_type-" . $auction[ParamIdEnum::AUCTION_PRICES][1][FieldIdEnum::TRANSACTION_TYPE_NAME]) . " " . 
+                                    '<strong>' . $auction[ParamIdEnum::AUCTION_PRICES][1][FieldIdEnum::AUCTION_TRANSACTION_TYPE_PRICE] . '</strong>';?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <div class="endTime">
+                        <?php echo $this->translate('caption-auction_ends_at') . " " . $auction[ParamIdEnum::AUCTION_END_TIME]; ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
 <div id="subMenu">
     <?php
     foreach ($this->categories as $category)
     {
-        $class = in_array($category->id, $this->activeCategoriesIds) ? " class = 'menuActive'" : "";
-        if (in_array($category->id, $this->categoriesIdsToShow) || in_array($category->id, $this->activeCategoriesIds))
-            echo "<a href=" . $this->baseUrl() . "/auction/show-list-for-category/" . $category->id . $class . ">" . " " . $category->name . "</a><br/>";
+        $class = in_array($category[FieldIdEnum::CATEGORY_ID], $this->activeCategoriesIds) ? " class = 'menuActive'" : "";
+        if (in_array($category[FieldIdEnum::CATEGORY_ID], $this->categoriesIdsToShow) || in_array($category[FieldIdEnum::CATEGORY_ID], $this->activeCategoriesIds))
+            echo "<a href=" . $this->baseUrl() . "/auction/show-list-for-category/" . $category[FieldIdEnum::CATEGORY_ID] . $class . ">" . " " . $category[FieldIdEnum::CATEGORY_NAME] . "</a><br/>";
     }
     ?>
 </div>

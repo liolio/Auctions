@@ -17,6 +17,7 @@ return array(
     'caption-save'                          =>  'Zapisz',
     'caption-category_main'                 =>  'Kategoria główna',
     'caption-category_list_prefix'          =>  '- ',
+    'caption-auction_ends_at'               =>  'Data zakończenia aukcji: ',
     
     'menu-spearator'            =>  ' | ',
     'menu-log_in'               =>  'Logowanie',
@@ -38,6 +39,7 @@ return array(
     'message-delete_address_confirmation'               =>  'Czy na pewno chcesz usunąć ten adres?',
     'message-delete_banking_information_confirmation'   =>  'Czy na pewno chcesz usunąć informację o tym koncie bankowym?',
     'message-user_password_reset_confirmation'          =>  'Czy na pewno chcesz zresetować hasło użytkownikowi?',
+    'message-number_of_auctions_found'                  =>  'Znaleziono %%value%% aukcji',
     
     'submenu-categories_list'           =>  'Lista kategorii',
     'submenu-currencies_list'           =>  'Lista walut',
@@ -73,6 +75,9 @@ return array(
     'label-user_last_login'                     =>  'Data ostatniego logowania:',
     'label-created_at'                          =>  'Data stworzenia:',
     'label-updated_at'                          =>  'Data ostatniej modyfikacji:',
+    
+    'transaction_type-BIDDING'                  =>  'Licytacja',
+    'transaction_type-BUY_OUT'                  =>  'Zakup',
     
     'validation_message-field_empty'                                        =>  'Pole obowiązkowe, nie może zostać puste',
     'validation_message-invalid_type'                                       =>  'Podano zły typ. Oczekiwano: %%types%%.',

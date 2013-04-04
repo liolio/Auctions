@@ -33,14 +33,46 @@ class CategoryTableTest extends TestCase_Database
         Fixture_Loader::create("Category/5_parent_3");
         Fixture_Loader::create("Category/6_parent_3");
         
-        $categories = CategoryTable::getInstance()->getCategoriesList();
+        $expectedArray = array(
+            2   =>  array(
+                FieldIdEnum::CATEGORY_ID                    =>  '2',
+                FieldIdEnum::CATEGORY_DESCRIPTION           =>  'description_of_main_category_2',
+                FieldIdEnum::CATEGORY_NAME                  =>  '- aa_main_category_2',
+                FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  null,
+            ),
+            1   =>  array(
+                FieldIdEnum::CATEGORY_ID                    =>  '1',
+                FieldIdEnum::CATEGORY_DESCRIPTION           =>  'description_of_main_category_1',
+                FieldIdEnum::CATEGORY_NAME                  =>  '- zz_main_category_1',
+                FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  null,
+            ),
+            4   =>  array(
+                FieldIdEnum::CATEGORY_ID                    =>  '4',
+                FieldIdEnum::CATEGORY_DESCRIPTION           =>  'description_of_sub_category_4',
+                FieldIdEnum::CATEGORY_NAME                  =>  '- - aa_sub_category_4',
+                FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  '1',
+            ),
+            3   =>  array(
+                FieldIdEnum::CATEGORY_ID                    =>  '3',
+                FieldIdEnum::CATEGORY_DESCRIPTION           =>  'description_of_sub_category_3',
+                FieldIdEnum::CATEGORY_NAME                  =>  '- - zz_sub_category_3',
+                FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  '1',
+            ),
+            6   =>  array(
+                FieldIdEnum::CATEGORY_ID                    =>  '6',
+                FieldIdEnum::CATEGORY_DESCRIPTION           =>  'description_of_sub_sub_category_6',
+                FieldIdEnum::CATEGORY_NAME                  =>  '- - - aa_sub_sub_category_6',
+                FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  '3',
+            ),
+            5   =>  array(
+                FieldIdEnum::CATEGORY_ID                    =>  '5',
+                FieldIdEnum::CATEGORY_DESCRIPTION           =>  'description_of_sub_sub_category_5',
+                FieldIdEnum::CATEGORY_NAME                  =>  '- - - zz_sub_sub_category_5',
+                FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID    =>  '3',
+            ),
+        );
         
-        $this->assertEquals("- aa_main_category_2", $categories[2]->name);
-        $this->assertEquals("- zz_main_category_1", $categories[1]->name);
-        $this->assertEquals("- - aa_sub_category_4", $categories[4]->name);
-        $this->assertEquals("- - zz_sub_category_3", $categories[3]->name);
-        $this->assertEquals("- - - aa_sub_sub_category_6", $categories[6]->name);
-        $this->assertEquals("- - - zz_sub_sub_category_5", $categories[5]->name);
+        $this->assertEquals($expectedArray, CategoryTable::getInstance()->getCategoriesList());
     }
     
     /**

@@ -41,6 +41,16 @@ abstract class TestCase_Database extends PHPUnit_Framework_TestCase
         $this->assertEquals(0, Doctrine_Manager::connection()->getTransactionLevel());
     }
     
+    protected function _loadFixture($path)
+    {
+        Fixture_Loader::create($path);
+    }
+    
+    protected function _loadFixtures(array $paths)
+    {
+        Fixture_Loader::createAll($paths);
+    }
+    
     /**
      * Fixtures won't be loaded.
      */

@@ -257,3 +257,86 @@ tr.alt td {
 .no {
     color: red;
 }
+
+.auctionListItem {
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+    /*background: aqua;*/
+    height: 70px;
+    width: 1050px;
+    margin-bottom: 5px;
+}
+
+.even {
+    background: #f2f2f2;
+}
+
+.odd {
+    background: #ffeded;
+}
+
+.auctionListItem .thumbnail {
+    max-height: 60px;
+    max-width: 80px;
+}
+
+.auctionListItem .thumbnailContainer {
+    height: 60px;
+    width: 80px;
+    top: 50%;
+    margin-top: -30px;
+    margin-left: 5px;
+    float: left;
+    position: relative;
+    vertical-align: middle;
+    border: solid 1px gray;
+}
+
+.auctionListItem .titleContainer {
+    top: 50%;
+    margin-top: -30px;
+    margin-left: 10px;
+    width: 700px;
+    height: 60px;
+    float: left;
+    position: relative;
+    /*background: yellow;*/
+}
+
+.auctionListItem .price {
+    margin-left: 5px;
+    width: 245px;
+    float: left;
+    position: relative;
+    top: 50%;
+    margin-top: -30px;
+}
+
+.auctionListItem .price .one {
+    padding-left: 5px;
+    height: 30px;
+    padding-top: 10px;
+    /*background: white;*/
+}
+
+.auctionListItem .price .two .up {
+    padding-left: 5px;
+    height: 20px;
+    /*background: pink;*/
+}
+
+.auctionListItem .price .two .down {
+    padding-left: 5px;
+    height: 20px;
+    /*background: aquamarine;*/
+}
+
+.auctionListItem .price .endTime {
+    padding-left: 5px;
+    height: 20px;
+    margin-top: 5px;
+    font-size: 0.7em;
+    /*background: aqua;*/
+}
+
