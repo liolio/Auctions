@@ -53,6 +53,16 @@ abstract class TestCase_Controller extends Zend_Test_PHPUnit_ControllerTestCase
         $this->assertEquals(0, Doctrine_Manager::connection()->getTransactionLevel());
     }
     
+    protected function _loadFixture($path)
+    {
+        Fixture_Loader::create($path);
+    }
+    
+    protected function _loadFixtures(array $paths)
+    {
+        Fixture_Loader::createAll($paths);
+    }
+    
     /**
      * Sets request data.
      * 

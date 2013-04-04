@@ -13,7 +13,7 @@ class Auctions_Form_Currency_AddTest extends TestCase_Database
     protected function setUp()
     {
         parent::setUp();
-        Fixture_Loader::create("Currency/1");
+        $this->_loadFixture("Currency/1");
         $this->_form = new Auctions_Form_Currency_Add();
     }
     

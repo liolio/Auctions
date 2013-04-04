@@ -10,7 +10,7 @@ class Auctions_CurrencyController_ProcessAddFormActionTest extends TestCase_Cont
      */
     public function process()
     {
-        Fixture_Loader::create("Currency/1");
+        $this->_loadFixture("Currency/1");
         
         $request = array(
             FieldIdEnum::CURRENCY_NAME  =>  'EUR',

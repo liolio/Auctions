@@ -11,7 +11,7 @@ class CurrencyTableTest extends TestCase_Database
      */
     public function isCurrencyUnique($name, $id, $expectedResult)
     {
-        Fixture_Loader::create("Currency/1");
+        $this->_loadFixture("Currency/1");
         $this->assertEquals($expectedResult, CurrencyTable::getInstance()->isCurrencyUnique($name, $id));
     }
     

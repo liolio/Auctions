@@ -10,8 +10,8 @@ class Auctions_BankingInformationController_DeleteActionTest extends TestCase_Co
      */
     public function delete()
     {
-        Fixture_Loader::create("Currency/1");
-        Fixture_Loader::create("BankingInformation/1_currency_1_user_1");
+        $this->_loadFixture("Currency/1");
+        $this->_loadFixture("BankingInformation/1_currency_1_user_1");
         
         $this->dispatch('/banking-information/delete/1');
         $this->_assertDispatch('banking-information', 'delete');

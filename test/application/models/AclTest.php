@@ -22,7 +22,7 @@ class AclTest extends TestCase_Controller
      */
     public function isAllowedTest(array $roles, $resource, $action, array $requestParams = array(), array $fixtures = array())
     {
-        Fixture_Loader::createAll($fixtures);
+        $this->_loadFixtures($fixtures);
         
         foreach ($roles as $role => $expectedResult)
             $this->assertEquals(
@@ -38,7 +38,7 @@ class AclTest extends TestCase_Controller
      */
     public function isAllowedWithoutParams(array $roles, $resource, $action, array $requestParams = array(), array $fixtures = array())
     {
-        Fixture_Loader::createAll($fixtures);
+        $this->_loadFixtures($fixtures);
         
         if (count($requestParams) > 0)
         {

@@ -38,7 +38,7 @@ class Fixture_LoaderTest extends TestCase_Database
     public function createWithInvalidPathname()
     {
         try {
-            Fixture_Loader::create("User/21");
+            $this->_loadFixture("User/21");
             $this->fail('No such file or directory expected');
         } catch (Exception $ex)
         {

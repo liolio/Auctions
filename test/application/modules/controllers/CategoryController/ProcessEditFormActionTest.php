@@ -10,7 +10,7 @@ class Auctions_CategoryController_ProcessEditFormActionTest extends TestCase_Con
      */
     public function process()
     {
-        Fixture_Loader::create("Category/1");
+        $this->_loadFixture("Category/1");
         $request = array(
             FieldIdEnum::CATEGORY_ID                    =>  '1',
             FieldIdEnum::CATEGORY_NAME                  =>  'new name',

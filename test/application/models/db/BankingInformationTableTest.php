@@ -11,10 +11,12 @@ class BankingInformationTableTest extends TestCase_Database
      */
     public function isBankingInformationUnique($accountNumber, $bankName, $currencyId, $bankingInformationId, $expectedResult)
     {
-        Fixture_Loader::create('Currency/1');
-        Fixture_Loader::create('User/2');
-        Fixture_Loader::create('BankingInformation/1_currency_1_user_1');
-        Fixture_Loader::create('BankingInformation/2_currency_1_user_2');
+        $this->_loadFixtures(array(
+            'Currency/1',
+            'User/2',
+            'BankingInformation/1_currency_1_user_1',
+            'BankingInformation/2_currency_1_user_2'
+        ));
         
         $user = UserTable::getInstance()->find(1);
         

@@ -10,7 +10,7 @@ class Auctions_BankingInformationController_ProcessAddFormActionTest extends Tes
      */
     public function process()
     {
-        Fixture_Loader::create("Currency/1");
+        $this->_loadFixture("Currency/1");
         
         $request = array(
             FieldIdEnum::BANKING_INFORMATION_ACCOUNT_NUMBER =>  '1234',

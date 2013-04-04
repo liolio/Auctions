@@ -10,8 +10,8 @@ class Auctions_CurrencyController_DeleteActionTest extends TestCase_Controller
      */
     public function deleteWithBankingInformationConfigured()
     {
-        Fixture_Loader::create("Currency/1");
-        Fixture_Loader::create("BankingInformation/1_currency_1_user_1");
+        $this->_loadFixture("Currency/1");
+        $this->_loadFixture("BankingInformation/1_currency_1_user_1");
         
         $this->dispatch('/currency/delete/1');
         $this->_assertDispatch('currency', 'delete');
@@ -29,7 +29,7 @@ class Auctions_CurrencyController_DeleteActionTest extends TestCase_Controller
      */
     public function delete()
     {
-        Fixture_Loader::create("Currency/1");
+        $this->_loadFixture("Currency/1");
         
         $this->dispatch('/currency/delete/1');
         $this->_assertDispatch('currency', 'delete');

@@ -10,8 +10,8 @@ class Auctions_BankingInformationController_ProcessEditFormActionTest extends Te
      */
     public function process()
     {
-        Fixture_Loader::create("Currency/1");
-        Fixture_Loader::create("BankingInformation/1_currency_1_user_1");
+        $this->_loadFixture("Currency/1");
+        $this->_loadFixture("BankingInformation/1_currency_1_user_1");
         
         $request = array(
             FieldIdEnum::BANKING_INFORMATION_ID             =>  '1',
@@ -42,8 +42,8 @@ class Auctions_BankingInformationController_ProcessEditFormActionTest extends Te
      */
     public function processWithInvalidData()
     {
-        Fixture_Loader::create("Currency/1");
-        Fixture_Loader::create("BankingInformation/1_currency_1_user_1");
+        $this->_loadFixture("Currency/1");
+        $this->_loadFixture("BankingInformation/1_currency_1_user_1");
         
         $this->_setRequest(array(
             FieldIdEnum::BANKING_INFORMATION_ID => '1'

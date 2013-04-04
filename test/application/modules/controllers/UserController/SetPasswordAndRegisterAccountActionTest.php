@@ -9,7 +9,7 @@ class Auctions_UserController_SetPasswordAndRegisterAccountActionTest extends Te
     {
         $this->_disableLoggingInAdminUser();
         parent::setUp();
-        Fixture_Loader::create('User/4_inactive_with_secret_code');
+        $this->_loadFixture('User/4_inactive_with_secret_code');
     }
     
     /**

@@ -10,9 +10,11 @@ class CategoryTableTest extends TestCase_Database
      */
     public function getMainCategories()
     {
-        Fixture_Loader::create("Category/1");
-        Fixture_Loader::create("Category/2");
-        Fixture_Loader::create("Category/3_parent_1");
+        $this->_loadFixtures(array(
+            "Category/1",
+            "Category/2",
+            "Category/3_parent_1"
+        ));
         
         $categories = CategoryTable::getInstance()->getMainCategories();
         $this->assertEquals(2, $categories->count());
@@ -26,12 +28,14 @@ class CategoryTableTest extends TestCase_Database
      */
     public function getCategoriesList()
     {
-        Fixture_Loader::create("Category/1");
-        Fixture_Loader::create("Category/2");
-        Fixture_Loader::create("Category/3_parent_1");
-        Fixture_Loader::create("Category/4_parent_1");
-        Fixture_Loader::create("Category/5_parent_3");
-        Fixture_Loader::create("Category/6_parent_3");
+        $this->_loadFixtures(array(
+            "Category/1",
+            "Category/2",
+            "Category/3_parent_1",
+            "Category/4_parent_1",
+            "Category/5_parent_3",
+            "Category/6_parent_3"
+        ));
         
         $expectedArray = array(
             2   =>  array(
@@ -81,12 +85,14 @@ class CategoryTableTest extends TestCase_Database
      */
     public function getCategoriesListToList($withoutCategoryId, array $expectedArray)
     {
-        Fixture_Loader::create("Category/1");
-        Fixture_Loader::create("Category/2");
-        Fixture_Loader::create("Category/3_parent_1");
-        Fixture_Loader::create("Category/4_parent_1");
-        Fixture_Loader::create("Category/5_parent_3");
-        Fixture_Loader::create("Category/6_parent_3");
+        $this->_loadFixtures(array(
+            "Category/1",
+            "Category/2",
+            "Category/3_parent_1",
+            "Category/4_parent_1",
+            "Category/5_parent_3",
+            "Category/6_parent_3"
+        ));
         
         $this->assertSame($expectedArray, CategoryTable::getInstance()->getCategoriesListToList($withoutCategoryId));
     }
@@ -146,12 +152,13 @@ class CategoryTableTest extends TestCase_Database
      */
     public function getCategoriesToExpand($categoryId, array $categoryIds)
     {
-        Fixture_Loader::create("Category/1");
-        Fixture_Loader::create("Category/2");
-        Fixture_Loader::create("Category/3_parent_1");
-        Fixture_Loader::create("Category/4_parent_1");
-        Fixture_Loader::create("Category/5_parent_3");
-        Fixture_Loader::create("Category/6_parent_3");
+        $this->_loadFixtures(array("Category/1",
+            "Category/2",
+            "Category/3_parent_1",
+            "Category/4_parent_1",
+            "Category/5_parent_3",
+            "Category/6_parent_3"
+        ));
         
         $category = CategoryTable::getInstance()->find($categoryId);
         

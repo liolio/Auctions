@@ -9,7 +9,7 @@ class BankingInformation_FactoryTest extends TestCase_Database
      */
     public function create()
     {
-        Fixture_Loader::create('Currency/1');
+        $this->_loadFixture('Currency/1');
         
         $user = UserTable::getInstance()->find(1);
         $currency = CurrencyTable::getInstance()->find(1);

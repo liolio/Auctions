@@ -22,7 +22,7 @@ class Acl_Assertion_User_LoginBelongsToUserTest extends TestCase_Controller
      */
     public function assertWithValidData($login, $result)
     {
-        Fixture_Loader::create('user/2');
+        $this->_loadFixture('user/2');
         $assertion = new Acl_Assertion_User_LoginBelongsToUser(array(FieldIdEnum::USER_LOGIN => $login));
         $this->assertEquals($result, $assertion->assert($this->_acl));
     }

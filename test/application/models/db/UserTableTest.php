@@ -11,7 +11,7 @@ class UserTableTest extends TestCase_Database
      */
     public function isEmailUnique($email, $userId, $expectedResult)
     {
-        Fixture_Loader::create('User/2');
+        $this->_loadFixture('User/2');
         $this->assertEquals($expectedResult, UserTable::getInstance()->isEmailUnique($email, $userId));
     }
     
@@ -32,7 +32,7 @@ class UserTableTest extends TestCase_Database
      */
     public function isLoginUnique($login, $userId, $expectedResult)
     {
-        Fixture_Loader::create('User/2');
+        $this->_loadFixture('User/2');
         $this->assertEquals($expectedResult, UserTable::getInstance()->isLoginUnique($login, $userId));
     }
     

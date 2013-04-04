@@ -9,7 +9,7 @@ class Auctions_UserController_ProcessSetPasswordAndActivateAccountFormActionTest
     {
         $this->_disableLoggingInAdminUser();
         parent::setUp();
-        Fixture_Loader::create('user/4_inactive_with_secret_code');
+        $this->_loadFixture('user/4_inactive_with_secret_code');
     }
     
     /**

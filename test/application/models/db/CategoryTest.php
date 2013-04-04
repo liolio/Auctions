@@ -10,12 +10,14 @@ class CategoryTest extends TestCase_Database
      */
     public function getCategoryAllParentIds()
     {
-        Fixture_Loader::create("Category/1");
-        Fixture_Loader::create("Category/2");
-        Fixture_Loader::create("Category/3_parent_1");
-        Fixture_Loader::create("Category/4_parent_1");
-        Fixture_Loader::create("Category/5_parent_3");
-        Fixture_Loader::create("Category/6_parent_3");
+        $this->_loadFixtures(array(
+            "Category/1",
+            "Category/2",
+            "Category/3_parent_1",
+            "Category/4_parent_1",
+            "Category/5_parent_3",
+            "Category/6_parent_3"
+        ));
         
         $category = CategoryTable::getInstance()->find(5);
         
@@ -28,7 +30,7 @@ class CategoryTest extends TestCase_Database
      */
     public function getCategoryAllChildrenIds($categoryId, array $expectedChildrenIds)
     {
-        Fixture_Loader::create("Category/structurizedTree");
+        $this->_loadFixture("Category/structurizedTree");
         
         $category = CategoryTable::getInstance()->find($categoryId);
         $this->assertEquals($expectedChildrenIds, $category->getCategoryAllChildrenIds());

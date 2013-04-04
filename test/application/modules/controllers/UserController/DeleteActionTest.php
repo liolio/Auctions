@@ -26,7 +26,7 @@ class Auctions_UserController_DeleteActionTest extends TestCase_Controller
      */
     public function delete()
     {
-        Fixture_Loader::create("User/2");
+        $this->_loadFixture("User/2");
         
         $this->dispatch('/user/delete/2');
         $this->_assertDispatch('user', 'delete');

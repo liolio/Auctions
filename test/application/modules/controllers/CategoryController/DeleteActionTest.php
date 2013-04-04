@@ -10,8 +10,8 @@ class Auctions_CategoryController_DeleteActionTest extends TestCase_Controller
      */
     public function deleteLastAddress()
     {
-        Fixture_Loader::create("Category/1");
-        Fixture_Loader::create("Category/3_parent_1");
+        $this->_loadFixture("Category/1");
+        $this->_loadFixture("Category/3_parent_1");
         
         $this->dispatch('/category/delete/1');
         $this->_assertDispatch('category', 'delete');
@@ -29,7 +29,7 @@ class Auctions_CategoryController_DeleteActionTest extends TestCase_Controller
      */
     public function delete()
     {
-        Fixture_Loader::create("Category/1");
+        $this->_loadFixture("Category/1");
         
         $this->dispatch('/category/delete/1');
         $this->_assertDispatch('category', 'delete');

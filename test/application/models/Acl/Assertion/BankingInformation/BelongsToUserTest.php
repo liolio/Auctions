@@ -22,10 +22,12 @@ class Acl_Assertion_BankingInformation_BelongsToUserTest extends TestCase_Contro
      */
     public function assertWithValidData($id, $result)
     {
-        Fixture_Loader::create("Currency/1");
-        Fixture_Loader::create("User/2");
-        Fixture_Loader::create("BankingInformation/1_currency_1_user_1");
-        Fixture_Loader::create("BankingInformation/2_currency_1_user_2");
+        $this->_loadFixtures(array(
+            "Currency/1",
+            "User/2",
+            "BankingInformation/1_currency_1_user_1",
+            "BankingInformation/2_currency_1_user_2"
+        ));
         
         $assertion = new Acl_Assertion_BankingInformation_BelongsToUser(array(FieldIdEnum::BANKING_INFORMATION_ID => $id));
         $this->assertEquals($result, $assertion->assert($this->_acl));

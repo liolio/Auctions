@@ -18,6 +18,16 @@ abstract class TestCase_Mail extends TestCase_Controller
         Zend_Mail::setDefaultTransport(new Mail_Transport($this->_mailFilePath));
     }
     
+    protected function _loadFixture($path)
+    {
+        Fixture_Loader::create($path);
+    }
+    
+    protected function _loadFixtures(array $paths)
+    {
+        Fixture_Loader::createAll($paths);
+    }
+    
     /**
      * @param array $recipients
      * @param string $from

@@ -22,7 +22,7 @@ class Validate_Currency_NameUniqueTest extends TestCase_Database
      */
     public function isValid($value, array $context, $expectedResult)
     {
-        Fixture_Loader::create("Currency/1");
+        $this->_loadFixture("Currency/1");
         $this->assertEquals($expectedResult, $this->_validator->isValid($value, $context));
     }
     

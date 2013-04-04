@@ -14,8 +14,8 @@ class Auctions_Form_BankingInformation_AddTest extends TestCase_Controller
     {
         parent::setUp();
         
-        Fixture_Loader::create("Currency/1");
-        Fixture_Loader::create("BankingInformation/1_currency_1_user_1");
+        $this->_loadFixture("Currency/1");
+        $this->_loadFixture("BankingInformation/1_currency_1_user_1");
         
         $this->_form = new Auctions_Form_BankingInformation_Add();
     }

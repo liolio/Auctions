@@ -22,8 +22,10 @@ class Acl_Assertion_Address_BelongsToUserTest extends TestCase_Controller
      */
     public function assertWithValidData($id, $result)
     {
-        Fixture_Loader::create("User/4_inactive_with_secret_code");
-        Fixture_Loader::create("Address/2_user_4");
+        $this->_loadFixtures(array(
+            "User/4_inactive_with_secret_code",
+            "Address/2_user_4"
+        ));
         $assertion = new Acl_Assertion_Address_BelongsToUser(array(FieldIdEnum::ADDRESS_ID => $id));
         $this->assertEquals($result, $assertion->assert($this->_acl));
     }

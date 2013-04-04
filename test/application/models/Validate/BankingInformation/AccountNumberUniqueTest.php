@@ -22,10 +22,12 @@ class Validate_BankingInformation_AccountNumberUniqueTest extends TestCase_Contr
      */
     public function isValid($value, array $context, $expectedResult)
     {
-        Fixture_Loader::create("Currency/1");
-        Fixture_Loader::create("User/2");
-        Fixture_Loader::create("BankingInformation/1_currency_1_user_1");
-        Fixture_Loader::create("BankingInformation/2_currency_1_user_2");
+        $this->_loadFixtures(array(
+            "Currency/1",
+            "User/2",
+            "BankingInformation/1_currency_1_user_1",
+            "BankingInformation/2_currency_1_user_2"
+        ));
         
         $this->assertEquals($expectedResult, $this->_validator->isValid($value, $context));
     }

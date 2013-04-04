@@ -23,7 +23,7 @@ class Auctions_AddressController_DeleteActionTest extends TestCase_Controller
      */
     public function delete()
     {
-        Fixture_Loader::create("Address/2_user_1");
+        $this->_loadFixture("Address/2_user_1");
         
         $this->dispatch('/address/delete/1');
         $this->_assertDispatch('address', 'delete');

@@ -40,7 +40,7 @@ class Validate_User_EmailUniqueTest extends TestCase_Database
      */
     public function isValidWithInvalidValues($value, array $context)
     {
-        Fixture_Loader::create('User/2');
+        $this->_loadFixture('User/2');
         $this->assertFalse($this->_validator->isValid($value, $context));
     }
     

@@ -13,8 +13,8 @@ class Auctions_Form_Category_EditTest extends TestCase_Database
     protected function setUp()
     {
         parent::setUp();
-        Fixture_Loader::create("Category/1");
-        Fixture_Loader::create("Category/2");
+        $this->_loadFixture("Category/1");
+        $this->_loadFixture("Category/2");
         $this->_form = new Auctions_Form_Category_Edit(array(ParamIdEnum::CATEGORY_WITHOUT_CATEGORY_ID  =>  '2'));
     }
     
