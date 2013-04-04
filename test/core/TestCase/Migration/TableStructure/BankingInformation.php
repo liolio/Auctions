@@ -19,6 +19,9 @@ class TestCase_Migration_TableStructure_BankingInformation implements TestCase_M
             case 15 :
             case 16 :
             case 17 :
+            case 18 :
+            case 19 :
+            case 20 :
                 return self::_getStructureFromVersion14();
             default :
                 throw new InvalidArgumentException($versionNumber . " not supported.");

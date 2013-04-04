@@ -25,6 +25,9 @@ class TestCase_Migration_TableStructure_Notification implements TestCase_Migrati
             case 15 :
             case 16 :
             case 17 :
+            case 18 :
+            case 19 :
+            case 20 :
                 return self::_getStructureFromVersion4();
             default :
                 throw new InvalidArgumentException($versionNumber . " not supported.");

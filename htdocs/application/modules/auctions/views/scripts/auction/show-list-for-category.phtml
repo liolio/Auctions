@@ -21,17 +21,20 @@
                     <?php if (count($auction[ParamIdEnum::AUCTION_PRICES]) === 1) : ?>
                         <div class="one">
                             <?php echo $this->translate("transaction_type-" . $auction[ParamIdEnum::AUCTION_PRICES][0][FieldIdEnum::TRANSACTION_TYPE_NAME]) . " " . 
-                                    '<strong>' . $auction[ParamIdEnum::AUCTION_PRICES][0][FieldIdEnum::AUCTION_TRANSACTION_TYPE_PRICE] . '</strong>';?>
+                                    '<strong>' . $auction[ParamIdEnum::AUCTION_PRICES][0][FieldIdEnum::AUCTION_TRANSACTION_TYPE_PRICE] . ' ' . 
+                                    $auction[FieldIdEnum::CURRENCY_NAME] . '</strong>';?>
                         </div>
                     <?php else : ?>
                         <div class="two">
                             <div class="up">
                                 <?php echo $this->translate("transaction_type-" . $auction[ParamIdEnum::AUCTION_PRICES][0][FieldIdEnum::TRANSACTION_TYPE_NAME]) . " " . 
-                                    '<strong>' . $auction[ParamIdEnum::AUCTION_PRICES][0][FieldIdEnum::AUCTION_TRANSACTION_TYPE_PRICE] . '</strong>';?>
+                                    '<strong>' . $auction[ParamIdEnum::AUCTION_PRICES][0][FieldIdEnum::AUCTION_TRANSACTION_TYPE_PRICE] . ' ' . 
+                                    $auction[FieldIdEnum::CURRENCY_NAME] .'</strong>';?>
                             </div>
                             <div class="down">
                                 <?php echo $this->translate("transaction_type-" . $auction[ParamIdEnum::AUCTION_PRICES][1][FieldIdEnum::TRANSACTION_TYPE_NAME]) . " " . 
-                                    '<strong>' . $auction[ParamIdEnum::AUCTION_PRICES][1][FieldIdEnum::AUCTION_TRANSACTION_TYPE_PRICE] . '</strong>';?>
+                                    '<strong>' . $auction[ParamIdEnum::AUCTION_PRICES][1][FieldIdEnum::AUCTION_TRANSACTION_TYPE_PRICE] . ' ' . 
+                                    $auction[FieldIdEnum::CURRENCY_NAME] .'</strong>';?>
                             </div>
                         </div>
                     <?php endif; ?>

@@ -40,9 +40,11 @@ class AuctionTable extends Doctrine_Table
                 ->addSelect('ADDDATE(a.start_time, a.duration) as ' . ParamIdEnum::AUCTION_END_TIME)
                 ->addSelect('att.price as ' . FieldIdEnum::AUCTION_TRANSACTION_TYPE_PRICE)
                 ->addSelect('tt.name as ' . FieldIdEnum::TRANSACTION_TYPE_NAME)
+                ->addSelect('c.name as ' . FieldIdEnum::CURRENCY_NAME)
                 ->from('AuctionTransactionType att')
                 ->leftJoin('att.TransactionType tt')
                 ->leftJoin('att.Auction a')
+                ->leftJoin('a.Currency c')
                 ->whereIn('category_id', $categoryIds)
                 ->addWhere('start_time <= ?', $now->toString(Time_Format::getFullDateTimeFormat()))
                 ->addWhere('ADDDATE(a.start_time, a.duration) >= ?', $now->toString(Time_Format::getFullDateTimeFormat()))
@@ -100,6 +102,7 @@ class AuctionTable extends Doctrine_Table
         return array(
             FieldIdEnum::AUCTION_TITLE      =>  $auctionTransactionType[FieldIdEnum::AUCTION_TITLE],
             ParamIdEnum::AUCTION_END_TIME   =>  $auctionTransactionType[ParamIdEnum::AUCTION_END_TIME],
+            FieldIdEnum::CURRENCY_NAME      =>  $auctionTransactionType[FieldIdEnum::CURRENCY_NAME],
             ParamIdEnum::AUCTION_PRICES     =>  array(
                 array(
                     FieldIdEnum::TRANSACTION_TYPE_NAME          =>  $auctionTransactionType[FieldIdEnum::TRANSACTION_TYPE_NAME],

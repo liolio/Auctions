@@ -31,11 +31,18 @@ Auction:
       type: integer(5)
       unsigned: true
       notnull: true
+    currency_id:
+      type: integer(5)
+      unsigned: true
+      notnull: true
   relations:
     User:
       foreignAlias: Auctions
       onDelete: CASCADE
     Category:
+      foreignAlias: Auctions
+      onDelete: RESTRICT
+    Currency:
       foreignAlias: Auctions
       onDelete: RESTRICT
   actAs:

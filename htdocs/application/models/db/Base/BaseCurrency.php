@@ -7,6 +7,7 @@
  * 
  * @property integer $id
  * @property string $name
+ * @property Doctrine_Collection $Auctions
  * @property Doctrine_Collection $BankingInformations
  * 
  * @package    ##PACKAGE##
@@ -36,6 +37,10 @@ abstract class BaseCurrency extends Doctrine_Record
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('Auction as Auctions', array(
+             'local' => 'id',
+             'foreign' => 'currency_id'));
+
         $this->hasMany('BankingInformation as BankingInformations', array(
              'local' => 'id',
              'foreign' => 'currency_id'));

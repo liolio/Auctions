@@ -14,6 +14,7 @@ class AuctionTableTest extends TestCase_Database
         $this->_loadFixtures(array(
             'Category/1',
             'Category/3_parent_1',
+            'Currency/1',
             
             'Auction/1_category_1_start_2012-05-02',
             'AuctionTransactionType/1_auction_1_tt_2',
@@ -34,6 +35,7 @@ class AuctionTableTest extends TestCase_Database
         $auction1 = array(
             FieldIdEnum::AUCTION_TITLE      =>  'Auction 1',
             ParamIdEnum::AUCTION_END_TIME   =>  '2012-05-09 22:22:22',
+            FieldIdEnum::CURRENCY_NAME      =>  'PLN',
             ParamIdEnum::AUCTION_PRICES     =>  array(
                 array(
                     FieldIdEnum::TRANSACTION_TYPE_NAME          =>  Enum_Db_TransactionType_Type::BIDDING,
@@ -49,6 +51,7 @@ class AuctionTableTest extends TestCase_Database
         $auction2 = array(
             FieldIdEnum::AUCTION_TITLE      =>  'Auction 2',
             ParamIdEnum::AUCTION_END_TIME   =>  '2012-05-12 22:22:22',
+            FieldIdEnum::CURRENCY_NAME      =>  'PLN',
             ParamIdEnum::AUCTION_PRICES     =>  array(
                 array(
                     FieldIdEnum::TRANSACTION_TYPE_NAME          =>  Enum_Db_TransactionType_Type::BIDDING,
