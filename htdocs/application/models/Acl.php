@@ -42,6 +42,7 @@ class Acl extends Zend_Acl
         $this->addResource(Enum_Acl_Resource::CATEGORY);
         $this->addResource(Enum_Acl_Resource::CURRENCY);
         $this->addResource(Enum_Acl_Resource::ERROR);
+        $this->addResource(Enum_Acl_Resource::FILE);
         $this->addResource(Enum_Acl_Resource::INDEX);
         $this->addResource(Enum_Acl_Resource::USER);
     }
@@ -71,6 +72,7 @@ class Acl extends Zend_Acl
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::CATEGORY, array('show-administrator-list', 'add', 'process-add-form', 'edit', 'process-edit-form', 'delete'));
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::CURRENCY, array('show-administrator-list', 'add', 'process-add-form', 'edit', 'process-edit-form', 'delete'));
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::USER, array('show-list', 'reset-password-by-administrator', 'delete', 'edit', 'process-edit-form'));
+        $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::FILE, array('add', 'process-add-form'));
     }
     
     private function _allow($roles = null, $resources = null, $privileges = null, $assertionClassName = null)

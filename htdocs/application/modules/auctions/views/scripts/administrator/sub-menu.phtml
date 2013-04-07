@@ -16,6 +16,11 @@
                 'userShowList',
                 Menu_Element::create('user/show-list', 'userShowList', 'submenu-user_list')
                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+        )
+        ->addElement(
+                'fileAdd',
+                Menu_Element::create('file/add', 'fileAdd', 'submenu-file_add')
+                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
         );
 
     foreach ($menu as $menuElement)

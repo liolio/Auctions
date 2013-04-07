@@ -35,6 +35,9 @@ Auction:
       type: integer(5)
       unsigned: true
       notnull: true
+    thumbnail_file_id:
+      type: integer(5)
+      unsigned: true
   relations:
     User:
       foreignAlias: Auctions
@@ -44,6 +47,10 @@ Auction:
       onDelete: RESTRICT
     Currency:
       foreignAlias: Auctions
+      onDelete: RESTRICT
+    File:
+      local: thumbnail_file_id
+      foreignAlias: File
       onDelete: RESTRICT
   actAs:
     Timestampable:

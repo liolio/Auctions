@@ -39,4 +39,6 @@ class ParamIdEnum extends Enum_Abstract
     
     const AUCTION_EVEN = 'auction_even';
     
+    const FILE = 'file';
+    
 }

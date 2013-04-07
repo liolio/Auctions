@@ -1,0 +1,30 @@
+File:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+      unsigned: true
+    filename:
+      type: string(255)
+      notnull: true
+    original_filename:
+      type: string(255)
+      notnull: true
+    mime_type:
+      type: string(25)
+      notnull: true
+    size:
+      type: string(45)
+      notnull: true
+    user_id:
+      type: integer(5)
+      unsigned: true
+      notnull: true
+  actAs:
+    Timestampable:
+  relations:
+    User:
+      foreignAlias: Files
+      onDelete: CASCADE
+      

@@ -1,3 +1,4 @@
 .gitignore
 test/fixture/file/mail_test.txt
 htdocs/application/configs/secure.ini
+htdocs/public/uploads/*.*

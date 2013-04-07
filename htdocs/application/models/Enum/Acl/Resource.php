@@ -21,6 +21,8 @@ class Enum_Acl_Resource extends Enum_Abstract
     
     const ERROR = "Auctions:Error";
     
+    const FILE = "Auctions:File";
+    
     const INDEX = "Auctions:Index";
     
     const USER = "Auctions:User";

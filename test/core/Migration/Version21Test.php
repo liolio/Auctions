@@ -1,8 +1,8 @@
 <?php
 /**
- * @class Migration_Version19Test
+ * @class Migration_Version21Test
  */
-class Migration_Version19Test extends TestCase_Migration
+class Migration_Version21Test extends TestCase_Migration
 {
     
     /**
@@ -17,6 +17,7 @@ class Migration_Version19Test extends TestCase_Migration
             array(self::TABLES_IN_AUCTIONS_TEST    =>  'banking_information'),
             array(self::TABLES_IN_AUCTIONS_TEST    =>  'category'),
             array(self::TABLES_IN_AUCTIONS_TEST    =>  'currency'),
+            array(self::TABLES_IN_AUCTIONS_TEST    =>  'file'),
             array(self::TABLES_IN_AUCTIONS_TEST    =>  'log'),
             array(self::TABLES_IN_AUCTIONS_TEST    =>  'migration_version'),
             array(self::TABLES_IN_AUCTIONS_TEST    =>  'notification'),
@@ -30,45 +31,22 @@ class Migration_Version19Test extends TestCase_Migration
         $this->_assertColumns("banking_information", TestCase_Migration_TableStructure_BankingInformation::getStructure($this->_getMigrationVersion()));
         $this->_assertColumns("category", TestCase_Migration_TableStructure_Category::getStructure($this->_getMigrationVersion()));
         $this->_assertColumns("currency", TestCase_Migration_TableStructure_Currency::getStructure($this->_getMigrationVersion()));
+        $this->_assertColumns("file", TestCase_Migration_TableStructure_File::getStructure($this->_getMigrationVersion()));
         $this->_assertColumns("log", TestCase_Migration_TableStructure_Log::getStructure($this->_getMigrationVersion()));
         $this->_assertColumns('migration_version', TestCase_Migration_TableStructure_MigrationVersion::getStructure($this->_getMigrationVersion()));
         $this->_assertColumns('notification', TestCase_Migration_TableStructure_Notification::getStructure($this->_getMigrationVersion()));
         $this->_assertColumns("transaction_type", TestCase_Migration_TableStructure_TransactionType::getStructure($this->_getMigrationVersion()));
         $this->_assertColumns('user', TestCase_Migration_TableStructure_User::getStructure($this->_getMigrationVersion()));
-        
-        $this->_assertData();
     }
 
     protected function _getMigrationVersion()
     {
-        return 19;
+        return 21;
     }
 
     protected function _loadData()
     {
-        Doctrine_Manager::connection()->exec(
-            "INSERT INTO user (active, email, login, password, role, salt) VALUES " .
-            "(1, 'a@a.pl', 'a', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'user', '12345')"
-        );
         
-        Doctrine_Manager::connection()->exec(
-            "INSERT INTO category (id, name, description, parent_category_id)" .
-            "VALUES ('1', 'zz_main_category_1', 'description_of_main_category_1', null)"
-        );
-        
-        Doctrine_Manager::connection()->exec(
-            "INSERT INTO auction (id, category_id, description, duration, number_of_items, start_time, title, user_id) " .
-            "VALUES ('1', '1', 'a', 7, 1, '2012-05-05 22:22:22', 'a', 1)"
-        );
-        
-        $result = $this->_executeQuery('SELECT currency_id FROM auction WHERE id = 1');
-        $this->assertEquals(0, $result[0][0]);
     }
     
-    private function _assertData()
-    {
-        $result = $this->_executeQuery('SELECT currency_id FROM auction WHERE id = 1');
-        $this->assertEquals(1, $result[0][0]);
-    }
-
 }

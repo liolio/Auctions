@@ -14,9 +14,11 @@
  * @property integer $user_id
  * @property integer $category_id
  * @property integer $currency_id
+ * @property integer $thumbnail_file_id
  * @property User $User
  * @property Category $Category
  * @property Currency $Currency
+ * @property File $File
  * @property Doctrine_Collection $AuctionTransactionTypes
  * 
  * @package    ##PACKAGE##
@@ -88,6 +90,11 @@ abstract class BaseAuction extends Doctrine_Record
              'notnull' => true,
              'length' => '5',
              ));
+        $this->hasColumn('thumbnail_file_id', 'integer', 5, array(
+             'type' => 'integer',
+             'unsigned' => true,
+             'length' => '5',
+             ));
     }
 
     public function setUp()
@@ -105,6 +112,11 @@ abstract class BaseAuction extends Doctrine_Record
 
         $this->hasOne('Currency', array(
              'local' => 'currency_id',
+             'foreign' => 'id',
+             'onDelete' => 'RESTRICT'));
+
+        $this->hasOne('File', array(
+             'local' => 'thumbnail_file_id',
              'foreign' => 'id',
              'onDelete' => 'RESTRICT'));
 

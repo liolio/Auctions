@@ -36,6 +36,7 @@ class AuctionTableTest extends TestCase_Database
             FieldIdEnum::AUCTION_TITLE      =>  'Auction 1',
             ParamIdEnum::AUCTION_END_TIME   =>  '2012-05-09 22:22:22',
             FieldIdEnum::CURRENCY_NAME      =>  'PLN',
+            FieldIdEnum::FILE_FILENAME      =>  '',
             ParamIdEnum::AUCTION_PRICES     =>  array(
                 array(
                     FieldIdEnum::TRANSACTION_TYPE_NAME          =>  Enum_Db_TransactionType_Type::BIDDING,
@@ -52,6 +53,7 @@ class AuctionTableTest extends TestCase_Database
             FieldIdEnum::AUCTION_TITLE      =>  'Auction 2',
             ParamIdEnum::AUCTION_END_TIME   =>  '2012-05-12 22:22:22',
             FieldIdEnum::CURRENCY_NAME      =>  'PLN',
+            FieldIdEnum::FILE_FILENAME      =>  '',
             ParamIdEnum::AUCTION_PRICES     =>  array(
                 array(
                     FieldIdEnum::TRANSACTION_TYPE_NAME          =>  Enum_Db_TransactionType_Type::BIDDING,

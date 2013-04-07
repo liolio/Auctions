@@ -543,4 +543,28 @@
         <reverse></reverse>
     </auctionShowListForCategory>
     
+    <fileAdd>
+        <route>file/add</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>file</controller>
+            <action>add</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </fileAdd>
+    
+    <fileProcessAddForm>
+        <route>file/process-add-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>file</controller>
+            <action>process-add-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </fileProcessAddForm>
+    
 </routes>

@@ -17,6 +17,8 @@ class TestCase_Migration_TableStructure_Currency implements TestCase_Migration_T
             case 18 :
             case 19 :
             case 20 :
+            case 21 :
+            case 22 :
                 return self::_getStructureFromVersion13();
             default :
                 throw new InvalidArgumentException($versionNumber . " not supported.");

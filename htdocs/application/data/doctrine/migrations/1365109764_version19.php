@@ -6,24 +6,23 @@ class Version19 extends Doctrine_Migration_Base
 {
     public function up()
     {
-        $currencies = CurrencyTable::getInstance()->findAll();
-        if (count($currencies) === 0)
-        {
-            $currency = new Currency();
-            $currency->name = 'PLN';
-            $currency->save();
-        }
-        else
-            $currency = $currencies->get(0);
+        $auctions = AuctionTable::getInstance()->count();
         
-        $auctions = AuctionTable::getInstance()->findAll();
-        
-        foreach ($auctions as $auction)
+        if ($auctions > 0)
         {
-            $auction->Currency = $currency;
-            $auction->save();
-        }
+            $currencies = CurrencyTable::getInstance()->count();
+            if ($currencies === 0)
+            {
+                Doctrine_Manager::connection()->exec(
+                    "INSERT INTO currency (id, name) " .
+                    "VALUES ('1', 'PLN')"
+                );
+            }
             
+            Doctrine_Manager::connection()->exec(
+                "UPDATE auction SET currency_id = 1 WHERE id > 0"
+            );
+        }
     }
 
     public function down()

@@ -47,6 +47,7 @@ return array(
     'submenu-user_change_password'      =>  'Zmień hasło',
     'submenu-address_list'              =>  'Lista adresów',
     'submenu-banking-information_list'  =>  'Lista kont bankowych',
+    'submenu-file_add'                  =>  'Dodaj plik',
     
     'label-login'                               =>  'Login:',
     'label-old_password'                        =>  'Stare hasło:',
