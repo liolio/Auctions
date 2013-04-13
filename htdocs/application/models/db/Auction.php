@@ -13,4 +13,59 @@
 class Auction extends BaseAuction
 {
 
+    /**
+     * Returns auction's end time
+     * 
+     * @return String
+     */
+    public function getEndTime()
+    {
+        $date = new Zend_Date($this->start_time);
+        $date->addDay($this->duration);
+        
+        return $date->toString(Time_Format::getFullDateTimeFormat());
+    }
+    
+    /**
+     * Returns Auction Transaction Types. For two types, first one is bidding
+     * 
+     * @return Doctrine_Collection
+     * @throws Auction_Exception When auction doesn't have 1 or 2 Auction Transaction Types defined
+     */
+    public function getOrdereAuctionTransactionTypes()
+    {
+        switch (count($this->AuctionTransactionTypes)) {
+            case 1:
+                return $this->AuctionTransactionTypes;
+            case 2:
+                if ($this->AuctionTransactionTypes->get(0)->TransactionType->name === Enum_Db_TransactionType_Type::BUY_OUT)
+                {
+                    $buyOut = $this->AuctionTransactionTypes->get(0);
+                    $this->AuctionTransactionTypes->set(0, $this->AuctionTransactionTypes->get(1));
+                    $this->AuctionTransactionTypes->set(1, $buyOut);
+                }
+                return $this->AuctionTransactionTypes;
+            default :
+                throw new Auction_Exception('Auction can have one or two auction types defined. Auction id: ' . $this->id);
+        }
+    }
+
+    /**
+     * Returns true if auction has started and not finished
+     * 
+     * @return boolean
+     */
+    public function isStartedAndNotFinished()
+    {
+        $now = Zend_Date::now();
+        
+        $date = new Zend_Date($this->start_time);
+        $afterStart = $now->compare($date) === 1;
+
+        $date->addDay($this->duration);
+        $beforeEnd = $now->compare($date) === -1;
+        
+        return $afterStart && $beforeEnd;
+    }
+    
 }

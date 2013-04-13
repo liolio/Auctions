@@ -125,6 +125,16 @@ abstract class TestCase_Controller extends Zend_Test_PHPUnit_ControllerTestCase
     }
     
     /**
+     * Log in admin user.
+     */
+    protected function _logInUser($username, $password)
+    {
+        $authAdapter = new Auth_Adapter($username, $password);
+        Zend_Auth::getInstance()->authenticate($authAdapter);
+        $this->assertTrue(Zend_Auth::getInstance()->hasIdentity());
+    }
+    
+    /**
      * Returns logged user. If no user is logged returns false.
      * 
      * @return User|false

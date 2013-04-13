@@ -33,7 +33,7 @@ a:hover {
 /* Header
 -----------------------------------------------------------------------------*/
 #header {
-    height: 109px;
+    height: 129px;
 }
 
 #banner {
@@ -48,15 +48,27 @@ a:hover {
 
 #menuBarLeft {
     background-image: url(../img/menu_bg.png);	
-    width: 90%;
     float: left;
+    width: 1124px;
+    height: 30px;
+    padding-top: 10px;
+    padding-left: 10px;
+    -moz-border-radius: 16px 0 0 16px;
+    -webkit-border-radius: 16px 0 0 16px;
+    border-radius: 16px 0 0 16px;
 }
 
 #menuBarRight {
     background-image: url(../img/menu_bg.png);	
-    width: 10%;
+    width: 116px;
+    height: 30px;
+    padding-top: 10px;
+    padding-right: 10px;
     float: right;
     text-align: right;
+    -moz-border-radius: 0 16px 16px 0;
+    -webkit-border-radius: 0 16px 16px 0;
+    border-radius: 0 16px 16px 0;
 }
 
 /* Middle
@@ -81,55 +93,64 @@ a:hover {
 }
 
 #content {
-    padding: 10px 0 0 210px;
+    padding: 20px 0 0 210px;
 }
 
 #contentWithoutSubMenu {
-    padding: 10px 0 0 20px;
+    padding: 20px 0 0 20px;
 }
 
 /* Sidebar Left
 -----------------------------------------------------------------------------*/
 #subMenu {
     float: left;
-    width: 190px;
+    width: 180px;
     margin-left: -100%;
+    margin-top: 20px;
     position: relative;
+    padding: 10px;
     background-image: url(../img/menu_bg.png);
+    -moz-border-radius: 16px 16px 16px 16px;
+    -webkit-border-radius: 16px 16px 16px 16px;
+    border-radius: 16px 16px 16px 16px;
 }
 
 /* Footer
 -----------------------------------------------------------------------------*/
 #footer {
     width: 1260px;
-    margin: -20px auto 0;
+    margin: -40px auto 0;
     height: 20px;
     background-image: url(../img/menu_bg.png);
     position: relative;
     text-align: center;
+    padding: 10px;
+    -moz-border-radius: 16px 16px 16px 16px;
+    -webkit-border-radius: 16px 16px 16px 16px;
+    border-radius: 16px 16px 16px 16px;
 }
 
 /* Tables
 -----------------------------------------------------------------------------*/
-table {
+.auctionsTable {
     width:98%;
     border-collapse:collapse;
 }
 
-td, th {
+.auctionsTable td, th {
     font-size:1em;
     padding:3px 7px 2px 7px;
 }
 
-tr:hover {
+.auctionsTable tr:hover {
     background-color: #ffeeee;
 }
 
-td {
+.auctionsTable td {
     border:1px solid #cc0000;
 }
 
-th {
+.auctionsTable th {
     font-size:1.1em;
     text-align:left;
     padding-top:5px;
@@ -138,25 +159,25 @@ th {
     color:#ffffff;
 }
 
-th:first-child {
+.auctionsTable th:first-child {
     -moz-border-radius: 16px 0 0 0;
     -webkit-border-radius: 16px 0 0 0;
     border-radius: 16px 0 0 0;
 }
 
-th:last-child {
+.auctionsTable th:last-child {
     -moz-border-radius: 0 16px 0 0;
     -webkit-border-radius: 0 16px 0 0;
     border-radius: 0 16px 0 0;
 }
 
-th:only-child{
+.auctionsTable th:only-child{
     -moz-border-radius: 16px 16px 0 0;
     -webkit-border-radius: 16px 16px 0 0;
     border-radius: 16px 16px 0 0;
 }
 
-tr.alt td {
+.auctionsTable tr.alt td {
     color:#000000;
     background-color:#EAF2D3;
 }
@@ -231,6 +252,226 @@ tr.alt td {
     font-size: 14px !important;
 }
 
+/* Auction list
+-----------------------------------------------------------------------------*/
+.auctionListItem .thumbnail {
+    max-height: 60px;
+    max-width: 80px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
+.auctionListItem .thumbnailContainer {
+    height: 60px;
+    width: 80px;
+    top: 50%;
+    margin-top: -30px;
+    margin-left: 5px;
+    float: left;
+    position: relative;
+    vertical-align: middle;
+    border: solid 1px gray;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
+.auctionListItem .titleContainer {
+    top: 50%;
+    margin-top: -30px;
+    margin-left: 10px;
+    width: 700px;
+    height: 60px;
+    float: left;
+    position: relative;
+}
+
+.auctionListItem .price {
+    margin-left: 5px;
+    width: 245px;
+    float: left;
+    position: relative;
+    top: 50%;
+    margin-top: -30px;
+}
+
+.auctionListItem .price .one {
+    padding-left: 5px;
+    height: 30px;
+    padding-top: 10px;
+}
+
+.auctionListItem .price .two .up {
+    padding-left: 5px;
+    height: 20px;
+}
+
+.auctionListItem .price .two .down {
+    padding-left: 5px;
+    height: 20px;
+}
+
+.auctionListItem .price .endTime {
+    padding-left: 5px;
+    height: 20px;
+    margin-top: 5px;
+    font-size: 0.7em;
+}
+
+/* Auction
+-----------------------------------------------------------------------------*/
+
+#auction #header {
+    height: 80px;
+    border: 1px solid #cc0000;
+    padding-top: 15px;
+    padding-left: 15px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#auction #header #title {
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+#auction #header #titleContainer {
+    margin-left: 10px;
+    position: relative;
+    float: left;
+    width: 810px;
+}
+
+#auction #header #timeAndUserInformation {
+    margin-left: 10px;
+    position: relative;
+    float: left;
+    width: 300px;
+}
+
+#auction #header #categoryList {
+    
+}
+
+#auction #header #thumbnail {
+    max-height: 60px;
+    max-width: 80px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#auction #header #thumbnailContainer {
+    height: 60px;
+    width: 80px;
+    margin-left: 5px;
+    float: left;
+    position: relative;
+    vertical-align: middle;
+    border: solid 1px gray;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#auction #gallery {
+    text-align: center;
+    width: 1218px;
+    background: #ffeeee;
+    border: 1px solid #cc0000;
+    padding: 10px;
+    margin-top: 20px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#auction #gallery .attachment {
+    max-height: 120px;
+    max-width: 160px;
+    border: solid 1px gray;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#auction #transaction {
+    
+}
+
+#auction #transaction #oneType {
+    text-align: center;
+    width: 1218px;
+    background: #ffeeee;
+    border: 1px solid #cc0000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#auction #transaction #twoTypes {
+    /*position: relative;*/
+    width: 1240px;
+    height: 61px;
+    /*margin-top: 120px;*/
+}
+
+#auction #transaction #twoTypes #bidding {
+    text-align: center;
+    width: 587px;
+    position: relative;
+    float: left;
+    background: #ffeeee;
+    border: 1px solid #cc0000;
+    margin-top: 20px;
+    padding: 10px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#auction #transaction #twoTypes #buyOut {
+    text-align: center;
+    width: 587px;
+    position: relative;
+    float: left;
+    background: #ffeeee;
+    border: 1px solid #cc0000;
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 10px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#auction #description {
+    width: 1218px;
+    border: 1px solid #cc0000;
+    margin-top: 20px;
+    padding: 10px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#auction #transactions {
+    text-align: center;
+    width: 1218px;
+    background: #ffeeee;
+    border: 1px solid #cc0000;
+    padding: 10px;
+    margin-top: 20px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
 /* Other
 -----------------------------------------------------------------------------*/
 .errorMessage {
@@ -275,68 +516,3 @@ tr.alt td {
 .odd {
     background: #ffeded;
 }
-
-.auctionListItem .thumbnail {
-    max-height: 60px;
-    max-width: 80px;
-}
-
-.auctionListItem .thumbnailContainer {
-    height: 60px;
-    width: 80px;
-    top: 50%;
-    margin-top: -30px;
-    margin-left: 5px;
-    float: left;
-    position: relative;
-    vertical-align: middle;
-    border: solid 1px gray;
-}
-
-.auctionListItem .titleContainer {
-    top: 50%;
-    margin-top: -30px;
-    margin-left: 10px;
-    width: 700px;
-    height: 60px;
-    float: left;
-    position: relative;
-    /*background: yellow;*/
-}
-
-.auctionListItem .price {
-    margin-left: 5px;
-    width: 245px;
-    float: left;
-    position: relative;
-    top: 50%;
-    margin-top: -30px;
-}
-
-.auctionListItem .price .one {
-    padding-left: 5px;
-    height: 30px;
-    padding-top: 10px;
-    /*background: white;*/
-}
-
-.auctionListItem .price .two .up {
-    padding-left: 5px;
-    height: 20px;
-    /*background: pink;*/
-}
-
-.auctionListItem .price .two .down {
-    padding-left: 5px;
-    height: 20px;
-    /*background: aquamarine;*/
-}
-
-.auctionListItem .price .endTime {
-    padding-left: 5px;
-    height: 20px;
-    margin-top: 5px;
-    font-size: 0.7em;
-    /*background: aqua;*/
-}
-

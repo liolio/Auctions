@@ -1,0 +1,93 @@
+<div id="container">
+    <div id="contentWithoutSubMenu">
+        <div id="auction">
+            <div id="header">
+                <div id="thumbnailContainer">
+                    <img src="<?php echo $this->baseUrl() . '/../uploads/' . $this->auction->File->filename;?>" id="thumbnail"/>
+                </div>
+                <div id="titleContainer">
+                    <div id="title">
+                        <?=$this->auction->title?>
+                    </div>
+
+                    <div id="categoryList">
+                        <?php
+                        for ($i = count($this->categoriesCollection); $i > 0; $i--) :
+                            $category = $this->categoriesCollection->get($i - 1);
+                            ?>
+                            <a href="<?=$this->baseUrl('auction/show-list-for-category/' . $category->id)?>"><?=$category->name?></a>
+                            <?php
+                            if ($i > 1)
+                                echo " > ";
+                        endfor;
+                        ?>
+                    </div>
+                </div>
+                <div id="timeAndUserInformation">
+                    <?php echo $this->translate('label-auction_start_time') . " <strong>" . $this->auction->start_time . "</strong>"?><br/>
+                    <?php echo $this->translate('label-auction_end_time') . " <strong>" . $this->auction->getEndTime() . "</strong>"?><br/>
+                    <?php echo $this->translate('label-auction_seller') . " <strong><a href='" . $this->baseUrl('user/' . $this->auction->User->id) . "'>" . $this->auction->User->login . "</a></strong>"?><br/>
+                </div>
+            </div>
+            <?php if (count($this->auction->Attachments) > 0) : ?>
+                <div id="gallery">
+                    <?php 
+                    foreach ($this->auction->Attachments as $attachment) :
+                        ?>
+                    <a href="<?php echo $attachment->File->getPath();?>" rel="prettyPhoto[gallery]"><img src="<?php echo $attachment->File->getPath();?>" class="attachment"/></a> 
+                        <?php
+                    endforeach;
+                    ?>
+                </div>
+            <?php endif;?>
+            <div id="transaction">
+                <?php 
+                    $auctionTransactionTypes = $this->auction->getOrdereAuctionTransactionTypes();
+                    if (count($auctionTransactionTypes) === 1) :
+                        ?>
+                        <div id="oneType">
+                            <?php
+                            if ($auctionTransactionTypes->get(0)->TransactionType->name === Enum_Db_TransactionType_Type::BIDDING) :
+                                ?>
+                                <div id="bidding">
+                                    bidding
+                                </div>
+                                <?php
+                            else :
+                                ?>
+                                <div id="buyOut">
+                                    buyOut
+                                </div>
+                                <?php
+                            endif;
+                            ?>
+                        </div>
+                        <?php
+                    else :
+                        ?>
+                        <div id="twoTypes">
+                                <div id="bidding">
+                                    bidding
+                                </div>
+                                <div id="buyOut">
+                                    buyOut
+                                </div>
+                        </div>
+                        <?php
+                    endif;
+                ?>
+            </div>
+            <div id="description">
+                <?=$this->auction->description?>
+            </div>
+            <div id="transactions">
+                Auction transaction
+            </div>
+            
+            <br/><br/><br/><Br/>
+            <?php 
+//                Zend_Debug::dump($this->auction->toArray(false));
+            ?>
+        </div>
+    </div>
+</div>

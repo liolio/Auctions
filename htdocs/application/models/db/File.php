@@ -13,4 +13,14 @@
 class File extends BaseFile
 {
 
+    /**
+     * Returns path to file on server
+     * 
+     * @return String
+     */
+    public function getPath()
+    {
+        return Zend_Controller_Front::getInstance()->getBaseUrl() . '/../uploads/' . $this->filename;
+    }
+    
 }

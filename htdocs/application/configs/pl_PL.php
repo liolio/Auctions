@@ -74,6 +74,9 @@ return array(
     'label-user_active'                         =>  'Aktywny:',
     'label-user_role'                           =>  'Rola:',
     'label-user_last_login'                     =>  'Data ostatniego logowania:',
+    'label-auction_start_time'                  =>  'Start aukcji:',
+    'label-auction_end_time'                    =>  'Koniec aukcji:',
+    'label-auction_seller'                      =>  'Sprzedający:',
     'label-created_at'                          =>  'Data stworzenia:',
     'label-updated_at'                          =>  'Data ostatniej modyfikacji:',
     

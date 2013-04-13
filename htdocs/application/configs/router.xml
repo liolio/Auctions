@@ -543,6 +543,19 @@
         <reverse></reverse>
     </auctionShowListForCategory>
     
+    <auctionShow>
+        <route>auction/show/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>auction</controller>
+            <action>show</action>
+        </defaults>
+        <map>
+            <auction_id>1</auction_id>
+        </map>
+        <reverse></reverse>
+    </auctionShow>
+    
     <fileAdd>
         <route>file/add</route>
         <defaults>

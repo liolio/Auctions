@@ -14,6 +14,27 @@ class Category extends BaseCategory
 {
 
     /**
+     * Returns all categories with proper order
+     * 
+     * @return Doctrine_Collection
+     */
+    public function getCategoryWithParentsForCategory()
+    {
+        $categories = new Doctrine_Collection('category');
+        $categories->add($this);
+        $parent = $this->Category;
+        
+        do {
+            if (!is_null($parent->id))
+                $categories->add($parent);
+            
+            $parent = $parent->Category;
+        } while (!is_null ($parent) && !is_null ($parent->id));
+        
+        return $categories;
+    }
+    
+    /**
      * Returns array with ids of all parents.
      * 
      * @return array

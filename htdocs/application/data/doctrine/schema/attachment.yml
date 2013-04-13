@@ -1,0 +1,26 @@
+Attachment:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+      unsigned: true
+    auction_id:
+      type: integer(5)
+      unsigned: true
+      notnull: true
+    file_id:
+      type: integer(5)
+      unsigned: true
+      notnull: true
+  indexes:
+    attachment_unique:
+      fields: [auction_id, file_id]
+      type: unique
+  relations:
+    Auction:
+      foreignAlias: Attachments
+      onDelete: CASCADE
+    File:
+      foreignAlias: Attachments
+      onDelete: RESTRICT

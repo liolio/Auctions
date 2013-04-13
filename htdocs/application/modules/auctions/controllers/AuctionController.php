@@ -9,6 +9,14 @@ class Auctions_AuctionController extends Controller_Abstract
     {
         Zend_Layout::startMvc();
     }
+    
+    public function showAction()
+    {
+        $auction = AuctionTable::getInstance()->find($this->getRequest()->getParam(FieldIdEnum::AUCTION_ID));
+        
+        $this->view->auction = $auction;
+        $this->view->categoriesCollection = $auction->Category->getCategoryWithParentsForCategory();
+    }
 
     public function showListForCategoryAction()
     {

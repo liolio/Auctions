@@ -38,16 +38,26 @@ class AclTest extends TestCase_Controller
      */
     public function isAllowedWithoutParams(array $roles, $resource, $action, array $requestParams = array(), array $fixtures = array())
     {
-        $this->_loadFixtures($fixtures);
-        
         if (count($requestParams) > 0)
         {
+            $this->_loadFixtures($fixtures);
+            
             foreach (array_keys($roles) as $role)
+            {
+                if ($role !== Enum_Acl_Role::GUEST)
+                {
+                    $this->_logInAdminUser();
+                    Auth_User::getInstance()->getUser()->role = $role;
+                }
+                else 
+                    Auth_User::getInstance()->clearUser();
+            
                 $this->assertEquals(
                     false, 
                     $this->_getAcl($resource, $action, array())->isAllowed($role, $resource, $action), 
                     "Failure for role: " . $role
                 );
+            }
         }
     }
     
@@ -79,6 +89,7 @@ class AclTest extends TestCase_Controller
             array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::USER, 'process-set-password-and-activate-account-form', array(FieldIdEnum::USER_LOGIN => 'admin')),
             array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::USER, 'set-password-and-register-account', array(FieldIdEnum::USER_SECRET_CODE => '123qwe')),
             array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::AUCTION, 'show-list-for-category'),
+            array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::AUCTION, 'show', array(FieldIdEnum::AUCTION_ID => '4'), array("Category/1", "Currency/1", "Auction/4_category_1_start_now-1")),
             
             // USER
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::AUTH, 'logout'),

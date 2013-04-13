@@ -12,6 +12,7 @@
  * @property string $size
  * @property integer $user_id
  * @property User $User
+ * @property Doctrine_Collection $Attachments
  * @property Doctrine_Collection $File
  * 
  * @package    ##PACKAGE##
@@ -66,6 +67,10 @@ abstract class BaseFile extends Doctrine_Record
              'local' => 'user_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('Attachment as Attachments', array(
+             'local' => 'id',
+             'foreign' => 'file_id'));
 
         $this->hasMany('Auction as File', array(
              'local' => 'id',

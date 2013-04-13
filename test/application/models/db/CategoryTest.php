@@ -47,4 +47,27 @@ class CategoryTest extends TestCase_Database
         );
     }
     
+    /**
+     * @test
+     */
+    public function getCategoryWithParentsForCategory()
+    {
+        $this->_loadFixture("Category/structurizedTree");
+        
+        $categories = CategoryTable::getInstance()->find(18)->getCategoryWithParentsForCategory();
+        $this->assertEquals(4, $categories->count());
+        
+        $category1 = $categories->get(0);
+        $this->assertEquals("1.2.2.1", $category1->name);
+        
+        $category2 = $categories->get(1);
+        $this->assertEquals("1.2.2", $category2->name);
+        
+        $category3 = $categories->get(2);
+        $this->assertEquals("1.2", $category3->name);
+        
+        $category4 = $categories->get(3);
+        $this->assertEquals("1", $category4->name);
+    }
+    
 }

@@ -19,6 +19,7 @@
  * @property Category $Category
  * @property Currency $Currency
  * @property File $File
+ * @property Doctrine_Collection $Attachments
  * @property Doctrine_Collection $AuctionTransactionTypes
  * 
  * @package    ##PACKAGE##
@@ -119,6 +120,10 @@ abstract class BaseAuction extends Doctrine_Record
              'local' => 'thumbnail_file_id',
              'foreign' => 'id',
              'onDelete' => 'RESTRICT'));
+
+        $this->hasMany('Attachment as Attachments', array(
+             'local' => 'id',
+             'foreign' => 'auction_id'));
 
         $this->hasMany('AuctionTransactionType as AuctionTransactionTypes', array(
              'local' => 'id',

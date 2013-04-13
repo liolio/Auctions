@@ -28,6 +28,8 @@ class TestCase_Migration_TableStructure_Address implements TestCase_Migration_Ta
             case 20 :
             case 21 :
             case 22 :
+            case 23 :
+            case 24 :
                 return self::_getStructureFromVersion6();
             default :
                 throw new InvalidArgumentException($versionNumber . " not supported.");

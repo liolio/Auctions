@@ -9,7 +9,7 @@
             $class = $i++ % 2 == 0 ? 'even' : 'odd';?>
              
             <div class="auctionListItem <?= $class ?>">
-                <a href='<?php echo$this->baseUrl() . "/auction/" . $auctionId; ?>'>
+                <a href='<?php echo$this->baseUrl() . "/auction/show/" . $auctionId; ?>'>
                     <div class="thumbnailContainer">
                         <img src="<?php echo $this->baseUrl() . '/../uploads/' . $auction[FieldIdEnum::FILE_FILENAME];?>" class="thumbnail"/>
                     </div>
