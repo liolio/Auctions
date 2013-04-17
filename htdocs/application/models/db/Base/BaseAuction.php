@@ -21,6 +21,7 @@
  * @property File $File
  * @property Doctrine_Collection $Attachments
  * @property Doctrine_Collection $AuctionTransactionTypes
+ * @property Doctrine_Collection $Deliveries
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -126,6 +127,10 @@ abstract class BaseAuction extends Doctrine_Record
              'foreign' => 'auction_id'));
 
         $this->hasMany('AuctionTransactionType as AuctionTransactionTypes', array(
+             'local' => 'id',
+             'foreign' => 'auction_id'));
+
+        $this->hasMany('Delivery as Deliveries', array(
              'local' => 'id',
              'foreign' => 'auction_id'));
 

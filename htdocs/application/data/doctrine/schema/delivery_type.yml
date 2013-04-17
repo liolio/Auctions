@@ -1,0 +1,17 @@
+DeliveryType:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+      unsigned: true
+    name:
+      type: string(100)
+      notnull: true
+    cash_on_delivery:
+      type: boolean
+      notnull: true
+  indexes:
+    delivery_type_unique:
+      fields: [name, cash_on_delivery]
+      type: unique

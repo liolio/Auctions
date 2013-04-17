@@ -10,7 +10,7 @@ class Enum_Acl_ResourceTest extends TestCase_NoDatabase
      */
     public function checkAmount()
     {
-        $this->assertEquals(11, count(Enum_Acl_Resource::getEnums()));
+        $this->assertEquals(12, count(Enum_Acl_Resource::getEnums()));
     }
     
     /**
@@ -30,6 +30,7 @@ class Enum_Acl_ResourceTest extends TestCase_NoDatabase
             array(Enum_Acl_Resource::BANKING_INFORMATION, "banking-information"),
             array(Enum_Acl_Resource::CATEGORY, "category"),
             array(Enum_Acl_Resource::CURRENCY, "currency"),
+            array(Enum_Acl_Resource::DELIVERY_TYPE, "delivery-type"),
             array(Enum_Acl_Resource::ERROR, "error"),
             array(Enum_Acl_Resource::FILE, "file"),
             array(Enum_Acl_Resource::INDEX, "index"),

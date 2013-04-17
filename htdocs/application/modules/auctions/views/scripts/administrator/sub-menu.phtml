@@ -13,6 +13,11 @@
                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
         )
         ->addElement(
+                'deliveryTypeShowAdministratorListAction',
+                Menu_Element::create('delivery-type/show-administrator-list', 'deliveryTypeShowAdministratorListAction', 'submenu-delivery_type_list')
+                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+        )
+        ->addElement(
                 'userShowList',
                 Menu_Element::create('user/show-list', 'userShowList', 'submenu-user_list')
                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)

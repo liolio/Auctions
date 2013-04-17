@@ -50,5 +50,9 @@ class FieldIdEnum extends Enum_Abstract
     const FILE_MIME_TYPE = 'file_mime_type';
     const FILE_SIZE = 'file_size';
     
+    const DELIVERY_TYPE_ID = 'delivery_type_id';
+    const DELIVERY_TYPE_NAME = 'delivery_type_name';
+    const DELIVERY_TYPE_CASH_ON_DELIVERY = 'delivery_type_cash_on_delivery';
+    
 }
 

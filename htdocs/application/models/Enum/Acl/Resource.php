@@ -19,6 +19,8 @@ class Enum_Acl_Resource extends Enum_Abstract
     
     const CURRENCY = "Auctions:Currency";
     
+    const DELIVERY_TYPE = "Auctions:Delivery-type";
+    
     const ERROR = "Auctions:Error";
     
     const FILE = "Auctions:File";

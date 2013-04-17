@@ -580,4 +580,78 @@
         <reverse></reverse>
     </fileProcessAddForm>
     
+    <deliveryTypeShowAdministratorListAction>
+        <route>delivery-type/show-administrator-list</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>delivery-type</controller>
+            <action>show-administrator-list</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </deliveryTypeShowAdministratorListAction>
+    
+    <deliveryTypeAdd>
+        <route>delivery-type/add</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>delivery-type</controller>
+            <action>add</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </deliveryTypeAdd>
+    
+    <deliveryTypeProcessAddForm>
+        <route>delivery-type/process-add-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>delivery-type</controller>
+            <action>process-add-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </deliveryTypeProcessAddForm>
+    
+    <deliveryTypeEdit>
+        <route>delivery-type/edit/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>delivery-type</controller>
+            <action>edit</action>
+        </defaults>
+        <map>
+            <delivery_type_id>1</delivery_type_id>
+        </map>
+        <reverse></reverse>
+    </deliveryTypeEdit>
+    
+    <deliveryTypeProcessEditForm>
+        <route>delivery-type/process-edit-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>delivery-type</controller>
+            <action>process-edit-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </deliveryTypeProcessEditForm>
+    
+    <deliveryTypeDelete>
+        <route>delivery-type/delete/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>delivery-type</controller>
+            <action>delete</action>
+        </defaults>
+        <map>
+            <delivery_type_id>1</delivery_type_id>
+        </map>
+        <reverse></reverse>
+    </deliveryTypeDelete>
+    
 </routes>

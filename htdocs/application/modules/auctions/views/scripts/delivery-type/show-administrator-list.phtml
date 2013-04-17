@@ -1,0 +1,41 @@
+<div id="container">
+    <div id="content">
+        <?= View_Helper::getErrorMessage($this->message); ?>
+        <table class="auctionsTable">
+            <tr>
+                <th>
+                    <?=$this->translate('label-delivery_type_name')?>
+                </th>
+                <th>
+                    <?=$this->translate('label-delivery_type_cash_on_demand')?>
+                </th>
+                <th>
+                </th>
+            </tr>
+            <?php foreach ($this->deliveryTypes as $delivery) : ?>
+            <tr>
+                <td>
+                    <?=$delivery->name?>
+                </th>
+                <td>
+                    <?=Formatter_YesNo::format($delivery->cash_on_delivery)?>
+                </td>
+                <td class="textCenter">
+                    <a href="<?=$this->baseUrl();?>/delivery-type/edit/<?=$delivery->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                    <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/delivery-type/delete/<?=$delivery->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+                </td>
+            </tr>
+            <?php    endforeach; ?>
+        </table>
+        <br/>
+        <a class="addButton" href="<?=$this->baseUrl();?>/delivery-type/add"></a><br/>
+    </div>
+</div>
+<?php echo $this->render('administrator/sub-menu.phtml') ?>
+
+<div id="dialog-box" title="<?= $this->translate('title-delete_delivery_type');?>">
+  <p>
+      <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+      <?= $this->translate('message-delete_delivery_type_confirmation'); ?>
+  </p>
+</div>
