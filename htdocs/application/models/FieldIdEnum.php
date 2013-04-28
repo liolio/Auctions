@@ -38,8 +38,11 @@ class FieldIdEnum extends Enum_Abstract
     
     const AUCTION_ID = 'auction_id';
     const AUCTION_TITLE = 'auction_title';
+    const AUCTION_DESCRIPTION = 'auction_description';
+    const AUCTION_NUMBER_OF_ITEMS = 'auction_number_of_items';
     const AUCTION_DURATION = 'auction_duration';
     const AUCTION_START_TIME = 'auction_start_time';
+    const AUCTION_FILE_ID = 'auction_file_id';
     
     const AUCTION_TRANSACTION_TYPE_PRICE = 'auction_transaction_type_price';
     
@@ -53,6 +56,8 @@ class FieldIdEnum extends Enum_Abstract
     const DELIVERY_TYPE_ID = 'delivery_type_id';
     const DELIVERY_TYPE_NAME = 'delivery_type_name';
     const DELIVERY_TYPE_CASH_ON_DELIVERY = 'delivery_type_cash_on_delivery';
+    
+    const DELIVERY_PRICE = 'delivery_price';
     
 }
 

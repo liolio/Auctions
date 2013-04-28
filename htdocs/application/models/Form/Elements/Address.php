@@ -5,6 +5,10 @@
 class Form_Elements_Address extends Form_Elements
 {
     
+    /**
+     * 
+     * @return Zend_Form_Element[]
+     */
     public function getElements()
     {
         $name = new Form_Element_Text(FieldIdEnum::ADDRESS_NAME);

@@ -41,7 +41,7 @@ class Auctions_Form_User_Edit extends Auctions_Form_Abstract
         $active->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-user_active'));
         
-        $role = new Zend_Form_Element_Select(FieldIdEnum::USER_ROLE);
+        $role = new Form_Element_Select(FieldIdEnum::USER_ROLE);
         $role->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-user_role'))
                 ->setMultiOptions($this->_getMultiOptionsForParentCategory());

@@ -18,6 +18,18 @@ class Form_Element_PasswordTest extends TestCase_NoDatabase
     /**
      * @test
      */
+    public function configurationTest()
+    {
+        $this->assertEquals('formText', $this->_element->getAttrib('class'));
+        $this->assertEquals(
+            array("Zend_Filter_StringTrim", "Zend_Filter_StripTags"), 
+            array_keys($this->_element->getFilters())
+        );
+    }
+    
+    /**
+     * @test
+     */
     public function setRequiredTest()
     {
         $this->assertFalse($this->_element->isRequired());

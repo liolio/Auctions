@@ -1,0 +1,2 @@
+INSERT INTO file (id, filename, original_filename, mime_type, size, user_id, created_at, updated_at)
+VALUES ('1', 'filename_1', 'original_filename_1', 'application/octet-stream', 36483, '1', '2013-04-05 15:09:51', '2013-04-05 15:09:51')

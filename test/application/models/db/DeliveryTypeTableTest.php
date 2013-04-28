@@ -50,4 +50,18 @@ class DeliveryTypeTableTest extends TestCase_Database
             ),
         );
     }
+    
+    /**
+     * @test
+     */
+    public function getIds()
+    {
+        $this->_loadFixtures(array(
+            "DeliveryType/1",
+            "DeliveryType/3",
+            "DeliveryType/4",
+        ));
+        
+        $this->assertEquals(array(3, 1, 4), DeliveryTypeTable::getInstance()->getIds());
+    }
 }

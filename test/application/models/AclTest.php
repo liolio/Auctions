@@ -106,6 +106,8 @@ class AclTest extends TestCase_Controller
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::BANKING_INFORMATION, 'add'),
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::BANKING_INFORMATION, 'process-add-form'),
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::BANKING_INFORMATION, 'delete', array(FieldIdEnum::BANKING_INFORMATION_ID => '1'), array('Currency/1', 'BankingInformation/1_currency_1_user_1')),
+            array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::AUCTION, 'add'),
+            array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::AUCTION, 'process-add-form'),
             
             // ADMINISTRATOR
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::ADMINISTRATOR, 'index'),

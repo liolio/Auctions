@@ -28,4 +28,17 @@ class DeliveryTypeTable extends Doctrine_Table
         
         return $query->count() === 0;
     }
+    
+    /**
+     * Returns array of delivery type ids.
+     * 
+     * @return Array
+     */
+    public function getIds()
+    {
+        return $this->createQuery()
+                ->select("id")
+                ->execute(array(), Doctrine_Core::HYDRATE_SINGLE_SCALAR);
+    }
+    
 }

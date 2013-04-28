@@ -8,11 +8,17 @@ class Form_Element_Textarea extends Zend_Form_Element_Textarea
     const COLS = 'COLS';
     const ROWS = 'ROWS';
     
-    public function __construct($spec, $options = null)
+    public function __construct($spec, $addFilters = true, $options = null)
     {
         parent::__construct($spec, $options);
-        parent::addFilter(new Zend_Filter_StringTrim());
-        parent::addFilter(new Zend_Filter_StripTags());
+        $this->setAttrib('class', 'formTextarea');
+        
+        if ($addFilters)
+        {
+            parent::addFilter(new Zend_Filter_StringTrim());
+            parent::addFilter(new Zend_Filter_StripTags());
+        }
+        
         parent::setAttrib(self::COLS, '40');
         parent::setAttrib(self::ROWS, '4');
     }

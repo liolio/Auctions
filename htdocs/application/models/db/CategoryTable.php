@@ -47,15 +47,18 @@ class CategoryTable extends Doctrine_Table
     /**
      * Used to get list of categories to place in combo box.
      * 
-     * @param type $withoutCategoryId
+     * @param type $withoutCategoryId [optional] Default set to null
+     * @param type $addMainCategory [optional] Default set to true
      * @return array id => prefix . name
      */
-    public function getCategoriesListToList($withoutCategoryId = null)
+    public function getCategoriesListToList($withoutCategoryId = null, $addMainCategory = true)
     {
         $categories = $this->getMainCategories();
         
         $categoriesArray = array();
-        $categoriesArray[ParamIdEnum::CATEGORY_MAIN_CATEGORY_PARENT_ID] = Helper::getTranslator()->translate('caption-category_main');
+        
+        if ($addMainCategory)
+            $categoriesArray[ParamIdEnum::CATEGORY_MAIN_CATEGORY_PARENT_ID] = Helper::getTranslator()->translate('caption-category_main');
         
         $this->_addCategories($categories, $categoriesArray, $withoutCategoryId);
         

@@ -18,10 +18,10 @@ abstract class Auctions_Form_BankingInformation_Abstract extends Auctions_Form_A
                 ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 100)), true)
                 ->addValidator(new Validate_BankingInformation_AccountNumberUnique());
         
-        $currency = new Zend_Form_Element_Select(FieldIdEnum::BANKING_INFORMATION_CURRENCY_ID);
+        $currency = new Form_Element_Select(FieldIdEnum::BANKING_INFORMATION_CURRENCY_ID);
         $currency->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-banking_information_currency'))
-                ->setMultiOptions($this->_getMultiOptionsForParentCategory());
+                ->setMultiOptions($this->_getMultiOptionsForCurrency());
         
         $this->addElements(array($bankName, $accountNumber, $currency, $this->_getSubmitButton()));
         
@@ -35,7 +35,7 @@ abstract class Auctions_Form_BankingInformation_Abstract extends Auctions_Form_A
     
     abstract protected function _getSubmitButton();
     
-    private function _getMultiOptionsForParentCategory()
+    private function _getMultiOptionsForCurrency()
     {
         $currenciesArray = array();
         

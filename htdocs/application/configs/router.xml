@@ -556,6 +556,30 @@
         <reverse></reverse>
     </auctionShow>
     
+    <auctionAdd>
+        <route>auction/add</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>auction</controller>
+            <action>add</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </auctionAdd>
+    
+    <auctionProcessAddForm>
+        <route>auction/process-add-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>auction</controller>
+            <action>process-add-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </auctionProcessAddForm>
+    
     <fileAdd>
         <route>file/add</route>
         <defaults>

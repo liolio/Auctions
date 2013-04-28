@@ -39,6 +39,25 @@ class ParamIdEnum extends Enum_Abstract
     
     const AUCTION_EVEN = 'auction_even';
     
+    const AUCTION_THUMBNAIL = 'auction_thumbnail';
+    
+    const AUCTION_TRANSACTION_TYPE_BIDDING = 'auction_transaction_type_bidding';
+    
+    const AUCTION_TRANSACTION_TYPE_BIDDING_PRICE = 'auction_transaction_type_bidding_price';
+    
+    const AUCTION_TRANSACTION_TYPE_BUY_OUT = 'auction_transaction_type_buy_out';
+    
+    const AUCTION_TRANSACTION_TYPE_BUY_OUT_PRICE = 'auction_transaction_type_buy_out_price';
+    
+    const CKEDITOR = 'ckeditor';
+    
     const FILE = 'file';
+    
+    const FILES = 'files';
+    
+    const FIELDSET_AUCTION_TRANSACTION_TYPE = 'fieldset_auction_transaction_type';
+    const FIELDSET_DELIVERY_CASH_BY_TRANSFER = 'fieldset_delivery_cash_by_transfer';
+    const FIELDSET_DELIVERY_CASH_ON_DELIVERY = 'fieldset_delivery_cash_on_delivery';
+    const FIELDSET_FILES = 'fieldset_files';
     
 }

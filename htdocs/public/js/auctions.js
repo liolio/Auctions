@@ -1,13 +1,10 @@
 $(function() {
-    $( document ).tooltip();
     
-    $(document).ready(function(){
-        $("a[rel^='prettyPhoto']").prettyPhoto({
-            social_tools: false,
-            default_width: 500,
-            default_height: 344
-        });
-    });
+    $(document)
+        .ready(function(){
+            CKEDITOR.replace(getEnum('CKEDITOR'));
+        })
+        .tooltip();
     
     $("#dialog-box").dialog({
         autoOpen: false,
@@ -51,7 +48,6 @@ $(function() {
         
     $("#" + getEnum("SUBMIT_BUTTON"))
         .button({
-            label: "dupa"
         });
         
     $("#" + getEnum("FORM_ADD_BUTTON"))

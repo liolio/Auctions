@@ -17,7 +17,7 @@ abstract class Auctions_Form_Category_Abstract extends Auctions_Form_Abstract
                 ->setLabel($this->_getTranslator()->translate('label-category_description'))
                 ->addValidator(new Validate_StringLength(array('min' => 1, 'max' => 255)));
         
-        $parentCategory = new Zend_Form_Element_Select(FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID);
+        $parentCategory = new Form_Element_Select(FieldIdEnum::CATEGORY_PARENT_CATEGORY_ID);
         $parentCategory->setRequired()
                 ->setLabel($this->_getTranslator()->translate('label-category_parent_category_id'))
                 ->setMultiOptions($this->_getMultiOptionsForParentCategory());

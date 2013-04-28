@@ -83,7 +83,7 @@ class CategoryTableTest extends TestCase_Database
      * @test
      * @dataProvider withoutCategoryIdProvider
      */
-    public function getCategoriesListToList($withoutCategoryId, array $expectedArray)
+    public function getCategoriesListToList($withoutCategoryId, $addMainCategory, array $expectedArray)
     {
         $this->_loadFixtures(array(
             "Category/1",
@@ -94,7 +94,7 @@ class CategoryTableTest extends TestCase_Database
             "Category/6_parent_3"
         ));
         
-        $this->assertSame($expectedArray, CategoryTable::getInstance()->getCategoriesListToList($withoutCategoryId));
+        $this->assertSame($expectedArray, CategoryTable::getInstance()->getCategoriesListToList($withoutCategoryId, $addMainCategory));
     }
     
     public function withoutCategoryIdProvider()
@@ -102,6 +102,7 @@ class CategoryTableTest extends TestCase_Database
         return array(
             array(
                 null,
+                true,
                 array(
                     ParamIdEnum::CATEGORY_MAIN_CATEGORY_PARENT_ID   =>  $this->_getTranslator()->translate('caption-category_main'),
                     2   =>  '- aa_main_category_2',
@@ -113,7 +114,20 @@ class CategoryTableTest extends TestCase_Database
                 )
             ),
             array(
+                null,
+                false,
+                array(
+                    2   =>  '- aa_main_category_2',
+                    1   =>  '- zz_main_category_1',
+                    4   =>  '- - aa_sub_category_4',
+                    3   =>  '- - zz_sub_category_3',
+                    6   =>  '- - - aa_sub_sub_category_6',
+                    5   =>  '- - - zz_sub_sub_category_5',
+                )
+            ),
+            array(
                 '5',
+                true,
                 array(
                     ParamIdEnum::CATEGORY_MAIN_CATEGORY_PARENT_ID   =>  $this->_getTranslator()->translate('caption-category_main'),
                     2   =>  '- aa_main_category_2',
@@ -125,6 +139,7 @@ class CategoryTableTest extends TestCase_Database
             ),
             array(
                 '3',
+                true,
                 array(
                     ParamIdEnum::CATEGORY_MAIN_CATEGORY_PARENT_ID   =>  $this->_getTranslator()->translate('caption-category_main'),
                     2   =>  '- aa_main_category_2',
@@ -134,8 +149,20 @@ class CategoryTableTest extends TestCase_Database
             ),
             array(
                 '2',
+                true,
                 array(
                     ParamIdEnum::CATEGORY_MAIN_CATEGORY_PARENT_ID   =>  $this->_getTranslator()->translate('caption-category_main'),
+                    1   =>  '- zz_main_category_1',
+                    4   =>  '- - aa_sub_category_4',
+                    3   =>  '- - zz_sub_category_3',
+                    6   =>  '- - - aa_sub_sub_category_6',
+                    5   =>  '- - - zz_sub_sub_category_5',
+                ),
+            ),
+            array(
+                '2',
+                false,
+                array(
                     1   =>  '- zz_main_category_1',
                     4   =>  '- - aa_sub_category_4',
                     3   =>  '- - zz_sub_category_3',

@@ -14,7 +14,7 @@ abstract class TestCase_Mail extends TestCase_Controller
     {
         parent::setUp();
 
-        $this->_mailFilePath = realpath(FIXTURE_PATH) . DIRECTORY_SEPARATOR .'file' . DIRECTORY_SEPARATOR . 'mail_test.txt';
+        $this->_mailFilePath = realpath(FIXTURE_PATH) . DIRECTORY_SEPARATOR .'File' . DIRECTORY_SEPARATOR . 'mail_test.txt';
         Zend_Mail::setDefaultTransport(new Mail_Transport($this->_mailFilePath));
     }
     
