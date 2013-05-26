@@ -13,4 +13,113 @@
 class AuctionTransactionType extends BaseAuctionTransactionType
 {
 
+    /**
+     * Count Price for AuctionTransactionType:
+     *      BuyOut - price set by auction owner,
+     *      Bidding - counted minimum price.
+     * 
+     * @return Decimal
+     * @throws InvalidArgumentException When Transaction type is not supported
+     */
+    public function countPrice()
+    {
+        switch ($this->TransactionType->name) {
+            case Enum_Db_TransactionType_Type::BIDDING :
+                return $this->_getMinimumPriceForBidding();
+                
+            case Enum_Db_TransactionType_Type::BUY_OUT :
+                return $this->price;
+            default :
+                throw new InvalidArgumentException($this->TransactionType->name . ' is not supported yet');
+        }
+    }
+    
+    /**
+     * Returns transactions to show.
+     * 
+     * @return Doctrine_Collection array for Bidding | Doctrine_Collection for BuyOut
+     * @throws InvalidArgumentException When Transaction type is not supported
+     */
+    public function getItemsToShow()
+    {
+        switch ($this->TransactionType->name) {
+            case Enum_Db_TransactionType_Type::BIDDING :
+                return $this->_getSortedBiddings();
+            case Enum_Db_TransactionType_Type::BUY_OUT :
+                return $this->Transactions;
+            default :
+                throw new InvalidArgumentException($this->TransactionType->name . ' is not supported yet');
+        }
+    }
+    
+    /**
+     * 
+     * @return Array
+     *      ParamIdEnum::TRANSACTION_VALID      =>  Doctrine_Collection
+     *      ParamIdEnum::TRANSACTION_INVALID    =>  Doctrine_Collection
+     * @throws InvalidArgumentException If TransactionType is not bidding
+     */
+    private function _getSortedBiddings()
+    {
+        if ($this->TransactionType->name !== Enum_Db_TransactionType_Type::BIDDING)
+            throw new InvalidArgumentException("Not supported transaction type: " . $this->TransactionType->name);
+        
+        $userIds = array();
+        $inactive = TransactionTable::getInstance()->getBiddingsForAuction($this->Auction);
+        $active = new Doctrine_Collection("Transaction");
+        
+        if (count($inactive) > 0)
+        {
+            $itemsLeft = TransactionTable::getInstance()->getNumberOfItemsLeftForAuctionAndTransactionTypeName($this->Auction);
+            $itemsCount = 0;
+
+            foreach ($inactive as $key => $result)
+            {
+                $itemsCount += $result->number_of_items;
+
+                if (array_search($result->user_id, $userIds) === false)
+                {
+                    if ($itemsCount <= $itemsLeft)
+                    {
+                        $inactive->remove($key);
+                        $active->add($result);
+                    }
+                }
+                else
+                    $inactive->remove($key);
+                
+                $userIds[] = $result->user_id;
+            }
+        }
+        
+        return array(
+            ParamIdEnum::TRANSACTION_VALID      =>  $active,
+            ParamIdEnum::TRANSACTION_INVALID    =>  $inactive
+        );
+    }
+    
+    /**
+     * Returns minimum price based on actual transactions.
+     * 
+     * @return Decimal
+     */
+    private function _getMinimumPriceForBidding()
+    {
+        $results = TransactionTable::getInstance()->getBiddingsForAuction($this->Auction);
+        
+        if (count($results) === 0 )
+            return $this->price;
+
+        $itemsLeft = (int) TransactionTable::getInstance()->getNumberOfItemsLeftForAuctionAndTransactionTypeName($this->Auction);
+        $itemsCount = 0;
+
+        foreach ($results as $result)
+        {
+            if (($itemsCount += $result->number_of_items) === $itemsLeft)
+                return $result->price;
+        }
+        
+        return $this->price;
+    }
+    
 }

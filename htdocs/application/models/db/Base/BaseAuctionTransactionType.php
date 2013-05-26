@@ -11,6 +11,7 @@
  * @property decimal $price
  * @property TransactionType $TransactionType
  * @property Auction $Auction
+ * @property Doctrine_Collection $Transactions
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -61,5 +62,9 @@ abstract class BaseAuctionTransactionType extends Doctrine_Record
              'local' => 'auction_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('Transaction as Transactions', array(
+             'local' => 'id',
+             'foreign' => 'auction_transaction_type_id'));
     }
 }

@@ -22,7 +22,8 @@ interface Notification_RelatedObject_Interface
     /**
      * Returns all recipients for notification.
      * 
+     * @param Enum_Db_Notification_Type $notificationType
      * @return array
      */
-    public function getRecipients();
+    public function getRecipients($notificationType);
 }

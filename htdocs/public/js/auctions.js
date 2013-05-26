@@ -46,6 +46,16 @@ $(function() {
             label: translate('caption-add')
         });
         
+    $("." + getEnum("AUCTION_TRANSACTION_TYPE_BIDDING"))
+        .button({
+            label: translate('caption-transaction_bid')
+        });
+        
+    $("." + getEnum("AUCTION_TRANSACTION_TYPE_BUY_OUT"))
+        .button({
+            label: translate('caption-transaction_buy_out')
+        });
+        
     $("#" + getEnum("SUBMIT_BUTTON"))
         .button({
         });

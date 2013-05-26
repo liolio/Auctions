@@ -20,7 +20,7 @@ class Notification_Sender
         $mailClient->setSubject($messageBuilder->buildSubjectForNotificationType());
         $mailClient->setBodyHtml($messageBuilder->buildBodyForNotificationType());
         
-        foreach($relatedObject->getRecipients() as $recipient)
+        foreach($relatedObject->getRecipients($notificationType) as $recipient)
         {
             $mailClient->clearRecipients();
             $mailClient->addTo($recipient);

@@ -90,6 +90,8 @@ class AclTest extends TestCase_Controller
             array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::USER, 'set-password-and-register-account', array(FieldIdEnum::USER_SECRET_CODE => '123qwe')),
             array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::AUCTION, 'show-list-for-category'),
             array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::AUCTION, 'show', array(FieldIdEnum::AUCTION_ID => '4'), array("Category/1", "Currency/1", "Auction/4_category_1_start_now-1")),
+            array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::TRANSACTION, 'bid'),
+            array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::TRANSACTION, 'buy-out'),
             
             // USER
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::AUTH, 'logout'),
@@ -108,6 +110,7 @@ class AclTest extends TestCase_Controller
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::BANKING_INFORMATION, 'delete', array(FieldIdEnum::BANKING_INFORMATION_ID => '1'), array('Currency/1', 'BankingInformation/1_currency_1_user_1')),
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::AUCTION, 'add'),
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::AUCTION, 'process-add-form'),
+            array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::TRANSACTION, 'process-transaction-form'),
             
             // ADMINISTRATOR
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::ADMINISTRATOR, 'index'),

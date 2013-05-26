@@ -18,6 +18,7 @@
  * @property Doctrine_Collection $Auctions
  * @property Doctrine_Collection $BankingInformations
  * @property Doctrine_Collection $Files
+ * @property Doctrine_Collection $Transactions
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -116,6 +117,10 @@ abstract class BaseUser extends Doctrine_Record
              'foreign' => 'user_id'));
 
         $this->hasMany('File as Files', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
+
+        $this->hasMany('Transaction as Transactions', array(
              'local' => 'id',
              'foreign' => 'user_id'));
 

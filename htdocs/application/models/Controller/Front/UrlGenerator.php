@@ -24,6 +24,11 @@ class Controller_Front_UrlGenerator
             case Enum_Db_Notification_Type::USER_PASSWORD_RESET :
                 $actionName = 'user/password-reset';
                 break;
+            case Enum_Db_Notification_Type::AUCTION_BID_BIDDER :
+            case Enum_Db_Notification_Type::AUCTION_BID_AUCTION_OWNER :
+            case Enum_Db_Notification_Type::AUCTION_BID_OUTBIDDED :
+                $actionName = 'auction/show';
+                break;
             default :
                 throw new InvalidArgumentException('Notification type must be one of supported Enum_Db_Notification_Type. ' . $notificationType . ' is invalid.');
         }

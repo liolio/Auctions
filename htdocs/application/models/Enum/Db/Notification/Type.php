@@ -4,6 +4,12 @@
  */
 class Enum_Db_Notification_Type extends Enum_Abstract
 {
+
+    const AUCTION_BID_BIDDER = 'auction_bid_bidder';
+    
+    const AUCTION_BID_AUCTION_OWNER = 'auction_bid_auction_owner';
+    
+    const AUCTION_BID_OUTBIDDED = 'auction_bid_outbidded';
     
     const USER_REGISTRATION = 'user_registration';
     

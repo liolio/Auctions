@@ -11,6 +11,8 @@ class TestCase_Migration_TableStructure_DeliveryType implements TestCase_Migrati
         {
             case 25 :
             case 26 :
+            case 27 :
+            case 28 :
                 return self::_getStructureFromVersion25();
             default :
                 throw new InvalidArgumentException($versionNumber . " not supported.");

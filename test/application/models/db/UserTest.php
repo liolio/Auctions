@@ -108,7 +108,7 @@ class UserTest extends TestCase_Controller
     {
         $this->assertEquals(
                 array('lio_lio@wp.pl'),
-                $this->_user->getRecipients()
+                $this->_user->getRecipients('notImportant')
         );
     }
     

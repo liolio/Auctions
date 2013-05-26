@@ -1,0 +1,33 @@
+Transaction:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+      unsigned: true
+    user_id:
+      type: integer(5)
+      unsigned: true
+      notnull: true
+    auction_transaction_type_id:
+      type: integer(5)
+      unsigned: true
+      notnull: true
+    price:
+      type: decimal(15)
+      scale: 2
+      notnull: true
+    number_of_items:
+      type: integer(5)
+      notnull: true
+      unsigned: true
+  actAs:
+    Timestampable:
+  relations:
+    User:
+      foreignAlias: Transactions
+      onDelete: CASCADE
+    AuctionTransactionType:
+      foreignAlias: Transactions
+      onDelete: CASCADE
+      

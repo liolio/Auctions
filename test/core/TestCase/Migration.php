@@ -67,6 +67,7 @@ abstract class TestCase_Migration extends PHPUnit_Framework_TestCase
     {
         $columnsData = $this->_getColumnsData($tableName);
         
+        $this->assertEquals(count($expectedColumnsConfig), count($columnsData));
         for ($i = 0; $i < count($columnsData); $i++)
         {
             $this->assertEquals($expectedColumnsConfig[$i][self::COLUMN_FIELD], $columnsData[$i][self::COLUMN_FIELD], "Column " . $i);

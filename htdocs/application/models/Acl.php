@@ -45,6 +45,7 @@ class Acl extends Zend_Acl
         $this->addResource(Enum_Acl_Resource::ERROR);
         $this->addResource(Enum_Acl_Resource::FILE);
         $this->addResource(Enum_Acl_Resource::INDEX);
+        $this->addResource(Enum_Acl_Resource::TRANSACTION);
         $this->addResource(Enum_Acl_Resource::USER);
     }
     
@@ -59,6 +60,7 @@ class Acl extends Zend_Acl
         $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::USER, array('set-password-and-register-account'), Acl_Assertion_User_SecretCodeExists::getClassName());
         $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::AUCTION, array('show-list-for-category'));
         $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::AUCTION, array('show'), Acl_Assertion_Auction_AllowedToShow::getClassName());
+        $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::TRANSACTION, array('bid', 'buy-out'));
         
         //USER
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::AUTH, array('logout'));
@@ -69,6 +71,7 @@ class Acl extends Zend_Acl
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::BANKING_INFORMATION, array('show-list', 'add', 'process-add-form'));
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::BANKING_INFORMATION, array('delete', 'edit', 'process-edit-form'), Acl_Assertion_BankingInformation_BelongsToUser::getClassName());
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::AUCTION, array('add', 'process-add-form'));
+        $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::TRANSACTION, array('process-transaction-form'));
         
         //ADMINISTRATOR
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::ADMINISTRATOR, array('index'));

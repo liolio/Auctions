@@ -14,7 +14,7 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
         return $this->id;
     }
     
-    public function getRecipients()
+    public function getRecipients($notificationType)
     {
         return array($this->email);
     }

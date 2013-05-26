@@ -41,7 +41,7 @@ class Auctions_DeliveryTypeController_ProcessEditFormActionTest extends TestCase
         
         $this->dispatch("delivery-type/process-edit-form");
         $this->_assertDispatch('delivery-type', 'process-edit-form');
-        $this->assertContains(Helper::getTranslator()->translate("validation_message-field_empty"), $this->getResponse()->getBody());
+        $this->assertContains($this->_getTranslator()->translate("validation_message-field_empty"), $this->getResponse()->getBody());
         
         $this->assertEquals(0, DeliveryTypeTable::getInstance()->count());
     }

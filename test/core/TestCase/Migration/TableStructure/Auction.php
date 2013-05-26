@@ -26,6 +26,8 @@ class TestCase_Migration_TableStructure_Auction implements TestCase_Migration_Ta
             case 24 :
             case 25 :
             case 26 :
+            case 27 :
+            case 28 :
                 return self::_getStructureFromVersion22();
             default :
                 throw new InvalidArgumentException($versionNumber . " not supported.");

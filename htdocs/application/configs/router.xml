@@ -678,4 +678,41 @@
         <reverse></reverse>
     </deliveryTypeDelete>
     
+    <transactionBid>
+        <route>transaction/bid/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>transaction</controller>
+            <action>bid</action>
+        </defaults>
+        <map>
+            <auction_id>1</auction_id>
+        </map>
+        <reverse></reverse>
+    </transactionBid>
+    
+    <transactionBuyOut>
+        <route>transaction/buy-out/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>transaction</controller>
+            <action>buy-out</action>
+        </defaults>
+        <map>
+            <auction_id>1</auction_id>
+        </map>
+        <reverse></reverse>
+    </transactionBuyOut>
+    
+    <transactionProcessTransactionForm>
+        <route>transaction/process-transaction-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>transaction</controller>
+            <action>process-transaction-form</action>
+        </defaults>
+        <map></map>
+        <reverse></reverse>
+    </transactionProcessTransactionForm>
+    
 </routes>

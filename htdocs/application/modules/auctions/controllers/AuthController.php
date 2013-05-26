@@ -12,6 +12,9 @@ class Auctions_AuthController extends Controller_Abstract
 
     public function indexAction()
     {
+        if (array_key_exists("HTTP_REFERER", $_SERVER))
+            Session_LastVisited::save($_SERVER["HTTP_REFERER"]);
+        
         $this->view->form = new Auctions_Form_LogIn();
     }
     
@@ -54,12 +57,15 @@ class Auctions_AuthController extends Controller_Abstract
         $user = UserTable::getInstance()->findOneBy('login', $form->getValue(FieldIdEnum::USER_LOGIN));
         $user->updateLastLogin();
         
-        $this->_helper->redirector('index', 'index');
+        $this->_redirect(Session_LastVisited::getLastVisited());
     }
     
     public function logoutAction()
     {
+        if (array_key_exists("HTTP_REFERER", $_SERVER))
+            Session_LastVisited::save($_SERVER["HTTP_REFERER"]);
+        
         Zend_Auth::getInstance()->clearIdentity();
-        $this->_helper->redirector('index', 'index');
+        $this->_redirect(Session_LastVisited::getLastVisited());
     }
 }

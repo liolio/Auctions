@@ -48,6 +48,9 @@ class FieldIdEnum extends Enum_Abstract
     
     const TRANSACTION_TYPE_NAME = 'transaction_type_name';
     
+    const TRANSACTION_NUMBER_OF_ITEMS = 'transaction_number_of_items';
+    const TRANSACTION_PRICE = 'transaction_price';
+    
     const FILE_FILENAME = 'file_filename';
     const FILE_ORIGINAL_FILENAME = 'file_original_filename';
     const FILE_MIME_TYPE = 'file_mime_type';

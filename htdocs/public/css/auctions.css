@@ -171,6 +171,10 @@ fieldset legend {
     background-color: #ffeeee;
 }
 
+.importantRow {
+    font-weight: bold;
+}
+
 .auctionsTable td {
     border:1px solid #cc0000;
 }
@@ -243,6 +247,11 @@ fieldset legend {
 
 .formSelect, .formText {
     width: 100%;
+}
+
+.formTextReadOnly {
+    width: 100%;
+    color: #a0a0a0;
 }
 
 .formRadio {
@@ -458,7 +467,7 @@ fieldset legend {
 
 #auction #transaction #twoTypes {
     width: 1240px;
-    height: 61px;
+    height: 91px;
 }
 
 #auction #transaction #twoTypes #bidding {
@@ -502,7 +511,6 @@ fieldset legend {
 }
 
 #auction #transactions {
-    text-align: center;
     width: 1218px;
     background: #ffeeee;
     border: 1px solid #cc0000;

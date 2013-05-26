@@ -90,6 +90,12 @@ class Auctions_AuctionController extends Controller_Abstract
         
         $this->view->auction = $auction;
         $this->view->categoriesCollection = $auction->Category->getCategoryWithParentsForCategory();
+        $this->view->numberOfItemsLeft = TransactionTable::getInstance()->getNumberOfItemsLeftForAuctionAndTransactionTypeName($auction);
+        
+        $this->view->auctionTransactionTypes = $auction->getOrdereAuctionTransactionTypes();
+        $this->view->auctionTransactionTypesCount = count($this->view->auctionTransactionTypes);
+        $this->view->isBiddingOnly = $this->view->auctionTransactionTypesCount === 1 && $this->view->auctionTransactionTypes->get(0)->TransactionType->name === Enum_Db_TransactionType_Type::BIDDING;
+        $this->view->isBuyOutOnly = $this->view->auctionTransactionTypesCount === 1 && $this->view->auctionTransactionTypes->get(0)->TransactionType->name === Enum_Db_TransactionType_Type::BUY_OUT;
     }
 
     public function showListForCategoryAction()

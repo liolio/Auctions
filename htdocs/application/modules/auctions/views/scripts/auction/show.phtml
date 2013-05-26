@@ -3,7 +3,9 @@
         <div id="auction">
             <div id="header">
                 <div id="thumbnailContainer">
+                    <?php if (!empty($this->auction->File->filename)) : ?>
                     <img src="<?php echo $this->baseUrl() . '/../uploads/' . $this->auction->File->filename;?>" id="thumbnail"/>
+                    <?php endif; ?>
                 </div>
                 <div id="titleContainer">
                     <div id="title">
@@ -27,6 +29,7 @@
                     <?php echo $this->translate('label-auction_start_time') . " <strong>" . $this->auction->start_time . "</strong>"?><br/>
                     <?php echo $this->translate('label-auction_end_time') . " <strong>" . $this->auction->getEndTime() . "</strong>"?><br/>
                     <?php echo $this->translate('label-auction_seller') . " <strong><a href='" . $this->baseUrl('user/' . $this->auction->User->id) . "'>" . $this->auction->User->login . "</a></strong>"?><br/>
+                    <?php echo $this->translate('label-auction_number_of_items') . " <strong>" . $this->numberOfItemsLeft . "</strong>/" . $this->auction->number_of_items ;?><br/>
                 </div>
             </div>
             <?php if (count($this->auction->Attachments) > 0) : ?>
@@ -40,51 +43,119 @@
                     ?>
                 </div>
             <?php endif;?>
-            <div id="transaction">
-                <?php 
-                    $auctionTransactionTypes = $this->auction->getOrdereAuctionTransactionTypes();
-                    if (count($auctionTransactionTypes) === 1) :
-                        ?>
-                        <div id="oneType">
-                            <?php
-                            if ($auctionTransactionTypes->get(0)->TransactionType->name === Enum_Db_TransactionType_Type::BIDDING) :
-                                ?>
-                                <div id="bidding">
-                                    bidding
-                                </div>
-                                <?php
-                            else :
-                                ?>
-                                <div id="buyOut">
-                                    buyOut
-                                </div>
-                                <?php
-                            endif;
-                            ?>
-                        </div>
-                        <?php
-                    else :
-                        ?>
-                        <div id="twoTypes">
-                                <div id="bidding">
-                                    bidding
-                                </div>
-                                <div id="buyOut">
-                                    buyOut
-                                </div>
-                        </div>
-                        <?php
-                    endif;
-                ?>
-            </div>
+            <?php if($this->numberOfItemsLeft > 0) : ?>
+                <div id="transaction">
+                    <?php 
+                        if ($this->isBiddingOnly ^ $this->isBuyOutOnly) : ?>
+                            <div id="oneType">
+                                <?php if ($this->isBiddingOnly) : ?>
+                                    <?= Auction_ViewHelper::getTransactionDiv($this->auctionTransactionTypes->get(0)) ?>
+                                <?php else : ?>
+                                    <?= Auction_ViewHelper::getTransactionDiv($this->auctionTransactionTypes->get(0)) ?>
+                                <?php endif;?>
+                            </div>
+                        <?php else : ?>
+                            <div id="twoTypes">
+                                    <?= Auction_ViewHelper::getTransactionDiv($this->auctionTransactionTypes->get(0)) ?>
+                                    <?= Auction_ViewHelper::getTransactionDiv($this->auctionTransactionTypes->get(1)) ?>
+                            </div>
+                        <?php endif; ?>
+                </div>
+            <?php endif; ?>
             <div id="description">
                 <?=$this->auction->description?>
             </div>
             <div id="transactions">
-                Auction transaction
+                <?php if ($this->isBiddingOnly || $this->auctionTransactionTypesCount === 2) : 
+                    $biddings = $this->auctionTransactionTypes->get(0)->getItemsToShow(); ?>
+                    <table class="auctionsTable">
+                        <tr>
+                            <th>
+                                <?= $this->translate('label-login'); ?>
+                            </th>
+                            <th>
+                                <?= $this->translate('label-auction_number_of_items'); ?>
+                            </th>
+                            <th>
+                                <?= $this->translate('label-price'); ?>
+                            </th>
+                            <th>
+                                <?= $this->translate('label-date'); ?>
+                            </th>
+                        </tr>
+                        <?php foreach ($biddings[ParamIdEnum::TRANSACTION_VALID] as $validTransaction) : ?>
+                            <tr class="importantRow">
+                                <td>
+                                    <?php echo "<a href='" . $this->baseUrl('user/' . $validTransaction->User->id) . "'>" . $validTransaction->User->login . "</a>"; ?>
+                                </td>
+                                <td>
+                                    <?= $validTransaction->number_of_items ?>
+                                </td>
+                                <td>
+                                    <?= Formatter_Price::formatWithCurrency($validTransaction->price, $this->auction->Currency->name); ?>
+                                </td>
+                                <td>
+                                    <?= $validTransaction->created_at ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        <?php foreach ($biddings[ParamIdEnum::TRANSACTION_INVALID] as $validTransaction) : ?>
+                            <tr>
+                                <td>
+                                    <?php echo "<a href='" . $this->baseUrl('user/' . $validTransaction->User->id) . "'>" . $validTransaction->User->login . "</a>"; ?>
+                                </td>
+                                <td>
+                                    <?= $validTransaction->number_of_items ?>
+                                </td>
+                                <td>
+                                    <?= Formatter_Price::formatWithCurrency($validTransaction->price, $this->auction->Currency->name); ?>
+                                </td>
+                                <td>
+                                    <?= $validTransaction->created_at ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                <?php endif; ?>
+                
+                <br/>
+                
+                <?php if ($this->isBuyOutOnly || $this->auctionTransactionTypesCount === 2) :
+                    $buyOuts = $this->auctionTransactionTypes->get($this->isBuyOutOnly ? 0 : 1)->getItemsToShow(); ?>
+                    <table class="auctionsTable">
+                        <tr>
+                            <th>
+                                <?= $this->translate('label-login'); ?>
+                            </th>
+                            <th>
+                                <?= $this->translate('label-auction_number_of_items'); ?>
+                            </th>
+                            <th>
+                                <?= $this->translate('label-price'); ?>
+                            </th>
+                            <th>
+                                <?= $this->translate('label-date'); ?>
+                            </th>
+                        </tr>
+                        <?php foreach ($buyOuts as $validTransaction) : ?>
+                            <tr class="importantRow">
+                                <td>
+                                    <?php echo "<a href='" . $this->baseUrl('user/' . $validTransaction->User->id) . "'>" . $validTransaction->User->login . "</a>"; ?>
+                                </td>
+                                <td>
+                                    <?= $validTransaction->number_of_items ?>
+                                </td>
+                                <td>
+                                    <?= Formatter_Price::formatWithCurrency($validTransaction->price, $this->auction->Currency->name); ?>
+                                </td>
+                                <td>
+                                    <?= $validTransaction->created_at ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                <?php endif; ?>
             </div>
-            
-            <br/><br/><br/><Br/>
         </div>
     </div>
 </div>

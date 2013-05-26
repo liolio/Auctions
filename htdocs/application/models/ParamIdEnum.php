@@ -35,6 +35,8 @@ class ParamIdEnum extends Enum_Abstract
 
     const AUCTION_END_TIME = 'auction_end_time';
     
+    const AUCTION_PRICE = 'auction_price';
+    
     const AUCTION_PRICES = 'auction_prices';
     
     const AUCTION_EVEN = 'auction_even';
@@ -48,6 +50,9 @@ class ParamIdEnum extends Enum_Abstract
     const AUCTION_TRANSACTION_TYPE_BUY_OUT = 'auction_transaction_type_buy_out';
     
     const AUCTION_TRANSACTION_TYPE_BUY_OUT_PRICE = 'auction_transaction_type_buy_out_price';
+    
+    const TRANSACTION_VALID = 'transaction_valid';
+    const TRANSACTION_INVALID = 'transaction_invalid';
     
     const CKEDITOR = 'ckeditor';
     
