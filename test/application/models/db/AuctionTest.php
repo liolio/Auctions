@@ -125,4 +125,65 @@ class AuctionTest extends TestCase_Controller
         $this->assertEquals(1, AuctionTable::getInstance()->find(1)->getRelatedObjectId());
     }
     
+    /**
+     * @test
+     */
+    public function getDeliveryOptionsCashOnDelivery()
+    {
+        $this->_loadFixtures(array(
+            "Category/1",
+            "Currency/1",
+            "Auction/1_category_1_start_2012-05-02",
+            "DeliveryType/1",
+            "DeliveryType/2",
+            "DeliveryType/3",
+            "DeliveryType/4",
+            "Delivery/1_delivery_type_1_auction_1",
+            "Delivery/2_delivery_type_2_auction_1",
+            "Delivery/3_delivery_type_3_auction_1",
+            "Delivery/4_delivery_type_4_auction_1"
+        ));
+        
+        $deliveries = AuctionTable::getInstance()->find(1)->getDeliveryOptions(true);
+        $this->assertEquals(2, count($deliveries));
+        
+        $delivery1 = $deliveries->get(0);
+        $this->assertEquals('Poczta polska', $delivery1->DeliveryType->name);
+        $this->assertEquals('0.10', $delivery1->price);
+        
+        $delivery2 = $deliveries->get(1);
+        $this->assertEquals('Kurier', $delivery2->DeliveryType->name);
+        $this->assertEquals('1.22', $delivery2->price);
+    }
+    
+    /**
+     * @test
+     */
+    public function getDeliveryOptionsCashOnTransaction()
+    {
+        $this->_loadFixtures(array(
+            "Category/1",
+            "Currency/1",
+            "Auction/1_category_1_start_2012-05-02",
+            "DeliveryType/1",
+            "DeliveryType/2",
+            "DeliveryType/3",
+            "DeliveryType/4",
+            "Delivery/1_delivery_type_1_auction_1",
+            "Delivery/2_delivery_type_2_auction_1",
+            "Delivery/3_delivery_type_3_auction_1",
+            "Delivery/4_delivery_type_4_auction_1"
+        ));
+        
+        $deliveries = AuctionTable::getInstance()->find(1)->getDeliveryOptions(false);
+        $this->assertEquals(2, count($deliveries));
+        
+        $delivery1 = $deliveries->get(0);
+        $this->assertEquals('Kurier', $delivery1->DeliveryType->name);
+        $this->assertEquals('0.11', $delivery1->price);
+        
+        $delivery2 = $deliveries->get(1);
+        $this->assertEquals('Poczta polska', $delivery2->DeliveryType->name);
+        $this->assertEquals('2.22', $delivery2->price);
+    }
 }

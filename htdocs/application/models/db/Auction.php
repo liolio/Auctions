@@ -49,6 +49,24 @@ class Auction extends BaseAuction implements Notification_RelatedObject_Interfac
                 throw new Auction_Exception('Auction can have one or two auction types defined. Auction id: ' . $this->id);
         }
     }
+    
+    /**
+     * Returns Deliveries Collection sorted by price ASCending.
+     * 
+     * @param Boolean $cashOnDelivery
+     * @return Doctrine_Collection
+     */
+    public function getDeliveryOptions($cashOnDelivery)
+    {
+        return DeliveryTable::getInstance()->createQuery()
+                ->from('Delivery d')
+                ->leftJoin('d.Auction a')
+                ->leftJoin('d.DeliveryType dt')
+                ->addWhere('d.auction_id = ?', $this->id)
+                ->addWhere('dt.cash_on_delivery = ?', (Boolean) $cashOnDelivery)
+                ->orderBy('d.price')
+                ->execute();
+    }
 
     /**
      * Returns true if auction has started and not finished

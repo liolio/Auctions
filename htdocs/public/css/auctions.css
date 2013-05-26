@@ -373,6 +373,10 @@ fieldset legend {
 /* Auction
 -----------------------------------------------------------------------------*/
 
+#auction li, #auction ln {
+    margin-left: 20px;
+}
+
 #auction #header {
     height: 80px;
     border: 1px solid #cc0000;
@@ -443,6 +447,18 @@ fieldset legend {
     max-height: 120px;
     max-width: 160px;
     border: solid 1px gray;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+}
+
+#auction #deliveries {
+    width: 1218px;
+    background: #ffeeee;
+    border: 1px solid #cc0000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
     -moz-border-radius: 6px 6px 6px 6px;
     -webkit-border-radius: 6px 6px 6px 6px;
     border-radius: 6px 6px 6px 6px;

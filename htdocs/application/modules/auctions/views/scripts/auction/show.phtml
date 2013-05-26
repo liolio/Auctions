@@ -62,6 +62,27 @@
                         <?php endif; ?>
                 </div>
             <?php endif; ?>
+            <div id="deliveries">
+                <?php $deliveriesCashOnTransaction = $this->auction->getDeliveryOptions(false);
+                if (count($deliveriesCashOnTransaction) > 0 ) : ?>
+                    <strong><?= $this->translate('label-delivery_options_cash_on_transaction'); ?></strong>
+                    <ul>
+                        <?php foreach ($deliveriesCashOnTransaction as $delivery) : ?>
+                        <li> <?php echo Formatter_Price::formatWithCurrency($delivery->price, $delivery->Auction->Currency->name) . ": " . $delivery->DeliveryType->name ?> </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+                <br/>
+                <?php $deliveriesCashOnDelivery = $this->auction->getDeliveryOptions(true);
+                if (count($deliveriesCashOnDelivery) > 0 ) : ?>
+                    <strong><?= $this->translate('label-delivery_options_cash_on_delivery'); ?></strong>
+                    <ul>
+                        <?php foreach ($deliveriesCashOnDelivery as $delivery) : ?>
+                        <li> <?php echo Formatter_Price::formatWithCurrency($delivery->price, $delivery->Auction->Currency->name) . ": " . $delivery->DeliveryType->name; ?> </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
             <div id="description">
                 <?=$this->auction->description?>
             </div>

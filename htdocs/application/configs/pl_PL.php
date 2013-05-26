@@ -112,6 +112,8 @@ return array(
     'label-created_at'                              =>  'Data stworzenia:',
     'label-updated_at'                              =>  'Data ostatniej modyfikacji:',
     'label-date'                                    =>  'Data:',
+    'label-delivery_options_cash_on_transaction'    =>  'Opcje dostawy z zapłatą podczas przelewu:',
+    'label-delivery_options_cash_on_delivery'       =>  'Opcje dostawy z zapłatą przy doręczeniu:',
     
     'transaction_type-BIDDING'                  =>  'Licytacja',
     'transaction_type-BUY_OUT'                  =>  'Zakup',
