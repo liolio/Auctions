@@ -1,0 +1,35 @@
+<div id="container">
+    <div id="content">
+        <?= View_Helper::getErrorMessage($this->message); ?>
+        <table class="auctionsTable">
+            <tr>
+                <th>
+                    <?=$this->translate('label-auction_title')?>
+                </th>
+                <th>
+                    <?=$this->translate('label-auction_start_time')?>
+                </th>
+                <th>
+                    <?=$this->translate('label-auction_end_time')?>
+                </th>
+            </tr>
+            <?php foreach ($this->list as $auction) : ?>
+
+            <tr>
+                <td>
+                    <a href="<?=$this->baseUrl('auction/show/' . $auction->id)?>"><?=$auction->title?></a>
+                </th>
+                <td>
+                    <?=$auction->start_time?>
+                </td>
+                <td>
+                    <?=$auction->{ParamIdEnum::AUCTION_END_TIME}?>
+                </td>
+            </tr>
+            <?php    endforeach; ?>
+        </table>
+        <br/>
+        <a class="addButton" href="<?=$this->baseUrl();?>/auction/add"></a><br/>
+    </div>
+</div>
+<?php echo $this->render('user/panel-sub-menu.phtml') ?>

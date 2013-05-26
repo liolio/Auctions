@@ -115,4 +115,27 @@ class AuctionTableTest extends TestCase_Database
         $this->assertEquals(1, $auctions->get(0)->id);
         $this->assertEquals(2, $auctions->get(1)->id);
     }
+    
+    /**
+     * @test
+     */
+    public function getAuctionsForUser()
+    {
+        $this->_loadFixtures(array(
+            'Category/1',
+            'Category/3_parent_1',
+            'Currency/1',
+            
+            'Auction/1_category_1_start_2012-05-02',
+            'Auction/2_category_3_start_2012-05-05',
+            'Auction/4_category_1_start_now-1', //not finished yet
+            'Auction/5_category_1_start_2012-05-02_finished', //already finished
+        ));
+        
+        $auctions = AuctionTable::getInstance()->getAuctionsForUser(UserTable::getInstance()->find(1), 3);
+        $this->assertEquals(3, count($auctions));
+        $this->assertEquals(1, $auctions->get(0)->id);
+        $this->assertEquals(2, $auctions->get(1)->id);
+        $this->assertEquals(4, $auctions->get(2)->id);
+    }
 }

@@ -32,6 +32,25 @@ class AuctionTable extends Doctrine_Table
     }
     
     /**
+     * Returns auctions informaction for specified user
+     * 
+     * @param User $user
+     * @param Integer $limit
+     * @return Doctrine_Collection
+     */
+    public function getAuctionsForUser(User $user, $limit)
+    {
+        return $this->createQuery()
+            ->addSelect('id')
+            ->addSelect('title')
+            ->addSelect('start_time')
+            ->addSelect('ADDDATE(start_time, duration) as ' . ParamIdEnum::AUCTION_END_TIME)
+            ->addWhere('user_id = ?', $user->id)
+            ->limit($limit)
+            ->execute();
+    }
+    
+    /**
      * Returns array in format:
      *  {auction_id} => array(
      *      auction_title,

@@ -234,6 +234,18 @@
         <reverse></reverse>
     </userDelete>
     
+    <userPanelMyAuctionsList>
+        <route>user/panel/my-auctions-list</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>auction</controller>
+            <action>my-auctions-list</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </userPanelMyAuctionsList>
+    
     <addressShowList>
         <route>address/show-list</route>
         <defaults>

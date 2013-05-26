@@ -3,6 +3,13 @@
     $menu = new Menu();
     $menu
         ->addElement(
+                'userPanelMyAuctionsList',
+                Menu_Element::create('user/panel/my-auctions-list', 'userPanelMyAuctionsList', 'submenu-user_my_auctions_list')
+                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+                    ->enableFor(Enum_Acl_Role::MODERATOR)
+                    ->enableFor(Enum_Acl_Role::USER)
+        )
+        ->addElement(
                 'changePassword',
                 Menu_Element::create('user/panel/change-password', 'userPanelChangePassword', 'submenu-user_change_password')
                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)

@@ -107,6 +107,12 @@ class Auctions_AuctionController extends Controller_Abstract
         $this->view->auctionsArray = AuctionTable::getInstance()->getAuctionsAllChildrenAuctions($category, Zend_Date::now());
     }
     
+    public function myAuctionsListAction()
+    {
+        //@TODO: 100 will removed after pagination
+        $this->view->list = AuctionTable::getInstance()->getAuctionsForUser(Auth_User::getInstance()->getUser(), 100);
+    }
+    
     private function _setCategoriesList(Category $category)
     {
         $activeCategories = $category->getCategoryAllParentIds();
