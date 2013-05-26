@@ -142,7 +142,8 @@ class Auctions_TransactionController extends Zend_Controller_Action
         }
         else 
         {
-            //buy out notification
+            $notificationSender->send($transaction, Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER);
+            $notificationSender->send($transaction, Enum_Db_Notification_Type::AUCTION_BUY_OUT_AUCTION_OWNER);
         }
         
         $this->_notifyOutbiddedUsers($biddingTransactionssBeforeTransaction, $notificationSender, $auction);

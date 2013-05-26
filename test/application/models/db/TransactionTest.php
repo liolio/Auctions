@@ -27,20 +27,20 @@ class TransactionTest extends TestCase_Controller
     {
         return array(
             array(
-                'Transaction/5_att_5_u_1',
-                5,
+                'Transaction/3_att_4_u_1',
+                3,
                 Enum_Db_Notification_Type::AUCTION_BID_BIDDER,
                 array(
                     FieldIdEnum::AUCTION_TITLE                  =>  'Auction 5',
                     ParamIdEnum::USER_FULLNAME                  =>  'Admin Adminowy',
                     ParamIdEnum::LINK                           =>  '/auction/show/5',
                     FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  '2',
-                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('122.12', 'PLN')
+                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('212.12', 'PLN')
                 )
             ),
             array(
-                'Transaction/5_att_5_u_1',
-                5,
+                'Transaction/3_att_4_u_1',
+                3,
                 Enum_Db_Notification_Type::AUCTION_BID_AUCTION_OWNER,
                 array(
                     FieldIdEnum::USER_LOGIN                     =>  'admin',
@@ -48,20 +48,45 @@ class TransactionTest extends TestCase_Controller
                     ParamIdEnum::USER_FULLNAME                  =>  'Admin Adminowy',
                     ParamIdEnum::LINK                           =>  '/auction/show/5',
                     FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  '2',
-                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('122.12', 'PLN')
+                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('212.12', 'PLN')
                 )
             ),
             array(
-                'Transaction/5_att_5_u_1',
-                5,
+                'Transaction/3_att_4_u_1',
+                3,
                 Enum_Db_Notification_Type::AUCTION_BID_OUTBIDDED,
                 array(
                     FieldIdEnum::AUCTION_TITLE                  =>  'Auction 5',
                     ParamIdEnum::USER_FULLNAME                  =>  'Admin Adminowy',
                     ParamIdEnum::LINK                           =>  '/auction/show/5',
                     FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  '2',
-                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('122.12', 'PLN'),
-                    ParamIdEnum::AUCTION_PRICE                  =>  Formatter_Price::formatWithCurrency('3210.12', 'PLN')
+                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('212.12', 'PLN'),
+                    ParamIdEnum::AUCTION_PRICE                  =>  Formatter_Price::formatWithCurrency('122.12', 'PLN')
+                )
+            ),
+            array(
+                'Transaction/5_att_5_u_1',
+                5,
+                Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER,
+                array(
+                    FieldIdEnum::AUCTION_TITLE                  =>  'Auction 5',
+                    ParamIdEnum::USER_FULLNAME                  =>  'Admin Adminowy',
+                    ParamIdEnum::LINK                           =>  '/auction/show/5',
+                    FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  '2',
+                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('122.12', 'PLN')
+                )
+            ),
+            array(
+                'Transaction/5_att_5_u_1',
+                5,
+                Enum_Db_Notification_Type::AUCTION_BUY_OUT_AUCTION_OWNER,
+                array(
+                    FieldIdEnum::USER_LOGIN                     =>  'admin',
+                    FieldIdEnum::AUCTION_TITLE                  =>  'Auction 5',
+                    ParamIdEnum::USER_FULLNAME                  =>  'Admin Adminowy',
+                    ParamIdEnum::LINK                           =>  '/auction/show/5',
+                    FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  '2',
+                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('122.12', 'PLN')
                 )
             ),
         );
@@ -90,7 +115,9 @@ class TransactionTest extends TestCase_Controller
     {
         return array(
             array(Enum_Db_Notification_Type::AUCTION_BID_AUCTION_OWNER, 'lio_lio@wp.pl'),
+            array(Enum_Db_Notification_Type::AUCTION_BUY_OUT_AUCTION_OWNER, 'lio_lio@wp.pl'),
             array(Enum_Db_Notification_Type::AUCTION_BID_BIDDER, 'user_inactive@email.com'),
+            array(Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER, 'user_inactive@email.com'),
             array(Enum_Db_Notification_Type::AUCTION_BID_OUTBIDDED, 'user_inactive@email.com')
         );
     }

@@ -54,6 +54,8 @@ return array(
     'message-delete_banking_information_confirmation'   =>  'Czy na pewno chcesz usunąć informację o tym koncie bankowym?',
     'message-user_password_reset_confirmation'          =>  'Czy na pewno chcesz zresetować hasło użytkownikowi?',
     'message-number_of_auctions_found'                  =>  'Znaleziono %%value%% aukcji',
+    'message-transaction_no_buy_outs'                   =>  'Brak transakcji typu "Kup"',
+    'message-transaction_no_biddings'                   =>  'Brak transakcji typu "Licytuj"',
     
     'submenu-categories_list'           =>  'Lista kategorii',
     'submenu-currencies_list'           =>  'Lista walut',
@@ -261,4 +263,24 @@ return array(
                                                         '<br/>' . 
                                                         'Twoja oferta została przebita. Cena minimalna za 1 przedmiot wynosi teraz %%' . ParamIdEnum::AUCTION_PRICE . '%%.',
     
+    'notification_subject-auction_buy_out_customer' =>  'Kupiłeś przedmiot %%' . FieldIdEnum::AUCTION_TITLE . '%%',
+    
+    'notification_message-auction_buy_out_customer' =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
+                                                        '<br/>'.
+                                                        'Kupiłeś przedmiot:<br/>' .
+                                                        '<br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Aukcja: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . FieldIdEnum::AUCTION_TITLE . '%%</a><br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Ilość przedmiotów: %%' . FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS . '%%<br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Cena: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%',
+    
+    'notification_subject-auction_buy_out_auction_owner'    =>  '%%' . FieldIdEnum::USER_LOGIN . '%% kupił przedmiot na aukcji %%' . FieldIdEnum::AUCTION_TITLE . '%%',
+    
+    'notification_message-auction_buy_out_auction_owner'    =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
+                                                            '<br/>'.
+                                                            'Użytkownik <strong>%%' . FieldIdEnum::USER_LOGIN . '%%</strong> kupił przedmiot:<br/>' .
+                                                            '<br/>' .
+                                                            '&nbsp;&nbsp;&nbsp;&nbsp;Aukcja: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . FieldIdEnum::AUCTION_TITLE . '%%</a><br/>' .
+                                                            '&nbsp;&nbsp;&nbsp;&nbsp;Ilość przedmiotów: %%' . FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS . '%%<br/>' .
+                                                            '&nbsp;&nbsp;&nbsp;&nbsp;Cena: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%',
+
 );

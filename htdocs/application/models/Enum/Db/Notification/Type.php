@@ -11,6 +11,10 @@ class Enum_Db_Notification_Type extends Enum_Abstract
     
     const AUCTION_BID_OUTBIDDED = 'auction_bid_outbidded';
     
+    const AUCTION_BUY_OUT_CUSTOMER = 'auction_buy_out_customer';
+    
+    const AUCTION_BUY_OUT_AUCTION_OWNER = 'auction_buy_out_auction_owner';
+    
     const USER_REGISTRATION = 'user_registration';
     
     const USER_PASSWORD_RESET = 'user_password_reset';

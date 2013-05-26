@@ -18,6 +18,7 @@ class Transaction extends BaseTransaction implements Notification_RelatedObject_
         switch ($notificationType)
         {
             case Enum_Db_Notification_Type::AUCTION_BID_BIDDER :
+            case Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER :
                 return array(
                     FieldIdEnum::AUCTION_TITLE                  =>  $this->AuctionTransactionType->Auction->title,
                     ParamIdEnum::USER_FULLNAME                  =>  $this->User->getFullName(),
@@ -26,6 +27,7 @@ class Transaction extends BaseTransaction implements Notification_RelatedObject_
                     FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency($this->price, $this->AuctionTransactionType->Auction->Currency->name)
                 );
             case Enum_Db_Notification_Type::AUCTION_BID_AUCTION_OWNER :
+            case Enum_Db_Notification_Type::AUCTION_BUY_OUT_AUCTION_OWNER :
                 return array(
                     FieldIdEnum::USER_LOGIN                     =>  $this->User->login,
                     FieldIdEnum::AUCTION_TITLE                  =>  $this->AuctionTransactionType->Auction->title,
@@ -54,8 +56,10 @@ class Transaction extends BaseTransaction implements Notification_RelatedObject_
         {
             case Enum_Db_Notification_Type::AUCTION_BID_BIDDER :
             case Enum_Db_Notification_Type::AUCTION_BID_OUTBIDDED :
+            case Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER :
                 return array($this->User->email);
             case Enum_Db_Notification_Type::AUCTION_BID_AUCTION_OWNER :
+            case Enum_Db_Notification_Type::AUCTION_BUY_OUT_AUCTION_OWNER :
                 return array($this->AuctionTransactionType->Auction->User->email);
             default :
                 throw new InvalidArgumentException('Notification type ' . $notificationType . ' is not supported.');
