@@ -29,6 +29,8 @@ class Controller_Front_UrlGenerator
             case Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER :
             case Enum_Db_Notification_Type::AUCTION_BUY_OUT_AUCTION_OWNER :
             case Enum_Db_Notification_Type::AUCTION_BID_OUTBIDDED :
+            case Enum_Db_Notification_Type::AUCTION_BID_WINNER :
+            case Enum_Db_Notification_Type::AUCTION_FINISHED_OWNER :
                 $actionName = 'auction/show';
                 break;
             default :

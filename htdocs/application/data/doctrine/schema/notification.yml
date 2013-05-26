@@ -10,7 +10,7 @@ Notification:
       notnull: true
     type:
       type: enum
-      values: ['user_registration', 'user_password_reset', 'user_new_password_set']
+      values: ['auction_bid_bidder', 'auction_bid_auction_owner', 'auction_bid_outbidded', 'auction_bid_winner', 'auction_buy_out_customer', 'auction_buy_out_auction_owner', 'user_registration', 'user_password_reset', 'user_new_password_set']
       notnull: true
   actAs:
     Timestampable:

@@ -69,13 +69,16 @@ class Auctions_TransactionController extends Zend_Controller_Action
             return $this->render('transaction');
         }
         
+        $auctionTransactionType = AuctionTransactionTypeTable::getInstance()->getAuctionTransactionType(
+            AuctionTable::getInstance()->find($form->getElement(FieldIdEnum::AUCTION_ID)->getValue()),
+            $form->getElement(FieldIdEnum::TRANSACTION_TYPE_NAME)->getValue()
+        );
+        
+        if ($auctionTransactionType->Auction->stage === Enum_Db_Auction_Stage::FINISHED)
+            return $this->_helper->redirector($form->getElement(FieldIdEnum::AUCTION_ID)->getValue(), 'show', 'auction');
+        
         try {
             Doctrine_Manager::connection()->beginTransaction();
-            
-            $auctionTransactionType = AuctionTransactionTypeTable::getInstance()->getAuctionTransactionType(
-                AuctionTable::getInstance()->find($form->getElement(FieldIdEnum::AUCTION_ID)->getValue()),
-                $form->getElement(FieldIdEnum::TRANSACTION_TYPE_NAME)->getValue()
-            );
             
             $biddingTransactionssBeforeTransaction = $this->_getBiddingsBeforeTransaction($auctionTransactionType->Auction);
             

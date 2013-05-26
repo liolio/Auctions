@@ -15,6 +15,7 @@
  * @property integer $category_id
  * @property integer $currency_id
  * @property integer $thumbnail_file_id
+ * @property enum $stage
  * @property User $User
  * @property Category $Category
  * @property Currency $Currency
@@ -96,6 +97,16 @@ abstract class BaseAuction extends Doctrine_Record
              'type' => 'integer',
              'unsigned' => true,
              'length' => '5',
+             ));
+        $this->hasColumn('stage', 'enum', null, array(
+             'type' => 'enum',
+             'values' => 
+             array(
+              0 => 'active',
+              1 => 'finished',
+             ),
+             'notnull' => true,
+             'default' => 'active',
              ));
     }
 

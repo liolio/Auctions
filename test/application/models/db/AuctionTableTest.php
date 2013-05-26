@@ -93,4 +93,26 @@ class AuctionTableTest extends TestCase_Database
             ),
         );
     }
+    
+    /**
+     * @test
+     */
+    public function getAuctionsToFinish()
+    {
+        $this->_loadFixtures(array(
+            'Category/1',
+            'Category/3_parent_1',
+            'Currency/1',
+            
+            'Auction/1_category_1_start_2012-05-02',
+            'Auction/2_category_3_start_2012-05-05',
+            'Auction/4_category_1_start_now-1', //not finished yet
+            'Auction/5_category_1_start_2012-05-02_finished', //already finished
+        ));
+        
+        $auctions = AuctionTable::getInstance()->getAuctionsToFinish(new Zend_Date("2013-05-02 22:22:22"));
+        $this->assertEquals(2, count($auctions));
+        $this->assertEquals(1, $auctions->get(0)->id);
+        $this->assertEquals(2, $auctions->get(1)->id);
+    }
 }

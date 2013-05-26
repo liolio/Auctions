@@ -1,2 +1,2 @@
 INSERT INTO auction (id, title, description, number_of_items, start_time, duration, user_id, category_id, currency_id, created_at, updated_at)
-VALUES ('1', 'Auction 1', 'Boring description of auction 1', 1, (SELECT ADDDATE(NOW(), -1)), 7, 1, 1, 1, '2012-05-01 11:11:11', '2012-05-01 11:11:11')
+VALUES (4, 'Auction 1', 'Boring description of auction 1', 1, (SELECT ADDDATE(NOW(), -1)), 7, 1, 1, 1, '2012-05-01 11:11:11', '2012-05-01 11:11:11')

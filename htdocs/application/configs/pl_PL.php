@@ -263,6 +263,16 @@ return array(
                                                         '<br/>' . 
                                                         'Twoja oferta została przebita. Cena minimalna za 1 przedmiot wynosi teraz %%' . ParamIdEnum::AUCTION_PRICE . '%%.',
     
+    'notification_subject-auction_bid_winner'       =>  'Twoja oferta na aukcji %%' . FieldIdEnum::AUCTION_TITLE . '%% wygrała',
+    
+    'notification_message-auction_bid_winner'       =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
+                                                        '<br/>'.
+                                                        'Wygrałeś licytację przedmiotu:<br/>' .
+                                                        '<br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Aukcja: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . FieldIdEnum::AUCTION_TITLE . '%%</a><br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Ilość przedmiotów: %%' . FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS . '%%<br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Twoja oferta: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%<br/>',
+    
     'notification_subject-auction_buy_out_customer' =>  'Kupiłeś przedmiot %%' . FieldIdEnum::AUCTION_TITLE . '%%',
     
     'notification_message-auction_buy_out_customer' =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
@@ -282,5 +292,13 @@ return array(
                                                             '&nbsp;&nbsp;&nbsp;&nbsp;Aukcja: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . FieldIdEnum::AUCTION_TITLE . '%%</a><br/>' .
                                                             '&nbsp;&nbsp;&nbsp;&nbsp;Ilość przedmiotów: %%' . FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS . '%%<br/>' .
                                                             '&nbsp;&nbsp;&nbsp;&nbsp;Cena: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%',
+    
+    'notification_subject-auction_finished_owner'   =>  'Aukcja %%' . FieldIdEnum::AUCTION_TITLE . '%% zakończyła się',
+    
+    'notification_message-auction_finished_owner'   =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
+                                                        '<br/>'.
+                                                        'Zakończyła się aukcja <a href="%%' . ParamIdEnum::LINK . '%%">%%' . FieldIdEnum::AUCTION_TITLE . '%%</a>.<br/>' .
+                                                        '<br/>' .
+                                                        'Zaczekaj na informacje od klientów w sprawie formy dostawy.',
 
 );

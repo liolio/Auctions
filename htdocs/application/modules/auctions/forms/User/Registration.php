@@ -43,7 +43,7 @@ class Auctions_Form_User_Registration extends Auctions_Form_Abstract
         $addressFormElements = new Form_Elements_Address();
         $this->addElements($addressFormElements->getElements());
         
-        if(self::$_enableReCaptcha)
+        if (self::$_enableReCaptcha)
         {
             $reCaptchaConfig = Zend_Controller_Front::getInstance()->getParam('reCaptcha');
 

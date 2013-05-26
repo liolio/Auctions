@@ -7,6 +7,9 @@ class TestCase_Migration_TableStructure_BankingInformation implements TestCase_M
     
     public static function getStructure($versionNumber)
     {
+        if ($versionNumber < 11)
+            throw new InvalidArgumentException($versionNumber . " not supported.");
+        
         switch ($versionNumber)
         {
             case 11 :
@@ -15,24 +18,8 @@ class TestCase_Migration_TableStructure_BankingInformation implements TestCase_M
                 return self::_getStructureFromVersion12();
             case 13 :
                 return self::_getStructureFromVersion13();
-            case 14 :
-            case 15 :
-            case 16 :
-            case 17 :
-            case 18 :
-            case 19 :
-            case 20 :
-            case 21 :
-            case 22 :
-            case 23 :
-            case 24 :
-            case 25 :
-            case 26 :
-            case 27 :
-            case 28 :
-                return self::_getStructureFromVersion14();
             default :
-                throw new InvalidArgumentException($versionNumber . " not supported.");
+                return self::_getStructureFromVersion14();
         }
     }
     

@@ -1,0 +1,2 @@
+INSERT INTO address (id, name, surname, street, postal_code, city, province, country, phone_number, user_id)
+VALUES ('4', 'u3', 'U3', 'Adminowa 2', '22-222', 'Miasto2', 'Prowincja2', 'Kraj2', '2222222', 3)

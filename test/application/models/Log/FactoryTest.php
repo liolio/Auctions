@@ -29,4 +29,18 @@ class Log_FactoryTest extends TestCase_Controller
         $this->assertEquals($exception->getTraceAsString(), $log->stack_trace);
         $this->assertEmpty($log->post);
     }
+    
+    /**
+     * @test
+     */
+    public function createInfo()
+    {
+        $message = 'Super info message';
+        
+        Log_Factory::createInfo($message);
+        
+        $logs = LogTable::getInstance()->findAll();
+        $this->assertEquals(1, count($logs));
+        $this->assertEquals($message, $logs->get(0)->message);
+    }
 }

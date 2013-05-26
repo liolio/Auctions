@@ -19,6 +19,7 @@ class Transaction extends BaseTransaction implements Notification_RelatedObject_
         {
             case Enum_Db_Notification_Type::AUCTION_BID_BIDDER :
             case Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER :
+            case Enum_Db_Notification_Type::AUCTION_BID_WINNER :
                 return array(
                     FieldIdEnum::AUCTION_TITLE                  =>  $this->AuctionTransactionType->Auction->title,
                     ParamIdEnum::USER_FULLNAME                  =>  $this->User->getFullName(),
@@ -57,6 +58,7 @@ class Transaction extends BaseTransaction implements Notification_RelatedObject_
             case Enum_Db_Notification_Type::AUCTION_BID_BIDDER :
             case Enum_Db_Notification_Type::AUCTION_BID_OUTBIDDED :
             case Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER :
+            case Enum_Db_Notification_Type::AUCTION_BID_WINNER :
                 return array($this->User->email);
             case Enum_Db_Notification_Type::AUCTION_BID_AUCTION_OWNER :
             case Enum_Db_Notification_Type::AUCTION_BUY_OUT_AUCTION_OWNER :

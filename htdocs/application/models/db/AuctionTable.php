@@ -18,6 +18,20 @@ class AuctionTable extends Doctrine_Table
     }
     
     /**
+     * Returns auctions which should be finished.
+     * 
+     * @param Zend_Date $now
+     * @return Doctrine_Collection
+     */
+    public function getAuctionsToFinish(Zend_Date $now)
+    {
+        return $this->createQuery()
+            ->addWhere('stage = ?', Enum_Db_Auction_Stage::ACTIVE)
+            ->addWhere('ADDDATE(start_time, duration) < ?', $now->toString(Time_Format::getFullDateTimeFormat()))
+            ->execute();
+    }
+    
+    /**
      * Returns array in format:
      *  {auction_id} => array(
      *      auction_title,

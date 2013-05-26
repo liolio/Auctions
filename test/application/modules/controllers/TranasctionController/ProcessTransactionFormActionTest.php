@@ -187,5 +187,35 @@ class Auctions_TranasctionController_ProcessTransactionFormActionTest extends Te
         
         $this->assertContains($this->_getTranslator()->translate("validation_message-transaction_price_lower_than_minimum_price"), $body);
         $this->assertContains($this->_getTranslator()->translate("validation_message-transaction_number_of_items_greater_than_items_left"), $body);
+        
+        $this->assertEquals(0, TransactionTable::getInstance()->count());
+    }
+    
+    /**
+     * @test
+     */
+    public function proccessFinished()
+    {
+        $this->_loadFixtures(array(
+            'Category/1',
+            'Currency/1',
+            'Auction/5_category_1_start_2012-05-02_finished',
+            'AuctionTransactionType/4_auction_5_tt_1',
+            'AuctionTransactionType/5_auction_5_tt_2'
+        ));
+        
+        $request = array(
+            FieldIdEnum::AUCTION_ID                     =>  '5',
+            FieldIdEnum::TRANSACTION_TYPE_NAME          =>  Enum_Db_TransactionType_Type::BUY_OUT,
+            FieldIdEnum::TRANSACTION_PRICE              =>  '10000',
+            FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  '1',
+        );
+        
+        $this->_setRequest($request);
+        $this->dispatch("transaction/process-transaction-form");
+        $this->_assertDispatch('transaction', 'process-transaction-form');
+        $this->_assertRedirection('auction/show/5');
+        
+        $this->assertEquals(0, TransactionTable::getInstance()->count());
     }
 }

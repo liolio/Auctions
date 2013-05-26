@@ -10,7 +10,7 @@
  * @author     ##NAME## <##EMAIL##>
  * @version    SVN: $Id: Builder.php 7691 2011-02-04 15:43:29Z jwage $
  */
-class Auction extends BaseAuction
+class Auction extends BaseAuction implements Notification_RelatedObject_Interface
 {
 
     /**
@@ -66,6 +66,31 @@ class Auction extends BaseAuction
         $beforeEnd = $now->compare($date) === -1;
         
         return $afterStart && $beforeEnd;
+    }
+
+    public function getNotificationData($notificationType)
+    {
+        switch ($notificationType)
+        {
+            case Enum_Db_Notification_Type::AUCTION_FINISHED_OWNER :
+                return array(
+                    FieldIdEnum::AUCTION_TITLE                  =>  $this->title,
+                    ParamIdEnum::USER_FULLNAME                  =>  $this->User->getFullName(),
+                    ParamIdEnum::LINK                           =>  Controller_Front_UrlGenerator::generate($notificationType, $this->id),
+                );
+            default :
+                throw new InvalidArgumentException('Notification type ' . $notificationType . ' is not supported.');
+        }
+    }
+
+    public function getRecipients($notificationType)
+    {
+        return array($this->User->email);
+    }
+
+    public function getRelatedObjectId()
+    {
+        return $this->id;
     }
     
 }

@@ -15,7 +15,7 @@ class Session_LastVisited
     public static function getLastVisited() {
         $nameSpace = new Zend_Session_Namespace(self::NAME_SPACE);
         
-        if(!empty($nameSpace->last)) {
+        if (!empty($nameSpace->last)) {
             $path = $nameSpace->last;
             $nameSpace->unsetAll();
         

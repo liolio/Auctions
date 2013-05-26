@@ -3,7 +3,7 @@
 /**
  * @class AuctionTest
  */
-class AuctionTest extends TestCase_Database
+class AuctionTest extends TestCase_Controller
 {
  
     /**
@@ -66,6 +66,63 @@ class AuctionTest extends TestCase_Database
         
         $buyOut = $auctionTransactionTypes->get(1);
         $this->assertEquals(Enum_Db_TransactionType_Type::BUY_OUT, $buyOut->TransactionType->name);
+    }
+    
+    /**
+     * @test
+     * @dataProvider getNotificationDataDataProvider
+     */
+    public function getNotificationData($notificationType, array $expectedData)
+    {
+        $this->_loadFixtures(array(
+            "Category/1",
+            "Currency/1",
+            "Auction/1_category_1_start_2012-05-02",
+        ));
+        
+        $this->assertEquals($expectedData,AuctionTable::getInstance()->find(1)->getNotificationData($notificationType));
+    }
+    
+    public function getNotificationDataDataProvider()
+    {
+        return array(
+            array(
+                Enum_Db_Notification_Type::AUCTION_FINISHED_OWNER,
+                array(
+                    FieldIdEnum::AUCTION_TITLE                  =>  'Auction 1',
+                    ParamIdEnum::USER_FULLNAME                  =>  'Admin Adminowy',
+                    ParamIdEnum::LINK                           =>  '/auction/show/1'
+                )
+            ),
+        );
+    }
+    
+    /**
+     * @test
+     */
+    public function getRecipients()
+    {
+        $this->_loadFixtures(array(
+            "Category/1",
+            "Currency/1",
+            "Auction/1_category_1_start_2012-05-02",
+        ));
+        
+        $this->assertEquals(array('lio_lio@wp.pl'), AuctionTable::getInstance()->find(1)->getRecipients('not_important'));
+    }
+    
+    /**
+     * @test
+     */
+    public function getRelatedObjectId()
+    {
+        $this->_loadFixtures(array(
+            "Category/1",
+            "Currency/1",
+            "Auction/1_category_1_start_2012-05-02",
+        ));
+        
+        $this->assertEquals(1, AuctionTable::getInstance()->find(1)->getRelatedObjectId());
     }
     
 }

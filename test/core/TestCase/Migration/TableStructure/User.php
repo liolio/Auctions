@@ -7,6 +7,9 @@ class TestCase_Migration_TableStructure_User implements TestCase_Migration_Table
     
     public static function getStructure($versionNumber)
     {
+        if ($versionNumber < 2)
+            throw new InvalidArgumentException($versionNumber . " not supported.");
+        
         switch ($versionNumber)
         {
             case 2 :
@@ -15,32 +18,8 @@ class TestCase_Migration_TableStructure_User implements TestCase_Migration_Table
             case 4 :
             case 5 :
                 return self::_getStructureFromVersion4();
-            case 6 :
-            case 7 :
-            case 8 :
-            case 9 :
-            case 10 :
-            case 11 :
-            case 12 :
-            case 13 :
-            case 14 :
-            case 15 :
-            case 16 :
-            case 17 :
-            case 18 :
-            case 19 :
-            case 20 :
-            case 21 :
-            case 22 :
-            case 23 :
-            case 24 :
-            case 25 :
-            case 26 :
-            case 27 :
-            case 28 :
-                return self::_getStructureFromVersion6();
             default :
-                throw new InvalidArgumentException($versionNumber . " not supported.");
+                return self::_getStructureFromVersion6();
         }
     }
     

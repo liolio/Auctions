@@ -41,6 +41,18 @@ class TransactionTest extends TestCase_Controller
             array(
                 'Transaction/3_att_4_u_1',
                 3,
+                Enum_Db_Notification_Type::AUCTION_BID_WINNER,
+                array(
+                    FieldIdEnum::AUCTION_TITLE                  =>  'Auction 5',
+                    ParamIdEnum::USER_FULLNAME                  =>  'Admin Adminowy',
+                    ParamIdEnum::LINK                           =>  '/auction/show/5',
+                    FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  '2',
+                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('212.12', 'PLN')
+                )
+            ),
+            array(
+                'Transaction/3_att_4_u_1',
+                3,
                 Enum_Db_Notification_Type::AUCTION_BID_AUCTION_OWNER,
                 array(
                     FieldIdEnum::USER_LOGIN                     =>  'admin',
@@ -118,7 +130,8 @@ class TransactionTest extends TestCase_Controller
             array(Enum_Db_Notification_Type::AUCTION_BUY_OUT_AUCTION_OWNER, 'lio_lio@wp.pl'),
             array(Enum_Db_Notification_Type::AUCTION_BID_BIDDER, 'user_inactive@email.com'),
             array(Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER, 'user_inactive@email.com'),
-            array(Enum_Db_Notification_Type::AUCTION_BID_OUTBIDDED, 'user_inactive@email.com')
+            array(Enum_Db_Notification_Type::AUCTION_BID_OUTBIDDED, 'user_inactive@email.com'),
+            array(Enum_Db_Notification_Type::AUCTION_BID_WINNER, 'user_inactive@email.com')
         );
     }
     

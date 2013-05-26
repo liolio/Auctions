@@ -35,9 +35,15 @@ abstract class BaseNotification extends Doctrine_Record
              'type' => 'enum',
              'values' => 
              array(
-              0 => 'user_registration',
-              1 => 'user_password_reset',
-              2 => 'user_new_password_set',
+              0 => 'auction_bid_bidder',
+              1 => 'auction_bid_auction_owner',
+              2 => 'auction_bid_outbidded',
+              3 => 'auction_bid_winner',
+              4 => 'auction_buy_out_customer',
+              5 => 'auction_buy_out_auction_owner',
+              6 => 'user_registration',
+              7 => 'user_password_reset',
+              8 => 'user_new_password_set',
              ),
              'notnull' => true,
              ));

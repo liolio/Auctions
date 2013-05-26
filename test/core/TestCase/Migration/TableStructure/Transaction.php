@@ -7,14 +7,15 @@ class TestCase_Migration_TableStructure_Transaction implements TestCase_Migratio
     
     public static function getStructure($versionNumber)
     {
+        if ($versionNumber < 27)
+            throw new InvalidArgumentException($versionNumber . " not supported.");
+        
         switch ($versionNumber)
         {
             case 27 :
                 return self::_getStructureFromVersion27();
-            case 28 :
-                return self::_getStructureFromVersion28();
             default :
-                throw new InvalidArgumentException($versionNumber . " not supported.");
+                return self::_getStructureFromVersion28();
         }
     }
     

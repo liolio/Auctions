@@ -7,20 +7,15 @@ class TestCase_Migration_TableStructure_File implements TestCase_Migration_Table
     
     public static function getStructure($versionNumber)
     {
+        if ($versionNumber < 21)
+            throw new InvalidArgumentException($versionNumber . " not supported.");
+        
         switch ($versionNumber)
         {
             case 21 :
                 return self::_getStructureFromVersion21();
-            case 22 :
-            case 23 :
-            case 24 :
-            case 25 :
-            case 26 :
-            case 27 :
-            case 28 :
-                return self::_getStructureFromVersion22();
             default :
-                throw new InvalidArgumentException($versionNumber . " not supported.");
+                return self::_getStructureFromVersion22();
         }
     }
     

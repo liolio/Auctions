@@ -38,6 +38,11 @@ Auction:
     thumbnail_file_id:
       type: integer(5)
       unsigned: true
+    stage:
+      type: enum
+      values: [active, finished]
+      notnull: true
+      default: active
   relations:
     User:
       foreignAlias: Auctions

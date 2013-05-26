@@ -20,6 +20,16 @@ class Log_Factory
         );
     }
     
+    /**
+     * Creates new Log with priority set to info
+     * 
+     * @param String $message
+     */
+    public static function createInfo($message)
+    {
+        self::_create($message, Zend_Log::INFO, array());
+    }
+    
     private static function _create($message, $priority, array $extras)
     {
         Zend_Registry::get('logFactory')->log($message, $priority, $extras);

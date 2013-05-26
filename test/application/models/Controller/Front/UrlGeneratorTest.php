@@ -38,6 +38,8 @@ class Controller_Front_UrlGeneratorTest extends TestCase_NoDatabase
             array(Enum_Db_Notification_Type::AUCTION_BID_BIDDER, 'auction/show'),
             array(Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER, 'auction/show'),
             array(Enum_Db_Notification_Type::AUCTION_BID_OUTBIDDED, 'auction/show'),
+            array(Enum_Db_Notification_Type::AUCTION_BID_WINNER, 'auction/show'),
+            array(Enum_Db_Notification_Type::AUCTION_FINISHED_OWNER, 'auction/show'),
         );
     }
     
