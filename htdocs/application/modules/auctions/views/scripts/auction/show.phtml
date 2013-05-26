@@ -43,7 +43,7 @@
                     ?>
                 </div>
             <?php endif;?>
-            <?php if ($this->numberOfItemsLeft > 0 && $this->auction->stage !== Enum_Db_Auction_Stage::FINISHED) : ?>
+            <?php if ($this->numberOfItemsLeft > 0 && $this->auction->stage !== Enum_Db_Auction_Stage::FINISHED && $this->auction->isStartedAndNotFinished()) : ?>
                 <div id="transaction">
                     <?php 
                         if ($this->isBiddingOnly ^ $this->isBuyOutOnly) : ?>
