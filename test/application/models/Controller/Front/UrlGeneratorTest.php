@@ -20,26 +20,20 @@ class Controller_Front_UrlGeneratorTest extends TestCase_NoDatabase
      * @test
      * @dataProvider notificationTypeProvider
      */
-    public function generateWithAdditionalValue($notificationType, $actionName)
+    public function generateWithAdditionalValue($type, $actionName)
     {
         $this->assertEquals(
             Zend_Controller_Front::getInstance()->getBaseUrl() . "/" . $actionName . "/additionalValue",
-            Controller_Front_UrlGenerator::generate($notificationType, "additionalValue")
+            Controller_Front_UrlGenerator::generate($type, "additionalValue")
         );
     }
     
     public static function notificationTypeProvider()
     {
         return array(
-            array(Enum_Db_Notification_Type::USER_REGISTRATION, 'register'),
-            array(Enum_Db_Notification_Type::USER_PASSWORD_RESET, 'user/password-reset'),
-            array(Enum_Db_Notification_Type::AUCTION_BID_AUCTION_OWNER, 'auction/show'),
-            array(Enum_Db_Notification_Type::AUCTION_BUY_OUT_AUCTION_OWNER, 'auction/show'),
-            array(Enum_Db_Notification_Type::AUCTION_BID_BIDDER, 'auction/show'),
-            array(Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER, 'auction/show'),
-            array(Enum_Db_Notification_Type::AUCTION_BID_OUTBIDDED, 'auction/show'),
-            array(Enum_Db_Notification_Type::AUCTION_BID_WINNER, 'auction/show'),
-            array(Enum_Db_Notification_Type::AUCTION_FINISHED_OWNER, 'auction/show'),
+            array(Controller_Front_UrlGenerator::USER_REGISTRATION, 'register'),
+            array(Controller_Front_UrlGenerator::USER_PASSWORD_RESET, 'user/password-reset'),
+            array(Controller_Front_UrlGenerator::AUCTION_SHOW, 'auction/show'),
         );
     }
     
@@ -55,7 +49,7 @@ class Controller_Front_UrlGeneratorTest extends TestCase_NoDatabase
         }
         catch (InvalidArgumentException $ex)
         {
-            $this->assertEquals('Notification type must be one of supported Enum_Db_Notification_Type. invalid is invalid.', $ex->getMessage());
+            $this->assertEquals('Type must be one of supported consts. invalid is invalid.', $ex->getMessage());
         }
     }
 }

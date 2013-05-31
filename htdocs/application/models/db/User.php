@@ -30,11 +30,16 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
                 );
                 
             case Enum_Db_Notification_Type::USER_PASSWORD_RESET :
+                return array(
+                    FieldIdEnum::USER_LOGIN     =>  $this->login,
+                    ParamIdEnum::USER_FULLNAME  =>  $this->getFullName(),
+                    ParamIdEnum::LINK           =>  Controller_Front_UrlGenerator::generate(Controller_Front_UrlGenerator::USER_PASSWORD_RESET, $this->secret_code)
+                );
             case Enum_Db_Notification_Type::USER_REGISTRATION :
                 return array(
                     FieldIdEnum::USER_LOGIN     =>  $this->login,
                     ParamIdEnum::USER_FULLNAME  =>  $this->getFullName(),
-                    ParamIdEnum::LINK           =>  Controller_Front_UrlGenerator::generate($notificationType, $this->secret_code)
+                    ParamIdEnum::LINK           =>  Controller_Front_UrlGenerator::generate(Controller_Front_UrlGenerator::USER_REGISTRATION, $this->secret_code)
                 );
                 
             default :

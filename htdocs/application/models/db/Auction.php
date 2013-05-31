@@ -94,7 +94,7 @@ class Auction extends BaseAuction implements Notification_RelatedObject_Interfac
                 return array(
                     FieldIdEnum::AUCTION_TITLE                  =>  $this->title,
                     ParamIdEnum::USER_FULLNAME                  =>  $this->User->getFullName(),
-                    ParamIdEnum::LINK                           =>  Controller_Front_UrlGenerator::generate($notificationType, $this->id),
+                    ParamIdEnum::LINK                           =>  Controller_Front_UrlGenerator::generate(Controller_Front_UrlGenerator::AUCTION_SHOW, $this->id),
                 );
             default :
                 throw new InvalidArgumentException('Notification type ' . $notificationType . ' is not supported.');

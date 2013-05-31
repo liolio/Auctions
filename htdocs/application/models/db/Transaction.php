@@ -18,12 +18,20 @@ class Transaction extends BaseTransaction implements Notification_RelatedObject_
         switch ($notificationType)
         {
             case Enum_Db_Notification_Type::AUCTION_BID_BIDDER :
+                return array(
+                    FieldIdEnum::AUCTION_TITLE                  =>  $this->AuctionTransactionType->Auction->title,
+                    ParamIdEnum::USER_FULLNAME                  =>  $this->User->getFullName(),
+                    ParamIdEnum::LINK                           =>  Controller_Front_UrlGenerator::generate(Controller_Front_UrlGenerator::AUCTION_SHOW, $this->AuctionTransactionType->Auction->id),
+                    FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  $this->number_of_items,
+                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency($this->price, $this->AuctionTransactionType->Auction->Currency->name)
+                );
             case Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER :
             case Enum_Db_Notification_Type::AUCTION_BID_WINNER :
                 return array(
                     FieldIdEnum::AUCTION_TITLE                  =>  $this->AuctionTransactionType->Auction->title,
                     ParamIdEnum::USER_FULLNAME                  =>  $this->User->getFullName(),
-                    ParamIdEnum::LINK                           =>  Controller_Front_UrlGenerator::generate($notificationType, $this->AuctionTransactionType->Auction->id),
+                    ParamIdEnum::LINK                           =>  Controller_Front_UrlGenerator::generate(Controller_Front_UrlGenerator::AUCTION_SHOW, $this->AuctionTransactionType->Auction->id),
+                    ParamIdEnum::LINK2                          =>  Controller_Front_UrlGenerator::generate(Controller_Front_UrlGenerator::DELIVERY_FORM_FILL, $this->DeliveryForm->id),
                     FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  $this->number_of_items,
                     FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency($this->price, $this->AuctionTransactionType->Auction->Currency->name)
                 );
@@ -33,7 +41,7 @@ class Transaction extends BaseTransaction implements Notification_RelatedObject_
                     FieldIdEnum::USER_LOGIN                     =>  $this->User->login,
                     FieldIdEnum::AUCTION_TITLE                  =>  $this->AuctionTransactionType->Auction->title,
                     ParamIdEnum::USER_FULLNAME                  =>  $this->AuctionTransactionType->Auction->User->getFullName(),
-                    ParamIdEnum::LINK                           =>  Controller_Front_UrlGenerator::generate($notificationType, $this->AuctionTransactionType->Auction->id),
+                    ParamIdEnum::LINK                           =>  Controller_Front_UrlGenerator::generate(Controller_Front_UrlGenerator::AUCTION_SHOW, $this->AuctionTransactionType->Auction->id),
                     FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  $this->number_of_items,
                     FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency($this->price, $this->AuctionTransactionType->Auction->Currency->name)
                 );
@@ -41,7 +49,7 @@ class Transaction extends BaseTransaction implements Notification_RelatedObject_
                 return array(
                     FieldIdEnum::AUCTION_TITLE                  =>  $this->AuctionTransactionType->Auction->title,
                     ParamIdEnum::USER_FULLNAME                  =>  $this->AuctionTransactionType->Auction->User->getFullName(),
-                    ParamIdEnum::LINK                           =>  Controller_Front_UrlGenerator::generate($notificationType, $this->AuctionTransactionType->Auction->id),
+                    ParamIdEnum::LINK                           =>  Controller_Front_UrlGenerator::generate(Controller_Front_UrlGenerator::AUCTION_SHOW, $this->AuctionTransactionType->Auction->id),
                     FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  $this->number_of_items,
                     FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency($this->price, $this->AuctionTransactionType->Auction->Currency->name),
                     ParamIdEnum::AUCTION_PRICE                  =>  Formatter_Price::formatWithCurrency($this->AuctionTransactionType->countPrice(), $this->AuctionTransactionType->Auction->Currency->name)

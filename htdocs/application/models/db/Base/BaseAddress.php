@@ -16,6 +16,7 @@
  * @property string $phone_number
  * @property integer $user_id
  * @property User $User
+ * @property Doctrine_Collection $DeliveryForms
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -89,5 +90,9 @@ abstract class BaseAddress extends Doctrine_Record
              'local' => 'user_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasMany('DeliveryForm as DeliveryForms', array(
+             'local' => 'id',
+             'foreign' => 'address_id'));
     }
 }

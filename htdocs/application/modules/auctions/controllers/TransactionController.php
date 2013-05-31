@@ -52,14 +52,15 @@ class Auctions_TransactionController extends Zend_Controller_Action
     public function processTransactionFormAction()
     {
         $request = $this->getRequest();
-
+        $isBuyOut = $request->getParam(FieldIdEnum::TRANSACTION_TYPE_NAME) === Enum_Db_TransactionType_Type::BUY_OUT;
+        
         if (!$request->isPost())
             return $this->_helper->redirector('index', 'index');
         
         $form = new Auctions_Form_Transaction_Add();
         if (!$form->isValid($request->getPost()))
         {
-            if ($form->getElement(FieldIdEnum::TRANSACTION_TYPE_NAME)->getValue() === Enum_Db_TransactionType_Type::BUY_OUT)
+            if ($isBuyOut)
                 $this->buyOutAction();
             else
                 $this->bidAction();
@@ -94,6 +95,9 @@ class Auctions_TransactionController extends Zend_Controller_Action
                 )
             );
             $transaction->save();
+            
+            if ($isBuyOut)
+                DeliveryForm_Factory::create($transaction)->save();
             
             $this->_sendNotifications($biddingTransactionssBeforeTransaction, $auctionTransactionType->Auction, $form, $transaction);
             

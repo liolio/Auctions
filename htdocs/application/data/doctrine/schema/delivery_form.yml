@@ -1,0 +1,35 @@
+DeliveryForm:
+  columns:
+    id:
+      type: integer(5)
+      primary: true
+      autoincrement: true
+      unsigned: true
+    comment:
+      type: string(1000)
+    stage:
+      type: enum
+      values: [to_fill, to_process, processed]
+      notnull: true
+      default: to_fill
+    transaction_id:
+      type: integer(5)
+      unsigned: true
+      notnull: true
+    address_id:
+      type: integer(5)
+      unsigned: true
+    delivery_id:
+      type: integer(5)
+      unsigned: true
+  relations:
+    Transaction:
+      foreignType: one
+      foreignAlias: DeliveryForm
+      onDelete: RESTRICT
+    Address:
+      foreignAlias: DeliveryForms
+      onDelete: SET NULL
+    Delivery:
+      foreignAlias: DeliveryForms
+      onDelete: RESTRICT

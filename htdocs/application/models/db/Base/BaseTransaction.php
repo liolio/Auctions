@@ -12,6 +12,7 @@
  * @property integer $number_of_items
  * @property User $User
  * @property AuctionTransactionType $AuctionTransactionType
+ * @property DeliveryForm $DeliveryForm
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -68,6 +69,10 @@ abstract class BaseTransaction extends Doctrine_Record
              'local' => 'auction_transaction_type_id',
              'foreign' => 'id',
              'onDelete' => 'CASCADE'));
+
+        $this->hasOne('DeliveryForm', array(
+             'local' => 'id',
+             'foreign' => 'transaction_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

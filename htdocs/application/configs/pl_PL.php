@@ -274,7 +274,9 @@ return array(
                                                         '<br/>' .
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Aukcja: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . FieldIdEnum::AUCTION_TITLE . '%%</a><br/>' .
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Ilość przedmiotów: %%' . FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS . '%%<br/>' .
-                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Twoja oferta: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%<br/>',
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Twoja oferta: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%<br/>' .
+                                                        '<br/>' .
+                                                        'Nie zapomnij wypełnić <a href="%%' . ParamIdEnum::LINK2 . '%%">formularza dostwy</a>.',
     
     'notification_subject-auction_buy_out_customer' =>  'Kupiłeś przedmiot %%' . FieldIdEnum::AUCTION_TITLE . '%%',
     
@@ -284,7 +286,9 @@ return array(
                                                         '<br/>' .
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Aukcja: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . FieldIdEnum::AUCTION_TITLE . '%%</a><br/>' .
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Ilość przedmiotów: %%' . FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS . '%%<br/>' .
-                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Cena: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%',
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Cena: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%<br/>' .
+                                                        '<br/>' .
+                                                        'Nie zapomnij wypełnić <a href="%%' . ParamIdEnum::LINK2 . '%%">formularza dostwy</a>.',
     
     'notification_subject-auction_buy_out_auction_owner'    =>  '%%' . FieldIdEnum::USER_LOGIN . '%% kupił przedmiot na aukcji %%' . FieldIdEnum::AUCTION_TITLE . '%%',
     

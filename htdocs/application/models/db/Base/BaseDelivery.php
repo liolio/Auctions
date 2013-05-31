@@ -11,6 +11,7 @@
  * @property decimal $price
  * @property Auction $Auction
  * @property DeliveryType $DeliveryType
+ * @property Doctrine_Collection $DeliveryForms
  * 
  * @package    ##PACKAGE##
  * @subpackage ##SUBPACKAGE##
@@ -61,5 +62,9 @@ abstract class BaseDelivery extends Doctrine_Record
              'local' => 'delivery_type_id',
              'foreign' => 'id',
              'onDelete' => 'RESTRICT'));
+
+        $this->hasMany('DeliveryForm as DeliveryForms', array(
+             'local' => 'id',
+             'foreign' => 'delivery_id'));
     }
 }

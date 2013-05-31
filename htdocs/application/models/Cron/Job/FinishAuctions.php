@@ -21,7 +21,10 @@ class Cron_Job_FinishAuctions extends Cron_Job
             {
                 $transactions = $bidding->getItemsToShow();
                 foreach($transactions[ParamIdEnum::TRANSACTION_VALID] as $transaction)
+                {
+                    DeliveryForm_Factory::create($transaction);
                     $this->_getSender()->send($transaction, Enum_Db_Notification_Type::AUCTION_BID_WINNER);
+                }
             }
             
             $this->_getSender()->send($auction, Enum_Db_Notification_Type::AUCTION_FINISHED_OWNER);
