@@ -109,8 +109,7 @@ class Auctions_AuctionController extends Controller_Abstract
     
     public function myAuctionsListAction()
     {
-        //@TODO: 100 will removed after pagination
-        $this->view->list = AuctionTable::getInstance()->getAuctionsForUser(Auth_User::getInstance()->getUser(), 100);
+        $this->view->list = AuctionTable::getInstance()->getAuctionsForUser(Auth_User::getInstance()->getUser(), 0);
     }
     
     private function _setCategoriesList(Category $category)

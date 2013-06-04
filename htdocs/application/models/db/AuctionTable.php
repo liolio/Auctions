@@ -51,6 +51,28 @@ class AuctionTable extends Doctrine_Table
     }
     
     /**
+     * Returns active auctions informations for specified user
+     * 
+     * @param User $user
+     * @param Integer $limit
+     * @param Zend_Date $now
+     * @return Doctrine_Collection
+     */
+    public function getActiveAuctionsForUser(User $user, $limit, Zend_Date $now) 
+    {
+        return $this->createQuery()
+            ->addSelect('id')
+            ->addSelect('title')
+            ->addSelect('start_time')
+            ->addSelect('ADDDATE(start_time, duration) as ' . ParamIdEnum::AUCTION_END_TIME)
+            ->addWhere('user_id = ?', $user->id)
+            ->addWhere('start_time <= ?', $now->toString(Time_Format::getFullDateTimeFormat()))
+            ->addWhere('ADDDATE(start_time, duration) >= ?', $now->toString(Time_Format::getFullDateTimeFormat()))
+            ->limit($limit)
+            ->execute();
+    }
+    
+    /**
      * Returns array in format:
      *  {auction_id} => array(
      *      auction_title,

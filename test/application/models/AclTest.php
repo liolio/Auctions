@@ -86,6 +86,7 @@ class AclTest extends TestCase_Controller
             array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::USER, 'process-registration-form'),
             array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::USER, 'password-reset-request'),
             array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::USER, 'process-password-reset-form'),
+            array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::USER, 'show', array(FieldIdEnum::USER_ID => '1')),
             array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::USER, 'process-set-password-and-activate-account-form', array(FieldIdEnum::USER_LOGIN => 'admin')),
             array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::USER, 'set-password-and-register-account', array(FieldIdEnum::USER_SECRET_CODE => '123qwe')),
             array($this->_roles[Enum_Acl_Role::GUEST], Enum_Acl_Resource::AUCTION, 'show-list-for-category'),

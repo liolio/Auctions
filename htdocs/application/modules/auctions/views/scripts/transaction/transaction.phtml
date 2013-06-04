@@ -28,7 +28,7 @@
                 <div id="timeAndUserInformation">
                     <?php echo $this->translate('label-auction_start_time') . " <strong>" . $this->auction->start_time . "</strong>"?><br/>
                     <?php echo $this->translate('label-auction_end_time') . " <strong>" . $this->auction->getEndTime() . "</strong>"?><br/>
-                    <?php echo $this->translate('label-auction_seller') . " <strong><a href='" . $this->baseUrl('user/' . $this->auction->User->id) . "'>" . $this->auction->User->login . "</a></strong>"?><br/>
+                    <?php echo $this->translate('label-auction_seller') . " <strong><a href='" . $this->baseUrl('user/show/' . $this->auction->User->id) . "'>" . $this->auction->User->login . "</a></strong>"?><br/>
                     <?php echo $this->translate('label-auction_number_of_items') . " <strong>" . $this->numberOfItemsLeft . "</strong>/" . $this->auction->number_of_items ;?><br/>
                 </div>
             </div>

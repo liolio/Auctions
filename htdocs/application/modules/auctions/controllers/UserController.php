@@ -10,6 +10,12 @@ class Auctions_UserController extends Zend_Controller_Action
         Zend_Layout::startMvc();
     }
     
+    public function showAction()
+    {
+        $this->view->user = UserTable::getInstance()->find($this->getRequest()->getParam(FieldIdEnum::USER_ID));
+        $this->view->auctions = AuctionTable::getInstance()->getActiveAuctionsForUser($this->view->user, 0, Zend_Date::now());
+    }
+    
     public function registrationAction()
     {
         $this->view->registrationForm = new Auctions_Form_User_Registration();

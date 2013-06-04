@@ -28,7 +28,7 @@
                 <div id="timeAndUserInformation">
                     <?php echo $this->translate('label-auction_start_time') . " <strong>" . $this->auction->start_time . "</strong>"?><br/>
                     <?php echo $this->translate('label-auction_end_time') . " <strong>" . $this->auction->getEndTime() . "</strong>"?><br/>
-                    <?php echo $this->translate('label-auction_seller') . " <strong><a href='" . $this->baseUrl('user/' . $this->auction->User->id) . "'>" . $this->auction->User->login . "</a></strong>"?><br/>
+                    <?php echo $this->translate('label-auction_seller') . " <strong><a href='" . $this->baseUrl('user/show/' . $this->auction->User->id) . "'>" . $this->auction->User->login . "</a></strong>"?><br/>
                     <?php echo $this->translate('label-auction_number_of_items') . " <strong>" . $this->numberOfItemsLeft . "</strong>/" . $this->auction->number_of_items ;?><br/>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                             <?php foreach ($biddings[ParamIdEnum::TRANSACTION_VALID] as $validTransaction) : ?>
                                 <tr class="importantRow">
                                     <td>
-                                        <?php echo "<a href='" . $this->baseUrl('user/' . $validTransaction->User->id) . "'>" . $validTransaction->User->login . "</a>"; ?>
+                                        <?php echo "<a href='" . $this->baseUrl('user/show/' . $validTransaction->User->id) . "'>" . $validTransaction->User->login . "</a>"; ?>
                                     </td>
                                     <td>
                                         <?= $validTransaction->number_of_items ?>
@@ -124,7 +124,7 @@
                             <?php foreach ($biddings[ParamIdEnum::TRANSACTION_INVALID] as $validTransaction) : ?>
                                 <tr>
                                     <td>
-                                        <?php echo "<a href='" . $this->baseUrl('user/' . $validTransaction->User->id) . "'>" . $validTransaction->User->login . "</a>"; ?>
+                                        <?php echo "<a href='" . $this->baseUrl('user/show/' . $validTransaction->User->id) . "'>" . $validTransaction->User->login . "</a>"; ?>
                                     </td>
                                     <td>
                                         <?= $validTransaction->number_of_items ?>
@@ -164,7 +164,7 @@
                             <?php foreach ($buyOuts as $validTransaction) : ?>
                                 <tr class="importantRow">
                                     <td>
-                                        <?php echo "<a href='" . $this->baseUrl('user/' . $validTransaction->User->id) . "'>" . $validTransaction->User->login . "</a>"; ?>
+                                        <?php echo "<a href='" . $this->baseUrl('user/show/' . $validTransaction->User->id) . "'>" . $validTransaction->User->login . "</a>"; ?>
                                     </td>
                                     <td>
                                         <?= $validTransaction->number_of_items ?>

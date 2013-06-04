@@ -56,6 +56,7 @@ return array(
     'message-number_of_auctions_found'                  =>  'Znaleziono %%value%% aukcji',
     'message-transaction_no_buy_outs'                   =>  'Brak transakcji typu "Kup"',
     'message-transaction_no_biddings'                   =>  'Brak transakcji typu "Licytuj"',
+    'message-send_email_to_user'                        =>  'Wyślij email do użytkownika',
     
     'submenu-categories_list'           =>  'Lista kategorii',
     'submenu-currencies_list'           =>  'Lista walut',
@@ -115,6 +116,7 @@ return array(
     'label-date'                                    =>  'Data:',
     'label-delivery_options_cash_on_transaction'    =>  'Opcje dostawy z zapłatą podczas przelewu:',
     'label-delivery_options_cash_on_delivery'       =>  'Opcje dostawy z zapłatą przy doręczeniu:',
+    'label-auctions_list_of_user'                   =>  'Lista aukcji wystawionych przez użytkownika:',
     
     'transaction_type-BIDDING'                  =>  'Licytacja',
     'transaction_type-BUY_OUT'                  =>  'Zakup',

@@ -1,0 +1,45 @@
+<div id="container">
+    <div id="contentWithoutSubMenu">
+        <div id="user">
+            <div id="header">
+                <div id="title">
+                    <?php echo $this->user->login; ?>
+                </div>
+                <a href="mailto:<?php echo $this->user->email; ?>"><?php echo $this->translate('message-send_email_to_user'); ?></a><br/>
+                <?php echo $this->translate('label-user_last_login') . " " . $this->user->last_login; ?>
+            </div>
+            <?php if (count($this->auctions) > 0) : ?>
+                <div id="auctionsList">
+                    <?php echo $this->translate('label-auctions_list_of_user'); ?><br/><br/>
+                    <table class="auctionsTable">
+                        <tr>
+                            <th>
+                                <?=$this->translate('label-auction_title')?>
+                            </th>
+                            <th>
+                                <?=$this->translate('label-auction_start_time')?>
+                            </th>
+                            <th>
+                                <?=$this->translate('label-auction_end_time')?>
+                            </th>
+                        </tr>
+                        <?php foreach ($this->auctions as $auction) : ?>
+
+                        <tr>
+                            <td>
+                                <a href="<?=$this->baseUrl('auction/show/' . $auction->id)?>"><?=$auction->title?></a>
+                            </th>
+                            <td>
+                                <?=$auction->start_time?>
+                            </td>
+                            <td>
+                                <?=$auction->{ParamIdEnum::AUCTION_END_TIME}?>
+                            </td>
+                        </tr>
+                        <?php    endforeach; ?>
+                    </table>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

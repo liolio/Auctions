@@ -147,6 +147,19 @@
         <reverse></reverse>
     </processPassworResetForm>
     
+    <showUser>
+        <route>user/show/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>user</controller>
+            <action>show</action>
+        </defaults>
+        <map>
+            <user_id>1</user_id>
+        </map>
+        <reverse></reverse>
+    </showUser>
+    
     <userPanel>
         <route>user/panel</route>
         <defaults>
