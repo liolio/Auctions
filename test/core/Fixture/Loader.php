@@ -8,7 +8,7 @@ class Fixture_Loader
     public static function create($path)
     {
         if (!is_string($path))
-            throw new InvalidArgumentException('Fixture path name must be a string');
+            throw new InvalidArgumentException('Fixture path name must be a string, ' . gettype($path) . ' given');
         
         $path = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, $path);
         

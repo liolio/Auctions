@@ -740,4 +740,28 @@
         <reverse></reverse>
     </transactionProcessTransactionForm>
     
+    <deliveryFormFill>
+        <route>delivery-form/fill/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>delivery-form</controller>
+            <action>fill</action>
+        </defaults>
+        <map>
+            <delivery_form_id>1</delivery_form_id>
+        </map>
+        <reverse></reverse>
+    </deliveryFormFill>
+    
+    <deliveryFormProcessAddForm>
+        <route>delivery-form/process-add-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>delivery-form</controller>
+            <action>process-add-form</action>
+        </defaults>
+        <map></map>
+        <reverse></reverse>
+    </deliveryFormProcessAddForm>
+    
 </routes>

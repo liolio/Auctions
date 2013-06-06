@@ -42,6 +42,10 @@ class Cron_Job_FinishAuctionsTest extends TestCase_Mail
         $this->assertEquals(5, $notification2->related_object_id);
         $this->assertEquals(Enum_Db_Notification_Type::AUCTION_FINISHED_OWNER, $notification2->type);
         
+        $deliveryForms = DeliveryFormTable::getInstance()->findAll();
+        $this->assertEquals(1, count($deliveryForms));
+        $this->assertEquals(7, $deliveryForms->get(0)->transaction_id);
+        
         $logs = LogTable::getInstance()->findAll();
         $this->assertEquals(1, count($logs));
         $this->assertEquals('Finished 1 auctions.', $logs->get(0)->message);

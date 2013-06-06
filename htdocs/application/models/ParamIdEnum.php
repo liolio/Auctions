@@ -21,6 +21,8 @@ class ParamIdEnum extends Enum_Abstract
     
     const LINK = 'link';
     
+    const LINK2 = 'link2';
+    
     const OLD_PASSWORD = 'old_password';
     
     const PASSWORD_REPEAT = 'password_repeat';

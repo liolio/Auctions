@@ -46,6 +46,11 @@ class FieldIdEnum extends Enum_Abstract
     
     const AUCTION_TRANSACTION_TYPE_PRICE = 'auction_transaction_type_price';
     
+    const DELIVERY_FORM_ID = 'delivery_form_id';
+    const DELIVERY_FORM_ADDRESS_ID = 'delivery_form_address_id';
+    const DELIVERY_FORM_DELIVERY_ID = 'delivery_form_delivery_id';
+    const DELIVERY_FORM_COMMENT = 'delivery_form_comment';
+    
     const TRANSACTION_TYPE_NAME = 'transaction_type_name';
     
     const TRANSACTION_NUMBER_OF_ITEMS = 'transaction_number_of_items';

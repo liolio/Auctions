@@ -19,6 +19,8 @@ class Enum_Db_Notification_Type extends Enum_Abstract
     
     const AUCTION_FINISHED_OWNER = 'auction_finished_owner';
     
+    const DELIVERY_FROM_FILLED_AUCTION_OWNER = 'delivery_form_filled_auction_owner';
+    
     const USER_REGISTRATION = 'user_registration';
     
     const USER_PASSWORD_RESET = 'user_password_reset';

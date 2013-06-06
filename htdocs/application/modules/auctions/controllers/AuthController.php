@@ -12,8 +12,12 @@ class Auctions_AuthController extends Controller_Abstract
 
     public function indexAction()
     {
+        $lastVisited = Session_LastVisited::getLastVisited();
+        
         if (array_key_exists("HTTP_REFERER", $_SERVER))
             Session_LastVisited::save($_SERVER["HTTP_REFERER"]);
+        elseif ($lastVisited != '')
+            Session_LastVisited::save($lastVisited);
         
         $this->view->form = new Auctions_Form_LogIn();
     }

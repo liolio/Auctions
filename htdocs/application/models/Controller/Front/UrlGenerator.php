@@ -4,37 +4,47 @@
  */
 class Controller_Front_UrlGenerator
 {
+
+    const USER_REGISTRATION = 'user_registration';
+    
+    const USER_PASSWORD_RESET = 'user_password_reset';
+    
+    const AUCTION_SHOW = 'auction_show';
+    
+    const DELIVERY_FORM_FILL = 'delivery_form_fill';
+    
+    const USER_PANEL_DELIVERIES = 'user_panel_deliveries';
     
     /**
      * 
-     * @param Enum_Db_Notification_Type $notificationType One of Enum_Db_Notification_Type
+     * @param String $type One of Controller_Front_UrlGenerator consts
      * @param string $additionalValue [optional] Default set to null
      * @return string
      * @throws InvalidArgumentException
      */
-    public static function generate($notificationType, $additionalValue = null)
+    public static function generate($type, $additionalValue = null)
     {
         $baseUrl = Zend_Controller_Front::getInstance()->getBaseUrl();
         
-        switch ($notificationType)
+        switch ($type)
         {
-            case Enum_Db_Notification_Type::USER_REGISTRATION :
+            case self::USER_REGISTRATION :
                 $actionName = 'register';
                 break;
-            case Enum_Db_Notification_Type::USER_PASSWORD_RESET :
+            case self::USER_PASSWORD_RESET :
                 $actionName = 'user/password-reset';
                 break;
-            case Enum_Db_Notification_Type::AUCTION_BID_BIDDER :
-            case Enum_Db_Notification_Type::AUCTION_BID_AUCTION_OWNER :
-            case Enum_Db_Notification_Type::AUCTION_BUY_OUT_CUSTOMER :
-            case Enum_Db_Notification_Type::AUCTION_BUY_OUT_AUCTION_OWNER :
-            case Enum_Db_Notification_Type::AUCTION_BID_OUTBIDDED :
-            case Enum_Db_Notification_Type::AUCTION_BID_WINNER :
-            case Enum_Db_Notification_Type::AUCTION_FINISHED_OWNER :
+            case self::AUCTION_SHOW :
                 $actionName = 'auction/show';
                 break;
+            case self::DELIVERY_FORM_FILL :
+                $actionName = 'delivery-form/fill';
+                break;
+            case self::USER_PANEL_DELIVERIES :
+                $actionName = 'user/panel/deliveries';
+                break;
             default :
-                throw new InvalidArgumentException('Notification type must be one of supported Enum_Db_Notification_Type. ' . $notificationType . ' is invalid.');
+                throw new InvalidArgumentException('Type must be one of supported consts. ' . $type . ' is invalid.');
         }
         
         $link = $baseUrl . '/' . $actionName;

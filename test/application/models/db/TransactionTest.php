@@ -46,6 +46,7 @@ class TransactionTest extends TestCase_Controller
                     FieldIdEnum::AUCTION_TITLE                  =>  'Auction 5',
                     ParamIdEnum::USER_FULLNAME                  =>  'Admin Adminowy',
                     ParamIdEnum::LINK                           =>  '/auction/show/5',
+                    ParamIdEnum::LINK2                          =>  '/delivery-form/fill',
                     FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  '2',
                     FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('212.12', 'PLN')
                 )
@@ -84,6 +85,7 @@ class TransactionTest extends TestCase_Controller
                     FieldIdEnum::AUCTION_TITLE                  =>  'Auction 5',
                     ParamIdEnum::USER_FULLNAME                  =>  'Admin Adminowy',
                     ParamIdEnum::LINK                           =>  '/auction/show/5',
+                    ParamIdEnum::LINK2                          =>  '/delivery-form/fill',
                     FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  '2',
                     FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('122.12', 'PLN')
                 )

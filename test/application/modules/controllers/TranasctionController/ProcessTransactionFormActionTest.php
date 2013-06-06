@@ -157,6 +157,10 @@ class Auctions_TranasctionController_ProcessTransactionFormActionTest extends Te
         $notification4 = $notifications->get(3);
         $this->assertEquals(4, $notification4->related_object_id);
         $this->assertEquals(Enum_Db_Notification_Type::AUCTION_BID_OUTBIDDED, $notification4->type);
+        
+        $deliveryForms = DeliveryFormTable::getInstance()->findAll();
+        $this->assertEquals(1, count($deliveryForms));
+        $this->assertEquals(8, $deliveryForms->get(0)->transaction_id);
     }
     
     /**

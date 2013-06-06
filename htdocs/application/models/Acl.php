@@ -41,6 +41,7 @@ class Acl extends Zend_Acl
         $this->addResource(Enum_Acl_Resource::BANKING_INFORMATION);
         $this->addResource(Enum_Acl_Resource::CATEGORY);
         $this->addResource(Enum_Acl_Resource::CURRENCY);
+        $this->addResource(Enum_Acl_Resource::DELIVERY_FORM);
         $this->addResource(Enum_Acl_Resource::DELIVERY_TYPE);
         $this->addResource(Enum_Acl_Resource::ERROR);
         $this->addResource(Enum_Acl_Resource::FILE);
@@ -61,6 +62,7 @@ class Acl extends Zend_Acl
         $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::USER, array('set-password-and-register-account'), Acl_Assertion_User_SecretCodeExists::getClassName());
         $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::AUCTION, array('show-list-for-category', 'show'));
         $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::TRANSACTION, array('bid', 'buy-out'));
+        $this->_allow(Enum_Acl_Role::GUEST, Enum_Acl_Resource::DELIVERY_FORM, array('fill'));
         
         //USER
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::AUTH, array('logout'));
@@ -72,6 +74,7 @@ class Acl extends Zend_Acl
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::BANKING_INFORMATION, array('delete', 'edit', 'process-edit-form'), Acl_Assertion_BankingInformation_BelongsToUser::getClassName());
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::AUCTION, array('add', 'process-add-form', 'my-auctions-list'));
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::TRANSACTION, array('process-transaction-form'));
+        $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::DELIVERY_FORM, array('process-add-form'), Acl_Assertion_DeliveryForm_TransactionOwner::getClassName());
         
         //ADMINISTRATOR
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::ADMINISTRATOR, array('index'));

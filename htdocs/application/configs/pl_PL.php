@@ -57,6 +57,8 @@ return array(
     'message-transaction_no_buy_outs'                   =>  'Brak transakcji typu "Kup"',
     'message-transaction_no_biddings'                   =>  'Brak transakcji typu "Licytuj"',
     'message-send_email_to_user'                        =>  'Wyślij email do użytkownika',
+    'message-delivery_options_cash_on_transaction'      =>  '(płatność z góry)',
+    'message-delivery_options_cash_on_delivery'         =>  '(płatność przy odbiorze)',
     
     'submenu-categories_list'           =>  'Lista kategorii',
     'submenu-currencies_list'           =>  'Lista walut',
@@ -108,6 +110,9 @@ return array(
     'label-auction_transaction_type_bidding_price'  =>  'Cena minimalna:',
     'label-auction_transaction_type_buy_out'        =>  'Zakup:',
     'label-auction_transaction_type_buy_out_price'  =>  'Cena:',
+    'label-delivery_form_address'                   =>  'Adres:',
+    'label-delivery_form_delivery'                  =>  'Sposób dostawy:',
+    'label-delivery_form_comment'                   =>  'Informacja dla sprzedającego:',
     'label-price'                                   =>  'Cena:',
     'label-photo'                                   =>  'Zdjęcie %%value%%:',
     'label-thumbnail'                               =>  'Miniaturka:',
@@ -167,7 +172,8 @@ return array(
     'validation_message-delivery_at_least_one_not_chosen'                       =>  "Nie zaznaczono żadnej opcji dostawy",
     'validation_message-auction_transaction_type_at_least_one_not_chosen'       =>  "Nie zaznaczono żadnej opcji transakcji",
     'validation_message-transaction_price_lower_than_minimum_price'             =>  "Podana cena jest niższa od ceny minimalnej",
-    'validation_message-transaction_number_of_items_greater_than_items_left'    =>  "Podana liczba przedmiotów jest zbyt dużaz",
+    'validation_message-transaction_number_of_items_greater_than_items_left'    =>  "Podana liczba przedmiotów jest zbyt duża",
+    'validation_message-delivery_form_already_filled'                           =>  "Formularz dostawy został już wypełniony",
     
     'configuration-undefined'    =>  'undefined',
     
@@ -178,16 +184,16 @@ return array(
                                             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
                                         </head>
                                         <body>
-                                            <div style="background:#f9f900;width:100%;text-align: center;padding:10px">
+                                            <div style="background:#f9f900;width:100%;text-align: center;padding:10px 0;min-width:640px">
                                                 <img src="http://pluton.kt.agh.edu.pl/~dlew/auctions/logo.png" alt="aukcyjki"/>
                                             </div>
-                                            <div style="background: #ffffcc;padding:20px;font:0.8em tahoma">',
+                                            <div style="background: #ffffcc;padding:20px;font:0.8em tahoma;min-width:600px">',
     'notification-footer'   =>             '</div>
-                                            <div style="background: #ffffcc;padding:20px;font:0.6em tahoma">
+                                            <div style="background: #ffffcc;padding:20px;font:0.6em tahoma;min-width:600px">
                                                 Nie odpowiadaj na tą wiadomosć. Została ona wysłana automatycznie przez portal aukcyjki.<br/>
                                                 Jeżeli masz jakieś pytania skontaktuj się z nami: <a style="color:black;text-decoration:none;" href="mailto:pomoc@aukcyjki.pl">pomoc@aukcyjki.pl</a><br/>
                                             </div>
-                                            <div style="background:#f9f900;width:100%;text-align: center;width:100%;margin:0;padding:10px 0;">&nbsp;
+                                            <div style="background:#f9f900;width:100%;text-align: center;width:100%;margin:0;padding:10px 0;min-width:640px">&nbsp;
                                                 <div style="margin:0;padding:0;padding-left:20px;text-align:left;float:left;font:0.8em tahoma">
                                                     aukcyjki
                                                 </div>
@@ -276,7 +282,9 @@ return array(
                                                         '<br/>' .
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Aukcja: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . FieldIdEnum::AUCTION_TITLE . '%%</a><br/>' .
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Ilość przedmiotów: %%' . FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS . '%%<br/>' .
-                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Twoja oferta: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%<br/>',
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Twoja oferta: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%<br/>' .
+                                                        '<br/>' .
+                                                        'Nie zapomnij wypełnić <a href="%%' . ParamIdEnum::LINK2 . '%%">formularza dostawy</a>.',
     
     'notification_subject-auction_buy_out_customer' =>  'Kupiłeś przedmiot %%' . FieldIdEnum::AUCTION_TITLE . '%%',
     
@@ -286,7 +294,9 @@ return array(
                                                         '<br/>' .
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Aukcja: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . FieldIdEnum::AUCTION_TITLE . '%%</a><br/>' .
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Ilość przedmiotów: %%' . FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS . '%%<br/>' .
-                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Cena: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%',
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;Cena: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%<br/>' .
+                                                        '<br/>' .
+                                                        'Nie zapomnij wypełnić <a href="%%' . ParamIdEnum::LINK2 . '%%">formularza dostawy</a>.',
     
     'notification_subject-auction_buy_out_auction_owner'    =>  '%%' . FieldIdEnum::USER_LOGIN . '%% kupił przedmiot na aukcji %%' . FieldIdEnum::AUCTION_TITLE . '%%',
     
@@ -305,5 +315,29 @@ return array(
                                                         'Zakończyła się aukcja <a href="%%' . ParamIdEnum::LINK . '%%">%%' . FieldIdEnum::AUCTION_TITLE . '%%</a>.<br/>' .
                                                         '<br/>' .
                                                         'Zaczekaj na informacje od klientów w sprawie formy dostawy.',
+    
+    'notification_subject-delivery_form_filled_auction_owner'   =>  'Użytkownik %%' . FieldIdEnum::USER_LOGIN . '%% wypełnił formularz dostawy do aukcji %%' . FieldIdEnum::AUCTION_TITLE . '%%',
+    
+    'notification_message-delivery_form_filled_auction_owner'   =>  'Witaj %%' . ParamIdEnum::USER_FULLNAME . '%%,<br/>' .
+                                                        '<br/>'.
+                                                        'Użytkownik %%' . FieldIdEnum::USER_LOGIN . '%% wypełnił formularz dostawy do aukcji <a href="%%' . ParamIdEnum::LINK . '%%">%%' . FieldIdEnum::AUCTION_TITLE . '%%</a>.<br/>' .
+                                                        '<br/>' .
+                                                        'Adres dostawy:<br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;%%' . FieldIdEnum::ADDRESS_NAME . '%% %%' . FieldIdEnum::ADDRESS_SURNAME . '%%<br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;%%' . FieldIdEnum::ADDRESS_STREET . '%%<br/>' . 
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;%%' . FieldIdEnum::ADDRESS_POSTAL_CODE . '%% %%' . FieldIdEnum::ADDRESS_CITY . '%%<br/>' . 
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;%%' . FieldIdEnum::ADDRESS_PROVINCE . '%%<br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;%%' . FieldIdEnum::ADDRESS_COUNTRY . '%%<br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;%%' . FieldIdEnum::ADDRESS_PHONE_NUMBER . '%%<br/>' .
+                                                        '<br/>' .
+                                                        'Wiadomość od kupującego: <br/>' .
+                                                        '&nbsp;&nbsp;&nbsp;&nbsp;%%' . FieldIdEnum::DELIVERY_FORM_COMMENT . '%%<br/>' .
+                                                        '<br/>' .
+                                                        'Kwota transakcji: <strong>%%' . FieldIdEnum::TRANSACTION_PRICE . '%%</strong><br/>' .
+                                                        'Wybrany type dostawy: %%' . FieldIdEnum::DELIVERY_TYPE_NAME . '%% (<strong>%%' . FieldIdEnum::DELIVERY_PRICE . '%%</strong>)<br/>' .
+                                                        'Płatność przy odbiorze: %%' . FieldIdEnum::DELIVERY_TYPE_CASH_ON_DELIVERY . '%%<br/>' .
+                                                        '<br/>' .
+                                                        '<a href="%%' . ParamIdEnum::LINK2 . '%%">Lista transakcji</a>.<br/>',
+    
 
 );

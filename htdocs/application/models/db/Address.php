@@ -13,4 +13,18 @@
 class Address extends BaseAddress
 {
 
+    /**
+     * Get one line information from Address
+     * 
+     * @return String
+     */
+    public function getOneLineInfo()
+    {
+        return 
+            $this->name . " " . 
+            $this->surname . ", " .
+            $this->street . ", " . 
+            $this->postal_code . " " . 
+            $this->city;
+    }
 }
