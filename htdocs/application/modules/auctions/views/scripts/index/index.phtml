@@ -7,7 +7,7 @@
                 <div class="content">
                     <?php echo $news->description; ?>
                     <div class="autor">
-                        <a href="<?=$this->baseUrl('/user/show/' . $news->User->id)?>"><?php echo $news->User->login; ?></a>
+                        <?=$news->created_at?> <a href="<?=$this->baseUrl('/user/show/' . $news->User->id)?>"><?php echo $news->User->login; ?></a>
                     </div>
                 </div>
             </fieldset>
