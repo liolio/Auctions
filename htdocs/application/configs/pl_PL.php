@@ -122,6 +122,14 @@ return array(
     'label-delivery_options_cash_on_transaction'    =>  'Opcje dostawy z zapłatą podczas przelewu:',
     'label-delivery_options_cash_on_delivery'       =>  'Opcje dostawy z zapłatą przy doręczeniu:',
     'label-auctions_list_of_user'                   =>  'Lista aukcji wystawionych przez użytkownika:',
+    'label-deliveries_to_process'                   =>  'Lista formularzy do przetworzenia:',
+    'label-deliveries_processed'                    =>  'Lista formularzy przetworzonych:',
+    'label-delivery_form_auction_title'             =>  'Nagłówek aukcji:',
+    'label-delivery_form_user_login'                =>  'Nick kupującego:',
+    'label-delivery_form_users_comment'             =>  'Wiadomość od kupującego:',
+    'label-delivery_form_delivery_type_name'        =>  'Sposób dostawy:',
+    'label-delivery_form_transaction_price'         =>  'Kwota transakcji:',
+    'label-delivery_form_is_processed'              =>  'Formularz przetworzony:',
     
     'transaction_type-BIDDING'                  =>  'Licytacja',
     'transaction_type-BUY_OUT'                  =>  'Zakup',
@@ -334,7 +342,7 @@ return array(
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;%%' . FieldIdEnum::DELIVERY_FORM_COMMENT . '%%<br/>' .
                                                         '<br/>' .
                                                         'Kwota transakcji: <strong>%%' . FieldIdEnum::TRANSACTION_PRICE . '%%</strong><br/>' .
-                                                        'Wybrany type dostawy: %%' . FieldIdEnum::DELIVERY_TYPE_NAME . '%% (<strong>%%' . FieldIdEnum::DELIVERY_PRICE . '%%</strong>)<br/>' .
+                                                        'Wybrany sposób dostawy: %%' . FieldIdEnum::DELIVERY_TYPE_NAME . '%% (<strong>%%' . FieldIdEnum::DELIVERY_PRICE . '%%</strong>)<br/>' .
                                                         'Płatność przy odbiorze: %%' . FieldIdEnum::DELIVERY_TYPE_CASH_ON_DELIVERY . '%%<br/>' .
                                                         '<br/>' .
                                                         '<a href="%%' . ParamIdEnum::LINK2 . '%%">Lista transakcji</a>.<br/>',

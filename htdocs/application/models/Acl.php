@@ -75,6 +75,7 @@ class Acl extends Zend_Acl
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::AUCTION, array('add', 'process-add-form', 'my-auctions-list'));
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::TRANSACTION, array('process-transaction-form'));
         $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::DELIVERY_FORM, array('process-add-form'), Acl_Assertion_DeliveryForm_TransactionOwner::getClassName());
+        $this->_allow(Enum_Acl_Role::USER, Enum_Acl_Resource::DELIVERY_FORM, array('show-list', 'process', 'process-process-form'));
         
         //ADMINISTRATOR
         $this->_allow(Enum_Acl_Role::ADMINISTRATOR, Enum_Acl_Resource::ADMINISTRATOR, array('index'));

@@ -1,0 +1,77 @@
+<div id="container">
+    <div id="content">
+        <?php if (count($this->toProcess) > 0): ?>
+            <strong><?= $this->translate('label-deliveries_to_process'); ?></strong><br/>
+            <br/>
+            <table class="auctionsTable">
+                <tr>
+                    <th>
+                        <?=$this->translate('label-delivery_form_auction_title')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-delivery_form_user_login')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-delivery_form_delivery_type_name')?>
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                <?php foreach ($this->toProcess as $deliveryForm) : ?>
+                <tr>
+                    <td>
+                        <a href="<?=$this->baseUrl('auction/show/' . $deliveryForm->Transaction->AuctionTransactionType->Auction->id)?>"><?=$deliveryForm->Transaction->AuctionTransactionType->Auction->title?></a>
+                    </th>
+                    <td>
+                        <?=$deliveryForm->Address->User->login?>
+                    </td>
+                    <td>
+                        <?=$deliveryForm->Delivery->DeliveryType->name?>
+                    </td>
+                    <td>
+                        <a href="<?=$this->baseUrl('/delivery-form/process/' . $deliveryForm->id);?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                    </td>
+                </tr>
+                <?php endforeach;?>
+            </table>
+            <br/>
+            <br/>
+        <?php endif; ?>
+        <?php if (count($this->processed) > 0): ?>
+            <strong><?= $this->translate('label-deliveries_processed'); ?></strong><br/>
+            <br/>
+            <table class="auctionsTable">
+                <tr>
+                    <th>
+                        <?=$this->translate('label-delivery_form_auction_title')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-delivery_form_user_login')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-delivery_form_delivery_type_name')?>
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                <?php foreach ($this->processed as $deliveryForm) : ?>
+                <tr>
+                    <td>
+                        <a href="<?=$this->baseUrl('auction/show/' . $deliveryForm->Transaction->AuctionTransactionType->Auction->id)?>"><?=$deliveryForm->Transaction->AuctionTransactionType->Auction->title?></a>
+                    </th>
+                    <td>
+                        <?=$deliveryForm->Address->User->login?>
+                    </td>
+                    <td>
+                        <?=$deliveryForm->Delivery->DeliveryType->name?>
+                    </td>
+                    <td>
+                        <a href="<?=$this->baseUrl('/delivery-form/process/' . $deliveryForm->id);?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                    </td>
+                </tr>
+                <?php endforeach;?>
+            </table>
+        <?php endif; ?>
+    </div>
+</div>
+<?php echo $this->render('user/panel-sub-menu.phtml') ?>

@@ -115,6 +115,9 @@ class AclTest extends TestCase_Controller
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::AUCTION, 'my-auctions-list'),
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::TRANSACTION, 'process-transaction-form'),
             array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::DELIVERY_FORM, 'process-add-form', array(FieldIdEnum::DELIVERY_FORM_ID => '1'), array('Category/1', 'Currency/1', 'Auction/1_category_1_start_2012-05-02', 'AuctionTransactionType/2_auction_1_tt_1', 'Transaction/1_att_2_u_1', 'DeliveryForm/1_transaction_1_to_fill')),
+            array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::DELIVERY_FORM, 'show-list'),
+            array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::DELIVERY_FORM, 'process'),
+            array($this->_roles[Enum_Acl_Role::USER], Enum_Acl_Resource::DELIVERY_FORM, 'process-process-form'),
             
             // ADMINISTRATOR
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::ADMINISTRATOR, 'index'),

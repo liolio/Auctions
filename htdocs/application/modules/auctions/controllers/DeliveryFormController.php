@@ -71,4 +71,76 @@ class Auctions_DeliveryFormController extends Controller_Abstract
         
         $this->_helper->redirector('index', 'index');
     }
+    
+    public function showListAction()
+    {
+        $this->view->toProcess = DeliveryFormTable::getInstance()->getFormsForUserAndStage(Auth_User::getInstance()->getUser(), Enum_Db_DeliveryForm_Stage::TO_PROCESS);
+        $this->view->processed = DeliveryFormTable::getInstance()->getFormsForUserAndStage(Auth_User::getInstance()->getUser(), Enum_Db_DeliveryForm_Stage::PROCESSED);
+    }
+    
+    public function processAction()
+    {
+        $deliveryFormId = $this->getRequest()->getParam(FieldIdEnum::DELIVERY_FORM_ID);
+        
+        $this->view->deliveryForm = DeliveryFormTable::getInstance()->find($deliveryFormId);
+        $this->view->deliveryFormComment = $this->_formatToHtml($this->view->deliveryForm->comment);
+        
+        $this->view->form = new Auctions_Form_DeliveryForm_Process();
+        $this->view->form->getElement(FieldIdEnum::DELIVERY_FORM_ID)->setValue($deliveryFormId);
+        $this->view->form->getElement(ParamIdEnum::DELIVERY_FORM_IS_PROCESSED)->setValue($this->view->deliveryForm->stage === Enum_Db_DeliveryForm_Stage::PROCESSED);
+    }
+    
+    public function processProcessFormAction()
+    {
+        $request = $this->getRequest();
+        
+        if (!$request->isPost())
+            return $this->_helper->redirector('index', 'index');
+        
+        $form = new Auctions_Form_DeliveryForm_Process();
+        if (!$form->isValid($request->getPost()))
+        {
+            $this->processAction();
+            return $this->render('process');
+        }
+        
+        try {
+            Doctrine_Manager::connection()->beginTransaction();
+            
+            $deliveryForm = DeliveryFormTable::getInstance()->find($form->getValue(FieldIdEnum::DELIVERY_FORM_ID));
+            $deliveryForm->stage = $form->getValue(ParamIdEnum::DELIVERY_FORM_IS_PROCESSED) ? Enum_Db_DeliveryForm_Stage::PROCESSED : Enum_Db_DeliveryForm_Stage::TO_PROCESS;
+            $deliveryForm->save();
+            
+            Doctrine_Manager::connection()->commit();
+        }
+        catch (Exception $ex)
+        {
+            Doctrine_Manager::connection()->rollback();
+            Log_Factory::create($ex, Zend_Log::CRIT);
+            $this->processAction();
+            $this->view->form->setDescription('Failure!');
+            return $this->render('process');
+            
+        }
+        
+        $this->_helper->redirector('show-list', 'delivery-form');
+    }
+    
+    private function _formatToHtml($value)
+    {
+        return str_replace(
+            array(
+                '\n',
+                '
+',
+                '\t'
+            ), 
+            array(
+                '<br/>',
+                '<br/>',
+                '&nbsp;&nbsp;&nbsp;&nbsp;'
+            ), 
+            $value);
+        
+    }
 }

@@ -258,6 +258,18 @@
         </map>
         <reverse></reverse>
     </userPanelMyAuctionsList>
+        
+    <userPanelDeliveries>
+        <route>user/panel/deliveries</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>delivery-form</controller>
+            <action>show-list</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </userPanelDeliveries>
     
     <addressShowList>
         <route>address/show-list</route>
@@ -763,5 +775,29 @@
         <map></map>
         <reverse></reverse>
     </deliveryFormProcessAddForm>
+    
+    <deliveryFormProcessProcessForm>
+        <route>delivery-form/process-process-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>delivery-form</controller>
+            <action>process-process-form</action>
+        </defaults>
+        <map></map>
+        <reverse></reverse>
+    </deliveryFormProcessProcessForm>
+    
+    <deliveryFormProcess>
+        <route>delivery-form/process/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>delivery-form</controller>
+            <action>process</action>
+        </defaults>
+        <map>
+            <delivery_form_id>1</delivery_form_id>
+        </map>
+        <reverse></reverse>
+    </deliveryFormProcess>
     
 </routes>

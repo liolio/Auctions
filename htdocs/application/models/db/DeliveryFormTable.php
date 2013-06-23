@@ -16,4 +16,19 @@ class DeliveryFormTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('DeliveryForm');
     }
+    
+    /**
+     * Returns forms for specified user and stage.
+     * 
+     * @param User $user
+     * @param Enum_Db_DeliveryForm_Stage $stage
+     * @return Doctrine_Collection
+     */
+    public function getFormsForUserAndStage(User $user, $stage)
+    {
+        return $this->createQuery()
+                ->where('DeliveryForm.Transaction.AuctionTransactionType.Auction.user_id = ?', $user->id)
+                ->addWhere('stage = ?', $stage)
+                ->execute();
+    }
 }

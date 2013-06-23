@@ -1,0 +1,57 @@
+<div id="container">
+    <div id="content">
+        <form>
+            <dl class="zend_form">
+                <dt>
+                    <label><?= $this->translate('label-user_login') ?></label>
+                </dt>
+                <dd id="delivery_form_is_processed-element">
+                    <?='<a href="' . $this->baseUrl('/user/show/' . $this->deliveryForm->Transaction->User->id) . '">' . $this->deliveryForm->Transaction->User->login . '</a>' ?>
+                </dd>
+                <dt>
+                    <label><?= $this->translate('label-delivery_form_auction_title') ?></label>
+                </dt>
+                <dd id="delivery_form_is_processed-element">
+                    <?= '<a href="' . $this->baseUrl('/auction/show/' . $this->deliveryForm->Transaction->AuctionTransactionType->Auction->id) . '">' . $this->deliveryForm->Transaction->AuctionTransactionType->Auction->title . '</a>' ?>
+                </dd>
+                <dt>
+                    <label><?= $this->translate('label-delivery_form_address') ?></label>
+                </dt>
+                <dd id="delivery_form_is_processed-element">
+                    <?= $this->deliveryForm->Address->name . ' ' . $this->deliveryForm->Address->surname ?><br/>
+                    <?= $this->deliveryForm->Address->street ?><br/>
+                    <?= $this->deliveryForm->Address->postal_code . ' ' . $this->deliveryForm->Address->city ?><br/>
+                    <?= $this->deliveryForm->Address->province ?><br/>
+                    <?= $this->deliveryForm->Address->country ?><br/>
+                    <?= $this->deliveryForm->Address->phone_number ?>
+                </dd>
+                <dt>
+                    <label><?= $this->translate('label-delivery_form_users_comment') ?></label>
+                </dt>
+                <dd id="delivery_form_is_processed-element">
+                    <?= $this->deliveryFormComment ?>
+                </dd>
+                <dt>
+                    <label><?= $this->translate('label-delivery_form_transaction_price') ?></label>
+                </dt>
+                <dd id="delivery_form_is_processed-element">
+                    <strong><?= Formatter_Price::formatWithCurrency($this->deliveryForm->Transaction->price, $this->deliveryForm->Transaction->AuctionTransactionType->Auction->Currency->name) ?></strong>
+                </dd>
+                <dt>
+                    <label><?= $this->translate('label-delivery_form_delivery_type_name') ?></label>
+                </dt>
+                <dd id="delivery_form_is_processed-element">
+                    <?= $this->deliveryForm->Delivery->DeliveryType->name ?> (<strong><?= Formatter_Price::formatWithCurrency($this->deliveryForm->Delivery->price, $this->deliveryForm->Transaction->AuctionTransactionType->Auction->Currency->name) ?></strong>)
+                </dd>
+                <dt>
+                    <label><?= $this->translate('label-delivery_type_cash_on_demand') ?></label>
+                </dt>
+                <dd id="delivery_form_is_processed-element">
+                    <?= Formatter_YesNo::format($this->deliveryForm->Delivery->DeliveryType->cash_on_delivery) ?>
+                </dd>
+            </dl>
+        </form>
+        <?php echo $this->form; ?>
+    </div>
+</div>
+<?php echo $this->render('user/panel-sub-menu.phtml') ?>

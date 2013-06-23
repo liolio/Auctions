@@ -53,6 +53,8 @@ class ParamIdEnum extends Enum_Abstract
     
     const AUCTION_TRANSACTION_TYPE_BUY_OUT_PRICE = 'auction_transaction_type_buy_out_price';
     
+    const DELIVERY_FORM_IS_PROCESSED = 'delivery_form_is_processed';
+    
     const TRANSACTION_VALID = 'transaction_valid';
     const TRANSACTION_INVALID = 'transaction_invalid';
     
