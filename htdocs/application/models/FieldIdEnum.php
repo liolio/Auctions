@@ -67,5 +67,9 @@ class FieldIdEnum extends Enum_Abstract
     
     const DELIVERY_PRICE = 'delivery_price';
     
+    const NEWS_ID = 'news_id';
+    const NEWS_TITLE = 'news_title';
+    const NEWS_DESCRIPTION = 'news_description';
+    
 }
 

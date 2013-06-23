@@ -3,8 +3,8 @@
     $menu = new Menu();
     $menu
         ->addElement(
-                'userPanelMyAuctionsList',
-                Menu_Element::create('user/panel/my-auctions-list', 'userPanelMyAuctionsList', 'submenu-user_my_auctions_list')
+                'addressList',
+                Menu_Element::create('address/show-list', 'addressShowList', 'submenu-address_list')
                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
                     ->enableFor(Enum_Acl_Role::MODERATOR)
                     ->enableFor(Enum_Acl_Role::USER)
@@ -24,15 +24,15 @@
                     ->enableFor(Enum_Acl_Role::USER)
         )
         ->addElement(
-                'addressList',
-                Menu_Element::create('address/show-list', 'addressShowList', 'submenu-address_list')
+                'bankingInformationList',
+                Menu_Element::create('banking-information/show-list', 'bankingInformationShowList', 'submenu-banking-information_list')
                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
                     ->enableFor(Enum_Acl_Role::MODERATOR)
                     ->enableFor(Enum_Acl_Role::USER)
         )
         ->addElement(
-                'bankingInformationList',
-                Menu_Element::create('banking-information/show-list', 'bankingInformationShowList', 'submenu-banking-information_list')
+                'userPanelMyAuctionsList',
+                Menu_Element::create('user/panel/my-auctions-list', 'userPanelMyAuctionsList', 'submenu-user_my_auctions_list')
                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
                     ->enableFor(Enum_Acl_Role::MODERATOR)
                     ->enableFor(Enum_Acl_Role::USER)

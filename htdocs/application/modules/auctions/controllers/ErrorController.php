@@ -1,13 +1,8 @@
 <?php
 
-class Auctions_ErrorController extends Zend_Controller_Action
+class Auctions_ErrorController extends Controller_Abstract
 {
 
-    public function init()
-    {
-        Zend_Layout::startMvc();
-    }
-    
     public function errorAction()
     {
         $errors = $this->_getParam('error_handler');

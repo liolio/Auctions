@@ -2,16 +2,13 @@
 /**
  * @class Auctions_IndexController
  */
-class Auctions_IndexController extends Zend_Controller_Action
+class Auctions_IndexController extends Controller_Abstract
 {
-
-    public function init()
-    {
-        Zend_Layout::startMvc();
-    }
 
     public function indexAction()
     {
-        
+        $this->view->newses = NewsTable::getInstance()->createQuery()
+                ->orderBy('created_at DESC')
+                ->execute();
     }
 }

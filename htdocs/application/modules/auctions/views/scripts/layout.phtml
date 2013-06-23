@@ -94,8 +94,10 @@
                     ?>
                 </div>
                 <div id="menuBarRight">
-                    <?php if (Zend_Auth::getInstance()->hasIdentity()) : ?>
-                        <a href="<?=$this->baseUrl();?>/user/panel"><?= Auth_User::getInstance()->getUser()->login; ?></a>
+                    <?php if (Zend_Auth::getInstance()->hasIdentity()) : 
+                        $user = Auth_User::getInstance()->getUser(); ?>
+                    
+                        <a href="<?=$this->baseUrl('/user/show/' . $user->id);?>"><?= $user->login; ?></a>
                     <?php else : ?>
                         &nbsp;
                     <?php endif; ?>

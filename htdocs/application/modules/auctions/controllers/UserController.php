@@ -2,13 +2,8 @@
 /**
  * @class Auctions_UserController
  */
-class Auctions_UserController extends Zend_Controller_Action
+class Auctions_UserController extends Controller_Abstract
 {
-    
-    public function init()
-    {
-        Zend_Layout::startMvc();
-    }
     
     public function showAction()
     {
@@ -222,6 +217,7 @@ class Auctions_UserController extends Zend_Controller_Action
     public function showListAction()
     {
         $this->view->users = UserTable::getInstance()->findAll();
+        $this->view->usersCount = count($this->view->users);
     }
     
     public function resetPasswordByAdministratorAction()

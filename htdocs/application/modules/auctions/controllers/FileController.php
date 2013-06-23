@@ -2,13 +2,8 @@
 /**
  * @class Auctions_FileController
  */
-class Auctions_FileController extends Zend_Controller_Action
+class Auctions_FileController extends Controller_Abstract
 {
-
-    public function init()
-    {
-        Zend_Layout::startMvc();
-    }
 
     public function addAction()
     {

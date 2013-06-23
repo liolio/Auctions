@@ -1,32 +1,36 @@
 <div id="container">
     <div id="content">
         <?= View_Helper::getErrorMessage($this->message); ?>
-        <table class="auctionsTable">
-            <tr>
-                <th>
-                    <?=$this->translate('label-category_name')?>
-                </th>
-                <th>
-                    <?=$this->translate('label-category_description')?>
-                </th>
-                <th>
-                </th>
-            </tr>
-            <?php foreach ($this->mainCategories as $category) : ?>
-            <tr>
-                <td>
-                    <?=$category[FieldIdEnum::CATEGORY_NAME]?>
-                </td>
-                <td>
-                    <?=$category[FieldIdEnum::CATEGORY_DESCRIPTION]?>
-                </td>
-                <td class="textCenter">
-                    <a href="<?=$this->baseUrl();?>/category/edit/<?=$category[FieldIdEnum::CATEGORY_ID]?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
-                    <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/category/delete/<?=$category[FieldIdEnum::CATEGORY_ID]?>');" title="<?=$this->translate('caption-delete')?>"></a>
-                </td>
-            </tr>
-            <?php    endforeach; ?>
-        </table>
+        <?php if ($this->mainCategoriesCount == 0) : ?>
+            <?= View_Helper::getErrorMessage($this->translate('message-no_categories_to_show')); ?>
+        <?php else : ?>
+            <table class="auctionsTable">
+                <tr>
+                    <th>
+                        <?=$this->translate('label-category_name')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-category_description')?>
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                <?php foreach ($this->mainCategories as $category) : ?>
+                <tr>
+                    <td>
+                        <?=$category[FieldIdEnum::CATEGORY_NAME]?>
+                    </td>
+                    <td>
+                        <?=$category[FieldIdEnum::CATEGORY_DESCRIPTION]?>
+                    </td>
+                    <td class="textCenter">
+                        <a href="<?=$this->baseUrl();?>/category/edit/<?=$category[FieldIdEnum::CATEGORY_ID]?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                        <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/category/delete/<?=$category[FieldIdEnum::CATEGORY_ID]?>');" title="<?=$this->translate('caption-delete')?>"></a>
+                    </td>
+                </tr>
+                <?php    endforeach; ?>
+            </table>
+        <?php endif; ?>
         <br/>
         <a class="addButton" href="<?=$this->baseUrl();?>/category/add"></a><br/>
     </div>

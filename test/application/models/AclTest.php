@@ -146,6 +146,12 @@ class AclTest extends TestCase_Controller
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::DELIVERY_TYPE, 'edit'),
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::DELIVERY_TYPE, 'process-edit-form'),
             array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::DELIVERY_TYPE, 'delete'),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::NEWS, 'show-list'),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::NEWS, 'add'),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::NEWS, 'process-add-form'),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::NEWS, 'edit'),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::NEWS, 'process-edit-form'),
+            array($this->_roles[Enum_Acl_Role::ADMINISTRATOR], Enum_Acl_Resource::NEWS, 'delete'),
         );
     }
     

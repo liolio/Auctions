@@ -5,11 +5,6 @@
 class Auctions_DeliveryFormController extends Controller_Abstract
 {
     
-    public function init()
-    {
-        Zend_Layout::startMvc();
-    }
-    
     public function fillAction()
     {
         if (!Zend_Auth::getInstance()->hasIdentity())
@@ -75,7 +70,9 @@ class Auctions_DeliveryFormController extends Controller_Abstract
     public function showListAction()
     {
         $this->view->toProcess = DeliveryFormTable::getInstance()->getFormsForUserAndStage(Auth_User::getInstance()->getUser(), Enum_Db_DeliveryForm_Stage::TO_PROCESS);
+        $this->view->toProcessCount = count($this->view->toProcess);
         $this->view->processed = DeliveryFormTable::getInstance()->getFormsForUserAndStage(Auth_User::getInstance()->getUser(), Enum_Db_DeliveryForm_Stage::PROCESSED);
+        $this->view->processedCount = count($this->view->processed);
     }
     
     public function processAction()

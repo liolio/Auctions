@@ -2,13 +2,8 @@
 /**
  * @class Auctions_TransactionController
  */
-class Auctions_TransactionController extends Zend_Controller_Action
+class Auctions_TransactionController extends Controller_Abstract
 {
-    
-    public function init()
-    {
-        Zend_Layout::startMvc();
-    }
     
     public function bidAction()
     {

@@ -5,14 +5,10 @@
 class Auctions_CategoryController extends Controller_Abstract
 {
     
-    public function init()
-    {
-        Zend_Layout::startMvc();
-    }
-    
     public function showAdministratorListAction()
     {
         $this->view->mainCategories = CategoryTable::getInstance()->getCategoriesList();
+        $this->view->mainCategoriesCount = count($this->view->mainCategories);
     }
     
     public function addAction()

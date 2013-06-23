@@ -5,11 +5,6 @@
 class Auctions_AuctionController extends Controller_Abstract
 {
 
-    public function init()
-    {
-        Zend_Layout::startMvc();
-    }
-    
     public function addAction()
     {
         $this->view->addForm = new Auctions_Form_Auction_Add();
@@ -110,6 +105,7 @@ class Auctions_AuctionController extends Controller_Abstract
     public function myAuctionsListAction()
     {
         $this->view->list = AuctionTable::getInstance()->getAuctionsForUser(Auth_User::getInstance()->getUser(), 0);
+        $this->view->listCount = count($this->view->list);
     }
     
     private function _setCategoriesList(Category $category)

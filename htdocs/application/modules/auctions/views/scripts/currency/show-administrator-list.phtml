@@ -1,26 +1,30 @@
 <div id="container">
     <div id="content">
         <?= View_Helper::getErrorMessage($this->message); ?>
-        <table class="auctionsTable">
-            <tr>
-                <th>
-                    <?=$this->translate('label-currency_name')?>
-                </th>
-                <th>
-                </th>
-            </tr>
-            <?php foreach ($this->list as $currency) : ?>
-            <tr>
-                <td>
-                    <?=$currency->name?>
-                </th>
-                <td class="textCenter">
-                    <a href="<?=$this->baseUrl();?>/currency/edit/<?=$currency->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
-                    <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/currency/delete/<?=$currency->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
-                </td>
-            </tr>
-            <?php    endforeach; ?>
-        </table>
+        <?php if ($this->listCount == 0) : ?>
+            <?= View_Helper::getErrorMessage($this->translate('message-no_currencies_to_show')); ?>
+        <?php else : ?>
+            <table class="auctionsTable">
+                <tr>
+                    <th>
+                        <?=$this->translate('label-currency_name')?>
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                <?php foreach ($this->list as $currency) : ?>
+                <tr>
+                    <td>
+                        <?=$currency->name?>
+                    </th>
+                    <td class="textCenter">
+                        <a href="<?=$this->baseUrl();?>/currency/edit/<?=$currency->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                        <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/currency/delete/<?=$currency->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+                    </td>
+                </tr>
+                <?php    endforeach; ?>
+            </table>
+        <?php endif; ?>
         <br/>
         <a class="addButton" href="<?=$this->baseUrl();?>/currency/add"></a><br/>
     </div>

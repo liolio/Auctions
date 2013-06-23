@@ -1,68 +1,72 @@
 <div id="container">
     <div id="content">
         <?= View_Helper::getErrorMessage($this->message); ?>
-        <table class="auctionsTable">
-            <tr>
-                <th>
-                    <?=$this->translate('label-address_name')?>
-                </th>
-                <th>
-                    <?=$this->translate('label-address_surname')?>
-                </th>
-                <th>
-                    <?=$this->translate('label-address_street')?>
-                </th>
-                <th>
-                    <?=$this->translate('label-address_postal_code')?>
-                </th>
-                <th>
-                    <?=$this->translate('label-address_city')?>
-                </th>
-                <th>
-                    <?=$this->translate('label-address_province')?>
-                </th>
-                <th>
-                    <?=$this->translate('label-address_country')?>
-                </th>
-                <th>
-                    <?=$this->translate('label-address_phone_number')?>
-                </th>
-                <th>
-                </th>
-            </tr>
-            <?php foreach ($this->addressList as $address) : ?>
-            <tr>
-                <td>
-                    <?=$address->name?>
-                </th>
-                <td>
-                    <?=$address->surname?>
-                </td>
-                <td>
-                    <?=$address->street?>
-                </td>
-                <td>
-                    <?=$address->postal_code?>
-                </td>
-                <td>
-                    <?=$address->city?>
-                </td>
-                <td>
-                    <?=$address->province?>
-                </td>
-                <td>
-                    <?=$address->country?>
-                </td>
-                <td>
-                    <?=$address->phone_number?>
-                </td>
-                <td class="textCenter">
-                    <a href="<?=$this->baseUrl();?>/address/edit/<?=$address->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
-                    <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/address/delete/<?=$address->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
-                </td>
-            </tr>
-            <?php    endforeach; ?>
-        </table>
+        <?php if ($this->addressListCount == 0) : ?>
+            <?= View_Helper::getErrorMessage($this->translate('message-no_addresses_to_show')); ?>
+        <?php else : ?>
+            <table class="auctionsTable">
+                <tr>
+                    <th>
+                        <?=$this->translate('label-address_name')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-address_surname')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-address_street')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-address_postal_code')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-address_city')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-address_province')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-address_country')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-address_phone_number')?>
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                <?php foreach ($this->addressList as $address) : ?>
+                <tr>
+                    <td>
+                        <?=$address->name?>
+                    </th>
+                    <td>
+                        <?=$address->surname?>
+                    </td>
+                    <td>
+                        <?=$address->street?>
+                    </td>
+                    <td>
+                        <?=$address->postal_code?>
+                    </td>
+                    <td>
+                        <?=$address->city?>
+                    </td>
+                    <td>
+                        <?=$address->province?>
+                    </td>
+                    <td>
+                        <?=$address->country?>
+                    </td>
+                    <td>
+                        <?=$address->phone_number?>
+                    </td>
+                    <td class="textCenter">
+                        <a href="<?=$this->baseUrl();?>/address/edit/<?=$address->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                        <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/address/delete/<?=$address->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+                    </td>
+                </tr>
+                <?php    endforeach; ?>
+            </table>
+        <?php endif; ?>
         <br/>
         <a class="addButton" href="<?=$this->baseUrl();?>/address/add"></a><br/>
     </div>

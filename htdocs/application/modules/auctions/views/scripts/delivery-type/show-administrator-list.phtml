@@ -1,32 +1,36 @@
 <div id="container">
     <div id="content">
         <?= View_Helper::getErrorMessage($this->message); ?>
-        <table class="auctionsTable">
-            <tr>
-                <th>
-                    <?=$this->translate('label-delivery_type_name')?>
-                </th>
-                <th>
-                    <?=$this->translate('label-delivery_type_cash_on_demand')?>
-                </th>
-                <th>
-                </th>
-            </tr>
-            <?php foreach ($this->deliveryTypes as $delivery) : ?>
-            <tr>
-                <td>
-                    <?=$delivery->name?>
-                </th>
-                <td>
-                    <?=Formatter_YesNo::format($delivery->cash_on_delivery)?>
-                </td>
-                <td class="textCenter">
-                    <a href="<?=$this->baseUrl();?>/delivery-type/edit/<?=$delivery->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
-                    <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/delivery-type/delete/<?=$delivery->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
-                </td>
-            </tr>
-            <?php    endforeach; ?>
-        </table>
+        <?php if ($this->deliveryTypesCount == 0) : ?>
+            <?= View_Helper::getErrorMessage($this->translate('message-no_delivery_types_to_show')); ?>
+        <?php else : ?>
+            <table class="auctionsTable">
+                <tr>
+                    <th>
+                        <?=$this->translate('label-delivery_type_name')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-delivery_type_cash_on_demand')?>
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                <?php foreach ($this->deliveryTypes as $delivery) : ?>
+                <tr>
+                    <td>
+                        <?=$delivery->name?>
+                    </th>
+                    <td>
+                        <?=Formatter_YesNo::format($delivery->cash_on_delivery)?>
+                    </td>
+                    <td class="textCenter">
+                        <a href="<?=$this->baseUrl();?>/delivery-type/edit/<?=$delivery->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                        <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/delivery-type/delete/<?=$delivery->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+                    </td>
+                </tr>
+                <?php    endforeach; ?>
+            </table>
+        <?php endif; ?>
         <br/>
         <a class="addButton" href="<?=$this->baseUrl();?>/delivery-type/add"></a><br/>
     </div>

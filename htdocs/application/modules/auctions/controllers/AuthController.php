@@ -5,11 +5,6 @@
 class Auctions_AuthController extends Controller_Abstract
 {
 
-    public function init()
-    {
-        Zend_Layout::startMvc();
-    }
-
     public function indexAction()
     {
         $lastVisited = Session_LastVisited::getLastVisited();

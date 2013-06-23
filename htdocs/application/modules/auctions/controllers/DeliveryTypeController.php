@@ -5,14 +5,10 @@
 class Auctions_DeliveryTypeController extends Controller_Abstract
 {
     
-    public function init()
-    {
-        Zend_Layout::startMvc();
-    }
-    
     public function showAdministratorListAction()
     {
         $this->view->deliveryTypes = DeliveryTypeTable::getInstance()->findAll();
+        $this->view->deliveryTypesCount = count($this->view->deliveryTypes);
     }
     
     public function addAction()

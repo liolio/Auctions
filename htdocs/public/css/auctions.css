@@ -39,6 +39,19 @@ fieldset legend {
     border-radius: 6px 6px 6px 6px;
 }
 
+.news {
+    padding-bottom: 20px;
+}
+
+.news .content {
+    margin: 10px;
+}
+
+.news .autor {
+    font-size: 0.6em;
+    text-align: right;
+}
+
 #page {
     width: 1260px;
     margin: 0 auto;

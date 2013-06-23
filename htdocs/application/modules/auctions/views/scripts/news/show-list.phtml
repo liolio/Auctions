@@ -1,0 +1,57 @@
+<div id="container">
+    <div id="content">
+        <?= View_Helper::getErrorMessage($this->message); ?>
+        <?php if ($this->newsesCount == 0) : ?>
+            <?= View_Helper::getErrorMessage($this->translate('message-no_news_to_show')); ?>
+        <?php else : ?>
+            <table class="auctionsTable">
+                <tr>
+                    <th>
+                        <?=$this->translate('label-news_title')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-created_at')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-updated_at')?>
+                    </th>
+                    <th>
+                        <?=$this->translate('label-user_login')?>
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+                <?php foreach ($this->newses as $news) : ?>
+                <tr>
+                    <td>
+                        <?=$news->title?>
+                    </td>
+                    <td>
+                        <?=$news->created_at?>
+                    </td>
+                    <td>
+                        <?=$news->updated_at?>
+                    </td>
+                    <td>
+                        <?=$news->User->login?>
+                    </td>
+                    <td class="textCenter">
+                        <a href="<?=$this->baseUrl();?>/news/edit/<?=$news->id?>" class="editButton" title="<?=$this->translate('caption-edit')?>"></a>
+                        <a href="#" class="deleteButton" onclick="confirmationBox('<?=$this->baseUrl();?>/news/delete/<?=$news->id?>');" title="<?=$this->translate('caption-delete')?>"></a>
+                    </td>
+                </tr>
+                <?php    endforeach; ?>
+            </table>
+        <?php endif; ?>
+        <br/>
+        <a class="addButton" href="<?=$this->baseUrl();?>/news/add"></a><br/>
+    </div>
+</div>
+<?php echo $this->render('administrator/sub-menu.phtml') ?>
+
+<div id="dialog-box" title="<?= $this->translate('title-delete_news');?>">
+  <p>
+      <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+      <?= $this->translate('message-delete_news_confirmation'); ?>
+  </p>
+</div>

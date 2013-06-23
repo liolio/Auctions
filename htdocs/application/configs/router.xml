@@ -800,4 +800,78 @@
         <reverse></reverse>
     </deliveryFormProcess>
     
+    <newsShowList>
+        <route>news/show-list</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>news</controller>
+            <action>show-list</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </newsShowList>
+    
+    <newsAdd>
+        <route>news/add</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>news</controller>
+            <action>add</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </newsAdd>
+    
+    <newsProcessAddForm>
+        <route>news/process-add-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>news</controller>
+            <action>process-add-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </newsProcessAddForm>
+    
+    <newsEdit>
+        <route>news/edit/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>news</controller>
+            <action>edit</action>
+        </defaults>
+        <map>
+            <news_id>1</news_id>
+        </map>
+        <reverse></reverse>
+    </newsEdit>
+    
+    <newsProcessEditForm>
+        <route>news/process-edit-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>news</controller>
+            <action>process-edit-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </newsProcessEditForm>
+    
+    <newsDelete>
+        <route>news/delete/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>news</controller>
+            <action>delete</action>
+        </defaults>
+        <map>
+            <news_id>1</news_id>
+        </map>
+        <reverse></reverse>
+    </newsDelete>
+    
 </routes>

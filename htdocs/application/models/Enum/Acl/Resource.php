@@ -29,6 +29,8 @@ class Enum_Acl_Resource extends Enum_Abstract
     
     const INDEX = "Auctions:Index";
     
+    const NEWS = "Auctions:News";
+    
     const TRANSACTION = "Auctions:Transaction";
     
     const USER = "Auctions:User";

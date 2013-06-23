@@ -5,14 +5,10 @@
 class Auctions_CurrencyController extends Controller_Abstract
 {
     
-    public function init()
-    {
-        Zend_Layout::startMvc();
-    }
-    
     public function showAdministratorListAction()
     {
         $this->view->list = CurrencyTable::getInstance()->createQuery()->orderBy("name ASC")->execute();
+        $this->view->listCount = count($this->view->list);
     }
     
     public function addAction()
