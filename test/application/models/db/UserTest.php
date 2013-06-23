@@ -119,4 +119,38 @@ class UserTest extends TestCase_Controller
     {
         $this->assertEquals("Admin Adminowy", $this->_user->getFullName());
     }
+    
+    /**
+     * @test
+     */
+    public function getBankingInformationsForNotifications()
+    {
+        $this->_loadFixtures(array(
+            'Currency/1',
+            'BankingInformation/1_currency_1_user_1',
+            'BankingInformation/3_currency_1_user_1',
+        ));
+        
+        $expected = "<ul>" .
+                "<li><strong>123 432 6456 7657</strong> polski bank (PLN)</li>" .
+                "<li><strong>333 333 333 333</strong> polski bank (PLN)</li>" .
+                "</ul>";
+                
+        $this->_user->refresh(true);
+        
+        $this->assertEquals($expected, $this->_user->getBankingInformationsForNotifications());
+    }
+    
+    /**
+     * @test
+     */
+    public function getBankingInformationsForNotificationsForUserWithoutBankingInformations()
+    {
+        $this->_loadFixture("User/2");
+        
+        $this->assertEquals(
+            $this->_getTranslator()->translate('message-notification_no_banking_informations'), 
+            UserTable::getInstance()->find(2)->getBankingInformationsForNotifications()
+        );
+    }
 }

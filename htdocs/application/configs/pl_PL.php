@@ -70,6 +70,7 @@ return array(
     'message-no_delivery_forms_to_show'                 =>  'Brak formularzy dostawy do wyświetlenia',
     'message-no_banking_informations_to_show'           =>  'Brak kont bankowych do wyświetlenia',
     'message-no_auctions_to_show'                       =>  'Brak aukcji do wyświetlenia',
+    'message-notification_no_banking_informations'      =>  'Brak zdefiniowanych kont bankowych - skontaktuj się z sprzedającym.',
     
     'submenu-categories_list'           =>  'Kategorie',
     'submenu-currencies_list'           =>  'Waluty',
@@ -307,6 +308,8 @@ return array(
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Ilość przedmiotów: %%' . FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS . '%%<br/>' .
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Twoja oferta: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%<br/>' .
                                                         '<br/>' .
+                                                        'Konta bankowe sprzedającego: %%' . ParamIdEnum::USER_BANKING_INFORMATIONS . '%%<br/>' .
+                                                        '<br/>' .
                                                         'Nie zapomnij wypełnić <a href="%%' . ParamIdEnum::LINK2 . '%%">formularza dostawy</a>.',
     
     'notification_subject-auction_buy_out_customer' =>  'Kupiłeś przedmiot %%' . FieldIdEnum::AUCTION_TITLE . '%%',
@@ -318,6 +321,8 @@ return array(
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Aukcja: <a href="%%' . ParamIdEnum::LINK . '%%">%%' . FieldIdEnum::AUCTION_TITLE . '%%</a><br/>' .
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Ilość przedmiotów: %%' . FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS . '%%<br/>' .
                                                         '&nbsp;&nbsp;&nbsp;&nbsp;Cena: %%' . FieldIdEnum::TRANSACTION_PRICE . '%%<br/>' .
+                                                        '<br/>' .
+                                                        'Konta bankowe sprzedającego: %%' . ParamIdEnum::USER_BANKING_INFORMATIONS . '%%<br/>' .
                                                         '<br/>' .
                                                         'Nie zapomnij wypełnić <a href="%%' . ParamIdEnum::LINK2 . '%%">formularza dostawy</a>.',
     

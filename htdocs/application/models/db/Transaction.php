@@ -33,7 +33,8 @@ class Transaction extends BaseTransaction implements Notification_RelatedObject_
                     ParamIdEnum::LINK                           =>  Controller_Front_UrlGenerator::generate(Controller_Front_UrlGenerator::AUCTION_SHOW, $this->AuctionTransactionType->Auction->id),
                     ParamIdEnum::LINK2                          =>  Controller_Front_UrlGenerator::generate(Controller_Front_UrlGenerator::DELIVERY_FORM_FILL, $this->DeliveryForm->id),
                     FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  $this->number_of_items,
-                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency($this->price, $this->AuctionTransactionType->Auction->Currency->name)
+                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency($this->price, $this->AuctionTransactionType->Auction->Currency->name),
+                    ParamIdEnum::USER_BANKING_INFORMATIONS      =>  $this->AuctionTransactionType->Auction->User->getBankingInformationsForNotifications()
                 );
             case Enum_Db_Notification_Type::AUCTION_BID_AUCTION_OWNER :
             case Enum_Db_Notification_Type::AUCTION_BUY_OUT_AUCTION_OWNER :

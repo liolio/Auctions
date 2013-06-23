@@ -14,6 +14,8 @@ class TransactionTest extends TestCase_Controller
         $this->_loadFixtures(array(
             'Category/1',
             'Currency/1',
+            'BankingInformation/1_currency_1_user_1',
+            'BankingInformation/3_currency_1_user_1',
             'Auction/5_category_1_start_2012-05-02',
             'AuctionTransactionType/4_auction_5_tt_1',
             'AuctionTransactionType/5_auction_5_tt_2',
@@ -48,7 +50,8 @@ class TransactionTest extends TestCase_Controller
                     ParamIdEnum::LINK                           =>  '/auction/show/5',
                     ParamIdEnum::LINK2                          =>  '/delivery-form/fill',
                     FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  '2',
-                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('212.12', 'PLN')
+                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('212.12', 'PLN'),
+                    ParamIdEnum::USER_BANKING_INFORMATIONS      =>  UserTable::getInstance()->find(1)->getBankingInformationsForNotifications()
                 )
             ),
             array(
@@ -87,7 +90,8 @@ class TransactionTest extends TestCase_Controller
                     ParamIdEnum::LINK                           =>  '/auction/show/5',
                     ParamIdEnum::LINK2                          =>  '/delivery-form/fill',
                     FieldIdEnum::TRANSACTION_NUMBER_OF_ITEMS    =>  '2',
-                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('122.12', 'PLN')
+                    FieldIdEnum::TRANSACTION_PRICE              =>  Formatter_Price::formatWithCurrency('122.12', 'PLN'),
+                    ParamIdEnum::USER_BANKING_INFORMATIONS      =>  UserTable::getInstance()->find(1)->getBankingInformationsForNotifications()
                 )
             ),
             array(

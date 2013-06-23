@@ -69,4 +69,6 @@ class ParamIdEnum extends Enum_Abstract
     const FIELDSET_DELIVERY_CASH_ON_DELIVERY = 'fieldset_delivery_cash_on_delivery';
     const FIELDSET_FILES = 'fieldset_files';
     
+    const USER_BANKING_INFORMATIONS = 'user_banking_informations';
+    
 }

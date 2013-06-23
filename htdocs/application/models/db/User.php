@@ -132,4 +132,25 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
         
         return $this;
     }
+    
+    /**
+     * Returns list of banking informations (in HTML).
+     * 
+     * @return String 
+     */
+    public function getBankingInformationsForNotifications()
+    {
+        if (count($this->BankingInformations) == 0) 
+            return Helper::getTranslator()->translate('message-notification_no_banking_informations');
+        
+        $bankingInformations = '<ul>';
+        
+        foreach ($this->BankingInformations as $bankingInformation)
+        {
+            $bankingInformations = $bankingInformations . "<li><strong>" . $bankingInformation->account_number . "</strong> " . $bankingInformation->bank_name . 
+                    " (" . $bankingInformation->Currency->name . ")</li>";
+        }
+        
+        return $bankingInformations . "</ul>";
+    }
 }
