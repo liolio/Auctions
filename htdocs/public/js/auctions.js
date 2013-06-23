@@ -46,6 +46,12 @@ $(function() {
             label: translate('caption-add')
         });
         
+    $(".backButton")
+        .button({
+            icons: { primary: "ui-icon-carat-1-w" },
+            label: translate('caption-back')
+        });
+        
     $("." + getEnum("AUCTION_TRANSACTION_TYPE_BIDDING"))
         .button({
             label: translate('caption-transaction_bid')

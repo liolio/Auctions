@@ -153,4 +153,14 @@ class User extends BaseUser implements Notification_RelatedObject_Interface
         
         return $bankingInformations . "</ul>";
     }
+    
+    /**
+     * Returns true if user's role is moderator or administrator.
+     * 
+     * @return boolean
+     */
+    public function isUserModerator()
+    {
+        return $this->role === Enum_Db_User_Role::MODERATOR || $this->role === Enum_Db_User_Role::ADMINISTRATOR;
+    }
 }

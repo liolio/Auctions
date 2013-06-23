@@ -420,6 +420,18 @@ fieldset legend {
     margin-left: 20px;
 }
 
+#auction #moderatorsMenu {
+    height: 35px;
+    border: 1px solid #cc0000;
+    padding-top: 15px;
+    padding-left: 15px;
+    -moz-border-radius: 6px 6px 6px 6px;
+    -webkit-border-radius: 6px 6px 6px 6px;
+    border-radius: 6px 6px 6px 6px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 #auction #header {
     height: 80px;
     border: 1px solid #cc0000;

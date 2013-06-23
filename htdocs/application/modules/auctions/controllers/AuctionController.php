@@ -81,6 +81,8 @@ class Auctions_AuctionController extends Controller_Abstract
     
     public function showAction()
     {
+        $this->view->isUserModerator = Zend_Auth::getInstance()->hasIdentity() && Auth_User::getInstance()->getUser()->isUserModerator();
+        
         $auction = AuctionTable::getInstance()->find($this->getRequest()->getParam(FieldIdEnum::AUCTION_ID));
         
         $this->view->auction = $auction;
@@ -106,6 +108,104 @@ class Auctions_AuctionController extends Controller_Abstract
     {
         $this->view->list = AuctionTable::getInstance()->getAuctionsForUser(Auth_User::getInstance()->getUser(), 0);
         $this->view->listCount = count($this->view->list);
+    }
+    
+    public function editAction()
+    {
+        $this->view->editForm = $this->_getFilledEditForm();
+    }
+    
+    public function processEditFormAction()
+    {
+        $request = $this->getRequest();
+
+        if (!$request->isPost())
+            return $this->_helper->redirector('index', 'index');
+        
+        $form = $this->_getFilledEditForm();
+        if (!$form->isValid($request->getPost()))
+        {
+            $this->view->editForm = $form;
+            return $this->render('edit');
+        }
+        
+        $auctionId = $request->getParam(FieldIdEnum::AUCTION_ID);
+        
+        try {
+            Doctrine_Manager::connection()->beginTransaction();
+            $auction = AuctionTable::getInstance()->find($auctionId);
+            $auction->refresh(true);
+            
+            $auction->title = $form->getValue(FieldIdEnum::AUCTION_TITLE);
+            $auction->description = $form->getValue(ParamIdEnum::CKEDITOR);
+            
+            $auction->save();
+            
+            Doctrine_Manager::connection()->commit();
+        }
+        catch (Exception $ex)
+        {
+            Doctrine_Manager::connection()->rollback();
+            Log_Factory::create($ex, Zend_Log::CRIT);
+            $this->view->editForm = $form;
+            $form->setDescription('Failure!');
+            return $this->render('edit');
+        }
+        
+        $this->_helper->redirector($auctionId, 'show', 'auction');
+    }
+    
+    public function deleteAction()
+    {
+        $auction = AuctionTable::getInstance()->findOneBy('id', $this->getRequest()->getParam(FieldIdEnum::AUCTION_ID));
+        $categoryId = $auction->Category->id;
+        
+        foreach ($auction->AuctionTransactionTypes as $auctionTransactionType)
+        {
+            if (count($auctionTransactionType->Transactions) > 0) 
+            {
+                $this->view->message = $this->_getTranslator()->translate('validation_message-auction_has_transactions');
+                $this->view->auctionId = $auction->id;
+                return;
+            }
+        }
+        
+        try {
+            Doctrine_Manager::connection()->beginTransaction();
+            $auction->delete();
+            Doctrine_Manager::connection()->commit();
+        }
+        catch (Exception $ex)
+        {
+            Doctrine_Manager::connection()->rollback();
+            Log_Factory::create($ex, Zend_Log::CRIT);
+            $this->view->message = 'Failure!';
+            $this->view->auctionId = $auction->id;
+            return;
+        }
+        
+        $this->_helper->redirector($categoryId, 'show-list-for-category', 'auction');
+    }
+    
+    private function _getFilledEditForm()
+    {
+        $auctionId = $this->getRequest()->getParam(FieldIdEnum::AUCTION_ID);
+        
+        $form = new Auctions_Form_Auction_Edit();
+        
+        if (!is_null($auctionId))
+        {
+            $auction = AuctionTable::getInstance()->find($auctionId);
+            
+            if ($auction !== false)
+            {
+                $form->getElement(FieldIdEnum::AUCTION_ID)->setValue($auctionId);
+                $form->getElement(FieldIdEnum::AUCTION_TITLE)->setValue($auction->title);
+                $form->getElement(ParamIdEnum::CKEDITOR)->setValue($auction->description);
+            }
+        }
+        
+        return $form;
     }
     
     private function _setCategoriesList(Category $category)

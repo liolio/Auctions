@@ -616,7 +616,45 @@
         </map>
         <reverse></reverse>
     </auctionProcessAddForm>
+
+    <auctionEdit>
+        <route>auction/edit/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>auction</controller>
+            <action>edit</action>
+        </defaults>
+        <map>
+            <auction_id>1</auction_id>
+        </map>
+        <reverse></reverse>
+    </auctionEdit>
     
+    <auctionProcessEditForm>
+        <route>auction/process-edit-form</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>auction</controller>
+            <action>process-edit-form</action>
+        </defaults>
+        <map>
+        </map>
+        <reverse></reverse>
+    </auctionProcessEditForm>
+
+    <auctionDelete>
+        <route>auction/delete/(.*)</route>
+        <defaults>
+            <module>auctions</module>
+            <controller>auction</controller>
+            <action>delete</action>
+        </defaults>
+        <map>
+            <auction_id>1</auction_id>
+        </map>
+        <reverse></reverse>
+    </auctionDelete>
+            
     <fileAdd>
         <route>file/add</route>
         <defaults>

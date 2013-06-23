@@ -153,4 +153,26 @@ class UserTest extends TestCase_Controller
             UserTable::getInstance()->find(2)->getBankingInformationsForNotifications()
         );
     }
+    
+    /**
+     * @test
+     * @dataProvider isUserModeratorDataProvider
+     */
+    public function isUserModerator($role, $expectedResult)
+    {
+        $user = new User();
+        $user->role = $role;
+        
+        $this->assertEquals($expectedResult, $user->isUserModerator());
+    }
+    
+    public function isUserModeratorDataProvider()
+    {
+        return array(
+            array(Enum_Acl_Role::ADMINISTRATOR, true),
+            array(Enum_Acl_Role::MODERATOR, true),
+            array(Enum_Acl_Role::USER, false),
+            array(Enum_Acl_Role::GUEST, false),
+        );
+    }
 }

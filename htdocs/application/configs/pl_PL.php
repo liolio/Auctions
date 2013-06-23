@@ -15,6 +15,7 @@ return array(
     'caption-delete'                        =>  'Usuń',
     'caption-next'                          =>  'Dalej',
     'caption-save'                          =>  'Zapisz',
+    'caption-back'                          =>  'Wstecz',
     'caption-category_main'                 =>  'Kategoria główna',
     'caption-category_list_prefix'          =>  '- ',
     'caption-auction_ends_at'               =>  'Data zakończenia aukcji: ',
@@ -45,6 +46,7 @@ return array(
     'title-delete_address'              =>  'Usuń adres',
     'title-delete_news'                 =>  'Usuń wpis',
     'title-delete_banking_information'  =>  'Usuń informacje o koncie bankowym',
+    'title-delete_auction'              =>  'Usuń aukcję',
     'title-user_password_reset'         =>  'Zresetuj hasło użytkownikowi',
     
     'message-delete_category_confirmation'              =>  'Czy na pewno chcesz usunąć tę kategorię?',
@@ -54,6 +56,7 @@ return array(
     'message-delete_address_confirmation'               =>  'Czy na pewno chcesz usunąć ten adres?',
     'message-delete_banking_information_confirmation'   =>  'Czy na pewno chcesz usunąć informację o tym koncie bankowym?',
     'message-delete_news_confirmation'                  =>  'Czy na pewno chcesz usunąć ten wpis?',
+    'message-delete_auction_confirmation'               =>  'Czy na pewno chcesz usunąć tę aukcję?',
     'message-user_password_reset_confirmation'          =>  'Czy na pewno chcesz zresetować hasło użytkownikowi?',
     'message-number_of_auctions_found'                  =>  'Znaleziono %%value%% aukcji',
     'message-transaction_no_buy_outs'                   =>  'Brak transakcji typu "Kup"',
@@ -198,6 +201,7 @@ return array(
     'validation_message-transaction_price_lower_than_minimum_price'             =>  "Podana cena jest niższa od ceny minimalnej",
     'validation_message-transaction_number_of_items_greater_than_items_left'    =>  "Podana liczba przedmiotów jest zbyt duża",
     'validation_message-delivery_form_already_filled'                           =>  "Formularz dostawy został już wypełniony",
+    'validation_message-auction_has_transactions'                               =>  "Aukcja posiada transakcje",
     
     'configuration-undefined'    =>  'undefined',
     
