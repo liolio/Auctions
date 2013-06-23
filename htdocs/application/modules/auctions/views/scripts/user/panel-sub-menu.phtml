@@ -10,6 +10,13 @@
                     ->enableFor(Enum_Acl_Role::USER)
         )
         ->addElement(
+                'userPanelDeliveries',
+                Menu_Element::create('user/panel/deliveries', 'userPanelDeliveries', 'submenu-user_my_delivery_forms')
+                    ->enableFor(Enum_Acl_Role::ADMINISTRATOR)
+                    ->enableFor(Enum_Acl_Role::MODERATOR)
+                    ->enableFor(Enum_Acl_Role::USER)
+        )
+        ->addElement(
                 'changePassword',
                 Menu_Element::create('user/panel/change-password', 'userPanelChangePassword', 'submenu-user_change_password')
                     ->enableFor(Enum_Acl_Role::ADMINISTRATOR)

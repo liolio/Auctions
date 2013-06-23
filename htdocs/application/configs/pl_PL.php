@@ -66,6 +66,7 @@ return array(
     'submenu-delivery_type_list'        =>  'Lista opcji dostawy',
     'submenu-user_change_password'      =>  'Zmień hasło',
     'submenu-user_my_auctions_list'     =>  'Lista moich aukcji',
+    'submenu-user_my_delivery_forms'    =>  'Lista formularzy dostawy',
     'submenu-address_list'              =>  'Lista adresów',
     'submenu-banking-information_list'  =>  'Lista kont bankowych',
     'submenu-file_add'                  =>  'Dodaj plik',
