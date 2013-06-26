@@ -133,7 +133,7 @@ fieldset legend {
 }
 
 #contentWithoutSubMenu {
-    padding: 20px 0 0 20px;
+    padding: 20px 0 0 0;
 }
 
 /* Sidebar Left
@@ -492,7 +492,6 @@ fieldset legend {
 
 #auction #gallery {
     text-align: center;
-    width: 1218px;
     background: #ffeeee;
     border: 1px solid #cc0000;
     padding: 10px;
@@ -512,7 +511,6 @@ fieldset legend {
 }
 
 #auction #deliveries {
-    width: 1218px;
     background: #ffeeee;
     border: 1px solid #cc0000;
     margin-top: 20px;
@@ -529,7 +527,6 @@ fieldset legend {
 
 #auction #transaction #oneType {
     text-align: center;
-    width: 1218px;
     background: #ffeeee;
     border: 1px solid #cc0000;
     margin-top: 20px;
@@ -541,13 +538,12 @@ fieldset legend {
 }
 
 #auction #transaction #twoTypes {
-    width: 1240px;
     height: 91px;
 }
 
 #auction #transaction #twoTypes #bidding {
     text-align: center;
-    width: 587px;
+    width: 597px;
     position: relative;
     float: left;
     background: #ffeeee;
@@ -561,7 +557,7 @@ fieldset legend {
 
 #auction #transaction #twoTypes #buyOut {
     text-align: center;
-    width: 587px;
+    width: 597px;
     position: relative;
     float: left;
     background: #ffeeee;
@@ -575,7 +571,6 @@ fieldset legend {
 }
 
 #auction #description {
-    width: 1218px;
     border: 1px solid #cc0000;
     margin-top: 20px;
     min-height: 200px;
@@ -586,7 +581,6 @@ fieldset legend {
 }
 
 #auction #transactions {
-    width: 1218px;
     background: #ffeeee;
     border: 1px solid #cc0000;
     padding: 10px;
