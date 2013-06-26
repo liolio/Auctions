@@ -230,7 +230,7 @@ return array(
                                         </head>
                                         <body>
                                             <div style="background:#f9f900;width:100%;text-align: center;padding:10px 0;min-width:640px">
-                                                <img src="http://pluton.kt.agh.edu.pl/~dlew/auctions/logo.png" alt="aukcyjki"/>
+                                                <img src="http://aukcyjki.dlew.linuxpl.info/img/logo.png" alt="aukcyjki"/>
                                             </div>
                                             <div style="background: #ffffcc;padding:20px;font:0.8em tahoma;min-width:600px">',
     'notification-footer'   =>             '</div>
