@@ -93,6 +93,8 @@ class Auctions_AuctionController extends Controller_Abstract
         $this->view->auctionTransactionTypesCount = count($this->view->auctionTransactionTypes);
         $this->view->isBiddingOnly = $this->view->auctionTransactionTypesCount === 1 && $this->view->auctionTransactionTypes->get(0)->TransactionType->name === Enum_Db_TransactionType_Type::BIDDING;
         $this->view->isBuyOutOnly = $this->view->auctionTransactionTypesCount === 1 && $this->view->auctionTransactionTypes->get(0)->TransactionType->name === Enum_Db_TransactionType_Type::BUY_OUT;
+        
+        $this->view->openDialogWindow = Session_DialogWindow::getValue();
     }
 
     public function showListForCategoryAction()
@@ -102,6 +104,8 @@ class Auctions_AuctionController extends Controller_Abstract
         
         $this->_setCategoriesList($category);
         $this->view->auctionsArray = AuctionTable::getInstance()->getAuctionsAllChildrenAuctions($category, Zend_Date::now());
+        
+        $this->view->openDialogWindow = Session_DialogWindow::getValue();
     }
     
     public function myAuctionsListAction()
@@ -183,6 +187,8 @@ class Auctions_AuctionController extends Controller_Abstract
             $this->view->auctionId = $auction->id;
             return;
         }
+        
+        Session_DialogWindow::save(ParamIdEnum::WINDOW_AUCTION_DELETED);
         
         $this->_helper->redirector($categoryId, 'show-list-for-category', 'auction');
     }

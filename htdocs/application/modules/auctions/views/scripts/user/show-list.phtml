@@ -80,3 +80,15 @@
       <?= $this->translate('message-user_password_reset_confirmation'); ?>
   </p>
 </div>
+
+<div class="dialog-password_reset_request_admin dialog-window" title="<?=$this->translate('title-password_reset_request_admin');?>">
+    <p>
+        <span class="ui-icon ui-icon-info" style="float: left; margin: 0 7px 20px 0;"></span>
+        <?= $this->translate('message-password_reset_request_admin'); ?>
+    </p>
+</div>
+
+<script>
+    var openDialogWindow = "<?php echo $this->openDialogWindow;?>";
+</script>
+<script src="<?php echo $this->baseUrl();?>/js/user/show-list.js" type="text/javascript"></script>

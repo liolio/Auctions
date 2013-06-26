@@ -47,6 +47,8 @@ class Auctions_UserController_ProcessPasswordResetFormActionTest extends TestCas
         $this->assertEquals(Enum_Db_Notification_Type::USER_PASSWORD_RESET, $notification->type);
         $this->_assertTime($now, $notification->created_at);
         $this->_assertTime($now, $notification->updated_at);
+        
+        $this->assertEquals(ParamIdEnum::WINDOW_PASSWORD_RESET_REQUEST, Session_DialogWindow::getValue());
     }
     
     /**

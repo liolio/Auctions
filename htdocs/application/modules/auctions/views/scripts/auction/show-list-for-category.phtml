@@ -58,3 +58,15 @@
     }
     ?>
 </div>
+
+<div class="dialog-auction_deleted dialog-window" title="<?=$this->translate('title-auction_deleted');?>">
+    <p>
+        <span class="ui-icon ui-icon-info" style="float: left; margin: 0 7px 20px 0;"></span>
+        <?= $this->translate('message-auction_deleted'); ?>
+    </p>
+</div>
+
+<script>
+    var openDialogWindow = "<?php echo $this->openDialogWindow;?>";
+</script>
+<script src="<?php echo $this->baseUrl();?>/js/auction/show-list-for-category.js" type="text/javascript"></script>

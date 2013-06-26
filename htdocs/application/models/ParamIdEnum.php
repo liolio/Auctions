@@ -71,4 +71,14 @@ class ParamIdEnum extends Enum_Abstract
     
     const USER_BANKING_INFORMATIONS = 'user_banking_informations';
     
+    const WINDOW_ACL_FAILURE = 'window_acl_failure';
+    const WINDOW_PASSWORD_RESETTED = 'window_password_resetted';
+    const WINDOW_BUY_OUT = 'window_buy_out';
+    const WINDOW_BID = 'window_bid';
+    const WINDOW_REGISTER = 'window_register';
+    const WINDOW_PASSWORD_RESET_REQUEST = 'window_password_reset_request';
+    const WINDOW_PASSWORD_RESET_REQUEST_ADMIN = 'window_password_reset_request_admin';
+    const WINDOW_AUCTION_DELETED = 'window_auction_deleted';
+    const WINDOW_AUCTION_ADD = 'window_auction_add';
+    
 }

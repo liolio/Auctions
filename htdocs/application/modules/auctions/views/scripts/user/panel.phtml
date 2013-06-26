@@ -4,3 +4,15 @@
     </div>
 </div>
 <?php echo $this->render('user/panel-sub-menu.phtml') ?>
+
+<div class="dialog-password_resetted dialog-window" title="<?=$this->translate('title-password_resetted');?>">
+    <p>
+        <span class="ui-icon ui-icon-info" style="float: left; margin: 0 7px 20px 0;"></span>
+        <?= $this->translate('message-password_resetted'); ?>
+    </p>
+</div>
+
+<script>
+    var openDialogWindow = "<?php echo $this->openDialogWindow;?>";
+</script>
+<script src="<?php echo $this->baseUrl();?>/js/user/panel.js" type="text/javascript"></script>

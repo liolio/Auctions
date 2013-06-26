@@ -22,6 +22,8 @@ class Auctions_AuctionController_DeleteActionTest extends TestCase_Controller
         $this->_assertRedirection("auction/show-list-for-category/1");
         
         $this->assertEquals(0, AuctionTable::getInstance()->count());
+        
+        $this->assertEquals(ParamIdEnum::WINDOW_AUCTION_DELETED, Session_DialogWindow::getValue());
     }
     
 }

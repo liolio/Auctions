@@ -114,6 +114,11 @@ class Auctions_TransactionController extends Controller_Abstract
             return $this->render('transaction');
         }
         
+        Session_DialogWindow::save($isBuyOut ?
+            ParamIdEnum::WINDOW_BUY_OUT :
+            ParamIdEnum::WINDOW_BID
+        );
+        
         $this->_helper->redirector($form->getElement(FieldIdEnum::AUCTION_ID)->getValue(), 'show', 'auction');
     }
     

@@ -73,6 +73,9 @@ class Auctions_UserController_ProcessRegistrationFormActionTest extends TestCase
         $this->assertEquals(Enum_Db_Notification_Type::USER_REGISTRATION, $notification->type);
         $this->_assertTime($now, $notification->created_at);
         $this->_assertTime($now, $notification->updated_at);
+        
+        $this->assertEquals(ParamIdEnum::WINDOW_REGISTER, Session_DialogWindow::getValue());
+        
         Auctions_Form_User_Registration::addReCaptcha(true);
     }
     

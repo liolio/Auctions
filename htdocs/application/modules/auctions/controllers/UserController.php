@@ -66,6 +66,8 @@ class Auctions_UserController extends Controller_Abstract
             return $this->render('registration');
         }
         
+        Session_DialogWindow::save(ParamIdEnum::WINDOW_REGISTER);
+        
         $this->_helper->redirector('index', 'index');
     }
     
@@ -157,6 +159,8 @@ class Auctions_UserController extends Controller_Abstract
             return $this->render('change-password');
         }
         
+        Session_DialogWindow::save(ParamIdEnum::WINDOW_PASSWORD_RESETTED);
+        
         $this->_helper->redirector('panel', 'user');
     }
     
@@ -196,12 +200,14 @@ class Auctions_UserController extends Controller_Abstract
             $form->setDescription('Failure!');
             return $this->render('set-password-and-register-account');
         }
+        
+        Session_DialogWindow::save(ParamIdEnum::WINDOW_PASSWORD_RESET_REQUEST);
         $this->_helper->redirector('index', 'index');
     }
     
     public function panelAction()
     {
-        
+        $this->view->openDialogWindow = Session_DialogWindow::getValue();
     }
     
     public function changePasswordAction()
@@ -218,6 +224,7 @@ class Auctions_UserController extends Controller_Abstract
     {
         $this->view->users = UserTable::getInstance()->findAll();
         $this->view->usersCount = count($this->view->users);
+        $this->view->openDialogWindow = Session_DialogWindow::getValue();
     }
     
     public function resetPasswordByAdministratorAction()
@@ -239,6 +246,9 @@ class Auctions_UserController extends Controller_Abstract
             $this->view->message = 'Failure!!!';
             return $this->render('show-list');
         }
+        
+        Session_DialogWindow::save(ParamIdEnum::WINDOW_PASSWORD_RESET_REQUEST_ADMIN);
+        
         $this->_helper->redirector('show-list', 'user');
     }
     

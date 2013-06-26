@@ -43,6 +43,8 @@ class Auctions_UserController_ProcessChangePasswordActionTest extends TestCase_M
         $this->assertEquals(Enum_Db_Notification_Type::USER_NEW_PASSWORD_SET, $notification->type);
         $this->_assertTime($now, $notification->created_at);
         $this->_assertTime($now, $notification->updated_at);
+        
+        $this->assertEquals(ParamIdEnum::WINDOW_PASSWORD_RESETTED, Session_DialogWindow::getValue());
     }
     
     /**

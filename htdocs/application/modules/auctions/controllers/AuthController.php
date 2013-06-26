@@ -61,9 +61,6 @@ class Auctions_AuthController extends Controller_Abstract
     
     public function logoutAction()
     {
-        if (array_key_exists("HTTP_REFERER", $_SERVER))
-            Session_LastVisited::save($_SERVER["HTTP_REFERER"]);
-        
         Zend_Auth::getInstance()->clearIdentity();
         $this->_redirect(Session_LastVisited::getLastVisited());
     }

@@ -16,6 +16,35 @@ $(function() {
         modal: true
     });
     
+    var dialogBaseOptions = {
+        autoOpen: false,
+        modal: true,
+        dialogClass: "no-close",
+        buttons: [
+            {
+                text: translate('caption-ok'), 
+                click: function() {
+                    $( this ).dialog("close");
+                }
+            }
+        ]
+    };
+    
+    $(".dialog-window").dialog({
+        autoOpen: false,
+        modal: true,
+        dialogClass: "no-close",
+        icon: 'ui-icon-alert',
+        buttons: [
+            {
+                text: translate('caption-ok'), 
+                click: function() {
+                    $( this ).dialog("close");
+                }
+            }
+        ]
+    });
+    
     $(".deleteButton")
         .button({
             icons: { primary: "ui-icon-trash" }
