@@ -229,16 +229,19 @@ return array(
                                             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
                                         </head>
                                         <body>
-                                            <div style="background:#f9f900;width:100%;text-align: center;padding:10px 0;min-width:640px">
+                                            <div style="background:#ffffff;width:100%;text-align: center;padding:10px 0;min-width:640px">
                                                 <img src="http://aukcyjki.dlew.linuxpl.info/img/logo.png" alt="aukcyjki"/>
                                             </div>
-                                            <div style="background: #ffffcc;padding:20px;font:0.8em tahoma;min-width:600px">',
-    'notification-footer'   =>             '</div>
-                                            <div style="background: #ffffcc;padding:20px;font:0.6em tahoma;min-width:600px">
-                                                Nie odpowiadaj na tą wiadomosć. Została ona wysłana automatycznie przez portal aukcyjki.<br/>
-                                                Jeżeli masz jakieś pytania skontaktuj się z nami: <a style="color:black;text-decoration:none;" href="mailto:pomoc@aukcyjki.pl">pomoc@aukcyjki.pl</a><br/>
+                                            <div style="-moz-border-radius: 16px 16px 16px 16px;-webkit-border-radius: 16px 16px 16px 16px;border-radius: 16px 16px 16px 16px;border: 1px solid #cc0000;background: #ffffff;margin-bottom: 10px">
+                                                <div style="padding:20px;font:0.8em tahoma;min-width:600px">',
+    'notification-footer'   =>                 '</div>
+                                                <div style="padding:20px;font:0.6em tahoma;min-width:600px">
+                                                    Nie odpowiadaj na tą wiadomosć. Została ona wysłana automatycznie przez portal aukcyjki.<br/>
+                                                    Jeżeli masz jakieś pytania skontaktuj się z nami: <a style="color:black;text-decoration:none;" href="mailto:pomoc@aukcyjki.pl">pomoc@aukcyjki.pl</a><br/>
+                                                </div>
                                             </div>
-                                            <div style="background:#f9f900;width:100%;text-align: center;width:100%;margin:0;padding:10px 0;min-width:640px">&nbsp;
+                                            <!--<div style="background:#f9f900;width:100%;text-align: center;width:100%;margin:0;padding:10px 0;min-width:640px">&nbsp;-->
+                                            <div style="-moz-border-radius: 16px 16px 16px 16px;-webkit-border-radius: 16px 16px 16px 16px;border-radius: 16px 16px 16px 16px;border: 1px solid #cc0000;background: #ffdddd;background-image: url(http://aukcyjki.dlew.linuxpl.info/img/menu_bg.png);width:100%;text-align: center;width:100%;margin:0;padding:10px 0;min-width:640px">&nbsp;
                                                 <div style="margin:0;padding:0;padding-left:20px;text-align:left;float:left;font:0.8em tahoma">
                                                     aukcyjki
                                                 </div>
