@@ -13,10 +13,6 @@ class Cfg {
     public static $DOCTRINE_CONNECTION_STRING = "doctrine.connection_string";
     public static $DOCTRINE_DATABASE_NAME = "doctrine.database_name";
 
-    public function __construct() {
-        session_start();
-    }
-
     public function render() {
         return $this->_checkSession() ?
                 $this->_renderLoggedView() :

@@ -10,6 +10,7 @@
         <div class="container">
 
             <?php
+                session_start();
                 include_once './cfg/cfg.php';
                 $cfg = new Cfg();
                 echo $cfg->render();
