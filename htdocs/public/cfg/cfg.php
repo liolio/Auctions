@@ -47,9 +47,7 @@ class Cfg {
         if ($credentials['username'] == $_POST['username'] && $credentials['password'] == $_POST['password'])
             $_SESSION[$this->_sessionKey] = "1";
 
-        ob_start();
         header("Refresh: 0; url=../cfg.php");
-        ob_end_flush();
     }
     
     private function _processSaveConfigurationForm() {

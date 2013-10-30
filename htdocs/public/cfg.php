@@ -1,3 +1,5 @@
+<?php ob_start(); ?>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -10,7 +12,7 @@
         <div class="container">
 
             <?php
-                session_start();
+//                session_start();
                 include_once './cfg/cfg.php';
                 $cfg = new Cfg();
                 echo $cfg->render();
@@ -32,4 +34,4 @@
     </body>
 </html>
 
-
+<?php ob_end_flush(); ?>
