@@ -35,6 +35,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
         $doctrineConfig = $this->getOption('doctrine');
 
+//        $doctrineConfigSecure = $this->getOption();
+        
+//        echo "<pre>";
+//        print_r($doctrineConfig);
+//        print_r($doctrineConfig['connection_string']);
+//        echo "</pre>";
+        
+        $secureConfig = new Zend_Config_Ini(APPLICATION_PATH . '/configs/secure.ini');
+        $secureConfigArray = $secureConfig->toArray();
+        
         $manager = Doctrine_Manager::getInstance();
         $manager->setAttribute(Doctrine_Core::ATTR_AUTO_ACCESSOR_OVERRIDE, true);
         $manager->setAttribute(Doctrine::ATTR_MODEL_LOADING, Doctrine::MODEL_LOADING_CONSERVATIVE);
@@ -42,12 +52,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $manager->setAttribute(Doctrine_Core::ATTR_EXPORT, Doctrine_Core::EXPORT_ALL);
         $manager->setCharset('utf8');
         $manager->setCollate('utf8_unicode_ci');
-        $manager->openConnection($doctrineConfig['connection_string'], $doctrineConfig['database_name']);
+        $manager->openConnection(
+            $this->_getSecureConfig("connection_string", $doctrineConfig, $secureConfigArray['doctrine']), 
+            $this->_getSecureConfig("database_name", $doctrineConfig, $secureConfigArray['doctrine'])
+        ); 
+        
+//        $manager->openConnection($doctrineConfig['connection_string'], $doctrineConfig['database_name']);
         Doctrine_Core::loadModels($doctrineConfig['models_path']);
 
         return $manager;
     }
-
+    
     protected function _initLogger()
     {
         $this->bootstrap('log');
@@ -153,4 +168,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 //    {
 //        Zend_Registry::set('cloudFrontUrl', $this->getOption('cloudFrontUrl'));
 //    }
+    
+    private function _getSecureConfig($paramName, array $applicationConfig, array $secureConfig)
+    {
+        return array_key_exists($paramName, $secureConfig) ?
+                $secureConfig[$paramName] :
+                $applicationConfig[$paramName];
+    }
 }
