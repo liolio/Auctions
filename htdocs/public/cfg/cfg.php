@@ -20,7 +20,7 @@ class Cfg {
     }
 
     private function _checkSession() {
-        return (array_key_exists($this->_sessionKey, $_SESSION));
+        return ($_SESSION !== null && array_key_exists($this->_sessionKey, $_SESSION));
     }
 
     private function _renderNotLoggedView() {
